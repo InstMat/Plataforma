@@ -10,7 +10,7 @@ body {
     padding: 10px;
 }
 
-.example, .example-small, .example-medium, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .solution-full, .block, .fact {
+.example, .example-small, .example-medium, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .solution-full, .block, .fact, .proof {
     display: inline-block;
     position: relative;
     width: 100%;
@@ -155,6 +155,17 @@ body {
     font-weight: bold;
     color: #fff;
     background-color: #4CAF50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.proof::before {
+    content: "Demostración. ";
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #999;
     padding: 5px 10px;
     border-radius: 8px;
 }
