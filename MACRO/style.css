@@ -22,6 +22,10 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
 }
 
+.solution {
+    height: 400px;
+}
+
 .example ol li, .examples ol li, .exsercise ol li, .exercises ol li{
     margin-bottom: 10mm;
 }
