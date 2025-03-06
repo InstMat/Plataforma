@@ -1,0 +1,152 @@
+body {
+    counter-reset: example-counter;
+    counter-reset: exercise-counter;
+    counter-reset: def-counter;
+    counter-reset: thm-counter;
+}
+
+.frame{
+    text-align: left;
+    padding: 10px;
+}
+
+.example, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .block, .fact {
+    display: inline-block;
+    position: relative;
+    width: 80%;
+    padding: 10px 15px;
+    margin-bottom: 10px; /* Add spacing between examples */
+    background-color: #f0f0f0; /* Light blue background */
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #ccc; /* Optional: border for better definition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+
+.example ol li, .examples ol li, .exsercise ol li, .exercises ol li{
+    margin-bottom: 10mm;
+}
+    
+.example::before {
+    content: "Ejemplo. ";
+    /*
+    content: "Ejemplo " counter(example-counter) ". ";
+    counter-increment: example-counter;
+    */
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.examples::before {
+    content: "Ejemplos. ";
+    /*
+    content: "Ejemplo " counter(example-counter) ". ";
+    counter-increment: example-counter;
+    */
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.exercise::before {
+    content: "Ejercicio. ";
+    /*
+    content: "Ejercicio " counter(exercise-counter) ". ";
+    counter-increment: exercise-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2C3E50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.exercises::before {
+    content: "Ejercicios. ";
+    /*
+    content: "Ejercicio " counter(exercise-counter) ". ";
+    counter-increment: exercise-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2C3E50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.definition::before {
+    content: "Definición. ";
+    /*
+    content: "Definición " counter(def-counter) ". ";
+    counter-increment: def-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #F28C28;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.fact::before {
+    content: "Propiedades. ";
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.theorem::before {
+    content: "Teorema. ";
+    /*
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.solution::before {
+    content: "Solución. "; /* Add "Solución. " */
+    font-weight: bold;
+    color: #333;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.remark::before {
+    content: "Observación. "; /* Add "Observación. " */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+:root {
+  --r-main-font-size: 20px;
+}
