@@ -10,7 +10,7 @@ body {
     padding: 10px;
 }
 
-.example, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .block, .fact {
+.example, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .solution-full, .block, .fact {
     display: inline-block;
     position: relative;
     width: 100%;
@@ -136,7 +136,7 @@ body {
     border-radius: 8px;
 }
 
-.solution::before, .solution-small::before, .solution-medium::before {
+.solution::before, .solution-small::before, .solution-medium::before, .solution-full::before {
     content: "Solución. "; /* Add "Solución. " */
     font-weight: bold;
     color: #333;
