@@ -10,7 +10,7 @@ body {
     padding: 10px;
 }
 
-.example, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .block, .fact {
+.example, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .block, .fact {
     display: inline-block;
     position: relative;
     width: 80%;
@@ -24,6 +24,10 @@ body {
 
 .solution {
     height: 400px;
+}
+
+.solution-small {
+    height: 150px;
 }
 
 .example ol li, .examples ol li, .exsercise ol li, .exercises ol li{
@@ -129,6 +133,18 @@ body {
 }
 
 .solution::before {
+    content: "Solución. "; /* Add "Solución. " */
+    font-weight: bold;
+    color: #333;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.solution-small::before {
     content: "Solución. "; /* Add "Solución. " */
     font-weight: bold;
     color: #333;
