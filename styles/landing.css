@@ -161,6 +161,8 @@ a:hover {
 .print-icon:hover {
     background-color: #38a169;
 }
+
+
 /* Responsive design */
 @media (max-width: 768px) {
     .main-content {
