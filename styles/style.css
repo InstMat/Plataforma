@@ -10,7 +10,7 @@ body {
     padding: 10px;
 }
 
-.example, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .solution-full, .block, .fact {
+.example, .example-small, .example-medium, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .solution-full, .block, .fact {
     display: inline-block;
     position: relative;
     width: 100%;
@@ -26,11 +26,11 @@ body {
     height: 400px;
 }
 
-.solution-small {
+.solution-small, .example-small {
     height: 150px;
 }
 
-.solution-medium {
+.solution-medium, .example-medium {
     height: 250px;
 }
 
@@ -38,7 +38,7 @@ body {
     margin-bottom: 10mm;
 }
     
-.example::before {
+.example::before, .example-medium::before, .example-small::before {
     content: "Ejemplo. ";
     /*
     content: "Ejemplo " counter(example-counter) ". ";
