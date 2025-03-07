@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Ecuaciones diferenciales ordinarias</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+  <p class="subtitle">Ingeniería Civil</p>
+  <p class="author"><img data-src="../../images/logoINSTMAT-color.png"
+style="width:30.0%" alt="image" /></p>
+</section>
+
+<section id="variación-de-parámetros" class="slide level3 frame">
+<h3>Variación de parámetros</h3>
+<p>Este método aplica a ecuaciones diferenciales lineales de segundo
+orden de la forma <span
+class="math display">\[a_2(x)y&#39;&#39;+a_1(x)y&#39;+a_0(x)y=g(x)\]</span>
+donde se conocen las soluciones linealmente independientes de la
+ecuación homogénea <span class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span>. Con esta información encontramos una
+<em>solución particular</em> mediante <span
+class="math display">\[y_p(x):=u_1(x)y_1(x)+u_2(x)y_2(x),\]</span>
+donde, si denotamos a <span class="math inline">\(W(x)\)</span> como el
+Wronskiano<a href="#/fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> de las soluciones <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_e\)</span>, tenemos que <span
+class="math display">\[u_1(x)=-\int\frac{y_2(x)g(x)}{a_2W(x)}\mathrm
+dx\]</span> y <span
+class="math display">\[u_2(x)=\int\frac{y_1(x)g(x)}{a_2W(x)}\mathrm
+dx.\]</span></p>
+</section>
+<section id="variación-de-parámetros-1" class="slide level3 frame">
+<h3>Variación de parámetros</h3>
+<p>Estas fórmulas se obtiene al reemplazar la función <span
+class="math inline">\(y_p\)</span> en la ecuación, esto es <span
+class="math display">\[\begin{aligned}
+	g&amp;=a_2(x)y&#39;&#39;+a_1(x)y&#39;+a_0y\\
+	&amp;=a_2(x)(u_1y_1+u_2y_2)&#39;&#39;+a_1(x)(u_1y_1+u_2y_2)&#39;+a_0(u_1y_1+u_2y_2)\\
+	&amp;=a_2(x)(\underbrace{\color{red}{u_1&#39;y_1+u_2&#39;y_2}}_{=0}+u_1y_1&#39;+u_2y_2&#39;)&#39;+a_1(x)(\underbrace{\color{red}{u_1&#39;y_1+u_2&#39;y_2}}_{=0}+u_1y_1&#39;+u_2y_2&#39;)+a_0(u_1y_1+u_2y_2)\\
+	&amp;=a_2(x)(u_1&#39;y_1&#39;+u_1y_1&#39;&#39;+u_2&#39;y_2&#39;+u_2y_2&#39;&#39;)+a_1(x)(u_1y_1&#39;+u_2y_2&#39;)+a_0(x)(u_1y_1+u_2y_2)\\
+	&amp;=u_1(a_2(x)y_1&#39;&#39;+a_1(x)y_1&#39;+a_0(x)y_1)+u_2(a_2(x)y_2&#39;&#39;+a_1(x)y_2&#39;+a_0(x)y_2)\\
+	&amp;\qquad+a_2(x)(u_1&#39;y_1&#39;+u_2&#39;y_2&#39;),
+\end{aligned}\]</span> donde hemos impuesto que <span
+class="math display" id="coefinde1">\begin{equation}\label{coefinde1}
+	u_1&#39;y_1+u_2&#39;y_2=0\end{equation}</span> y como <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> son soluciones de la ecuaciones
+deducimos que se debe cumplir que <span
+class="math display" id="coefinde2">\begin{equation}\label{coefinde2}
+	a_2(x)(u_1&#39;y_1&#39;+u_2&#39;y_2&#39;)=g(x).\end{equation}</span> Juntando lo que
+dicen las ecuaciones <a href="#coefinde1" data-reference-type="eqref"
+data-reference="coefinde1">(1)</a> y <a href="#coefinde2"
+data-reference-type="eqref" data-reference="coefinde2">(2)</a>
+obtenemos <span class="math display">\[\begin{gathered}
+	u_1&#39;=-\dfrac{y_2g}{a_2(y_1y_2&#39;-y_1&#39;y_2)}=-\dfrac{y_2g}{a_2W}=\dfrac{W_1}{a_2W}\\
+	u_2&#39;=\dfrac{y_1g}{a_2(y_1y_2&#39;-y_1&#39;y_2)}=\dfrac{y_1g}{a_2W}=\dfrac{W_2}{a_2W},
+\end{gathered}\]</span> de donde se obtienen la fórmulas anteriores. En
+la fórmula anterior se tiene que <span
+class="math display">\[\begin{gathered}
+	W_1=\det \begin{bmatrix}
+		0&amp;y_2(x)\\
+		g(x)&amp;y_2&#39;(x)
+	\end{bmatrix}\\
+	W_2=\det \begin{bmatrix}
+		y_1(x)&amp;0\\
+		y_1&#39;(x)&amp;g(x)
+	\end{bmatrix}\\
+\end{gathered}\]</span></p>
+</section>
+<section id="variación-de-parámetros-2" class="slide level3 frame">
+<h3>Variación de parámetros</h3>
+<p>Así obtenemos que la solución general de la EDO lineal de segundo
+orden con coeficientes constantes no-homogénea tiene la forma <span
+class="math display">\[y(x)=C_1y_1(x)+C_2y_2(x)+y_p(x),\]</span> donde
+<span class="math inline">\(C_1\)</span> y <span
+class="math inline">\(C_2\)</span> son constantes.</p>
+<div class="example">
+<p> Encuenter una solución particular de la EDO <span
+class="math inline">\(y&#39;&#39;-4y=x+2\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+<div class="fragment">
+<p> <em>Tenemos que la ecuación característica es <span
+class="math inline">\(r^2-4=(r-2)(r+2)=0\)</span> de donde obtenemos que
+las soluciones fundamentales son <span
+class="math inline">\(y_1(x)=e^{2x}\)</span> e <span
+class="math inline">\(y_2(x)=e^{-2x}\)</span>. Calculamos <span
+class="math display">\[W(e^{2x},e^{-2x})(x)=\det \begin{bmatrix}
+		e^{2x}&amp;e^{-2x}\\
+		2e^{2x}&amp;-2e^{-2x}
+	\end{bmatrix}=-2-2=-4\]</span></em></p>
+<p><em>Ahora buscamos una solución particular de la forma <span
+class="math inline">\(y_p(x)=u_1(x)e^{2x}+u_2(x)e^{-2x},\)</span> donde
+<span
+class="math display">\[u_1&#39;(x)=-\frac{e^{-2x}(x+2)}{-4}=\frac14(x+2)e^{-2x}\Rightarrow
+u_1(x)=\int \frac14(x+2)e^{-2x}\mathrm
+dx=-\frac1{16}(2x+5)e^{-2x},\]</span> y <span
+class="math display">\[u_2&#39;(x)=\frac{e^{2x}(x+2)}{-4}=-\frac14(x+2)e^{2x}\Rightarrow
+u_2(x)=\int -\frac14(x+2)e^{2x}\mathrm
+dx=-\frac1{16}(2x+3)e^{2x}.\]</span> Por lo tanto una solución
+particular es <span
+class="math display">\[y_p(x)=-\frac1{16}(2x+5)e^{-2x}e^{2x}+-\frac1{16}(2x+3)e^{2x}e^{-2x}=-\frac1{4}(x+2).\]</span></em></p>
+</div>
+</div>
+</section>
+<section id="variación-de-parámetros-3" class="slide level3 frame">
+<h3>Variación de parámetros</h3>
+<div class="example">
+<p> Resolver al ecuación diferencial <span
+class="math inline">\(y&#39;&#39;-4y+4y=(x+1)e^{2x}\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+<div class="fragment">
+<p> <em>En este caso la ecuación auxiliar es <span
+class="math inline">\(r^2-4r+4=(r-2)^2=0\)</span>, de donde <span
+class="math inline">\(y_1(x)=e^{2x}\)</span>, <span
+class="math inline">\(y_2(x)=xe^{2x}\)</span>, cuyo Wronskiano es <span
+class="math display">\[W(e^{2x},xe^{2x})(x)=\det \begin{bmatrix}
+		e^{2x}&amp;xe^{2x}\\
+		2e^{2x}&amp;e^{2x}+2xe^{2x}
+	\end{bmatrix}=e^{4x}.\]</span> Si buscamos una solución particular de la
+forma <span
+class="math display">\[y_p(x)=u_1(x)e^{2x}+u_2(x)xe^{2x},\]</span>
+entonces <span
+class="math display">\[u_1&#39;(x)=-\frac{y_2g}{a_2W}=-\frac{xe^{2x}(x+1)e^{2x}}{e^{4x}}=-x(x+1)\Rightarrow
+u_1(x)=\int -x(x+1)\mathrm dx=-\frac{x^3}3-\frac{x^2}2,\]</span> y <span
+class="math display">\[u_2&#39;(x)=\frac{y_1g}{a_2W}=\frac{e^{2x}(x+1)e^{2x}}{e^{4x}}=x+1\Rightarrow
+u_2(x)=\int (x+1)\mathrm dx=\frac{x^2}2+x\]</span> de donde una solución
+particular es <span class="math display">\[y_p(x)=\left(
+-\frac{x^3}3-\frac{x^2}2 \right)e^{2x}+\left( \frac{x^2}2+x
+\right)xe^{2x}=e^{2x}\left( -\frac{x^3}3-\frac{x^2}2+\frac{x^3}2+x^2
+\right)=e^{2x}\left( \frac{x^3}6+\frac{x^2}2 \right),\]</span> y así la
+solución general está dada por <span
+class="math display">\[y(x)=C_1e^{2x}+C_2xe^{2x}+\frac16x^3e^{2x}+\frac12x^2e^{2x}.\]</span></em></p>
+</div>
+</div>
+</section>
+<section id="variación-de-parámetros-4" class="slide level3 frame">
+<h3>Variación de parámetros</h3>
+<div class="example">
+<p> Resolver la ecuación diferencial <span
+class="math inline">\(4y&#39;&#39;+36y=\csc(3x)\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+<div class="fragment">
+<p> <em>En este caso las soluciones fundamentales son <span
+class="math inline">\(y_1(x)=\cos(3x)\)</span> e <span
+class="math inline">\(y_2(x)=\sin(3x)\)</span> cuyo Wronskiano es <span
+class="math display">\[W(\cos(3x),\sin(3x)=\det \begin{bmatrix}
+		\cos(3x)&amp;\sin(3x)\\
+		-3\sin(3x)&amp;3\cos(3x)
+	\end{bmatrix}=3\cos^2(3x)+3\sin^2(3x)=3.\]</span> Luego si <span
+class="math inline">\(y_p=u_1y_1+u_2y_2\)</span> entonces <span
+class="math display">\[u_1&#39;(x)=-\frac{\sin(3x)\csc(3x)}{4\cdot
+6}=-\frac1{12}\Rightarrow u_1(x)=\int -\frac1{12}\mathrm
+dx=-\frac{x}{12},\]</span> y <span
+class="math display">\[u_2&#39;(x)=\frac{\cos(3x)\csc(3x)}{4\cdot
+6}=\frac1{12}\cot(3x)\Rightarrow u_1(x)=\int \frac1{12}\cot(3x)\mathrm
+dx=\frac{1}{36}\ln\left\vert \sin(3x) \right\vert,\]</span> y la
+solución particular es <span
+class="math display">\[y_p(x)=-\frac{x}{12}\cos(3x)+\frac{1}{36}\ln\left\vert
+\sin(3x) \right\vert\sin(3x)\]</span> con solución general dada por
+<span
+class="math display">\[y(x)=C_1\cos(3x)+C_2\sin(3x)-\frac1{12}x\cos(3x)+\frac1{36}\sin(3x)\ln\left\vert
+\sin(3x) \right\vert.\]</span></em></p>
+</div>
+</div>
+</section>
+<section id="problemas-de-valor-inicial" class="slide level3 frame">
+<h3>Problemas de valor inicial</h3>
+<p>Es el caso de la ecuación <span
+class="math display">\[ay&#39;&#39;+by&#39;+cy=g(x),\]</span> cuenta
+además con una condición inicial del tipo <span
+class="math display">\[y(x_0)=y_0,~y&#39;(x_0)=y_1,\]</span> donde <span
+class="math inline">\(x_0,~y_0,~y_1\)</span> son valores conocidos. Dado
+que sabemos resolver la ecuación y obtenemos una solución de la forma
+<span class="math display">\[y(x)=C_1y_1(x)+C_2y_2(x)+y_p(x),\]</span>
+la tarea es encontrar las constantes <span
+class="math inline">\(C_1\)</span> y <span
+class="math inline">\(C_2\)</span> de modo que se satisfaga la condición
+inicial (es decir, evaluamos la función <span
+class="math inline">\(y(x)\)</span> y su derivada, <span
+class="math inline">\(y&#39;(x)\)</span> cuando <span
+class="math inline">\(x=x_0\)</span>). Esto se traduce en resolver un
+sistema lineal de <span class="math inline">\(2\times 2\)</span>.</p>
+</section>
+<section id="problemas-ded-valor-inicial" class="slide level3 frame">
+<h3>Problemas ded valor inicial</h3>
+<div class="example">
+<p> Resuelva el PVI <span
+class="math inline">\(y&#39;&#39;-4y+4y=(x+1)e^{2x}\)</span>, <span
+class="math inline">\(y(0)=0\)</span>, <span
+class="math inline">\(y&#39;(0)=1\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+<div class="fragment">
+<p> <em>Obtuvimos que la solución general de la EDO es de la forma <span
+class="math display">\[y(x)=C_1e^{2x}+C_2xe^{2x}+\frac16x^3e^{2x}+\frac12x^2e^{2x},\]</span>
+de donde <span
+class="math display">\[y&#39;(x)=2C_1e^{2x}+C_2(e^{2x}+2xe^{2x})+\frac16\left(
+3x^2e^{2x}+2x^3e^{2x} \right)+\frac12\left( 2xe^{2x}+2x^2e^{2x}
+\right).\]</span> Si evaluamos en <span
+class="math inline">\(x=0\)</span> entonces se debe cumplir <span
+class="math display">\[0=y(0)=C_1\quad\text{y}\quad
+1=y&#39;(0)=2C_1+C_2,\]</span> es decir <span
+class="math inline">\(C_1=0\)</span> y <span
+class="math inline">\(C_2=1\)</span>, por lo que la solución del PVI es
+<span
+class="math display">\[y(x)=xe^{2x}+\frac16x^3e^{2x}+\frac12x^2e^{2x},\]</span></em></p>
+</div>
+</div>
+</section>
+<section id="ejercicios" class="slide level3 frame">
+<h3>Ejercicios</h3>
+<div class="exercise">
+<p> Encuentre la solución de la ecuación diferencial dada dada
+utilizando el método de variación de parámetros.</p>
+<ol>
+<li class="fragment"><p><span class="math inline">\(y&#39;&#39;+y=\tan
+x\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(y&#39;&#39;+y=\sec
+x\tan x\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(y&#39;&#39;+y=\sec^2
+x\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(y&#39;&#39;-9y=\dfrac{9x}{e^{3x}}\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(y&#39;&#39;-2y&#39;+y=\dfrac{e^x}{1+x^2}\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(y&#39;&#39;-2y&#39;+y=e^x\arctan
+x\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(2y&#39;&#39;+2y&#39;+y=4\sqrt x\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(4y&#39;&#39;-y=xe^{\frac{x}2}\)</span>, <span
+class="math inline">\(y(0)=y&#39;(0)=0\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Notar la importancia de que las soluciones <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> sean linealmente independientes, de
+lo contrario <span class="math inline">\(W(x)=0\)</span>.<a
+href="#/fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+<script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+          
+            // The "normal" size of the presentation, aspect ratio will
+  // be preserved when the presentation is scaled to fit different
+  // resolutions. Can be specified using percentage units.
+  width: 1280,
+  height: 960,
+
+  // Factor of the display size that should remain empty around
+  // the content
+  margin: 0.04,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.5,
+  maxScale: 1.5,
+          
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        
+        //Do not export fragments into pdf
+        pdfSeparateFragments: false,  
+
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
