@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Ecuaciones diferenciales ordinarias</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+  <p class="subtitle">Ingeniería Civil</p>
+  <p class="author"><img data-src="../../images/logoINSTMAT-color.png"
+style="width:30.0%" alt="image" /></p>
+</section>
+
+<section id="modelos-que-usan-edos-de-segundo-orden"
+class="slide level3 frame">
+<h3>Modelos que usan EDOs de segundo orden</h3>
+<p>Tal como vimos en la unidad anterior, las EDs son una herramienta muy
+poderosa para modelar matemáticamente situaciones de la vida real. En el
+caso de EDOs de segundo orden, es bueno recordar que si la cantidad
+<span class="math inline">\(x(t)\)</span> representa la posición de una
+particula en el instante <span class="math inline">\(t\)</span> entonces
+<span class="math inline">\(x&#39;(t)\)</span> representa su velocidad,
+mientras que <span class="math inline">\(x&#39;&#39;(t)\)</span>
+representa su <em>aceleración</em>.</p>
+<p>Por ejemplo, si una partícula tiene masa <span
+class="math inline">\(m\)</span> y sobre ella se aplica una fuerza <span
+class="math inline">\(F\)</span> entonces la segunda Ley de Newton
+señala que se debe cumplir la relación <span
+class="math display">\[F=m\cdot a\]</span> donde <span
+class="math inline">\(a\)</span> denota la aceleración de la partícula.
+Por lo tanto si la partícula está ubicada en el posición <span
+class="math inline">\(x(t)\)</span> entonces la segunda ley de Newton
+corresponde a una EDO de segundo orden de la forma <span
+class="math display">\[mx&#39;&#39;=F.\]</span></p>
+</section>
+<section id="resortes-la-ley-de-hooke" class="slide level3 frame">
+<h3>Resortes: la ley de Hooke</h3>
+<p>Un ejemplo de lo anterior es aplicar la ley de Newton a resortes por
+medio de la <em>Ley de Hooke</em> que señala que la fuerza que ejerce un
+resorte sobre una masa <span class="math inline">\(m\)</span> es
+proporcional al desplazamiento (estiramiento o compresión) del
+resorte</p>
+<div class="center">
+<p><img data-src="clase10/hooke.png" style="width:20.0%" alt="image" /></p>
+</div>
+<p>es decir <span class="math inline">\(F_{\text{resorte}}=kx\)</span>
+para cierta constante <span class="math inline">\(k\)</span> positiva
+que depende de la construcción del resorte.</p>
+</section>
+<section id="resortes-no-amortiguados" class="slide level3 frame">
+<h3>Resortes no amortiguados</h3>
+<div class="center">
+<p><img data-src="clase10/resorte1.png" style="width:30.0%" alt="image" /></p>
+</div>
+<p>Si del resorte se cuelga una masa <span
+class="math inline">\(m\)</span> entonces sobre esta actuan 2 fuerzas:
+la gravedad y la del resorte (supondremos que no hay resistencia del
+aire ni otras fuerzas externas). Es decir, la ley de Newton nos dice que
+(suponiendo que la dirección positiva es hacia abajo) <span
+class="math display">\[mx&#39;&#39;=F_{\text{gravedad}}+F_{\text{resorte}}=mg-kx\]</span>
+y éste alcanza el equilibrio cuando no hay movimiento, es decir si <span
+class="math inline">\(x&#39;(t)=x&#39;&#39;(t)=0\)</span>, es decir
+cuando hay un desplazamiento de <span
+class="math inline">\(mg-ks=0\Rightarrow
+s_{\text{equilibrio}}=\dfrac{mg}{k}\)</span>.</p>
+</section>
+<section id="resortes-no-amortiguados-1" class="slide level3 frame">
+<h3>Resortes no amortiguados</h3>
+<div class="center">
+<p><img data-src="clase10/resorte1.png" style="width:30.0%" alt="image" /></p>
+</div>
+<p>En un instante <span class="math inline">\(t\)</span> posterior se
+desplaza la masa <span class="math inline">\(x\)</span> unidades con
+respecto al equilibrio y nuevametne la Ley de Newton sigue aplicando por
+lo que se cumple <span
+class="math display">\[mx&#39;&#39;=F_{\text{gravedad}}+F_{\text{resorte}}=mg-k(s+x)=\underbrace{mg-ks}_{=0}-kx,\]</span>
+es decir la posición de la masa <span
+class="math inline">\(x(t)\)</span> respecto al punto de equilibrio
+satisface la EDO lineal de segundo orden homogénea <span
+class="math display">\[x&#39;&#39;+\omega^2x=0,\]</span> donde <span
+class="math inline">\(\omega^2=\frac{k}{m}\)</span>.</p>
+<div class="definition fragment">
+<p> La cantidad <span class="math inline">\(\omega\)</span> es la
+<em>frecuencia natural de oscilación</em> y su unidad de medida es
+<em>Hertz</em> que se abrevia como <em>Hz</em> y cumple la relación
+<span class="math display">\[1\text{ Hz}=\frac{1}{1\ s}\]</span></p>
+</div>
+</section>
+<section id="resortes-no-amortiguados-2" class="slide level3 frame">
+<h3>Resortes no amortiguados</h3>
+<p>Como <span class="math inline">\(\omega^2&gt;0\)</span> las raíces de
+la ecuación auxiliar <span class="math inline">\(r^2+\omega^2=0\)</span>
+son <span class="math inline">\(r=\pm i\omega\)</span> por lo que la
+solución general se puede escribir como <span
+class="math display">\[x(t)=A\cos(\omega t)+B\sin(\omega
+t).\]</span></p>
+<div class="example fragment">
+<p> Considere una masa de <span class="math inline">\(2\)</span> kilos
+que alarga <span class="math inline">\(4\)</span> metros a un
+determinado resorte para llegar al equilibrio. Si en <span
+class="math inline">\(t=0\)</span> se desplaza la masa 8 metros hacia
+abajo de la posición de equilibrio y se libera con una velocidad
+ascendente de <span class="math inline">\(2\)</span> m/s. Encuentre la
+posición de la masa en el instante <span
+class="math inline">\(t\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+<p> <em>Lo primero que debemos hacer es encontrar la constante del
+resorte, para ello usamos la condición de equilibrio que nos dice que
+<span class="math display">\[s_{\text{equilibrio}}=\frac{mg}{k}
+\Leftrightarrow k=\frac{mg}{s_{\text{equilibrio}}}\]</span> que en
+nuestro caso nos dice <span class="math inline">\(k=\frac{2\cdot
+9.8}{4}=4.9\)</span> N/m. Por lo tanto <span
+class="math inline">\(\omega^2=\frac{k}{m}=\frac{4.9}{2}=2.45\)</span>
+Hz<span class="math inline">\(^2\)</span>, de donde <span
+class="math inline">\(\omega=\sqrt{2.45}\approx 1.57\)</span> Hz y la
+solución general de la EDO es de la forma <span
+class="math display">\[x(t)=A\cos(\sqrt{2.45} t)+B\sin(\sqrt{2.45}
+t).\]</span></em></p>
+<p><em>Para encontrar las constantes <span
+class="math inline">\(A\)</span> y <span
+class="math inline">\(B\)</span> debemos usar las condiciones iniciales:
+nos dicen que en <span class="math inline">\(t=0\)</span> hubo un
+desplazamiento de 8 metros hacia abajo, es decir <span
+class="math inline">\(x(0)=8\)</span> y que la masa se liberó con
+velocidad ascendente de <span class="math inline">\(2\)</span> m/s, es
+decir <span class="math inline">\(x&#39;(0)=-2\)</span> (recordar que la
+dirección positiva es hacia abajo). Por lo tanto <span
+class="math inline">\(A=8\)</span> y <span
+class="math inline">\(B=\dfrac{-2}{\sqrt{2.45}}\)</span> y la posición
+respecto al equilibrio de la particula en el instante <span
+class="math inline">\(t\)</span> está dada por <span
+class="math display">\[x(t)=8\cos(\sqrt{2.45}
+t)-\frac{2}{\sqrt{2.45}}\sin(\sqrt{2.45} t).\]</span></em></p>
+</div>
+</section>
+<section id="resortes-amortiguados" class="slide level3 frame">
+<h3>Resortes amortiguados</h3>
+<p>Un escenario mas realista es el caso en que existan fuerzas externas
+al movimiento del resorte como lo puede ser una fuerza de roce. En este
+caso, nuevamente aplica la ley de Newton, pero ésta queda la forma <span
+class="math display">\[mx&#39;&#39;=F_{\text{gravedad}}+F_{\text{resorte}}+F_{\text{roce}}=-kx-\beta
+x&#39;,\]</span> donde recordamos que usualmente la fuerza de roce es
+proporcional a la velocidad de la partícula y se opone al movimiento
+(por eso el signo negativo). En este caso la EDO queda <span
+class="math display">\[x&#39;&#39;+2\lambda x&#39;+\omega^2
+x=0,\]</span> donde <span
+class="math inline">\(\omega^2=\dfrac{k}{m}\)</span> y <span
+class="math inline">\(\lambda=\dfrac{\beta}{2m}\)</span></p>
+</section>
+<section id="resortes-amortiguados-1" class="slide level3 frame">
+<h3>Resortes amortiguados</h3>
+<p>Para encontrar la solución general de esta EDO usamos la ecuación
+auxialiar <span class="math inline">\(r^2+2\lambda r+\omega^2=0\)</span>
+que tiene raíces <span
+class="math display">\[r=\dfrac{-2\lambda\pm\sqrt{4\lambda^2-4\omega^2}}{2}=-\lambda\pm\sqrt{\lambda^2-\omega^2}\]</span>
+por lo que dependiendo de la relación entre <span
+class="math inline">\(\lambda\)</span> y <span
+class="math inline">\(\omega\)</span> tendremos 3 casos:</p>
+<ul>
+<li class="fragment"><p>Sobreamortiguamiento: <span
+class="math inline">\(\lambda^2-\omega^2&gt;0\Leftrightarrow\)</span> 2
+raíces reales distintas y la solución general es <span
+class="math display">\[x(t)=e^{-\lambda t}\left(
+Ae^{\sqrt{\lambda^2-\omega^2} t}+Be^{-\sqrt{\lambda^2-\omega^2}t}
+\right)\]</span></p></li>
+<li class="fragment"><p>Amortiguamiento crítico: <span
+class="math inline">\(\lambda^2-\omega^2=0\Leftrightarrow\)</span> 1
+raíz real repetida y la solución general es <span
+class="math display">\[x(t)=e^{-\lambda t}\left( A+Bt
+\right)\]</span></p></li>
+<li class="fragment"><p>Subamortiguamiento: <span
+class="math inline">\(\lambda^2-\omega^2&lt;0\Leftrightarrow\)</span> 2
+raíces complejas conjugadas y la solución general es <span
+class="math display">\[x(t)=e^{-\lambda t}\left( A\cos\left(
+{\sqrt{\lambda^2-\omega^2} t} \right)+B\sin\left(
+{\sqrt{\lambda^2-\omega^2} t} \right) \right)\]</span></p></li>
+</ul>
+</section>
+<section id="sobreamortiguamiento" class="slide level3 frame">
+<h3>Sobreamortiguamiento</h3>
+<div class="example">
+<p> Considere el sistema resorte-masa dado por el PVI <span
+class="math display">\[x&#39;&#39;+5x&#39;+4x=0, \quad x(0)=1, \quad
+x&#39;(0)=1.\]</span> Encuentre la posición de la particula en cada
+instante <span class="math inline">\(t\)</span></p>
+</div>
+<div class="solution-full fragment">
+<p> <em><span class="math inline">\(x(t)=\frac{5}{3} e^{-t}-\frac{2}{3}
+e^{-4 t}\)</span></em></p>
+</div>
+</section>
+<section id="amortiguamiento-crítico" class="slide level3 frame">
+<h3>Amortiguamiento crítico</h3>
+<div class="example">
+<p> Encuentre la posición <span class="math inline">\(x(t)\)</span> para
+el sistema resorte-masa dado por el PVI <span
+class="math inline">\(x&#39;&#39;+8x&#39;+16x=0, \quad x(0)=0, \quad
+x&#39;(0)=-3.\)</span></p>
+</div>
+<div class="solution-full fragment">
+<p> <em><span class="math inline">\(x(t)=-3 t e^{-4 t}\)</span></em></p>
+</div>
+</section>
+<section id="subamortiguamiento" class="slide level3 frame">
+<h3>Subamortiguamiento</h3>
+<div class="example">
+<p> Resuelva el sistema resorte-masa dado por el PVI <span
+class="math inline">\(x&#39;&#39;+2 x&#39;+10 x=0, \quad x(0)=-2, \quad
+x&#39;(0)=0.\)</span></p>
+</div>
+<div class="solution-full fragment">
+<p> <em><span class="math inline">\(x(t)=e^{-t}\left(-2 \cos(3
+t)-\frac{2}{3} \sin(3t)\right)\)</span></em></p>
+</div>
+</section>
+<section id="modelos-que-usan-edos-de-segundo-orden-1"
+class="slide level3 frame">
+<h3>Modelos que usan EDOs de segundo orden</h3>
+<p>Otro escenario donde aparecen EDOs de segundo orden es en el caso de
+<em>circuitos eleéctricos</em></p>
+<div class="center">
+<p><img data-src="clase10/rcl.png" style="width:20.0%" alt="image" /></p>
+</div>
+<p>En un circuito en serie que cuenta con una resistencia <span
+class="math inline">\(R\)</span>, un capacitor <span
+class="math inline">\(C\)</span> y una bobina <span
+class="math inline">\(L\)</span> se verifica que el voltaje en cada una
+de estas verifica <span class="math display">\[V_R=R\cdot I,\quad
+V_L=LI&#39;\quad\text{y}\quad V_C=\frac{Q}{C},\]</span> donde: <span
+class="math inline">\(I=I(t)\)</span> es la corriente eléctrica, <span
+class="math inline">\(R\)</span> es la resistencia de <span
+class="math inline">\(R\)</span>, <span class="math inline">\(L\)</span>
+es la inductancia de la bobina, <span
+class="math inline">\(Q=Q(t)\)</span> es la carga eléctrica y <span
+class="math inline">\(C\)</span> es la capacitancia del capacitor. De
+acuerdo a la ley de Kirchoff, la suma de los voltajes en un circuito
+debe ser igual al voltaje total al que se somete el circuito, es decir
+<span
+class="math display">\[V=V_R+V_L+V_C=RI+LI&#39;+\frac{Q}{C}.\]</span>
+Sin embargo, se sabe que la corriente es la tasa a la cual cambia la
+carga, es decir <span class="math inline">\(Q=I&#39;\)</span>, por lo
+tanto podemos escribir la EDO de segundo orden para la carga <span
+class="math display">\[LQ&#39;&#39;+RQ&#39;+\frac1{C}Q=V.\]</span></p>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+<script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+          
+            // The "normal" size of the presentation, aspect ratio will
+  // be preserved when the presentation is scaled to fit different
+  // resolutions. Can be specified using percentage units.
+  width: 1280,
+  height: 960,
+
+  // Factor of the display size that should remain empty around
+  // the content
+  margin: 0.04,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.5,
+  maxScale: 1.5,
+          
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        
+        //Do not export fragments into pdf
+        pdfSeparateFragments: false,  
+
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
