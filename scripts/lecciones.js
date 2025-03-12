@@ -1,0 +1,67 @@
+// Función para cargar las lecciones desde el JSON
+async function cargarLecciones() {
+    try {
+        const response = await fetch('lecciones.json'); // Ruta al archivo JSON
+        const data = await response.json();
+        const unidadesContainer = document.getElementById('unidades-container');
+
+        // Generar las unidades y lecciones
+        data.unidades.forEach(unidad => {
+            const unidadDiv = document.createElement('div');
+            unidadDiv.innerHTML = `<h3>${unidad.nombre}</h3>`;
+            const listaLecciones = document.createElement('ol');
+            listaLecciones.classList.add('lesson-list');
+
+            unidad.lecciones.forEach(leccion => {
+                const li = document.createElement('li');
+                li.classList.add('lesson-item', 'visible');
+                li.innerHTML = `
+                    <a href="${leccion.enlace}" target="contenido" class="lesson-link">
+                        ${leccion.nombre}
+                    </a>
+                    <a href="${leccion.enlace}?print-pdf&slideNumber=false" target="_blank" class="print-icon">
+                        <i class="fas fa-print"></i>
+                    </a>
+                `;
+
+                // Agregar evento de clic para ocultar la barra lateral
+                li.querySelector('.lesson-link').addEventListener('click', () => {
+                    sidebar.classList.remove('active');
+                });
+
+                listaLecciones.appendChild(li);
+            });
+
+            unidadDiv.appendChild(listaLecciones);
+            unidadesContainer.appendChild(unidadDiv);
+        });
+    } catch (error) {
+        console.error('Error al cargar las lecciones:', error);
+    }
+}
+
+
+document.querySelectorAll('.lesson-item').forEach((item, index) => {
+    setTimeout(() => {
+        item.classList.add('visible');
+    }, index * 100); // Retraso incremental para cada elemento
+});
+
+// JavaScript para mostrar/ocultar la barra lateral en móviles
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+
+// Mostrar/ocultar la barra lateral al hacer clic en el botón de menú
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+// Animación para las lecciones
+document.querySelectorAll('.lesson-item').forEach((item, index) => {
+    setTimeout(() => {
+        item.classList.add('visible');
+    }, index * 100); // Retraso incremental para cada elemento
+});
+
+// Cargar las lecciones al iniciar la página
+window.onload = cargarLecciones;

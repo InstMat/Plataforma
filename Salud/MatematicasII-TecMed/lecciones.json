@@ -1,0 +1,100 @@
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I - parte 1",
+            "lecciones": [
+                {
+                    "nombre": "Sistemas de desigualdades lineales",
+                    "enlace": "UnidadI/clase01.html"
+                },
+                {
+                    "nombre": "Programación lineal en 2 variables",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Aplicaciones de programación lineal",
+                    "enlace": "#"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad I - parte 2",
+            "lecciones": [
+                {
+                    "nombre": "Noción de límite",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Propiedades de límite",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Límites y el infinito",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Continuidad",
+                    "enlace": "#"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad II",
+            "lecciones": [
+                {
+                    "nombre": "Rapidez y rectas tangentes",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Métodos de integración",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Puntos críticos",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Extremos relativos",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Extremos absolutos",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Aplicaciones de optimización",
+                    "enlace": "#"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad III",
+            "lecciones": [
+                {
+                    "nombre": "Antiderivadas",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Derivadas",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Integral definida y el Teorema fundamental del cálculo",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Área y área entre curvas",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Ecuaciones diferenciales",
+                    "enlace": "#"
+                },
+                {
+                    "nombre": "Aplicaciones",
+                    "enlace": "#"
+                }
+            ]
+        }
+    ]
+}

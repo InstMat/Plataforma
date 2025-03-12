@@ -11,7 +11,12 @@ async function cargarCarreras() {
             const a = document.createElement('a');
             a.href = '#';
             a.innerHTML = `${carrera.nombre} <i class="fas fa-chevron-right"></i>`;
-            a.onclick = () => verCursos(carrera.id);
+            a.onclick = () => {
+                verCursos(carrera.id);
+                if (window.innerWidth <= 768) { // Solo en móviles
+                    sidebar.classList.remove('active');
+                }
+            };
             li.appendChild(a);
             listaCarreras.appendChild(li);
         });
@@ -76,6 +81,22 @@ function ordenarLista() {
     lista.innerHTML = '';
     items.forEach(item => lista.appendChild(item));
 }
+
+// Función para recargar las carreras
+function recargarCarreras() {
+    const lista = document.getElementById('lista-cursos');
+    lista.innerHTML = '';
+    document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
+}
+
+// JavaScript para mostrar/ocultar la barra lateral en móviles
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+
+// Mostrar/ocultar la barra lateral al hacer clic en el botón de menú
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
 
 // Cargar las carreras al iniciar la página
 window.onload = cargarCarreras;

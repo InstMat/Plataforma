@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemáticas (Anual)</title>
+    <title>Ecuaciones diferenciales ordinarias</title>
     <!-- FontAwesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Archivo CSS externo -->
@@ -13,42 +13,41 @@
     <div class="container">
         <!-- Encabezado -->
         <header>
-            Matemática
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i> Menú
+            </button>
+            <div class="header-content">
+                <!-- Logo del Instituto (izquierda) -->
+                <div class="logo-left">
+                    <img src="../../images/logo-instituto.png" alt="Logo del Instituto">
+                </div>
+                <div class="header-title">
+                    <h1>Plataforma de Módulos Matemáticos</h1>
+                    <p>Instituto de Matemáticas</p>
+                    <p>Universidad de Talca</p>
+                </div>
+                <div class="logo-right">
+                    <img src="../../images/logo-universidad.png" alt="Logo de la Universidad">
+                </div>
+            </div>
         </header>
 
         <!-- Contenido principal -->
         <div class="main-content">
             <!-- Menú lateral -->
-            <div class="sidebar">
+            <div class="sidebar" id="sidebar">
                 <a href="../../index.html" class="home-button">
                     <i class="fas fa-home"></i> Volver al inicio
                 </a>
-                <h2>Lecciones</h2>
-                <ol class="lesson-list">
-                    <li class="lesson-item visible">
-                        <a href="clase01.html" target="contenido" class="lesson-link">
-                            Conjuntos numéricos
-                        </a>
-                        <a href="clase01.html?print-pdf&slideNumber=false" target=_blank class="print-icon">
-                            <i class="fas fa-print"></i>
-                        </a>
-                    </li>
-                    <!-- Agrega más lecciones aquí -->
-                </ol>
+                <h2>Matemática</h2>
+                <div id="unidades-container"></div> <!-- Contenedor para las unidades y lecciones -->
             </div>
-
             <!-- Área de contenido -->
             <div class="content">
                 <iframe name="contenido" src=""></iframe>
             </div>
         </div>
     </div>
-    <script>
-    document.querySelectorAll('.lesson-item').forEach((item, index) => {
-        setTimeout(() => {
-            item.classList.add('visible');
-        }, index * 100); // Retraso incremental para cada elemento
-    });
-</script>
+    <script src="../../scripts/lecciones.js"></script>
 </body>
 </html>

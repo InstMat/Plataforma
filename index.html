@@ -13,36 +13,38 @@
     <div class="container">
         <!-- Encabezado -->
         <header>
-    <div class="header-content">
-        <!-- Logo del Instituto (izquierda) -->
-        <div class="logo-left">
-            <img src="images/logo-instituto.png" alt="Logo del Instituto">
-        </div>
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i> Menú
+            </button>
+            <div class="header-content">
+                <!-- Logo del Instituto (izquierda) -->
+                <div class="logo-left">
+                    <img src="images/logo-instituto.png" alt="Logo del Instituto">
+                </div>
 
-        <!-- Título centrado -->
-        <div class="header-title">
-            <h1>Plataforma de Módulos Matemáticos</h1>
-            <p>Instituto de Matemáticas</p>
-            <p>Universidad de Talca</p>
-        </div>
+                <!-- Título centrado -->
+                <div class="header-title">
+                    <h1>Plataforma de Módulos Matemáticos</h1>
+                    <p>Instituto de Matemáticas</p>
+                    <p>Universidad de Talca</p>
+                </div>
 
-        <!-- Logo de la Universidad (derecha) -->
-        <div class="logo-right">
-            <img src="images/logo-universidad.png" alt="Logo de la Universidad">
-        </div>
-    </div>
-</header>
+                <!-- Logo de la Universidad (derecha) -->
+                <div class="logo-right">
+                    <img src="images/logo-universidad.png" alt="Logo de la Universidad">
+                </div>
+            </div>
+        </header>
 
         <!-- Contenido principal -->
         <div class="main-content">
             <!-- Menú lateral -->
-            <div class="sidebar">
-                <h2>Carrera</h2>
-                <ul id="lista-carreras"></ul> <!-- Contenedor para las carreras -->
-                <!-- Botón de volver al inicio -->
+            <div class="sidebar" id="sidebar">
                 <a href="#" class="home-button" onclick="recargarCarreras()">
                     <i class="fas fa-home"></i> Volver al inicio
                 </a>
+                <h2>Carrera</h2>
+                <ul id="lista-carreras"></ul> <!-- Contenedor para las carreras -->
             </div>
 
             <!-- Área de contenido -->

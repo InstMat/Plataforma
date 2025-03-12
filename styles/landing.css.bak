@@ -25,29 +25,8 @@ header {
     background-color: #2d3748; /* Fondo oscuro */
     color: white;
     padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    text-align: center;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-header h1 {
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.menu-toggle {
-    background-color: #4299e1;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    display: none; /* Ocultar en pantallas grandes */
-}
-
-.menu-toggle i {
-    margin-right: 0.5rem;
 }
 
 .header-content {
@@ -106,12 +85,12 @@ header h1 {
 
 /* Menú lateral */
 .sidebar {
-    width: 300px;
+    width: 350px;
     background-color: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     overflow-y: auto;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .sidebar h2 {
@@ -182,6 +161,7 @@ header h1 {
     background-color: white;
     padding: 1rem;
     overflow-y: auto;
+    /*box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);*/
 }
 
 .content iframe {
@@ -261,6 +241,7 @@ header h1 {
 }
 
 /* Lista de cursos */
+/* Estilos para la grilla de cursos */
 .course-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columnas */
@@ -318,33 +299,21 @@ header h1 {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Mostrar en móviles */
-    }
-
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 250px;
-        transform: translateX(-100%);
-        z-index: 1000;
-    }
-
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
-    .content {
-        margin-left: 0;
-    }
-
     .main-content {
         flex-direction: column;
     }
 
-    .header-content {
+    .sidebar {
+        width: 95%;
+        height: auto;
+        box-shadow: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .content {
+        height: calc(100vh - 150px);
+    }
+   .header-content {
         flex-direction: column;
         text-align: center;
     }
@@ -353,10 +322,10 @@ header h1 {
         justify-content: center;
         margin: 0.5rem 0;
     }
-
+    
     .logo-left img, .logo-right img {
-        max-height: 50px; /* Altura máxima */
-        width: auto;      /* Ancho proporcional */
+    max-height: 50px; /* Altura máxima */
+    width: auto;      /* Ancho proporcional */
     }
 
     .header-title {

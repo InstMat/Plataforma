@@ -1,0 +1,13 @@
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I",
+            "lecciones": [
+                {
+                    "nombre": "Conjuntos numéricos",
+                    "enlace": "UnidadI/clase01.html"
+                }
+            ]
+        }
+    ]
+}
