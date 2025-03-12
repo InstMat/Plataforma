@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+$for(author-meta)$
+  <meta name="author" content="$author-meta$" />
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$" />
+$endif$
+$if(keywords)$
+  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+$endif$
+$if(description-meta)$
+  <meta name="description" content="$description-meta$" />
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+$for(css)$
+  <link rel="stylesheet" href="$css$" />
+$endfor$
+$for(header-includes)$
+  $header-includes$
+$endfor$
+$if(math)$
+$if(mathjax)$
+<!-- Geogebra -->
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+<!-- MathJax -->    
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+	       MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+				cancel: ["Extension","cancel"],
+				bcancel: ["Extension","cancel"],
+				xcancel: ["Extension","cancel"],
+				cancelto: ["Extension","cancel"]
+			});
+        });
+    </script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+	</script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+	</script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+	</script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+		MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+            var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+            VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+            VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+            VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+            VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+        });
+		MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+            var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+			VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+			VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+			VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+			VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+        });
+    </script>
+$endif$
+  $math$
+$endif$
+</head>
+<body>
+$for(include-before)$
+$include-before$
+$endfor$
+$if(title)$
+<header id="title-block-header">
+<h1 class="title">$title$</h1>
+$if(subtitle)$
+<p class="subtitle">$subtitle$</p>
+$endif$
+$for(author)$
+<p class="author">$author$</p>
+$endfor$
+$if(date)$
+<p class="date">$date$</p>
+$endif$
+$if(abstract)$
+<div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div>
+$endif$
+</header>
+$endif$
+$if(toc)$
+<nav id="$idprefix$TOC" role="doc-toc">
+$if(toc-title)$
+<h2 id="$idprefix$toc-title">$toc-title$</h2>
+$endif$
+$table-of-contents$
+</nav>
+$endif$
+$body$
+$for(include-after)$
+$include-after$
+$endfor$
+</body>
+</html>
