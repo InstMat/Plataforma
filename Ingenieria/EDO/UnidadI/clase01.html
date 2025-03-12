@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Ecuaciones diferenciales ordinarias</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+  <p class="subtitle">Ingeniería Civil</p>
+  <p class="author"><img data-src="../../../images/logoINSTMAT-color.png"
+style="width:30.0%" alt="image" /></p>
+  <p class="date"> </p>
+</section>
+
+<section id="definiciones" class="slide level3 frame">
+<h3>Definiciones</h3>
+<div class="definition">
+<p> Una ecuación diferencial (E.D.) es una ecuación que involucra
+derivadas de una o mas funciones desconocidas de una o mas variables
+independientes. Dichas ecuaciones se pueden clasificar como:</p>
+<ul>
+<li class="fragment"><p>Ecuación diferencial ordinaria (E.D.O.): Una
+ecuación con solo una función desconocida que depende de una sola
+variable independiente.</p></li>
+<li class="fragment"><p>Sistema de ecuaciones diferenciales
+ordinarias: Varias ecuaciones con 2 o mas funciones desconocidas que
+dependen de una sola variable independiente.</p></li>
+<li class="fragment"><p>Ecuación diferencial parcial (E.D.P.): Una
+ecuación con solo una función desconocida que depende de 2 o mas
+variables independientes.</p></li>
+<li class="fragment"><p>Sistema de ecuaciones diferenciales
+parciales: Varias ecuaciones con 2 o mas funciones desconocidas que
+dependen de 2 o mas variables independientes.</p></li>
+</ul>
+</div>
+</section>
+<section id="definiciones-1" class="slide level3 frame">
+<h3>Definiciones</h3>
+<div class="definition">
+<p> El orden de una E.D. es el orden de la derivada mas alta que aparece
+en la ecuación</p>
+</div>
+<div class="example fragment">
+<p> </p>
+<ol>
+<li class="fragment"><p><span class="math inline">\(y&#39;=2x+y\)</span>
+es una E.D.O de primer orden.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(\ddot{x}-2\dot{x}-15x=0\)</span> es una E.D.O. de
+segundo orden.</p></li>
+<li class="fragment"><p><span class="math inline">\(\dfrac{\partial
+u}{\partial t}=\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2
+u}{\partial y^2}\)</span> es una E.D.P. de segundo orden.</p></li>
+<li class="fragment"><p><span class="math inline">\(\left\{
+		\begin{aligned}
+			\frac{dx}{dt}&amp;=2x+2y\\
+			\frac{dy}{dt}&amp;=x+3y
+		\end{aligned}
+		\right.\)</span> es un sistema de E.D.O.s de primer orden.</p></li>
+</ol>
+</div>
+</section>
+<section id="definiciones-2" class="slide level3 frame">
+<h3>Definiciones</h3>
+<div class="definition">
+<p> Una <em>EDO lineal</em> es una ecuación que puede ser escrita como
+<span
+class="math display">\[a_n(x)y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y&#39;+a_0(x)y=f(x),\]</span>
+donde <span class="math inline">\(a_i(x)\)</span> son funciones
+conocidas de <span class="math inline">\(x\)</span> para <span
+class="math inline">\(i=0,1,\ldots,n-1,n\)</span>. Si la ecuación no
+tiene esta forma, decimos que la EDO es <em>no-lineal</em>.</p>
+<p>Las EDOs en general se pueden escribir como <span
+class="math display">\[F(x,y,y&#39;,y&#39;&#39;,\ldots,y^{(n)})=0,\]</span>
+donde <span class="math inline">\(F\)</span> es una función de <span
+class="math inline">\(n+1\)</span> variables.</p>
+</div>
+</section>
+<section id="definiciones-3" class="slide level3 frame">
+<h3>Definiciones</h3>
+<div class="example">
+<p> </p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(3y&#39;&#39;&#39;+y&#39;-10y=90\)</span> es una
+E.D.O. lineal.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(y&#39;&#39;+3xy+4y=\cos x\)</span> es una E.D.O.
+lineal.</p></li>
+<li class="fragment"><p><span class="math inline">\(y&#39;+(\sin x)
+y=x\)</span> es una E.D.O. lineal.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(y&#39;+y^2+y=0\)</span> es una E.D.O.
+no-lineal.</p></li>
+</ol>
+</div>
+</section>
+<section id="definiciones-4" class="slide level3 frame">
+<h3>Definiciones</h3>
+<div class="definition">
+<p> Una solución de una E.D. es cualquier función <span
+class="math inline">\(y(x)\)</span> que satisfaga la ecuación. La
+solución se dice <em>explícita</em> si está dada en la forma <span
+class="math inline">\(y(x)=\ldots\)</span>. La solución se dice
+implícita si la solución está dada en la forma <span
+class="math inline">\(G(x,y(x))=0\)</span>.</p>
+</div>
+<div class="example fragment">
+<p> Soluciones explícitas</p>
+<ol>
+<li class="fragment"><p><span class="math inline">\(y(x)=0\)</span>,
+<span class="math inline">\(y&#39;&#39;-2y+y=0\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(y(x)=\dfrac1{16}x^4\)</span>, <span
+class="math inline">\(y&#39;=x\sqrt y\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(y(x)=x+1\)</span>,
+no es una solución de <span
+class="math inline">\(y&#39;+y=e^x\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="definiciones-5" class="slide level3 frame">
+<h3>Definiciones</h3>
+<div class="example">
+<p> Soluciones implícitas</p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(y^2-x^3+8=0\)</span>, <span
+class="math inline">\(y&#39;=\dfrac{x^2}{y}\)</span> si <span
+class="math inline">\(x&gt;2\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(x+y+e^{xy}=0\)</span>, <span
+class="math inline">\((1+xe^{xy})y&#39;+1+ye^{xy}=0\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(4x^2-y^2=k\)</span>,
+<span class="math inline">\(yy&#39;=4x\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="problemas-de-valor-inicial" class="slide level3 frame">
+<h3>Problemas de valor inicial</h3>
+<div class="definition">
+<p> Un problema de valor inicial es una ecuación diferencial ordinaria
+de orden <span class="math inline">\(n\)</span>, sobre la cual se
+imponen <span class="math inline">\(n\)</span> condiciones sobre la
+función incógnita y sus derivadas en cierto valor <span
+class="math inline">\(x_0\)</span>, es decir <span
+class="math display">\[\left\{
+	\begin{aligned}
+		F(x,y,y&#39;,y&#39;&#39;,\ldots,y^{(n)})&amp;=0\\
+		y(x_0)=y_0,\ y&#39;(x_0)=y_1,&amp;\cdots\ y^{(n)}(x_0)&amp;=y_{n-1}.
+	\end{aligned}
+	\right.\]</span></p>
+</div>
+<div class="remark fragment">
+<p> <em>En este curso estudiaremos una versión mas simple de lo
+anterior, los llamados (PVI) de primer orden: <span
+class="math display">\[\label{eq-pvi}%\tag{PVI}
+	\left\{
+	\begin{aligned}
+		y&#39;&amp;=f(x,y)\\
+		y(x_0)&amp;=y_0
+	\end{aligned}
+	\right.\]</span> donde <span class="math inline">\(f(x,y)\)</span> es
+una función de 2 variables y <span
+class="math inline">\((x_0,y_0)\)</span> es un punto en el plano <span
+class="math inline">\(x\)</span>-<span
+class="math inline">\(y\)</span>.</em></p>
+</div>
+</section>
+<section id="problemas-de-valor-inicial-1" class="slide level3 frame">
+<h3>Problemas de valor inicial</h3>
+<div class="example">
+<p> Verifique que las siguientes funciones son soluciones del PVI
+dado.</p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(y(x)=\dfrac{1}{1+x^2}\)</span>, <span
+class="math inline">\(y&#39;=-2xy^2\)</span>, <span
+class="math inline">\(y(3)=\dfrac{1}{10}\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(y(x)=\dfrac{2}{\sqrt{1+x^2}}\)</span>, <span
+class="math inline">\((1+x^2)y&#39;+xy=0\)</span>, <span
+class="math inline">\(y(0)=2\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(x^2+xy-y^2=1\)</span>, <span
+class="math inline">\((x-2y)y&#39;+2x+y=0\)</span>, <span
+class="math inline">\(y(0)=1\)</span>.</p></li>
+</ol>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+<script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+          
+            // The "normal" size of the presentation, aspect ratio will
+  // be preserved when the presentation is scaled to fit different
+  // resolutions. Can be specified using percentage units.
+  width: 1280,
+  height: 960,
+
+  // Factor of the display size that should remain empty around
+  // the content
+  margin: 0.04,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.25,
+  maxScale: 1.5,
+          
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        
+        //Do not export fragments into pdf
+        pdfSeparateFragments: false,  
+
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

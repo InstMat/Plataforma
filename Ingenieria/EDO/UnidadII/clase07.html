@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Ecuaciones diferenciales ordinarias</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+  <p class="subtitle">Ingeniería Civil</p>
+  <p class="author"><img data-src="../../../images/logoINSTMAT-color.png"
+style="width:30.0%" alt="image" /></p>
+</section>
+
+<section id="edos-lineales-de-segundo-orden" class="slide level3 frame">
+<h3>EDOs lineales de segundo orden</h3>
+<p>Nos enfocaremos en las EDOs lineales de segundo orden cuyos
+coeficientes son constantes, es decir, ecuaciones de la forma <span
+class="math display">\[ay&#39;&#39;+by&#39;+cy=g(x),\]</span> donde
+<span class="math inline">\(a\neq 0\)</span>, <span
+class="math inline">\(b\)</span> y <span
+class="math inline">\(c\)</span> son constantes conocidas, y <span
+class="math inline">\(f(x)\)</span> es una función conocida. Un problema
+de valor inicial para este tipo de ecuaciones tendrá la forma <span
+class="math display">\[\left\{\begin{aligned}
+	ay&#39;&#39;+by&#39;+cy&amp;=g(x)\\
+	y(x_0)&amp;=y_0\\
+	y&#39;(x_0)&amp;=y_1
+\end{aligned}
+\right.\]</span></p>
+</section>
+<section id="edos-lineales-de-segundo-orden-homogéneas"
+class="slide level3 frame">
+<h3>EDOs lineales de segundo orden homogéneas</h3>
+<p>Son ecuaciones donde <span class="math inline">\(g(x)=0\)</span>, o
+sea de la forma <span class="math display" id="edo-2do">\begin{equation}\label{edo-2do}
+	ay&#39;&#39;+by&#39;+cy=0.\end{equation}</span> Para resolver estas ecuaciones,
+proponemos una solución de la forma <span class="math inline">\(y=e^{r
+x}\)</span> y buscamos el(los) valor(es) de <span
+class="math inline">\(\lambda\)</span> que nos da una solución.</p>
+<div class="definition">
+<p> (Ecuación auxiliar). Dado <span
+class="math inline">\(\lambda\)</span>, definimos la ecuación auxiliar
+como <span class="math display" id="eq-aux">\begin{equation}\label{eq-aux}
+		ar^2+br+c=0.\end{equation}</span></p>
+</div>
+<p>Para encontrar la solución general de la ecuación <a href="#edo-2do"
+data-reference-type="eqref" data-reference="edo-2do">(1)</a>,
+resolvemos la ecuación auxiliar <a href="#eq-aux"
+data-reference-type="eqref" data-reference="eq-aux">(2)</a> y
+escribimos la solución general como <span
+class="math display">\[y(x)=C_1y_1(x)+C_2y_2(x)\]</span> donde <span
+class="math inline">\(C_1\)</span> y <span
+class="math inline">\(C_2\)</span> son constantes, y la funciones <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> se denotan <em>soluciones de la
+ecuación homogénea</em>, y se calculan dependiendo de las raíces de la ecuación auxiliar:</p>
+<ul>
+<li class="fragment"><p>Dos raíces reales y distintas (<span
+class="math inline">\(b^2-4ac&gt;0\)</span>). Si las raíces son <span
+class="math inline">\(r_1\)</span> y <span
+class="math inline">\(r_2\)</span> entonces <span
+class="math inline">\(y_1(x)=e^{r_1 x}\)</span> e <span
+class="math inline">\(y_2(x)=e^{r_2 x}.\)</span></p></li>
+<li class="fragment"><p>Una raíz real repetida (<span
+class="math inline">\(b^2-4ac=0\)</span>). En este caso la raíz es <span
+class="math inline">\(r_1=-\frac{b}{2a}\)</span> y tenemos que <span
+class="math inline">\(y_1(x)=e^{r_1 x}\)</span> e <span
+class="math inline">\(y_2(x)=xe^{r_1 x}.\) </span></p></li>
+<li class="fragment"><p>Dos raíces complejos conjugadas (<span
+class="math inline">\(b^2-4ac&lt;0\)</span>). Si las raíces son <span
+class="math inline">\(r_1=\alpha+\beta i\)</span> y <span
+class="math inline">\(r_2=\alpha-\beta i\)</span> entonces <span
+class="math inline">\(y_1(x)=e^{\alpha x}\cos(\beta x)\)</span> e <span
+class="math inline">\(y_2(x)=e^{\alpha x}\sin(\beta
+x).\)</span></p></li>
+</ul>
+</section>
+<section id="soluciones-fundamentales-1" class="slide level3 frame">
+<h3>Soluciones fundamentales</h3>
+<div class="remark">
+<p> <em>¿De dónde salen las funciones trigonométricas al tener raíces
+complejas?</em></p>
+<p class="fragment"><em>La respuesta es la <strong>Fórmula de Euler</strong> que dice que
+<span class="math display">\[e^{ix}=\cos x+i\sin x,\]</span> de donde
+nuestra propuesta de solución <span
+class="math inline">\(e^{rx}\)</span> en el caso de que <span
+class="math inline">\(r=\alpha+i\beta\)</span> se transforma en
+<span class="math display">\[e^{rx}=e^{(\alpha+i\beta)x}=e^{\alpha
+x}e^{i\beta x}=e^{\alpha x}\left( \cos(\beta x)+i\sin(\beta x)
+\right).\]</span></em></p>
+</div>
+</section>
+<section id="principio-de-superposición" class="slide level3 frame">
+<h3>Principio de superposición</h3>
+<div class="theorem">
+<p><strong> 1</strong>. <em>Sean <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> dos soluciones de la ecuación
+diferencial <a href="#edo-2do" data-reference-type="eqref"
+data-reference="edo-2do">(1)</a>. Entonces <span
+class="math display">\[y(x)=C_1y_1(x)+C_2y_2(x)\]</span> también es
+solución de <a href="#edo-2do" data-reference-type="eqref"
+data-reference="edo-2do">(1)</a>.</em></p>
+</div>
+<div class="proof fragment">
+<p>Notar que <span
+class="math display">\[\begin{aligned}
+		ay&#39;&#39;+by&#39;+cy&amp;=a(C_1y_1+C_2y_2)&#39;&#39;+b(C_1y_1+C_2y_2)&#39;+c(C_1y_1+C_2y_2)\\
+		&amp;=C_1(ay_1&#39;&#39;+by_1&#39;+cy_1)+C_2(ay_2&#39;&#39;+by_2&#39;+cy_2)\\
+		&amp;=0.
+	
+\end{aligned}\]</span></p>
+</div>
+<div class="example fragment">
+<p> Resolver la siguiente ecuación diferencial <span
+class="math display">\[2y&#39;&#39;-5y&#39;-3y=0.\]</span></p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>Acá la ecuación característica es <span
+class="math inline">\(2r^2-5r-3=(2r+1)(r-3)=0\)</span> de donde las
+raíces son <span class="math inline">\(r_1=-\frac12\)</span> y <span
+class="math inline">\(r_2=3\)</span>, y la solución general es <span
+class="math display">\[y(x)=C_1e^{-\frac12x}+C_2e^{3x}\]</span></em></p>
+</div>
+    </div>
+</section>
+<section id="ejemplos" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Resolver el problema de valor inicial <span
+class="math inline">\(y&#39;&#39;+2y-y=0\)</span> con <span
+class="math inline">\(y(0)=0\)</span>, <span
+class="math inline">\(y&#39;(0)=-1\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>Acá <span class="math inline">\(r^2+2r-1=0\)</span> tiene como
+soluciones a <span
+class="math inline">\(r=\dfrac{-2\pm\sqrt{8}}{2}=-1\pm \sqrt 2\)</span>
+<span class="math display">\[y(x)=-\frac{\sqrt 2}{4}e^{(-1+\sqrt
+2)x}+\frac{\sqrt 2}{4}e^{(-1-\sqrt 2)x}\]</span></em></p>
+</div>
+    </div>
+<div class="example fragment">
+<p> <span class="math inline">\(6y&#39;&#39;+5y&#39;-6y=0\)</span></p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>La ecuación auxiliar es <span
+class="math inline">\(6r^2+5r-6=(2r+3)(3r-2)=0\)</span>, por lo que
+tenemos dos raíces distintas <span
+class="math inline">\(r_1=-\frac32\)</span> y <span
+class="math inline">\(r_2=\frac23\)</span> <span
+class="math display">\[y(x)=C_1e^{-\frac32x}+C_2e^{\frac23x}\]</span></em></p>
+</div>
+    </div>
+</section>
+<section id="ejemplos-1" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Resolver la siguiente ecuación diferencial <span
+class="math display">\[y&#39;&#39;-10y&#39;+25y=0.\]</span></p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>La ecuación auxiliar es <span
+class="math inline">\(r^2-10r+25=(r-5)^2\)</span> de donde solo hay una
+raíz <span class="math inline">\(r=5\)</span> <span
+class="math display">\[y(x)=C_1e^{5x}+C_2xe^{5x}\]</span></em></p>
+</div>
+    </div>
+<div class="example fragment">
+<p> Resolver <span
+class="math inline">\(y&#39;&#39;+6y&#39;+9y=0\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>La ecuación auxiliar es <span
+class="math inline">\(r^2+6r+9=(r+3)^2=0\)</span>, luego <span
+class="math inline">\(r=-3\)</span> es la única raíz. Por lo tanto <span
+class="math display">\[y(x)=C_1e^{-3x}+C_2xe^{-3x}\]</span></em></p>
+</div>
+    </div>
+</section>
+<section id="ejemplos-2" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Resolver la siguiente ecuación diferencial <span
+class="math display">\[y&#39;&#39;+4y&#39;+7y=0.\]</span></p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>La ecuación auxiliar es <span
+class="math inline">\(r^2+4r+7=0\)</span> de donde <span
+class="math inline">\(r=\dfrac{-4\pm\sqrt{16-4\cdot7}}{2}=-2\pm
+i\sqrt{3}\)</span> de donde <span
+class="math display">\[y(x)=e^{-2x}\left( C_1\cos(\sqrt 3
+x)+C_2\sin(\sqrt 3 x) \right)\]</span></em></p>
+</div>
+    </div>
+<div class="example fragment">
+<p> <span class="math inline">\(5y&#39;&#39;+2y&#39;+y=0\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>La ecuación auxiliar es <span
+class="math inline">\(5r^2+2r+1=0\)</span> de donde <span
+class="math inline">\(r=\dfrac{-2\pm\sqrt{4-4\cdot5}}{10}=\dfrac{-1\pm
+2i}{5}\)</span> <span class="math display">\[y(x)=e^{-\frac15x}\left[
+C_1\cos\left( \frac 25x \right)+C_2\sin\left( \frac 25x \right)
+\right]\]</span></em></p>
+</div>
+    </div>
+</section>
+<section id="edos-lineales-de-orden-n" class="slide level3 frame">
+<h3>EDOs lineales de orden <span class="math inline">\(n\)</span></h3>
+<div class="remark">
+<p> <em>La idea utilizada para resolver la ecuación de segundo orden
+homogénea aplica también para ecuaciones diferenciales lineales de orden
+<span class="math inline">\(n\)</span> a coeficientes constantes. Por
+ejemplo, para resolver la ecuación <span
+class="math display">\[y&#39;&#39;&#39;+3y&#39;&#39;-y&#39;-3y=0\]</span>
+se propone como solución <span
+class="math inline">\(y(x)=e^{rx}\)</span> y se llega a la ecuación
+auxiliar <span
+class="math display">\[r^3+3r^2-r-3=(r+3)(r^2-1)=(r+3)(r+1)(r-1)\]</span>
+de donde se obtienen como raíces <span
+class="math inline">\(r=-3,-1,1\)</span> y por lo tanto <span
+class="math display">\[y_1(x)=e^{-3x}, y_2(x)=e^{-x},
+y_3(x)=e^{x}\]</span> son las soluciones fundamentales de la
+ecuación.</em></p>
+</div>
+</section>
+<section id="independencia-lineal" class="slide level3 frame">
+<h3>Independencia lineal</h3>
+<div class="definition">
+<p> Dos funciones <span class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> son <em>linealmente dependientes</em>
+en un intervalo <span class="math inline">\(I\)</span> si y sólo si
+existe una constante <span class="math inline">\(k\)</span> tal que
+<span class="math inline">\(y_1(x)=ky_2(x)\)</span> en dicho intervalo.
+De no existir tal constante, diremos que <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> son <em>linealmente
+independientes</em> en <span class="math inline">\(I\)</span>.</p>
+</div>
+<p class="fragment">Esta definición es importante, pues garantiza que si <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> son dos soluciones linealmente
+independientes de la ecuación <span
+class="math display">\[ay&#39;&#39;+by&#39;+cy=0,\]</span> entonces
+cualquier solución de la ecuación tendrá la forma <span
+class="math display">\[y(x)=C_1y_1(x)+C_2y_2(x).\]</span></p>
+<p class="fragment">¿Cómo verificamos que dos soluciones son linealmente
+independientes?</p>
+<div class="definition fragment">
+<p> (Wronskiano). Dadas dos funciones diferenciables <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span>, definimos el Wronskiano de <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> como <span
+class="math display">\[W(x)=y_1(x)y_2&#39;(x)-y_1&#39;(x)y_2(x)=\det
+\begin{bmatrix}
+		y_1(x)&amp;y_2(x)\\
+		y_1&#39;(x)&amp;y_2&#39;(x)
+	\end{bmatrix}\]</span></p>
+</div>
+</section>
+<section id="independencia-lineal-1" class="slide level3 frame">
+<h3>Independencia lineal</h3>
+<div class="theorem">
+<p><em>Si se cumple que el Wronskiano de <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> satisface <span
+class="math inline">\(W(x)\neq0\)</span> para todo <span
+class="math inline">\(x\)</span> en el intervalo <span
+class="math inline">\(I\)</span>, entonces <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> son linealmente
+independientes.</em></p>
+</div>
+<div class="example fragment">
+<p> Considere <span class="math inline">\(y_1(x)=e^{ax}\)</span>, <span
+class="math inline">\(y_2(x)=e^{bx}\)</span> con <span
+class="math inline">\(a\neq b\)</span>. Calcule <span
+class="math inline">\(W(x)\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>Tenemos que <span class="math display">\[\begin{aligned}
+		W(x)&amp;=y_1(x)y_2&#39;(x)-y_1&#39;(x)y_2(x)\\
+		&amp;=be^{ax}e^{bx}-ae^{ax}e^{bx}\\
+		&amp;=(b-a)e^{(a+b)x}\\
+		&amp;\neq 0.
+	
+\end{aligned}\]</span> Lo que demuestra que las funciones <span
+class="math inline">\(e^{ax}\)</span> y <span
+class="math inline">\(e^{bx}\)</span> son linealmente independientes en
+todo <span class="math inline">\(\mathbb R\)</span>.</em></p>
+</div>
+    </div>
+</section>
+<section id="independencia-lineal-2" class="slide level3 frame">
+<h3>Independencia lineal</h3>
+<div class="example">
+<p> Considere <span class="math inline">\(y_1(x)=e^{ax}\)</span>, <span
+class="math inline">\(y_2(x)=xe^{ax}\)</span> con <span
+class="math inline">\(a\)</span> constante arbitraria. Calcule <span
+class="math inline">\(W(x)\)</span>.</p>
+</div>
+<div class="solution-full fragment">
+    <div class="fragment">
+<p> <em>Tenemos que <span class="math display">\[\begin{aligned}
+		W(x)&amp;=y_1(x)y_2&#39;(x)-y_1&#39;(x)y_2(x)\\
+		&amp;=e^{ax}(e^{ax}+axe^{ax})-ae^{ax}xe^{ax}\\
+		&amp;=e^{2ax}\\
+		&amp;\neq 0.
+	
+\end{aligned}\]</span> Lo que demuestra que las funciones <span
+class="math inline">\(e^{ax}\)</span> y <span
+class="math inline">\(xe^{ax}\)</span> son linealmente independientes en
+todo <span class="math inline">\(\mathbb R\)</span>.</em></p>
+</div>
+    </div>
+</section>
+<section id="section" class="slide level3 frame">
+<h3></h3>
+<div class="exercise">
+<p><strong> 1</strong>. Considere <span
+class="math inline">\(y_1(x)=e^{ax}\cos(bx)\)</span>, <span
+class="math inline">\(y_2(x)=e^{ax}\sin(bx)\)</span> con <span
+class="math inline">\(a,b\)</span> constantes arbitrarias, <span
+class="math inline">\(b\neq 0\)</span>. Calcule <span
+class="math inline">\(W(x)\)</span> y verifique que <span
+class="math inline">\(y_1\)</span> e <span
+class="math inline">\(y_2\)</span> son linealmente independientes.</p>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+<script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+          
+            // The "normal" size of the presentation, aspect ratio will
+  // be preserved when the presentation is scaled to fit different
+  // resolutions. Can be specified using percentage units.
+  width: 1280,
+  height: 960,
+
+  // Factor of the display size that should remain empty around
+  // the content
+  margin: 0.04,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.5,
+  maxScale: 1.5,
+          
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+        
+        //Do not export fragments into pdf
+        pdfSeparateFragments: false,  
+
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
