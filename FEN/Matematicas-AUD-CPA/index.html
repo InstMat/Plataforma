@@ -13,16 +13,19 @@
     <div class="container">
         <!-- Encabezado -->
         <header>
-            Matemáticas (Anual)
+            Matemática
         </header>
 
         <!-- Contenido principal -->
         <div class="main-content">
             <!-- Menú lateral -->
             <div class="sidebar">
+                <a href="../../index.html" class="home-button">
+                    <i class="fas fa-home"></i> Volver al inicio
+                </a>
                 <h2>Lecciones</h2>
                 <ol class="lesson-list">
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="clase01.html" target="contenido" class="lesson-link">
                             Conjuntos numéricos
                         </a>
@@ -32,9 +35,6 @@
                     </li>
                     <!-- Agrega más lecciones aquí -->
                 </ol>
-                <a href="../../index.html" class="home-button">
-                    <i class="fas fa-home"></i> Volver al inicio
-                </a>
             </div>
 
             <!-- Área de contenido -->
@@ -43,5 +43,12 @@
             </div>
         </div>
     </div>
+    <script>
+    document.querySelectorAll('.lesson-item').forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('visible');
+        }, index * 100); // Retraso incremental para cada elemento
+    });
+</script>
 </body>
 </html>

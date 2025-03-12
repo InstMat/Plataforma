@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Carreras</title>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Archivo CSS externo -->
+    <link rel="stylesheet" href="styles/landing.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            Plataforma de módulos matemáticos
+        </header>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <!-- Menú lateral -->
+            <div class="sidebar">
+                <h2>Carrera</h2>
+                <ul id="lista-carreras">
+                    <li>
+                        <a href="#" onclick="verCursos('tecmed')">
+                            Tecnología Médica
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="verCursos('cpa')">
+                            Contador público y auditor
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="verCursos('aud')">
+                            Auditoría y control de gestión
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="verCursos('ivideo')">
+                            Ingeniería en Desarrollo de Videojuegos y Realidad Virtual
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="verCursos('ibio')">
+                            Ingeniería Civil en Bioinformática
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Área de contenido -->
+            <div class="content">
+                <h2 class="section-title">Lista de módulos disponibles</h2>
+                <ul id="lista-cursos" class="course-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const carreras = {
+            cpa: [
+                { nombre: "Matemáticas (Anual)", enlace: "FEN/Matematicas-AUD-CPA/index.html" },
+            ],
+            aud: [
+                { nombre: "Matemáticas (Anual)", enlace: "FEN/Matematicas-AUD-CPA/index.html" },
+            ],
+            ivideo: [
+                { nombre: "Ecuaciones Diferenciales Ordinarias", enlace: "Ingenieria/EDO/index.html" },
+            ],
+            ibio: [
+                { nombre: "Ecuaciones Diferenciales Ordinarias", enlace: "Ingenieria/EDO/index.html" },
+            ],
+            tecmed: [
+                { nombre: "Matemáticas para Ciencias Biomédicas II", enlace: "Salud/MatematicasII-TecMed/index.html" },
+            ]
+        };
+
+        function verCursos(carrera) {
+            const lista = document.getElementById("lista-cursos");
+            lista.innerHTML = "";
+            carreras[carrera].forEach(curso => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.textContent = curso.nombre;
+                a.href = curso.enlace;
+                a.classList.add("course-link");
+                li.appendChild(a);
+                lista.appendChild(li);
+            });
+        }
+    </script>
+    <script>
+    // Función para ordenar la lista alfabéticamente
+    function ordenarLista() {
+        const lista = document.getElementById("lista-carreras");
+        const items = Array.from(lista.getElementsByTagName("li"));
+
+        // Ordenar los elementos <li> por su texto
+        items.sort((a, b) => {
+            const textoA = a.textContent.trim().toLowerCase();
+            const textoB = b.textContent.trim().toLowerCase();
+            return textoA.localeCompare(textoB);
+        });
+
+        // Limpiar la lista y agregar los elementos ordenados
+        lista.innerHTML = "";
+        items.forEach(item => lista.appendChild(item));
+    }
+
+    // Ejecutar la función al cargar la página
+    window.onload = ordenarLista;
+</script>
+</body>
+</html>

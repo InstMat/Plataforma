@@ -20,10 +20,13 @@
         <div class="main-content">
             <!-- Menú lateral -->
             <div class="sidebar">
+                <a href="../../index.html" class="home-button">
+                    <i class="fas fa-home"></i> Volver al inicio
+                </a>
                 <h2>Lecciones</h2>
                 <h3>Unidad I</h3>
                 <ol class="lesson-list">
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadI/clase01.html" target="contenido" class="lesson-link">
                             Introducción
                         </a>
@@ -31,7 +34,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadI/clase02.html" target="contenido" class="lesson-link">
                             EDOs separables
                         </a>
@@ -39,7 +42,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadI/clase03.html" target="contenido" class="lesson-link">
                             EDOs lineales de primer orden
                         </a>
@@ -47,7 +50,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadI/clase04.html" target="contenido" class="lesson-link">
                             EDOs exactas
                         </a>
@@ -55,7 +58,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadI/clase05.html" target="contenido" class="lesson-link">
                             Otras EDOs de primer orden
                         </a>
@@ -63,7 +66,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadI/clase06.html" target="contenido" class="lesson-link">
                             Modelos que usan EDOs de primer orden
                         </a>
@@ -73,8 +76,8 @@
                     </li>
                 </ol>
                 <h3>Unidad II</h3>
-                <ol>
-                    <li class="lesson-item">
+                <ol class="lesson-list">
+                    <li class="lesson-item visible">
                         <a href="UnidadII/clase07.html" target="contenido" class="lesson-link">
                             EDOs lineales de 2º orden
                         </a>
@@ -82,7 +85,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-					<li class="lesson-item">
+					<li class="lesson-item visible">
                         <a href="UnidadII/clase08.html" target="contenido" class="lesson-link">
                             Coeficientes indeterminados
                         </a>
@@ -90,7 +93,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-					<li class="lesson-item">
+					<li class="lesson-item visible">
                         <a href="UnidadII/clase09.html" target="contenido" class="lesson-link">
                             Variación de parámetros
                         </a>
@@ -98,7 +101,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-					<li class="lesson-item">
+					<li class="lesson-item visible">
                         <a href="UnidadII/clase10.html" target="contenido" class="lesson-link">
                             Modelos que usan EDOs de segundo orden
                         </a>
@@ -109,8 +112,8 @@
                     <!-- Agrega más lecciones aquí -->
 				</ol>
                 <h3>Unidad III</h3>
-                <ol>
-					<li class="lesson-item">
+                <ol class="lesson-list">
+					<li class="lesson-item visible">
                         <a href="UnidadIII/clase11.html" target="contenido" class="lesson-link">
                             Transformada de Laplace
                         </a>
@@ -118,7 +121,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadIII/clase12.html" target="contenido" class="lesson-link">
                             Transformada de Laplace Inversa
                         </a>
@@ -126,7 +129,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadIII/clase13.html" target="contenido" class="lesson-link">
                             Transformada de Laplace y PVIs
                         </a>
@@ -134,7 +137,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadIII/clase14.html" target="contenido" class="lesson-link">
                             Transformada de Laplace y sistemas de EDOs
                         </a>
@@ -142,7 +145,7 @@
                             <i class="fas fa-print"></i>
                         </a>
                     </li>
-                    <li class="lesson-item">
+                    <li class="lesson-item visible">
                         <a href="UnidadIII/clase15.html" target="contenido" class="lesson-link">
                             Modelos que usan sistemas de EDOs
                         </a>
@@ -151,9 +154,6 @@
                         </a>
                     </li>
                 </ol>
-                <a href="../../index.html" class="home-button">
-                    <i class="fas fa-home"></i> Volver al inicio
-                </a>
             </div>
 
             <!-- Área de contenido -->
@@ -162,5 +162,12 @@
             </div>
         </div>
     </div>
+    <script>
+    document.querySelectorAll('.lesson-item').forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('visible');
+        }, index * 100); // Retraso incremental para cada elemento
+    });
+</script>
 </body>
 </html>
