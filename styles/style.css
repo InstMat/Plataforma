@@ -13,7 +13,7 @@ body {
 .example, .example-small, .example-medium, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .solution-full, .block, .fact, .proof {
     display: inline-block;
     position: relative;
-    width: 100%;
+    width: 95%;
     padding: 10px 15px;
     margin-bottom: 10px; /* Add spacing between examples */
     background-color: #f0f0f0; /* Light blue background */
