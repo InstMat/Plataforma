@@ -20,15 +20,59 @@ body {
     height: 100vh;
 }
 
-/* Encabezado */
+/* Estilos para el encabezado */
 header {
-    background-color: #2d3748;
+    background-color: #2d3748; /* Fondo oscuro */
     color: white;
     padding: 1rem;
     text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo-left, .logo-right {
+    flex: 1; /* Ocupa el espacio disponible */
+    display: flex;
+    align-items: center;
+}
+
+.logo-left {
+    justify-content: flex-start; /* Alinea el logo a la izquierda */
+}
+
+.logo-right {
+    justify-content: flex-end; /* Alinea el logo a la derecha */
+}
+
+.logo-left img, .logo-right img {
+    max-height: 100px; /* Altura máxima */
+    width: auto;      /* Ancho proporcional */
+}
+
+.header-title {
+    flex: 1; /* Ocupa el espacio central */
+    text-align: center;
+    padding: 0 1rem; /* Espaciado lateral para separar los logos */
+}
+
+.header-title h1 {
+    font-size: 1.75rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.header-title p {
+    font-size: 1rem;
+    margin: 0.25rem 0 0;
+    color: #cbd5e0; /* Color gris claro para el texto secundario */
 }
 
 /* Contenedor principal */
@@ -260,7 +304,7 @@ header {
     }
 
     .sidebar {
-        width: 100%;
+        width: 95%;
         height: auto;
         box-shadow: none;
         border-bottom: 1px solid #e2e8f0;
@@ -268,5 +312,31 @@ header {
 
     .content {
         height: calc(100vh - 150px);
+    }
+     .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo-left, .logo-right {
+        justify-content: center;
+        margin: 0.5rem 0;
+    }
+    
+    .logo-left img, .logo-right img {
+    max-height: 50px; /* Altura máxima */
+    width: auto;      /* Ancho proporcional */
+    }
+
+    .header-title {
+        padding: 0; /* Elimina el espaciado lateral en móviles */
+    }
+
+    .header-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-title p {
+        font-size: 0.875rem;
     }
 }
