@@ -8,7 +8,7 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 
 - **Menú lateral interactivo**: Lista de carreras con animaciones y efectos hover.
 - **Grilla de módulos**: Los módulos de cada carrera se muestran en una grilla de 3 columnas con botones grandes y animaciones.
-- **Carga dinámica de datos**: Los datos de las carreras y módulos se cargan desde un archivo JSON.
+- **Carga dinámica de datos**: Los datos de las carreras, módulos y lecciones se cargan desde un archivo JSON.
 - **Diseño responsive**: La plataforma se adapta a diferentes tamaños de pantalla (móviles, tablets, escritorio).
 - **Spinner de carga**: Muestra un spinner mientras se cargan los módulos.
 
