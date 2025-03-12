@@ -30,8 +30,6 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 - Un navegador web moderno (Chrome, Firefox, Edge, etc.).
 - Python (para probar localmente).
 
----
-
 ### Usar un servidor local (recomendado)
 
 1. Clona o descarga este repositorio.
