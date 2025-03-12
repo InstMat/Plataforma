@@ -1,0 +1,90 @@
+{
+    "carreras": [
+        {
+            "id": "tecmed",
+            "nombre": "Tecnología Médica",
+            "modulos": [
+                { "nombre": "Matemáticas para Ciencias Biomédicas I", "enlace": "#" },
+                { "nombre": "Matemáticas para Ciencias Biomédicas II", "enlace": "Salud/MatematicasII-TecMed/index.html" }
+            ]
+        },
+        {
+            "id": "cpa",
+            "nombre": "Contador público y auditor",
+            "modulos": [
+                { "nombre": "Matemática", "enlace": "FEN/Matematicas-AUD-CPA/index.html" },
+                { "nombre": "Cálculo I", "enlace": "#" },
+                { "nombre": "Estadística I", "enlace": "#" },
+                { "nombre": "Estadística II", "enlace": "#" }
+            ]
+        },
+        {
+            "id": "agro",
+            "nombre": "Agronomía",
+            "modulos": [
+                { "nombre": "Álgebra", "enlace": "#" },
+                { "nombre": "Cálculo I", "enlace": "#" },
+                { "nombre": "Cálculo II", "enlace": "#" },
+                { "nombre": "Estadística", "enlace": "#" }
+            ]
+        },
+        {
+            "id": "icom",
+            "nombre": "Ingeniería Comercial",
+            "modulos": [
+                { "nombre": "Matemática", "enlace": "#" },
+                { "nombre": "Cálculo", "enlace": "#" },
+                { "nombre": "Álgebra Lineal", "enlace": "#" },
+                { "nombre": "Estadística I", "enlace": "#" },
+                { "nombre": "Estadística II", "enlace": "#" }
+            ]
+        },
+        {
+            "id": "aud",
+            "nombre": "Auditoría y control de gestión",
+            "modulos": [
+                { "nombre": "Matemática", "enlace": "FEN/Matematicas-AUD-CPA/index.html" },
+                { "nombre": "Cálculo I", "enlace": "#" },
+                { "nombre": "Estadística I", "enlace": "#" },
+                { "nombre": "Estadística II", "enlace": "#" }
+            ]
+        },
+        {
+            "id": "iie",
+            "nombre": "Ingeniería en Informática Empresarial",
+            "modulos": [
+                { "nombre": "Matemáticas I", "enlace": "#" },
+                { "nombre": "Matemáticas II", "enlace": "#" },
+                { "nombre": "Matemáticas III", "enlace": "#" },
+                { "nombre": "Estadística I", "enlace": "#" },
+                { "nombre": "Estadística II", "enlace": "#" }
+            ]
+        },
+        {
+            "id": "ivideo",
+            "nombre": "Ingeniería en Desarrollo de Videojuegos y Realidad Virtual",
+            "modulos": [
+                { "nombre": "Introducción a las Matemáticas", "enlace": "#" },
+                { "nombre": "Álgebra", "enlace": "#" },
+                { "nombre": "Cálculo I", "enlace": "#" },
+                { "nombre": "Álgebra Lineal", "enlace": "#" },
+                { "nombre": "Cálculo II", "enlace": "#" },
+                { "nombre": "Ecuaciones Diferenciales Ordinarias", "enlace": "Ingenieria/EDO/index.html" },
+                { "nombre": "Probabilidad y Estadística", "enlace": "#" }
+            ]
+        },
+        {
+            "id": "ibio",
+            "nombre": "Ingeniería Civil en Bioinformática",
+            "modulos": [
+                { "nombre": "Introducción a las Matemáticas", "enlace": "#" },
+                { "nombre": "Álgebra", "enlace": "#" },
+                { "nombre": "Cálculo I", "enlace": "#" },
+                { "nombre": "Álgebra lineal", "enlace": "#" },
+                { "nombre": "Cálculo II", "enlace": "#" },
+                { "nombre": "Probabilidad y Estadística", "enlace": "#" },
+                { "nombre": "Ecuaciones Diferenciales Ordinarias", "enlace": "Ingenieria/EDO/index.html" }
+            ]
+        }
+    ]
+}
