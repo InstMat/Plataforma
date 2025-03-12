@@ -23,10 +23,7 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 
 ---
 
-
----
-
-## Cómo usar el proyecto
+## Cómo visualizar el proyecto
 
 ### Requisitos previos
 
