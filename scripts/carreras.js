@@ -6,22 +6,27 @@ async function cargarCarreras() {
         });
         const data = await response.json();
         const listaCarreras = document.getElementById('lista-carreras');
+        
+        // Limpiar lista antes de agregar elementos
+        listaCarreras.innerHTML = '';
 
-        // Generar la lista de carreras
-        data.carreras.forEach(carrera => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = '#';
-            a.innerHTML = `${carrera.nombre} <i class="fas fa-chevron-right"></i>`;
-            a.onclick = () => {
-                verCursos(carrera.id);
-                if (window.innerWidth <= 768) { // Solo en móviles
-                    sidebar.classList.remove('active');
-                }
-            };
-            li.appendChild(a);
-            listaCarreras.appendChild(li);
-        });
+        // Generar la lista de carreras con módulos
+        data.carreras
+            .filter(carrera => carrera.modulos && carrera.modulos.length > 0) // Filtrar solo carreras con módulos
+            .forEach(carrera => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#';
+                a.innerHTML = `${carrera.nombre} <i class="fas fa-chevron-right"></i>`;
+                a.onclick = () => {
+                    verCursos(carrera.id);
+                    if (window.innerWidth <= 768) { // Solo en móviles
+                        sidebar.classList.remove('active');
+                    }
+                };
+                li.appendChild(a);
+                listaCarreras.appendChild(li);
+            });
 
         // Ordenar la lista alfabéticamente
         ordenarLista();
@@ -49,7 +54,8 @@ function verCursos(carreraId) {
                         // Buscar el módulo en modulos_comunes
                         const modulo = data.modulos_comunes[moduloId];
 
-                        if (modulo) {
+                        // Filtrar módulos que tienen enlace "#"
+                        if (modulo && modulo.enlace !== "#") {
                             const li = document.createElement('li');
                             const a = document.createElement('a');
                             a.textContent = modulo.nombre;
@@ -62,8 +68,6 @@ function verCursos(carreraId) {
                             setTimeout(() => {
                                 li.classList.add('visible');
                             }, index * 100);
-                        } else {
-                            console.error(`Módulo con ID "${moduloId}" no encontrado en modulos_comunes.`);
                         }
                     });
 

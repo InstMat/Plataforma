@@ -92,7 +92,7 @@
             "id": "pcing",
             "nombre": "Plan Común Ingeniería",
             "modulos": [
-                "IntroMate", "Algebra", "CalcI", "AlgLin"
+
             ]
         },
         {
@@ -119,14 +119,14 @@
         },
         {
             "id": "cpa",
-            "nombre": "Contador público y auditor",
+            "nombre": "Contador Público y Auditor",
             "modulos": [
                 "MateCPAAUD", "CalcICPAAUD", "EstaICPAAUD","EstaICPAAUD"
             ]
         },
         {
             "id": "aud",
-            "nombre": "Auditoría y control de gestión",
+            "nombre": "Auditoría y Control de Gestión",
             "modulos": [
                 "MateCPAAUD", "CalcICPAAUD", "EstaICPAAUD","EstaICPAAUD"
             ]
