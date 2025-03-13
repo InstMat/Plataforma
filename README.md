@@ -35,6 +35,8 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 1. Clona o descarga este repositorio.
 2. Abre una terminal y navega a la carpeta del proyecto:
 3. Inicia un servidor HTTP con Python:
-    - Si tienes Python 3: python -m http.server 8000
-    - Si tienes Python 2.7: python -m SimpleHTTPServer 8000
+    - Si tienes Python 3:
+      ```python -m http.server 8000```
+    - Si tienes Python 2.7:
+      ```python -m SimpleHTTPServer 8000```
 4. Abre tu navegador y visita: http://localhost:8000
