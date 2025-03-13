@@ -4,7 +4,7 @@
             "nombre": "Unidad I",
             "lecciones": [
                 {
-                    "nombre": "Introducción",
+                    "nombre": "Conceptos básicos",
                     "enlace": "UnidadI/clase01.html"
                 },
                 {

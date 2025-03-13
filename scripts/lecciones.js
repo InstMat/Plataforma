@@ -1,7 +1,9 @@
 // Función para cargar las lecciones desde el JSON
 async function cargarLecciones() {
     try {
-        const response = await fetch('lecciones.json'); // Ruta al archivo JSON
+        const response = await fetch('lecciones.json', {
+                                    cache: 'no-cache', // Evita usar la caché
+                                    }); 
         const data = await response.json();
         const unidadesContainer = document.getElementById('unidades-container');
 

@@ -170,6 +170,13 @@ body {
     border-radius: 8px;
 }
 
+ol.two-columns, ul.two-columns {
+  column-count: 2; /* Divide la lista en 2 columnas */
+  column-gap: 20px; /* Espacio entre las columnas */
+  list-style-position: inside; /* Asegura que los números o viñetas estén alineados */
+  padding-left: 0; /* Elimina el padding por defecto de la lista */
+}
+
 :root {
   --r-main-font-size: 20px;
 }

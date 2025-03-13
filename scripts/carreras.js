@@ -1,7 +1,9 @@
 // Función para cargar el JSON y generar el menú
 async function cargarCarreras() {
     try {
-        const response = await fetch('carreras.json'); // Ruta al archivo JSON
+        const response = await fetch('data/carreras.json', {
+            cache: 'no-cache', // Evita usar la caché
+        });
         const data = await response.json();
         const listaCarreras = document.getElementById('lista-carreras');
 
@@ -37,31 +39,39 @@ function verCursos(carreraId) {
     lista.style.opacity = 0;
     spinner.style.display = 'flex'; // Mostrar spinner
 
-    // Buscar la carrera en el JSON
-    fetch('carreras.json')
+    fetch('data/carreras.json', { cache: 'no-cache' })
         .then(response => response.json())
         .then(data => {
             const carrera = data.carreras.find(c => c.id === carreraId);
             if (carrera) {
                 setTimeout(() => {
-                    carrera.modulos.forEach((modulo, index) => {
-                        const li = document.createElement('li');
-                        const a = document.createElement('a');
-                        a.textContent = modulo.nombre;
-                        a.href = modulo.enlace;
-                        a.classList.add('course-link');
-                        li.appendChild(a);
-                        lista.appendChild(li);
+                    carrera.modulos.forEach((moduloId, index) => {
+                        // Buscar el módulo en modulos_comunes
+                        const modulo = data.modulos_comunes[moduloId];
 
-                        // Aplicar animación con retraso incremental
-                        setTimeout(() => {
-                            li.classList.add('visible');
-                        }, index * 100);
+                        if (modulo) {
+                            const li = document.createElement('li');
+                            const a = document.createElement('a');
+                            a.textContent = modulo.nombre;
+                            a.href = modulo.enlace;
+                            a.classList.add('course-link');
+                            li.appendChild(a);
+                            lista.appendChild(li);
+
+                            // Aplicar animación con retraso incremental
+                            setTimeout(() => {
+                                li.classList.add('visible');
+                            }, index * 100);
+                        } else {
+                            console.error(`Módulo con ID "${moduloId}" no encontrado en modulos_comunes.`);
+                        }
                     });
 
                     lista.style.opacity = 1;
                     spinner.style.display = 'none'; // Ocultar spinner
                 }, 500); // Simular retraso de carga
+            } else {
+                console.error(`Carrera con ID "${carreraId}" no encontrada.`);
             }
         })
         .catch(error => console.error('Error al cargar los módulos:', error));

@@ -1,0 +1,149 @@
+{
+    "modulos_comunes": {
+        "IntroMate": { "nombre": "Introducción a las Matemáticas", "enlace": "#" },
+        "EDO": { "nombre": "Ecuaciones Diferenciales Ordinarias", "enlace": "Ingenieria/EDO/index.html" },
+        "CalcI": { "nombre": "Cálculo I", "enlace": "#" },
+        "CalcII": { "nombre": "Cálculo II", "enlace": "#" },
+        "CalcIII": { "nombre": "Cálculo III", "enlace": "#" },
+        "Algebra": { "nombre": "Álgebra", "enlace": "#" },
+        "AlgLin": { "nombre": "Álgebra Lineal", "enlace": "#" },
+        "ProbEsta": { "nombre": "Probabilidad y Estadística", "enlace": "#" },
+        "MateCPAAUD": { "nombre": "Matemática", "enlace": "FEN/Matematicas-AUD-CPA/index.html" },
+        "MateITecMed": { "nombre": "Matemáticas para Ciencias Biomédicas I", "enlace": "#" },
+        "MateIITecMed": { "nombre": "Matemáticas para Ciencias Biomédicas II", "enlace": "Salud/MatematicasII-TecMed/index.html" },
+        "CalcICPAAUD": { "nombre": "Cálculo I", "enlace": "#" },
+        "EstaICPAAUD": { "nombre": "Estadística I", "enlace": "#" },
+        "EstaIICPAAUD": { "nombre": "Estadística II", "enlace": "#" },
+        "AgroI" : { "nombre": "Álgebra", "enlace": "#" },
+        "AgroII" : { "nombre": "Cálculo I", "enlace": "#" },
+        "AgroIII" : { "nombre": "Cálculo II", "enlace": "#" },
+        "AgroIV" : { "nombre": "Estadística", "enlace": "#" },
+        "ICOMI": { "nombre": "Matemática", "enlace": "#" },
+        "ICOMI": { "nombre": "Cálculo", "enlace": "#" },
+        "ICOMI": { "nombre": "Álgebra Lineal", "enlace": "#" },
+        "ICOMI": { "nombre": "Estadística I", "enlace": "#" },
+        "ICOMI": { "nombre": "Estadística II", "enlace": "#" },
+        "IIEI": { "nombre": "Matemáticas I", "enlace": "#" },
+        "IIEII": { "nombre": "Matemáticas II", "enlace": "#" },
+        "IIEIII": { "nombre": "Matemáticas III", "enlace": "#" },
+        "IIEIV": { "nombre": "Estadística I", "enlace": "#" },
+        "IIEV": { "nombre": "Estadística II", "enlace": "#" }
+    },
+    
+    "carreras": [
+        
+        {
+            "id": "agro",
+            "nombre": "Agronomía",
+            "modulos": [
+   
+            ]
+        },
+        {
+            "id": "icom",
+            "nombre": "Ingeniería Comercial",
+            "modulos": [
+                
+            ]
+        },
+        {
+            "id": "iie",
+            "nombre": "Ingeniería en Informática Empresarial",
+            "modulos": [
+                
+            ]
+        },
+        
+        {
+            "id": "tecmed",
+            "nombre": "Tecnología Médica",
+            "modulos": [
+                "MateITecMed","MateIITecMed"
+            ]
+        },
+        {
+            "id": "cpa",
+            "nombre": "Contador público y auditor",
+            "modulos": [
+                "MateCPAAUD", "CalcICPAAUD", "EstaICPAAUD","EstaICPAAUD"
+            ]
+        },
+        {
+            "id": "aud",
+            "nombre": "Auditoría y control de gestión",
+            "modulos": [
+                "MateCPAAUD", "CalcICPAAUD", "EstaICPAAUD","EstaICPAAUD"
+            ]
+        },
+        {
+            "id": "ivideo",
+            "nombre": "Ingeniería en Desarrollo de Videojuegos y Realidad Virtual",
+            "modulos": [
+                "IntroMate","Algebra","CalcI","AlgLin","CalcII","EDO","ProbEsta"
+            ]
+        },
+        {
+            "id": "ibio",
+            "nombre": "Ingeniería Civil en Bioinformática",
+            "modulos": [
+                "IntroMate","Algebra","CalcI","AlgLin","CalcII","EDO","ProbEsta"
+            ]
+        },
+        {
+            "id": "icminas",
+            "nombre": "Ingeniería Civil de Minas",
+            "modulos": [
+                "Algebra","CalcI","AlgLin","CalcII","CalcIII","EDO","ProbEsta"
+            ]
+        },
+        {
+            "id": "icelec",
+            "nombre": "Ingeniería Civil Eléctrica",
+            "modulos": [
+                "IntroMate","Algebra","CalcI","AlgLin","CalcII","CalcIII","EDO","ProbEsta"
+            ]
+        },
+        {
+            "id": "icc",
+            "nombre": "Ingeniería Civil en Computación",
+            "modulos": [
+                "IntroMate","Algebra","CalcI","AlgLin","CalcII","EDO","ProbEsta"
+            ]
+        },
+        {
+            "id": "icociv",
+            "nombre": "Ingeniería Civil en Obras Civiles",
+            "modulos": [
+                "IntroMate","Algebra","CalcI","AlgLin","CalcII","EDO","ProbEsta"
+            ]
+        },
+        {
+            "id": "ici",
+            "nombre": "Ingeniería Civil Industrial",
+            "modulos": [
+                "Algebra","CalcI","AlgLin","CalcII","ProbEsta","EDO"
+            ]
+        },
+        {
+            "id": "icm",
+            "nombre": "Ingeniería Civil Mecánica",
+            "modulos": [
+                "Algebra","CalcI","AlgLin","CalcII","CalcIII","ProbEsta","EDO"
+            ]
+        },
+        {
+            "id": "icmec",
+            "nombre": "Ingeniería Civil Mecatrónica",
+            "modulos": [
+                "IntroMate","Algebra","CalcI","AlgLin","CalcII","CalcIII","EDO","ProbEsta"
+            ]
+        },
+        {
+            "id": "icmec",
+            "nombre": "Ingeniería Civil Mecatrónica",
+            "modulos": [
+                "IntroMate","Algebra","CalcI","AlgLin","CalcII","CalcIII","EDO","ProbEsta"
+            ]
+        }
+    ]
+}
