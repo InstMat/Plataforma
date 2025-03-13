@@ -40,6 +40,62 @@
             ]
         },
         {
+            "id": "apub",
+            "nombre": "Administración Pública",
+            "modulos": [
+   
+            ]
+        },
+        {
+            "id": "arq",
+            "nombre": "Arquitectura",
+            "modulos": [
+   
+            ]
+        },
+        {
+            "id": "dis",
+            "nombre": "Diseño",
+            "modulos": [
+   
+            ]
+        },
+        {
+            "id": "enf",
+            "nombre": "Enfermería",
+            "modulos": [
+   
+            ]
+        },
+        {
+            "id": "kine",
+            "nombre": "Kinesiología",
+            "modulos": [
+   
+            ]
+        },
+        {
+            "id": "med",
+            "nombre": "Medicina",
+            "modulos": [
+   
+            ]
+        },
+        {
+            "id": "nut",
+            "nombre": "Nutrición y Dietética",
+            "modulos": [
+   
+            ]
+        },
+        {
+            "id": "pcing",
+            "nombre": "Plan Común Ingeniería",
+            "modulos": [
+                "IntroMate", "Algebra", "CalcI", "AlgLin"
+            ]
+        },
+        {
             "id": "icom",
             "nombre": "Ingeniería Comercial",
             "modulos": [
