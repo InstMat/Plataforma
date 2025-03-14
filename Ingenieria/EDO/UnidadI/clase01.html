@@ -91,43 +91,50 @@ style="width:30.0%" alt="image" /></p>
 <h3>Definiciones</h3>
 <div class="definition">
 <p> Una ecuación diferencial (E.D.) es una ecuación que involucra
-derivadas de una o mas funciones desconocidas de una o mas variables
+derivadas de una o mas funciones desconocidas (incógnitas) de una o mas variables
 independientes. Dichas ecuaciones se pueden clasificar como:</p>
 <ul>
-<li class="fragment"><p>Ecuación diferencial ordinaria (E.D.O.): Una
+<li class="fragment"><p><b>Ecuación diferencial ordinaria (E.D.O.)</b>: Una
 ecuación con solo una función desconocida que depende de una sola
 variable independiente.</p></li>
-<li class="fragment"><p>Sistema de ecuaciones diferenciales
-ordinarias: Varias ecuaciones con 2 o mas funciones desconocidas que
+<li class="fragment"><p><b>Sistema de ecuaciones diferenciales
+ordinarias</b>: Varias ecuaciones con 2 o mas funciones desconocidas que
 dependen de una sola variable independiente.</p></li>
-<li class="fragment"><p>Ecuación diferencial parcial (E.D.P.): Una
+<li class="fragment"><p><b>Ecuación diferencial parcial (E.D.P.)</b>: Una
 ecuación con solo una función desconocida que depende de 2 o mas
 variables independientes.</p></li>
-<li class="fragment"><p>Sistema de ecuaciones diferenciales
-parciales: Varias ecuaciones con 2 o mas funciones desconocidas que
+<li class="fragment"><p><b>Sistema de ecuaciones diferenciales
+parciales</b>: Varias ecuaciones con 2 o mas funciones desconocidas que
 dependen de 2 o mas variables independientes.</p></li>
 </ul>
 </div>
-<div class="example fragment">
+</section>
+<section id="definiciones" class="slide level3 frame">
+<h3>Definiciones</h3>
+<div class="example">
 <p> </p>
-<ol class="two-columns">
-<li class="fragment"><p><span class="math inline">\(4y&#39;&#39;-5y&#39;+14y=2x^2e^{-5x}\cos(2x)\)</span>
-es una E.D.O..</p></li>
-<li class="fragment"><p><span class="math inline">\(\left\{
+<ol>
+<li class="fragment fade-in">
+<span class="math inline">\(4y&#39;&#39;\color{red}{(x)}-5y&#39;\color{red}{(x)}+14y\color{red}{(x)}=2x^2e^{-5x}\cos(2x)\)</span> es una E.D.O. donde la incógnita es la función \(y\color{red}{(x)}\).
+</li>
+<li class="fragment"><span class="math inline">\(\left\{
 	\begin{aligned}
 		\frac{dx}{dt}+4x&amp;=2x^2-2y\\
 		\frac{d^2y}{dt^2}-\frac{dy}{dt}&amp;=x+3y\\
     \end{aligned}
 	\right.\)</span>
-    es un sistema de E.D.O.s.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\partial y^2}=e^u\)</span> es una E.D.P..</p></li>
-<li class="fragment"><p><span class="math inline">\(\left\{
+    es un sistema de E.D.O.s donde las incógintas son las funciones \(x(t)\) e \(y(t)\).</li>
+<li class="fragment">
+    <span class="math inline">\(\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\partial y^2}=e^u\)</span> es una E.D.P. donde la incógnita es la función \(u(x,y)\).
+</li>
+<li class="fragment">
+<span class="math inline">\(\left\{
 		\begin{aligned}
 			\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\partial y^2}&amp;=u-v\\
 			\dfrac{\partial^2 v}{\partial x^2}+\dfrac{\partial^2 v}{\partial y^2}&amp;=v(1-v)u(1-u)\\
 		\end{aligned}
-		\right.\)</span> es un sistema de E.D.P.s.</p></li>
+		\right.\)</span> es un sistema de E.D.P.s donde las incógnitas son las funciones \(u(x,y)\) y \(v(x,y)\).
+    </li>
 </ol>
 </div>
 </section>
@@ -135,7 +142,7 @@ class="math inline">\(\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\p
 <section id="definiciones-1" class="slide level3 frame">
 <h3>Definiciones</h3>
 <div class="definition">
-<p> El orden de una E.D. es el orden de la derivada mas alta que aparece
+<p> El <b>orden</b> de una ecuación diferencial es el orden de la derivada mas alta que aparece
 en la ecuación</p>
 </div>
 <div class="example fragment">
@@ -161,7 +168,7 @@ u}{\partial y^2}\)</span> es una E.D.P. de segundo orden.</p></li>
 <section id="definiciones-2" class="slide level3 frame">
 <h3>Definiciones</h3>
 <div class="definition">
-<p> Una <em>EDO lineal</em> es una ecuación que puede ser escrita como
+<p> Una <b>E.D.O. lineal</b> es una ecuación que puede ser escrita como
 <span
 class="math display">\[a_n(x)y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y&#39;+a_0(x)y=f(x),\]</span>
 donde <span class="math inline">\(a_i(x)\)</span> son funciones
@@ -173,79 +180,75 @@ class="math display">\[F(x,y,y&#39;,y&#39;&#39;,\ldots,y^{(n)})=0,\]</span>
 donde <span class="math inline">\(F\)</span> es una función de <span
 class="math inline">\(n+1\)</span> variables.</p>
 </div>
-</section>
-<section id="definiciones-3" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="example">
-<p> </p>
-<ol>
-<li class="fragment"><p><span
+<div class="example fragment">
+    <p></p>
+<ol class="two-columns">
+<li class="fragment"><span
 class="math inline">\(3y&#39;&#39;&#39;+y&#39;-10y=90\)</span> es una
-E.D.O. lineal.</p></li>
-<li class="fragment"><p><span
+E.D.O. lineal.</li>
+<li class="fragment"><span
 class="math inline">\(y&#39;&#39;+3xy+4y=\cos x\)</span> es una E.D.O.
-lineal.</p></li>
-<li class="fragment"><p><span class="math inline">\(y&#39;+(\sin x)
-y=x\)</span> es una E.D.O. lineal.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y&#39;+y^2+y=0\)</span> es una E.D.O.
-no-lineal.</p></li>
+lineal.</li>
+<li class="fragment"><span class="math inline">\(y&#39;+(\sin x)
+y=x\)</span> es una E.D.O. lineal.</li>
+<li class="fragment"><span
+class="math inline">\(y&#39;+\color{red}{y^2}+y=0\)</span> es una E.D.O.
+no-lineal.</li>
+<li class="fragment"><span
+class="math inline">\(y''=\color{red}{\dfrac{x}{y}}+1\)</span> es una E.D.O.
+no-lineal.</li>
+<li class="fragment"><span
+class="math inline">\(\color{red}{y\cdot }y'=1\)</span> es una E.D.O.
+no-lineal.</li>
 </ol>
 </div>
 </section>
 <section id="definiciones-4" class="slide level3 frame">
 <h3>Definiciones</h3>
 <div class="definition">
-<p> Una solución de una E.D. es cualquier función <span
-class="math inline">\(y(x)\)</span> que satisfaga la ecuación. La
-solución se dice <em>explícita</em> si está dada en la forma <span
+<p> Una <b>solución</b> de una E.D.O. es cualquier función <span
+class="math inline">\(y(x)\)</span> que satisface la ecuación. La
+solución se dice <b>explícita</b> si está dada en la forma <span
 class="math inline">\(y(x)=\ldots\)</span>. La solución se dice
-implícita si la solución está dada en la forma <span
+<b>implícita</b> si la solución está dada en la forma <span
 class="math inline">\(G(x,y(x))=0\)</span>.</p>
 </div>
 <div class="example fragment">
 <p> Soluciones explícitas</p>
 <ol>
-<li class="fragment"><p><span class="math inline">\(y(x)=0\)</span>,
-<span class="math inline">\(y&#39;&#39;-2y+y=0\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(y(x)=0\)</span> es una solución explícita de <span class="math inline">\(y&#39;&#39;-2y+y=0\)</span>.</p></li>
 <li class="fragment"><p><span
-class="math inline">\(y(x)=\dfrac1{16}x^4\)</span>, <span
-class="math inline">\(y&#39;=x\sqrt y\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\(y(x)=x+1\)</span>,
-no es una solución de <span
-class="math inline">\(y&#39;+y=e^x\)</span>.</p></li>
+class="math inline">\(y(x)=\dfrac1{16}x^4\)</span> es una solución explícita de <span class="math inline">\(y&#39;=x\sqrt y\)</span> cuando \(x>0\).</p></li>
+<li class="fragment"><p><span class="math inline">\(y(x)=x+1\)</span> no es una solución de <span
+class="math inline">\(y&#39;+y=e^x\)</span> (Ejercicio).</p></li>
 </ol>
 </div>
-</section>
-<section id="definiciones-5" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="example">
+<div class="example fragment">
 <p> Soluciones implícitas</p>
 <ol>
-<li class="fragment"><p><span
-class="math inline">\(y^2-x^3+8=0\)</span>, <span
-class="math inline">\(y&#39;=\dfrac{x^2}{y}\)</span> si <span
-class="math inline">\(x&gt;2\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(x+y+e^{xy}=0\)</span>, <span
-class="math inline">\((1+xe^{xy})y&#39;+1+ye^{xy}=0\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\(4x^2-y^2=k\)</span>,
+<li class="fragment"><p><span class="math inline">\(4x^2-y^2=k\)</span> para una constante \(k\) es una solución implícita de
 <span class="math inline">\(yy&#39;=4x\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(x+y+e^{xy}=0\)</span> es una solución implícita de <span
+class="math inline">\((1+xe^{xy})y&#39;+1+ye^{xy}=0\)</span>.</p></li>
+<li class="fragment"><p><span
+class="math inline">\(y^2-x^3+8=0\)</span> no es una solución implícita de <span
+class="math inline">\(y&#39;=\dfrac{x^2}{y}\)</span> (Ejercicio).</p></li>
 </ol>
 </div>
 </section>
 <section id="problemas-de-valor-inicial" class="slide level3 frame">
 <h3>Problemas de valor inicial</h3>
 <div class="definition">
-<p> Un problema de valor inicial es una ecuación diferencial ordinaria
+    <p> Un <b>problema de valor inicial</b> es una ecuación diferencial ordinaria
 de orden <span class="math inline">\(n\)</span>, sobre la cual se
 imponen <span class="math inline">\(n\)</span> condiciones sobre la
-función incógnita y sus derivadas en cierto valor <span
+función incógnita y sus derivadas en cierto valor <em>inicial</em> <span
 class="math inline">\(x_0\)</span>, es decir <span
 class="math display">\[\left\{
 	\begin{aligned}
-		F(x,y,y&#39;,y&#39;&#39;,\ldots,y^{(n)})&amp;=0\\
-		y(x_0)=y_0,\ y&#39;(x_0)=y_1,&amp;\cdots\ y^{(n)}(x_0)&amp;=y_{n-1}.
+		F(x,y,y',y'',\ldots,y^{(n)})&=0\\
+		y(x_0)=y_0,\ y'(x_0)=y_1,\ y''(x_0)&=y_2,\ \cdots,\ y^{(n)}(x_0)=y_{n}.
 	\end{aligned}
 	\right.\]</span></p>
 </div>
@@ -282,7 +285,7 @@ class="math inline">\(y(0)=2\)</span>.</p></li>
 <li class="fragment"><p><span
 class="math inline">\(x^2+xy-y^2=1\)</span>, <span
 class="math inline">\((x-2y)y&#39;+2x+y=0\)</span>, <span
-class="math inline">\(y(0)=1\)</span>.</p></li>
+class="math inline">\(y(0)=1\)</span> (Ejercicio).</p></li>
 </ol>
 </div>
 </section>

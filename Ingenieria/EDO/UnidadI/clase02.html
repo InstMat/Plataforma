@@ -88,29 +88,66 @@ style="width:30.0%" alt="image" /></p>
 
 <section id="separación-de-variables" class="slide level3 frame">
 <h3>Separación de variables</h3>
-<p>Este método aplica para ecuaciones de la forma <span
-class="math display">\[y&#39;=f(x)g(y),\]</span> donde <span
-class="math inline">\(f(x)\)</span> y <span
-class="math inline">\(g(y)\)</span> son funciones conocidas. Para
-resolver este tipo de ecuaciones la idea es “despejar” variables: <span
+<p>Este método aplica para ecuaciones de la forma
+    <span class="math display">\[y&#39;=f(x)g(y),\]</span>
+    donde <span class="math inline">\(f(x)\)</span> y <span class="math inline">\(g(y)\)</span> son funciones conocidas.
+</p>
+<div class="example fragment">
+<p class="fragment"> Las siguientes E.D.O.s son separables</p>
+    <ol class="two-columns">
+        <li class="fragment">
+            \(y'=x\).
+        </li>
+        <li class="fragment">
+            \(y'=x\cdot y\).
+        </li>
+        <li class="fragment">
+            \(y'=\dfrac{y^2+1}{e^x}\).
+        </li>
+        <li class="fragment">
+            \(y'=e^{x+y}\).
+        </li>
+    </ol>
+<p class="fragment"> Las siguientes E.D.O.s no son separables</p>
+    <ol class="two-columns">
+        <li class="fragment">
+            \(y'=x+y\).
+        </li>
+        <li class="fragment">
+            \(y'=\dfrac{x}{x+y}\).
+        </li>
+        <li class="fragment">
+            \(y'=\ln(x-y)\).
+        </li>
+        <li class="fragment">
+            \(y'=y^x\).
+        </li>
+    </ol>
+</div>
+</section>
+
+<section id="separación-de-variables" class="slide level3 frame">
+<h3>Separación de variables</h3>
+<p>Para resolver una E.D.O. separable la idea es “separar” variables: <span
 class="math display">\[\begin{aligned}
 			y&#39;=f(x)g(y) \Leftrightarrow \frac{dy}{dx}=f(x)g(y) \Rightarrow
 \frac{1}{g(y)}\mathrm dy=f(x)\mathrm dx\\
 		
 \end{aligned}\]</span> de donde podemos integrar para obtener <span
 class="math display">\[\int \frac{1}{g(y)}\mathrm dy=\int f(x)\mathrm
-dx\]</span> Luego si denotamos <span class="math inline">\(G(y)=\int
-\frac{1}{g(y)}dy\)</span> y <span class="math inline">\(F(x)=\int
+dx\]</span> Luego si denotamos <span class="math inline">\(\displaystyle G(y)=\int
+\frac{1}{g(y)}dy\)</span> y <span class="math inline">\(\displaystyle F(x)=\int
 f(x)dx\)</span> a las respectivas primitivas, obtenemos la solución
 implícita <span class="math display">\[G(y)=F(x)+C.\]</span></p>
-</section>
-<section id="separación-de-variables-1" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<div class="example">
+<div class="example fragment">
 <p> Resolver <span class="math inline">\(y&#39;=-\dfrac xy\)</span>.</p>
 </div>
-<div class="solution fragment">
-<p> </p>
+<div class="solution-full fragment">
+<p class="fragment"> Escribimos \(y'=-\dfrac xy\Leftrightarrow y\mathrm dy=-x\mathrm dx\) y luego integramos a ambos lados para obtener
+\[\int y\mathrm dy=-\int x\mathrm dx\Leftrightarrow y^2=-x^2+C,\]
+es decir, obtenemos la solución implícita
+    \[x^2+y^2=C.\]
+</p>
 </div>
 </section>
 <section id="separación-de-variables-2" class="slide level3 frame">
@@ -124,10 +161,12 @@ class="math inline">\(xy&#39;=y\)</span>.</p>
 </div>
 <div class="remark fragment">
 <p> <em>Observar que si existe <span class="math inline">\(y_0\)</span>
-tal que <span class="math inline">\(g(y_0)=0\)</span> entonce la
+tal que <span class="math inline">\(g(y_0)=0\)</span> entonces la
 ecuación <span class="math inline">\(y&#39;=f(x)g(y)\)</span> también
 tiene como solución a la función constante <span
-class="math inline">\(y(x)=y_0\)</span>.</em></p>
+class="math inline">\(y(x)=y_0\)</span>.</em>
+</p>
+    <p><em>Cuando esto ocurre diremos que la E.D.O. tiene una <b>solución constante</b>. <span class="fragment" style="color: red;"><b>No olvidar la búsqueda de soluciones constantes.</b></span></em> </p>
 </div>
 </section>
 <section id="separación-de-variables-3" class="slide level3 frame">
@@ -145,7 +184,7 @@ y+e^{2y}-4}\)</span></p>
 <h3>Separación de variables</h3>
 <div class="example">
 <p> Resolver el PVI dado por <span class="math inline">\(y&#39;=\left(
-1+y^2 \right)\tan x\)</span>, <span
+1-y^2 \right)\tan x\)</span>, <span
 class="math inline">\(y(0)=1\)</span>.</p>
 </div>
 <div class="solution fragment">
@@ -167,33 +206,33 @@ class="math inline">\(y(0)=1\)</span>.</p>
 <div class="exercise">
 <p><strong> 1</strong>. Resolver las siguientes EDOs usando el método de
 separación de variables:</p>
-<ol>
-<li class="fragment"><p><span
-class="math inline">\(y&#39;=-\dfrac{x}{y}\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y&#39;=-\dfrac{y}{x}\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y&#39;=e^y\sin(2x)\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y&#39;=e^{3x+2y}\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y&#39;=xy^2\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y&#39;=x^2(y-y^2)\)</span>.</p></li>
-<li class="fragment"><p><span
+<ol class="two-columns">
+<li class="fragment"><span
+class="math inline">\(y&#39;=-\dfrac{x}{y}\)</span>.</li>
+<li class="fragment"><span
+class="math inline">\(y&#39;=-\dfrac{y}{x}\)</span>.</li>
+<li class="fragment"><span
+class="math inline">\(y&#39;=e^y\sin(2x)\)</span>.</li>
+<li class="fragment"><span
+class="math inline">\(y&#39;=e^{3x+2y}\)</span>.</li>
+<li class="fragment"><span
+class="math inline">\(y&#39;=xy^2\)</span>.</li>
+<li class="fragment"><span
+class="math inline">\(y&#39;=x^2(y-y^2)\)</span>.</li>
+<li class="fragment"><span
 class="math inline">\(y&#39;=kx(y-B)\)</span>, donde <span
 class="math inline">\(k\)</span> y <span
-class="math inline">\(B\)</span> son constantes.</p></li>
-<li class="fragment"><p><span class="math inline">\(\left( e^{2y}-y
-\right)\dfrac{dy}{dx}=e^{y}\sin(x)\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\(\left( e^x+e^{-x}
-\right)y&#39;=y^2\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\(y\ln x\mathrm
-dx=\left( \dfrac{y+1}{x} \right)^2\mathrm dy\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(e^xyy&#39;=e^{-y}+e^{-2x-y}\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y&#39;=\dfrac{xy+3x-y-3}{xy-2x+4y-8}\)</span>.</p></li>
+class="math inline">\(B\)</span> son constantes.</li>
+<li class="fragment"><span class="math inline">\(\left( e^{2y}-y
+\right)\dfrac{dy}{dx}=e^{y}\sin(x)\)</span>.</li>
+<li class="fragment"><span class="math inline">\(\left( e^x+e^{-x}
+\right)y&#39;=y^2\)</span>.</li>
+<li class="fragment"><span class="math inline">\(y\ln x\mathrm
+dx=\left( \dfrac{y+1}{x} \right)^2\mathrm dy\)</span>.</li>
+<li class="fragment"><span
+class="math inline">\(e^xyy&#39;=e^{-y}+e^{-2x-y}\)</span>.</li>
+<li class="fragment"><span
+class="math inline">\(y&#39;=\dfrac{xy+3x-y-3}{xy-2x+4y-8}\)</span>.</li>
 </ol>
 </div>
 </section>
