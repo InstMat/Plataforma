@@ -1,16 +1,16 @@
 // Función para cargar las lecciones desde el JSON
+// Función para cargar las lecciones desde el JSON
 async function cargarLecciones() {
     try {
         const response = await fetch('lecciones.json', {
-            cache: 'no-cache', // Evita usar la caché
-        }); 
+            cache: 'no-cache',
+        });
         const data = await response.json();
         const unidadesContainer = document.getElementById('unidades-container');
-        
-        // Limpiar el contenedor antes de agregar nuevas unidades
+        const iframeContenido = document.querySelector("iframe[name='contenido']"); // Seleccionamos el iframe
+
         unidadesContainer.innerHTML = '';
 
-        // Generar las unidades y lecciones
         data.unidades.forEach(unidad => {
             const unidadDiv = document.createElement('div');
             unidadDiv.innerHTML = `<h3>${unidad.nombre}</h3>`;
@@ -18,7 +18,6 @@ async function cargarLecciones() {
             listaLecciones.classList.add('lesson-list');
 
             unidad.lecciones.forEach(leccion => {
-                // Filtrar lecciones con enlace "#"
                 if (leccion.enlace !== "#") {
                     const li = document.createElement('li');
                     li.classList.add('lesson-item', 'visible');
@@ -31,9 +30,12 @@ async function cargarLecciones() {
                         </a>
                     `;
 
-                    // Agregar evento de clic para ocultar la barra lateral
-                    li.querySelector('.lesson-link').addEventListener('click', () => {
+                    // Evento para cerrar la barra lateral y enfocar el iframe
+                    li.querySelector('.lesson-link').addEventListener('click', (event) => {
+                        event.preventDefault(); // Evita que el navegador siga el enlace directamente
                         sidebar.classList.remove('active');
+                        iframeContenido.src = leccion.enlace; // Cambia el contenido del iframe
+                        setTimeout(() => iframeContenido.focus(), 100); // Da un pequeño retraso y enfoca
                     });
 
                     listaLecciones.appendChild(li);
@@ -49,6 +51,7 @@ async function cargarLecciones() {
         console.error('Error al cargar las lecciones:', error);
     }
 }
+
 
 // JavaScript para mostrar/ocultar la barra lateral en móviles
 const menuToggle = document.getElementById('menu-toggle');
