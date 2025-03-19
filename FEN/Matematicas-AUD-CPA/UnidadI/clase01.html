@@ -10,8 +10,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
   <style>
     .reveal .sourceCode {  /* see #7635 */
       overflow: visible;
@@ -31,7 +31,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
   <link rel="stylesheet" href="../../../styles/style.css"/>
   <!---Geogebra-->
         <script src="https://www.geogebra.org/apps/deployggb.js"></script>
@@ -88,7 +88,7 @@ style="width:30.0%" alt="image" /></p>
 </section>
 
 <section id="conjunto-de-los-números-reales" class="slide level3 frame">
-<h3>Conjunto de los Números Reales</h3>
+<h3>Conjuntos</h3>
 <div class="definition">
 <p> </p>
 <ul>
@@ -134,12 +134,12 @@ como:</p>
 <p> <em>Algunos subconjuntos importantes de los enteros:</em></p>
 <ul>
 <li class="fragment"><p><em>Números enteros positivos: <span
-class="math inline">\(\mathbb{Z}^+\)</span></em></p></li>
+class="math inline">\(\mathbb{Z}^+=\left\{1,2,3,4,\ldots \right\}\)</span></em></p></li>
 <li class="fragment"><p><em>Números enteros negativos: <span
-class="math inline">\(\mathbb{Z}^-\)</span></em></p></li>
-<li class="fragment"><p><em>Números pares.</em></p></li>
-<li class="fragment"><p><em>Números impares.</em></p></li>
-<li class="fragment"><p><em>Números primos.</em></p></li>
+class="math inline">\(\mathbb{Z}^-=\left\{-1,-2,-3,-4,\ldots \right\}\)</span></em></p></li>
+<li class="fragment"><p><em>Números pares=\(\left\{ \ldots,-6,-4,-2,0,2,4,6,\ldots \right\}\)</em></p></li>
+<li class="fragment"><p><em>Números impares=\(\left\{ \ldots,-5,-3,-1,1,3,5,\ldots \right\}\).</em></p></li>
+<li class="fragment"><p><em>Números primo=\(\left\{ 2,3,5,7,11,13,17,\ldots \right\}\).</em></p></li>
 </ul>
 </div>
 </section>
@@ -196,7 +196,7 @@ alt="image" /></p>
 </section>
 <section id="conjunto-de-los-números-reales-2"
 class="slide level3 frame">
-<h3>Conjunto de los Números Reales</h3>
+<h3>Propiedades de los Números Reales</h3>
 <div class="fact">
 <p> <em>Para <span class="math inline">\(x\)</span>, <span
 class="math inline">\(a\)</span>, <span
@@ -227,17 +227,17 @@ class="math inline">\(ab=0\)</span>, entonces <span
 class="math inline">\(a=0\)</span>   o   <span
 class="math inline">\(b=0\)</span>.</em></p></li>
 <li class="fragment"><p><em><span class="math inline">\(\displaystyle
+\frac{a}{b} \pm \frac{c}{d}=\frac{ad\pm bc}{b d}\)</span>, <span
+class="math inline">\(b\neq 0\)</span>, <span
+class="math inline">\(d\neq 0\)</span>.</em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(\displaystyle
 \frac{a}{b} \cdot \frac{c}{d}=\frac{a\cdot c}{b\cdot d}\)</span>, <span
 class="math inline">\(b\neq 0\)</span>, <span
 class="math inline">\(d\neq 0\)</span>.</em></p></li>
 <li class="fragment"><p><em><span class="math inline">\(\displaystyle
-\frac{a}{b} \div \frac{c}{d}=\frac{a\cdot d}{b\cdot c}\)</span>, <span
+\frac{a}{b} \div \frac{c}{d}=\frac{a}{b}\cdot \frac{d}{c}=\frac{a\cdot d}{b\cdot c}\)</span>, <span
 class="math inline">\(b\neq 0\)</span>, <span
 class="math inline">\(c\neq 0\)</span>, <span
-class="math inline">\(d\neq 0\)</span>.</em></p></li>
-<li class="fragment"><p><em><span class="math inline">\(\displaystyle
-\frac{a}{b} \pm \frac{c}{d}=\frac{ad\pm bc}{b d}\)</span>, <span
-class="math inline">\(b\neq 0\)</span>, <span
 class="math inline">\(d\neq 0\)</span>.</em></p></li>
 </ul>
 </div>
@@ -252,9 +252,9 @@ al <span class="math inline">\(0\)</span>.</p>
 <p><img data-src="clase01/recta.png" style="width:50%"
 alt="image" /></p>
 </div>
+<p class="fragment">Los números reales se pueden ordenar de la siguiente manera:</p>
 <ul>
-<li class="fragment"><p>Los números reales son ordenados.</p></li>
-<li class="fragment"><p>Decimos que “<span
+    <li class="fragment"><p>Decimos que “<span
 class="math inline">\(a\)</span> es menor que <span
 class="math inline">\(b\)</span>” y escribimos <span
 class="math inline">\(a&lt; b\)</span>, si <span
@@ -370,13 +370,13 @@ alt="image" /></p></li>
     </div>
   </div>
 
-  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
 
   <!-- reveal.js plugins -->
-  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
-  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
-  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
-<script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+  <script src="../../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../../reveal/plugin/search/search.js"></script>
+  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
+<script src="../../../reveal/plugin/math/math.js"></script>
 <script src="../../../scripts/reveal-init.js"></script>
     </body>
 </html>
