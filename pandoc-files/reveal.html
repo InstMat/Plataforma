@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html$if(lang)$ lang="$lang$"$endif$$if(dir)$ dir="$dir$"$endif$>
+<html $if(lang)$ lang="$lang$"$endif$$if(dir)$ dir="$dir$"$endif$>
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
@@ -18,8 +18,8 @@ $endif$
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="$revealjs-url$/dist/reset.css">
-  <link rel="stylesheet" href="$revealjs-url$/dist/reveal.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
   <style>
     .reveal .sourceCode {  /* see #7635 */
       overflow: visible;
@@ -27,9 +27,9 @@ $endif$
     $styles.html()$
   </style>
 $if(theme)$
-  <link rel="stylesheet" href="$revealjs-url$/dist/theme/$theme$.css" id="theme">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/$theme$.css" id="theme">
 $else$
-  <link rel="stylesheet" href="$revealjs-url$/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
 $endif$
 $for(css)$
   <link rel="stylesheet" href="$css$"/>
@@ -123,14 +123,14 @@ $body$
     </div>
   </div>
 
-  <script src="$revealjs-url$/dist/reveal.js"></script>
+  <script src="../../../reveal/dist/reveal.js"></script>
 
   <!-- reveal.js plugins -->
-  <script src="$revealjs-url$/plugin/notes/notes.js"></script>
-  <script src="$revealjs-url$/plugin/search/search.js"></script>
-  <script src="$revealjs-url$/plugin/zoom/zoom.js"></script>
+  <script src="../../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../../reveal/plugin/search/search.js"></script>
+  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
 $if(mathjax)$
-<script src="$revealjs-url$/plugin/math/math.js"></script>
+<script src="../../../reveal/plugin/math/math.js"></script>
 $endif$
 
 <script src="../../../scripts/reveal-init.js"></script>
