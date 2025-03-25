@@ -113,15 +113,25 @@ y}(x,y)=\dfrac{\partial N}{\partial x}(x,y).\]</span></p>
 class="math inline">\((2xy-3x^2)\mathrm dx+(x^2-2y)\mathrm dy=0\)</span>
 es exacta.</p>
 </div>
-<div class="solution-small fragment">
-<p> </p>
+<div class="solution-full fragment">
+<div class="fragment">
+<p>En este caso se tiene que \(M(x,y)=2xy-3x^2\) y \(N(x,y)=x^2-2y\), por lo que se cumple que
+\[\frac{\partial M}{\partial y}(x,y)=2x\]
+    y
+\[\frac{\partial N}{\partial x}(x,y)=2x,\]
+    es decir, la EDO es exacta.
+    </p>    
 </div>
-<div class="example fragment">
+</div>
+</section>
+<section id="edos-exactas-1.5" class="slide level3 frame">
+<h3>EDOs exactas</h3>
+<div class="example">
 <p> Verifique si la ecuación diferencial <span
 class="math inline">\((y^2-x)\mathrm dx+2y\mathrm dy=0\)</span> es
 exacta.</p>
 </div>
-<div class="solution-small fragment">
+<div class="solution fragment">
 <p> </p>
 </div>
 </section>
@@ -131,11 +141,11 @@ exacta.</p>
 función <span class="math inline">\(F(x,y)\)</span>, para ello:</p>
 <ul>
 <li class="fragment"><p>Se define <span
-class="math inline">\(F(x,y)=\int M(x,y)dx+g(y)\)</span>.</p></li>
+class="math inline">\(\displaystyle F(x,y)=\int M(x,y)dx\)</span>.</p></li>
 <li class="fragment"><p>Se calcula la integral parcial del paso anterior
 y se obtiene un candidato a <span class="math inline">\(F(x,y)\)</span>
 de la forma <span
-class="math inline">\(F(x,y)=H(x,y)+g(y)\)</span>.</p></li>
+class="math inline">\(F(x,y)=H(x,y)\color{red}{+g(y)}\)</span>.</p></li>
 <li class="fragment"><p>Se deriva la función <span
 class="math inline">\(F(x,y)\)</span> obtenida en el paso anterior
 respecto a la variable <span class="math inline">\(y\)</span> y se
@@ -145,36 +155,9 @@ class="math display">\[\dfrac{\partial F}{\partial
 y}(x,y)=\dfrac{\partial H}{\partial
 y}(x,y)+\dfrac{dg}{dy}(y)=N(x,y).\]</span></p></li>
 <li class="fragment"><p>La ecuación resultante resulta ser una ecuación
-diferencial autónoma para la función <span
-class="math inline">\(g(y)\)</span> que se puede resolver con las
-técnicas anteriores.</p></li>
-</ul>
-</section>
-<section id="edos-exactas-3" class="slide level3 frame">
-<h3>EDOs exactas</h3>
-<p>En algunos casos puede ser útil primero integrar respecto a <span
-class="math inline">\(y\)</span> la función <span
-class="math inline">\(N(x,y)\)</span> y luego derivar respecto a <span
-class="math inline">\(x\)</span>, es decir</p>
-<ul>
-<li class="fragment"><p>Se define <span
-class="math inline">\(F(x,y)=\int N(x,y)dy+h(x)\)</span>.</p></li>
-<li class="fragment"><p>Se calcula la integral parcial del paso anterior
-y se obtiene un candidato a <span class="math inline">\(F(x,y)\)</span>
-de la forma <span
-class="math inline">\(F(x,y)=R(x,y)+h(x)\)</span>.</p></li>
-<li class="fragment"><p>Se deriva la función <span
-class="math inline">\(F(x,y)\)</span> obtenida en el paso anterior
-respecto a la variable <span class="math inline">\(x\)</span> y se
-iguala el resultado a la función <span
-class="math inline">\(M(x,y)\)</span>, es decir <span
-class="math display">\[\dfrac{\partial F}{\partial
-x}(x,y)=\dfrac{\partial R}{\partial
-x}(x,y)+\dfrac{dh}{dx}(x)=M(x,y).\]</span></p></li>
-<li class="fragment"><p>La ecuación resultante resulta ser una ecuación
-diferencial autónoma para la función <span
-class="math inline">\(h(x)\)</span> que se puede resolver con las
-técnicas anteriores.</p></li>
+diferencial separable para la función <span
+class="math inline">\(g(y)\)</span> que se puede resolver con
+ese método.</p></li>
 </ul>
 </section>
 <section id="edos-exactas-4" class="slide level3 frame">
@@ -183,8 +166,18 @@ técnicas anteriores.</p></li>
 <p> Resolver la ecuación <span
 class="math inline">\(2x+2yy&#39;=0\)</span>.</p>
 </div>
-<div class="solution fragment">
-<p> </p>
+<div class="solution-full fragment">
+<div class="fragment">
+<p>Se tiene que \(M(x,y)=2x\) y \(N(x,y)=2y\) por lo que la ecuación es exacta con \(\dfrac{\partial M}{\partial y}=\dfrac{\partial N}{\partial x}=0\).</p>
+    <p>Ahora escribimos
+    \[F(x,y)=\int M(x,y)\mathrm dx=\int 2x\mathrm dx=x^2+\underbrace{\color{red}{g(y)}}_{\text{constante con respecto a \(x\)}}\]
+    de donde se sigue que
+    \[\frac{\partial F}{\partial y}(x,y)=g'(y)=2y\]
+    por lo que \(g(y)=\displaystyle\int 2y\mathrm dy=y^2\) y \(F(x,y)=x^2+g(y)=x^2+y^2\).
+    </p>
+    <p>Finalmente la solución general de la EDO exacta se puede escribir como \(F(x,y)=C\), es decir
+    \[x^2+y^2=C.\]</p>
+</div>
 </div>
 </section>
 <section id="edos-exactas-5" class="slide level3 frame">
@@ -196,6 +189,32 @@ dx+(x^2-2y)\mathrm dy=0\)</span>.</p>
 <div class="solution fragment">
 <p> </p>
 </div>
+</section>
+<section id="edos-exactas-3" class="slide level3 frame">
+<h3>EDOs exactas</h3>
+<p>En algunos casos puede ser útil primero integrar respecto a <span
+class="math inline">\(y\)</span> la función <span
+class="math inline">\(N(x,y)\)</span> y luego derivar respecto a <span
+class="math inline">\(x\)</span>, es decir</p>
+<ul>
+<li class="fragment"><p>Se define <span
+class="math inline">\(\displaystyle F(x,y)=\int N(x,y)dy\)</span>.</p></li>
+<li class="fragment"><p>Se calcula la integral parcial del paso anterior
+y se obtiene un candidato a <span class="math inline">\(F(x,y)\)</span>
+de la forma <span
+class="math inline">\(F(x,y)=R(x,y)\color{red}{+h(x)}\)</span>.</p></li>
+<li class="fragment"><p>Se deriva la función <span
+class="math inline">\(F(x,y)\)</span> obtenida en el paso anterior
+respecto a la variable <span class="math inline">\(x\)</span> y se
+iguala el resultado a la función <span
+class="math inline">\(M(x,y)\)</span>, es decir <span
+class="math display">\[\dfrac{\partial F}{\partial
+x}(x,y)=\dfrac{\partial R}{\partial
+x}(x,y)+\dfrac{dh}{dx}(x)=M(x,y).\]</span></p></li>
+<li class="fragment"><p>La ecuación resultante resulta ser una ecuación
+diferencial separable para la función <span
+class="math inline">\(h(x)\)</span> que se puede resolver con ese método.</p></li>
+</ul>
 </section>
 <section id="edos-exactas-6" class="slide level3 frame">
 <h3>EDOs exactas</h3>
@@ -210,7 +229,7 @@ dx+(2xe^{2y}-x\cos(xy)+2y)\mathrm dy=0\)</span>.</p>
 <section id="edos-exactas-7" class="slide level3 frame">
 <h3>EDOs exactas</h3>
 <p>En algunos casos se puede convertir una ecuación no exacta en una
-exacta mediante un factor integrante</p>
+exacta mediante un <em>factor integrante</em></p>
 <ul>
 <li class="fragment"><p>Si se tiene que <span
 class="math inline">\(\dfrac{M_y-N_x}{N}\)</span> es una función que
@@ -223,14 +242,11 @@ solo depende de <span class="math inline">\(y\)</span>, entonces <span
 class="math display">\[\mu(y)=e^{\int \frac{N_x-M_y}{M}dy } \text{ es un
 factor integrante.}\]</span></p></li>
 </ul>
-</section>
-<section id="edos-exactas-8" class="slide level3 frame">
-<h3>EDOs exactas</h3>
-<div class="example">
+<div class="example fragment">
 <p> Resuelva la ecuación <span class="math inline">\((y^2+x)\mathrm
 dx+2y\mathrm dy=0\)</span>.</p>
 </div>
-<div class="solution fragment">
+<div class="solution-medium fragment">
 <p> </p>
 </div>
 </section>
