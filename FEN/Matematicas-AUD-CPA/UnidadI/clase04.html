@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Matemáticas</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Matemáticas</h1>
+  <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+Contador Público y Auditor</p>
+  <p class="author"><img
+data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+alt="image" /></p>
+</section>
+
+<section id="inecuaciones-algebraícas" class="slide level3 frame">
+<h3>Inecuaciones Algebraícas</h3>
+<div class="definition">
+<p> Una <u><strong>inecuación</strong></u> es un desigualdad de
+expresiones algebraícas.</p>
+</div>
+<div class="example fragment">
+<p> Determinar cuales de las siguientes son inecuaciones</p>
+<ol>
+<li class="fragment"><p><span class="math inline">\(2x^3+x &lt;
+\dfrac{x}{x+2}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(x^4 + 4x-2 \geq
+x^2+6\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(x^2 - 5x +2 =
+0\).</span> <span class="fragment">Esta <strong>NO</strong> es una
+inecuación</span></p></li>
+</ol>
+</div>
+</section>
+<section id="inecuaciones-algebraícas-1" class="slide level3 frame">
+<h3>Inecuaciones Algebraícas</h3>
+<div class="definition">
+<p> <span class="math inline">\(\bullet\)</span> Una
+<u><strong>solución</strong> </u> de una inecuación es un número que al
+sustituir en la variable, satisface la desigualdad.</p>
+</div>
+<div class="example fragment">
+<p> Dada la inecuación <span class="math inline">\(\sqrt{2x+5} &lt;
+    3x-4\), ¿Cuáles de los siguientes valores son soluciones de la inecuación?</span><p>
+<ol>
+    <li class="fragment">\(x=1\)</li>
+    <li class="fragment">\(x=5\)</li>
+    <li class="fragment">\(x=7\)</li>
+    </ol>
+</div>
+<div class="definition fragment">
+<p> </p>
+<ul>
+<li class="fragment"><p>El <u><strong>conjunto solución</strong></u> de
+una inecuación, es el conjunto de todas las soluciones de la
+inecuación.</p></li>
+<li class="fragment"><p><u><strong>Resolver</strong></u> una inecuación
+significa hallar el conjunto solución.</p></li>
+<li class="fragment"><p>Dos inecuaciones se dicen
+<u><strong>equivalentes</strong></u> si ellas tienen exactamente el
+mismo conjunto solución.</p></li>
+</ul>
+</div>
+</section>
+<section id="cómo-resolver-una-inecuación" class="slide level3 frame">
+<h3>¿Cómo resolver una inecuación?</h3>
+<p>Para resolver una inecuación, usaremos las propiedades vista en los
+números reales.</p>
+<div class="theorem">
+<p> <em>Sean <span class="math inline">\(a\)</span>, <span
+class="math inline">\(b\)</span> y <span class="math inline">\(c \in
+\mathbb R\)</span>. Entonces:</em></p>
+<ol>
+<li class="fragment" style="margin-bottom: 20pt">\(a^2 \geq 0\).</li>
+<li class="fragment" style="margin-bottom: 20pt">\(a\color{red}{\leq} b\) si y sólo si \(a \pm c \leq b \pm c\). La propiedad también vale si se cambia \(\color{red}{\leq}\) por \(&lt;,&gt;\) o \(\geq\).</li>
+<li class="fragment" style="margin-bottom: 20pt">Si \(c&gt;0\) se cumple que \(a\color{red}{\leq} b\) si y sólo si \(a\cdot c \color{red}{\leq} b \cdot c\). La propiedad también vale si se cambia \(\color{red}{\leq}\) por \(&lt;,&gt;\) o \(\geq\).</li>
+<li class="fragment" style="margin-bottom: 20pt">Si \(c&lt;0\) se cumple que \(a\color{red}{\leq} b\) si y sólo si \(a\cdot c \color{blue}{\geq} b \cdot c\). La propiedad también vale si se cambia \(\color{red}{\leq}\) por \(&lt;,&gt;\) o \(\geq\) y \(\color{blue}{\geq}\) por \(&gt;,&lt;\) o \(\leq\) respectivamente.</li>
+<li class="fragment" style="margin-bottom: 20pt">\(a\cdot b \geq 0\) si y sólo si \(( a \geq 0 \) y \(b \geq 0)\) o \((a \leq 0\) y \(b \leq 0)\)</li>
+<li class="fragment" style="margin-bottom: 20pt">\(a\cdot b \leq 0\) si y sólo si \(( a \geq 0\) y \(b \leq 0)\) o \((a \leq 0\) y \(b \geq 0
+)\)</li>
+</ol>
+</div>
+</section>
+<section id="ejemplo" class="slide level3 frame">
+<h3>Ejemplo</h3>
+<div class="example">
+<p> </p>
+<ol>
+<li class="fragment"><p> </p>
+<p><span class="math inline">\(\begin{array}{lrcll}
+&amp; x-2 &amp; &lt; &amp;  7  &amp; \qquad / {\color{red}{+2}} \\
+\Longleftrightarrow  &amp; x-2 + {\color{red}{2}} &amp; &lt; &amp;
+7+{\color{red}{2}} &amp; \\
+\text{Luego} &amp; x &amp; &lt; &amp; 9 &amp; \\
+\end{array}\)</span></p>
+<p>Se tiene que <span class="math inline">\(x-2&lt;7\)</span> y <span
+class="math inline">\(x&lt;9\)</span> son equivalentes, luego el
+conjunto solución es <span class="math inline">\(S = ]-\infty \, , \,
+9[\)</span></p></li>
+
+    <li class="fragment"><p> </p>
+<p><span class="math inline">\(\begin{array}{lrcll}
+&amp; 3x &amp; \geq &amp;  7 &amp; \qquad / {\color{red}{\div 3}}\\
+\Longleftrightarrow  &amp; \displaystyle \frac{3x}{{\color{red}{3}}}
+&amp; \geq &amp; \displaystyle \frac{7}{{\color{red}{3}}} &amp; \\
+\text{Luego} &amp; x &amp; \geq &amp;\displaystyle \frac{7}{3} &amp; \\
+\end{array}\)</span></p>
+<p>Se tiene que <span class="math inline">\(3x \geq 7\)</span> y <span
+class="math inline">\(\displaystyle x \geq \frac{7}{3}\)</span> son
+equivalentes, luego el conjunto solución es <span
+class="math inline">\(S = \left [ \dfrac{7}{3} \, , \, +\infty \right
+[\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="ejemplo-1" class="slide level3 frame">
+<h3>Ejemplo</h3>
+<div class="example">
+<p> </p>
+<ol start="3">
+<li class="fragment"><p> </p>
+<p><span class="math inline">\(\begin{array}{lrcll}
+&amp; 1-x &amp; \leq &amp; 3  &amp; \qquad / {\color{red}{- 1}} \\
+\Longleftrightarrow  &amp; 1-x {\color{red}{-1}} &amp; \leq &amp; 3
+{\color{red}{-1}} &amp;  \\
+\Longleftrightarrow   &amp; -x &amp; \leq &amp; 2  &amp;  \qquad /
+{\color{red}{\cdot (-1)}} \\
+\Longleftrightarrow  &amp; (-x)\cdot{\color{red}{(-1)}} &amp; \geq &amp; 2
+\cdot {\color{red}{(-1)}} &amp; \\
+\text{Luego} &amp; x &amp; \geq &amp; -2 &amp; \\
+\end{array}\)</span></p>
+<p>Se tiene que <span class="math inline">\(1-x \leq 3\)</span> y <span
+class="math inline">\(\displaystyle x \geq -2\)</span> son equivalentes,
+luego el conjunto solución es <span class="math inline">\(\displaystyle
+S = \left [ -2 \, , \, +\infty \right [\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="inecuaciones-lineales" class="slide level3 frame">
+<h3>Inecuaciones lineales</h3>
+<div class="definition">
+<p> Una <u><strong>inecuación lineal</strong> </u> en la variable <span
+class="math inline">\(x\)</span> es aquella que puede escribirse en la
+forma <span class="math display">\[ax+b &lt; 0\]</span> donde <span
+class="math inline">\(a\)</span> y <span
+class="math inline">\(b\)</span> son constantes y <span
+class="math inline">\(a\neq 0\)</span>. El simbolo de desigualdad <span
+class="math inline">\(&lt;\)</span> puede ser cambiado por <span
+class="math inline">\(\leq, \, &gt;\)</span> o <span
+class="math inline">\(\geq\)</span>.</p>
+</div>
+<div class="example fragment">
+<p> </p>
+<ol style="list-style-type: upper-roman;" class="two-columns">
+<li class="fragment">Resolver las siguientes inecuaciones:
+<ol>
+<li class="fragment" style="margin-bottom: 100pt"><span class="math inline">\(3(2-3x) &gt;
+4(\sqrt3-4x)\)</span></li>
+<li class="fragment" style="margin-bottom: 100pt"><span class="math inline">\(x+2 \leq \sqrt{3} -
+x\)</span></li>
+</ol></li>
+<li class="fragment">Resolver las siguientes inecuaciones dobles:
+<ol>
+<li class="fragment" style="margin-bottom: 150pt"><span class="math inline">\(2 &lt; 3x-1 \leq
+4\)</span></li>
+<li class="fragment" style="margin-bottom: 150pt"><span class="math inline">\(x+3 \leq 2x+5 &lt;
+3x-1\)</span></li>
+</ol></li>
+</ol>
+</div>
+</section>
+<section id="inecuaciones-cuadráticas" class="slide level3 frame">
+<h3>Inecuaciones cuadráticas</h3>
+<div class="definition">
+<p> Una <u><strong>inecuación cuadrática</strong></u> en la variable
+<span class="math inline">\(x\)</span> es aquella que puede escribirse
+en la forma <span class="math display">\[ax^2+bx+c &lt; 0\]</span> donde
+<span class="math inline">\(a, \, b\)</span> y <span
+class="math inline">\(c\)</span> son constantes y <span
+class="math inline">\(a\neq 0\)</span>. El simbolo de desigualdad <span
+class="math inline">\(&lt;\)</span> puede ser cambiado por <span
+class="math inline">\(\leq, \, &gt;\)</span> o <span
+class="math inline">\(\geq\)</span>.</p>
+</div>
+<p class="fragment">¿Cómo resolver una inecuación cuadrática?</p>
+<ol>
+<li class="fragment" style="margin-bottom: 50pt"><b>Factorizando.</b></li>
+<li class="fragment" style="margin-bottom: 50pt"><b>Usando las soluciones de la ecuación cuadrática
+como puntos claves y ver el signo en cada intervalo.</b></li>
+</ol>
+</section>
+<section id="ejemplos-de-inecuaciones-cuadráticas"
+class="slide level3 frame">
+<h3>Ejemplos de inecuaciones cuadráticas</h3>
+<div class="example">
+<p> Use ambos métodos para resolver</p>
+<ol>
+<li class="fragment" style="margin-bottom: 200pt"><p><span class="math inline">\((2x+3)(x-2) \geq
+0\)</span></p></li>
+<li class="fragment" style="margin-bottom: 200pt"><p><span class="math inline">\(x^2-4x-5 \leq
+0\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="otras-inecuaciones" class="slide level3 frame">
+<h3>Otras inecuaciones</h3>
+<div class="example">
+<p> Resolver las siguientes inecuaciones</p>
+<ol>
+<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(\displaystyle
+\frac{x+2}{1-x} \leq 0\)</span></p></li>
+<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(\displaystyle
+\frac{x-1}{x+1} \geq \frac{x-2}{2x+1}\)</span></p></li>
+<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(\displaystyle
+\frac{2x+3}{x-3} &gt; \frac{x-2}{x+2}\)</span></p></li>
+</ol>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../../reveal/plugin/search/search.js"></script>
+  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
+<script src="../../../reveal/plugin/math/math.js"></script>
+
+<script src="../../../scripts/reveal-init.js"></script>
+    </body>
+</html>
