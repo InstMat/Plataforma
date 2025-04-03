@@ -95,31 +95,70 @@ class="math inline">\(\alpha\)</span> si se cumple que <span
 class="math display">\[f(tx,ty)=t^\alpha f(x,y)\quad\text{ para todo
 }t,x,y.\]</span></p>
 </div>
-<div class="definition fragment">
+<div class="example fragment">
+<ol>
+    
+<li class="fragment">La función \(f(x,y)=x+y\) es homogénea de grado \(1\) pues
+    \[
+    f(tx,ty)=tx+ty=t(x+y)=tf(x,y)
+    \]
+</li>
+<li class="fragment">La función \(f(x,y)=x^2-y^2+xy\) es homogénea de grado \(2\) pues
+    \[
+    f(tx,ty)=(tx)^2-(ty)^2+(tx)\cdot (ty)=t^2x^2-t^2y^2+t^2xy=t^2(x^2-y^2+xy)=t^2f(x,y)
+    \]
+</li>
+</ol>
+    </div>
+</section>
+
+<section id="ecuaciones-diferenciales-con-funciones-homogéneas-1" class="frame">
+<h3>Ecuaciones diferenciales con funciones homogéneas</h3>
+<div class="definition">
 <p> Una ecuación diferencial de primer orden en la forma <span
 class="math display">\[M(x,y)dx+N(x,y)dy=0\]</span> es homogénea si las
 funciones <span class="math inline">\(M,~N\)</span> son homogéneas del
 mismo grado. Análogamente, una ecuación de la forma <span
 class="math display">\[y&#39;=f(x,y)\]</span> es homogéneas si la
 función <span class="math inline">\(f\)</span> es homogénea de grado
-<span class="math inline">\(0\)</span>.</p>
+<span class="math inline">\(\color{red}{0}\)</span>.</p>
 </div>
-</section>
-<section id="ecuaciones-diferenciales-con-funciones-homogéneas-1"
-class="frame">
-<h3>Ecuaciones diferenciales con funciones homogéneas</h3>
-<p>Para resolver una ecuación homogéneas se considera uno de los
+<div class="remark fragment">
+<p>Para resolver una ecuación homogénea se considera uno de los
 siguientes cambios de variables <span class="math display">\[y=xv \text{
 o bien } y=\dfrac{x}{u}.\]</span> La ecuación resultante debería ser una
 ecuación diferencial <em>separable</em> para la función <span
 class="math inline">\(v\)</span> o la función <span
 class="math inline">\(u\)</span> según sea el caso.</p>
-<div class="example fragment">
+</div>
+</section>
+<section id="ecuaciones-diferenciales-con-funciones-homogéneas-1.5"
+class="frame">
+<h3>Ecuaciones diferenciales con funciones homogéneas</h3>
+<div class="example">
 <p> Resolver la ecuación <span class="math inline">\((x+y)\mathrm
 dx+x\mathrm dy=0\)</span>.</p>
 </div>
-<div class="solution fragment">
-<p> </p>
+<div class="solution-full fragment">
+<p>
+Notar que \(M(x,y)=x+y\) y \(N(x,y)=x\) son homogéneas de grado \(1\). Si consideramos la transformación \(y=xv\) y usamos la regla del producto obtenemos que
+\(\mathrm{d}y=x\mathrm{d} v+v\mathrm{d} x\)
+de donde la ecuación se puede reescribir como
+\[
+\begin{align*}
+    (x+xv)\mathrm{d} x+x(x\mathrm{d} v+v\mathrm{d} x)&=0\\
+	(x+2xv)\mathrm{d} x+x^2\mathrm{d} v&=0\\
+	x(1+2v)\mathrm{d} x+x^2\mathrm{d} v&=0\\
+	\frac1x\mathrm{d} x+\dfrac{1}{1+2v}\mathrm{d} v&=0\\
+	\int \frac1x\mathrm{d} x+\int \dfrac{1}{1+2v}\mathrm{d} v&=0\\
+	\ln|x|+\frac12\ln|1+2v|&=C,
+\end{align*}
+\]
+de donde volviendo a la variable original obtenemos que
+\[
+	\ln|x|+\frac12\ln\left|\frac{x+2y}{x}\right|=C.
+\]
+</p>
 </div>
 </section>
 <section id="ecuaciones-diferenciales-con-funciones-homogéneas-2"
@@ -127,7 +166,7 @@ class="frame">
 <h3>Ecuaciones diferenciales con funciones homogéneas</h3>
 <div class="example">
 <p> Resolver la ecuación <span
-class="math inline">\(y&#39;=\dfrac{x+3y}{3x+y}\)</span>.</p>
+class="math inline">\(y&#39;=\dfrac{x+3y}{3x+y}\)</span>. Ayuda: Use la transformación \(y=\dfrac{x}{u}\).</p>
 </div>
 <div class="solution fragment">
 <p> </p>
@@ -139,7 +178,7 @@ class="frame">
 <div class="example">
 <p> Resuelva la ecuación diferencial <span
 class="math inline">\((x^2+y^2)\mathrm dx+(x^2-xy)\mathrm
-dy=0\)</span></p>
+dy=0\)</span>. Ayuda: Use la transformación: \(y=xv\).</p>
 </div>
 <div class="solution fragment">
 <p> </p>
@@ -149,7 +188,7 @@ dy=0\)</span></p>
 <section id="ecuación-diferencial-de-bernoulli" class="frame">
 <h3>Ecuación diferencial de Bernoulli</h3>
 <div class="definition">
-<p> Una ecuación diferencial se dice que es de Bernoulli si se puede
+<p> Una ecuación diferencial se dice que es de Bernoulli de grado \(n\) si se puede
 escribir en la forma <span
 class="math display">\[y&#39;+p(x)y=f(x)y^{n}, \text{ donde } n\neq 0
 \text{ y } n\neq 1.\]</span></p>
@@ -159,13 +198,48 @@ siguiente cambio de variable <span
 class="math display">\[u=y^{1-n}.\]</span> La ecuación resultante
 debería ser una ecuación diferencial <em>lineal</em> para la función
 u.</p>
-<div class="example fragment">
+</section>
+
+<section id="ecuación-diferencial-de-bernoulli-1" class="frame">
+<h3>Ecuación diferencial de Bernoulli</h3>
+<div class="example">
 <p> Resolver <span class="math inline">\(xy&#39;+y=x^2y^2\)</span>.</p>
 </div>
-<div class="solution fragment">
-<p> </p>
+<div class="solution-full fragment">
+<p>
+Esta es una ecuación de Bernoulli de grado \(2\), por lo que debemos hacer la transformación \(u=y^{1-2}\Rightarrow y=\dfrac{1}{u}\), lo que implica \(y'=-\dfrac{1}{u^2}u'\), por lo tanto
+\[
+xy'+y=-\frac{x}{u^2}u'+\frac{1}{u}=x^2\left(\frac1{u}\right)^2,
+\]
+y al multiplicar por \(u^2\) se obtiene la ecuación lineal
+\[
+-xu'+u=x^2\Leftrightarrow xu'-u=-x^2.
+\]
+Para resolver esta ecuación la llevamos a la forma canónica \(u'-\frac{1}{x}u=-x\) y usamos el factor integrante
+\[
+e^{\int -\frac1{x}\mathrm{d} x}=e^{-\ln|x|}=\frac{1}{|x|}\rightarrow \mu(x)=\frac{1}x
+\]
+por lo tanto
+\[
+\frac{1}{x}u(x)=\int -x\cdot \dfrac{1}{x}\mathrm{d} x=-x+C\Rightarrow y(x)=\frac{1}{-x^2+Cx}.
+\]
+</p>
 </div>
 </section>
+</section>
+
+<section id="ecuación-diferencial-de-bernoulli-2" class="frame">
+<h3>Ecuación diferencial de Bernoulli</h3>
+<div class="example">
+<p> Resolver <span class="math inline">\(y'+\left({4x-\dfrac1{x}}\right)y=-2y^2\)</span>.</p>
+</div>
+<div class="solution fragment">
+<p>
+</p>
+</div>
+</section>
+        
+        <!--
 <section id="ecuaciones-de-la-forma-yfaxbyc" class="frame">
 <h3>Ecuaciones de la forma <span
 class="math inline">\(y&#39;=f(ax+by+c)\)</span></h3>
@@ -205,7 +279,7 @@ class="math inline">\(y&#39;=\sin(x+y)\)</span>.</p>
 <div class="solution fragment">
 <p> </p>
 </div>
-</section>
+</section>-->
 <section id="ecuación-diferencial-de-ricatti" class="frame">
 <h3>Ecuación diferencial de Ricatti</h3>
 <div class="definition">
@@ -224,16 +298,58 @@ transformación <span class="math display">\[u=y-y_1.\]</span></p>
 class="math inline">\(u\)</span> la que se puede resolver con el método
 anteriormente visto.</p>
 </div>
-<div class="example fragment">
+</section>
+<section id="ecuación-diferencial-de-ricatti-1" class="frame">
+<h3>Ecuación diferencial de Ricatti</h3>
+<div class="example">
 <p> Resolver la ecuación diferencial <span
-class="math inline">\(y&#39;-2x^2-\dfrac{y}x=-2y^2\)</span> sabiendo que
+class="math inline">\(y&#39;=2x^2+\dfrac{y}x-2y^2\)</span> sabiendo que
 <span class="math inline">\(y_1(x)=x\)</span> es una solución.</p>
 </div>
-<div class="solution-medium fragment">
-<p> </p>
+<div class="solution-full fragment">
+<p>
+Primero notamos que efectivamente \(y_1(x)=x\) es solución, puesto que
+\(y_1'=1\) y \(2x^2+\frac{y_1}x-2y_1^2=2x^2+1-2x^2=1\). Con esto, consideramos \(u=y-y_1=y-x\), de donde \(y=u+x\) y 
+\[
+\begin{align*}
+u'&=y'-1\\
+&=2x^2+\frac{y}x-2y^2-1\\
+&=2x^2+\frac{u+x}x-2(u+x)^2-1\\
+&=2x^2+\frac{u}x+1-2(u^2+2xu+x^2)-1\\
+&=2x^2+\frac{1}{x}u-2u^2-4xu-2x^2\\
+&=\left({\frac{1}{x}-4x}\right)u-2u^2,
+\end{align*}
+\]
+de donde \(u'+\left({4x-\frac1{x}}\right)u=-2u^2\), que es la ecuación de Bernoulli que resolvimos anteriormente, por lo tanto
+\[
+u(x)=\frac{2x}{Ce^{2x^2}-1}\Rightarrow y(x)=x+\frac{2x}{Ce^{2x^2}-1}.
+\]
+</p>
 </div>
 </section>
-
+<section id="ejercicios" class="slide level3 frame">
+<h3>Ejercicios</h3>
+<div class="exercise">
+<p><strong> 1</strong>. Resuelva las siguientes EDOs homogéneas.</p>
+<ol style="list-style-type: lower-roman">
+<li style="margin-bottom: 10pt">\(\dfrac{dy}{dx} = \dfrac{x^2+y^2}{2x^2}\)</li>
+<li style="margin-bottom: 10pt">\(x\dfrac{dy}{dx} + y = xy^2\)</li>
+<li style="margin-bottom: 10pt">\(\dfrac{dy}{dx}=\dfrac{3y-4x}{x}\)</li>
+</ol>
+<p><strong> 2</strong>. Resuelva las siguientes EDOs de Bernoulli.</p>
+<ol style="list-style-type: lower-roman">
+<li style="margin-bottom: 10pt">\(y' + \dfrac{4}{x}y = {x^3}{y^2}\)</li>
+<li style="margin-bottom: 10pt">\(y' = 5y + e^{- 2x}y^{-2}\)</li>
+<li style="margin-bottom: 10pt">\(y' + \dfrac{y}{x} - \sqrt y  = 0\)</li>
+</ol>
+<p><strong> 3</strong>. Resuelva las siguientes EDOs de Ricatti.</p>
+<ol style="list-style-type: lower-roman">
+<li style="margin-bottom: 10pt">\(y' = y + {y^2} + 1\). Ayuda: Esta EDO es separable.</li>
+<li style="margin-bottom: 10pt">\(y' + {y^2} = \dfrac{2}{{{x^2}}}\) usando la solución particular \(y_1(x)=\dfrac{2}{x}\).</li>
+<li style="margin-bottom: 10pt">\({x^3}y' + {x^2}y - {y^2} = 2{x^4}\) usando la solución particular \(y_1(x)=x^2\).</li>
+</ol>
+</div>
+</section>
 
     </div>
   </div>
