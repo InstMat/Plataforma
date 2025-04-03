@@ -92,7 +92,7 @@ alt="image" /></p>
 <h3>Ecuaciones Algebraícas</h3>
 <div class="definition">
 <p> Una <span><strong>ecuación</strong></span> es un igualdad de
-expresiones algebraícas.</p>
+expresiones algebraícas. <span class="fragment">La ecuación puede tener una o mas <strong>incógnitas</strong>.</span></p>
 </div>
 <div class="example fragment">
 <p> Determinar cuales de las siguientes son ecuaciones:</p>
@@ -109,9 +109,8 @@ expresiones algebraícas.</p>
 
 <section id="ecuaciones-algebraícas-0.5" class="slide level3 frame">
 <h3>Ecuaciones Algebraícas</h3>
-<div class="definition fragment">
-<p> <span class="math inline">\(\bullet\)</span> Una
-<span><strong>solución o raíz</strong></span> de una ecuación es
+<div class="definition">
+<p>Una <span><strong>solución o raíz</strong></span> de una ecuación con una incógnita es
 cualquier número que, sustituido en ella, la convierte en una
 proposición verdadera.</p>
 </div>
@@ -131,7 +130,7 @@ x-4\)</span>, ver si los siguientes valores son soluciones:</p>
 <div class="definition">
 <p> </p>
 <ul>
-<li class="fragment"><p>El <span><strong>conjunto
+<li><p>El <span><strong>conjunto
 solución</strong></span> de una ecuación, es el conjunto de <b>todas</b> las
 soluciones de la ecuación.</p></li>
 <li class="fragment"><p><span><strong>Resolver</strong></span> una
@@ -150,7 +149,7 @@ el mismo conjunto solución.</p></li>
          E_2 &amp; : &amp; x=1 \\
        \end{array}\)</span>
     </p>
-    <p class="fragment">\(E_1\) y \(E_2\) no son equivalentes.</p>
+    <p class="fragment">\(E_1\) y \(E_2\) <b>no</b> son equivalentes.</p>
     </li>
 <li class="fragment">
     <p><span class="math inline">\(\begin{array}{rcl}
@@ -167,21 +166,21 @@ el mismo conjunto solución.</p></li>
 <div class="theorem">
 <p> <em>Las siguientes operaciones producen ecuaciones
 equivalentes:</em></p>
-<ol>
+<ul>
 <li class="fragment"><p><em>Sumar o restar a cada lado de la igualdad la
 misma expresión que represente un número real.</em></p></li>
 <li class="fragment"><p><em>Mutiplicar o dividir a cada lado de una
 ecuación por la misma expresión que represente un número distinto de
 cero.</em></p></li>
-</ol>
+</ul>
 </div>
 <div class="example fragment">
 <p class="fragment"> <span class="math inline">\(\begin{array}{ccrcll}
-    E_1 & : & 3x+5 &=& 8 & /-5  \\
+    E_1 & : & 3x+5 &=& 8 & \color{red}{/-5}  \\
        &  & 3x+5 {\color{red}{-5}} & = & 8 {\color{red}{-5}} &  \\
     \end{array}\)</span></p>
 <p class="fragment"> <span class="math inline">\(\begin{array}{ccrcll}
-    E_2 & : & 3x &=& 3 & / \div 3 \\
+    E_2 & : & 3x &=& 3 & \color{red}{/ \div 3} \\
         &  & \dfrac{3x}{{\color{red}{3}}} & = & \dfrac{3}{{\color{red}{3}}} & \\
     \end{array}\)</span></p>
 <p class="fragment"> <span class="math inline">\(\begin{array}{ccrcll}
@@ -195,30 +194,24 @@ equivalentes.</span></p>
 <section id="ecuaciones-lineales" class="slide level3 frame">
 <h3>Ecuaciones lineales</h3>
 <div class="definition">
-<p> Una <span><strong>Ecuación Lineal</strong></span> es de, o puede ser
+<p> Una <span><strong>ecuación lineal</strong></span> es de, o puede ser
 llevada a, la forma <span class="math display">\[ax+b =0 \qquad
-\text{donde} \quad a\neq 0\]</span></p>
+\text{donde} \quad \color{red}{a\neq 0}.\]</span></p>
 </div>
 <div class="example fragment">
-<p> Verifique que las siguientes ecuaciones son lineales y resuelvalas.</p>
+<p> Verifique si las siguientes ecuaciones son lineales. En caso de serlo, resuélvalas.</p>
 <ol class="two-columns">
-<li class="fragment"><p><span class="math inline">\(3x+2 =
-6-5x\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\((3x+1)(2x-5) =
-(6x+7)(x+1)\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\((2x-1)(x+2) - x^2 =
-(x+1)^2 +x\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\((3x-4)(2x+1) + 5x =
-6x^2 -4\)</span>.</p></li>
+<li class="fragment" style="margin-bottom: 70pt"><span class="math inline">\(3x+2 = 6-5x\)</span>.</li>
+<li class="fragment" style="margin-bottom: 70pt"><span class="math inline">\((3x+1)(2x-5) =(6x+7)(x+1)\)</span>.</li>
+<li class="fragment" style="margin-bottom: 70pt"><span class="math inline">\((2x-1)(x+2) - x^2 = (x+1)^2 +x\)</span>.</li>
+<li class="fragment" style="margin-bottom: 70pt"><span class="math inline">\((3x-4)(2x+1) + 5x =6x^2 -4\)</span>.</li>
 </ol>
 </div>
 <div class="theorem fragment">
 <p> <em>Una ecuación lineal <span class="math inline">\(ax+b=0\)</span>,
 tiene una sola solución, <span class="math inline">\(x=
-\frac{-b}{a}\)</span>.<br />
-El conjunto solución es <span class="math inline">\(S = \{
-\frac{-b}{a}\}\)</span> (recordar que <span class="math inline">\(a \neq
-0\)</span>).</em></p>
+\frac{-b}{a}\)</span> (recordar que <span class="math inline">\(a \neq
+0\)</span>). El conjunto solución es \[S = \{\frac{-b}{a}\}.\]</em></p>
 </div>
 </section>
 <section id="ecuaciones-cuadráticas" class="slide level3 frame">
@@ -231,14 +224,14 @@ El conjunto solución es <span class="math inline">\(S = \{
 <div class="example fragment">
 <p> Verifique si las siguientes son ecuaciones cuadráticas.</p>
 <ol class="two-columns">
-<li class="fragment"><p><span
-class="math inline">\(x^2+10x-5=0\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(-3x^2=4x+3\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\((3x-5)(8x+\pi)=x^2+3x-10\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(10x^2=x(10x-5)+4\)</span>.</p></li>
+<li class="fragment" style="margin-bottom: 70pt"><span
+class="math inline">\(x^2+10x-5=0\)</span>.</li>
+<li class="fragment" style="margin-bottom: 70pt"><span
+class="math inline">\(-3x^2=4x+3\)</span>.</li>
+<li class="fragment" style="margin-bottom: 7pt"><span
+class="math inline">\((3x-5)(8x+\pi)=x^2+3x-10\)</span>.</li>
+<li class="fragment" style="margin-bottom: 70pt"><span
+class="math inline">\(10x^2=x(10x-5)+4\)</span>.</li>
 </ol>
 </div>
 <div class="fragment">
@@ -264,11 +257,11 @@ class="math inline">\(\, B=0\)</span></em></p>
 <div class="example fragment">
 <p> Utilice factorización para resolver las siguientes ecuaciones</p>
 <ol>
-<li class="fragment"><p><span class="math inline">\(x^2+2x-35
+<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(x^2+2x-35
 =0\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(x^2 + 12 =
+<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(x^2 + 12 =
 7x\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(2x^2 - 3x
+<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(2x^2 - 3x
 =2\)</span></p></li>
 </ol>
 </div>
@@ -288,9 +281,9 @@ Usualmente las soluciones de la ecuación cuadrática se escriben como
 <div class="example fragment">
 <p> Use la fórmula cuadrática para resolver las siguientes ecuaciones </p>
 <ol>
-<li class="fragment"><p><span class="math inline">\(2x^2 + x - 5=0\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(0,1x^2 + 1,3x - 0,675 = 0\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(x^2 - 0,8x + 0,4=0\)</span></p></li>
+<li class="fragment" style="margin-bottom: 40pt"><p><span class="math inline">\(2x^2 + x - 5=0\)</span></p></li>
+<li class="fragment" style="margin-bottom: 40pt"><p><span class="math inline">\(0,1x^2 + 1,3x - 0,675 = 0\)</span></p></li>
+<li class="fragment" style="margin-bottom: 40pt"><p><span class="math inline">\(x^2 - 0,8x + 0,4=0\)</span></p></li>
 </ol>
 </div>
 </section>
@@ -299,7 +292,7 @@ Usualmente las soluciones de la ecuación cuadrática se escriben como
 <div class="remark">
 <p> <em>Una ecuación cuadrática <span class="math display">\[ax^2+bx+c
 =0 \qquad \text{con} \qquad a\neq 0\]</span> tiene tres
-posibilidades</em></p>
+posibilidades:</em></p>
 <ul>
 <li class="fragment"><p><em>Dos soluciones reales si <span
 class="math inline">\(b^2-4ac &gt;0\)</span></em></p></li>
@@ -313,11 +306,11 @@ class="math inline">\(b^2-4ac&lt;0\)</span></em></p></li>
 <p> Determinar si las siguientes ecuaciones tienen una solución real o
 dos soluciones reales o no tiene solución real.</p>
 <ol>
-<li class="fragment"><p><span class="math inline">\(\displaystyle 2x^2
+<li class="fragment" style="margin-bottom: 40pt"><p><span class="math inline">\(\displaystyle 2x^2
 -5x+4=0\)</span>,</p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle 9x^2
+<li class="fragment" style="margin-bottom: 40pt"><p><span class="math inline">\(\displaystyle 9x^2
 -12x + 4=0\)</span>,</p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle 2x^2
+<li class="fragment" style="margin-bottom: 40pt"><p><span class="math inline">\(\displaystyle 2x^2
 +3x =1\)</span>.</p></li>
 </ol>
 </div>
@@ -327,18 +320,18 @@ dos soluciones reales o no tiene solución real.</p>
 <div class="example">
 <p> Resuelva las siguientes ecuaciones</p>
 <ol class="two-columns">
-<li class="fragment"><p><span
-class="math inline">\((x^2-x)(x^2-5x+6)=0\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\frac{1}{x+5} - \frac{2x}{2x+1} = \frac{3}{2x+1}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\frac{x}{x-2} - \frac{6}{x^2-4} = \frac{3}{2x+4}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\sqrt{3x-8} +1 = x-1\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\sqrt{7-x} = x-5\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\sqrt{2x+15} - 2 = \sqrt{6x+1}\)</span></p></li>
+<li class="fragment" style="margin-bottom: 140pt"><span
+class="math inline">\((x^2-x)(x^2-5x+6)=0\)</span></li>
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(\displaystyle
+\frac{1}{x+5} - \frac{2x}{2x+1} = \frac{3}{2x+1}\)</span></li>
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(\displaystyle
+\frac{x}{x-2} - \frac{6}{x^2-4} = \frac{3}{2x+4}\)</span></li>
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(\displaystyle
+\sqrt{3x-8} +1 = x-1\)</span></li>
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(\displaystyle
+\sqrt{7-x} = x-5\)</span></li>
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(\displaystyle
+\sqrt{2x+15} - 2 = \sqrt{6x+1}\)</span></li>
 </ol>
 </div>
 </section>
