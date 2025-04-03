@@ -158,7 +158,7 @@ su inventario?</p></li>
 </div>
 </section>
 
-        <section id="dinámica-de-poblaciones" class="slide level3 frame">
+<section id="dinámica-de-poblaciones" class="slide level3 frame">
 <h3>Dinámica de poblaciones</h3>
 <p>De acuerdo a Thomas Malthus<a href="#/fn1" class="footnote-ref"
 id="fnref1" role="doc-noteref"><sup>1</sup></a>, la tasa a la cual la
@@ -178,18 +178,24 @@ class="math inline">\(A\)</span>.</p>
 <p>Este modelo es usualmente utilizado para modelar el crecimiento de
 pequeñas poblaciones en períodos cortos de tiempo, como por ejemplo, una
 colonia de bacterias en un plato de Petri.</p>
-<div class="example fragment">
+<div style="position:fixed; bottom:-100px; font-size: 12pt"><em>1. An Essay on the Principle of Population</em>, 1798<a
+href="#/fnref1" class="footnote-back" role="doc-backlink">↩︎</a></div>
+</section>
+
+<section id="dinámica-de-poblaciones-1" class="slide level3 frame">
+<h3>Dinámica de poblaciones</h3>
+<div class="example">
 <p> Una placa de Petri contiene inicialmente una colonia de <span
 class="math inline">\(1000\)</span> bacterias. Cuando <span
-class="math inline">\(t=1\)</span> se mide que el número de bacterias es
+class="math inline">\(t=1\)</span> segundo se mide que el número de bacterias es
 de <span class="math inline">\(1500\)</span>. Si la tasa de crecimiento
 de la colonia es proporcional al numero de bacterias <span
 class="math inline">\(P(t)\)</span> en ésta, determine el tiempo
 necesario para que la colonia se triplique en cantidad.</p>
 </div>
 
-            <div class="solution-full fragment">
-                <div  class="fragment">
+<div class="solution-full fragment">
+<div  class="fragment">
 <p> <em>En este caso el PVI es <span class="math display">\[\left\{
 	\begin{aligned}
 		\frac{dP}{dt}&amp;=kP\\
@@ -204,9 +210,9 @@ class="math inline">\(1500=P(1)=1000e^{k\cdot 1}\)</span> obtenemos que
 población se triplicará cuando <span
 class="math inline">\(P(t)=3000=1000e^{kt}\)</span> lo que nos dice que
 esto ocurre cuando <span class="math inline">\(t=\frac{1}{k}\ln
-3=\frac{\ln 3}{\ln\frac32}\approx 2.7.\)</span></em></p>
+3=\frac{\ln 3}{\ln\frac32}\approx 2.7\) segundos.</span></em></p>
 </div>
-            </div>
+</div>
 </section>
 <section id="dinámica-de-poblaciones-2" class="slide level3 frame">
 <h3>Dinámica de poblaciones</h3>
@@ -228,6 +234,9 @@ class="math display">\[\label{pob-ecu1}
 		P(0)&amp;=P_0
 	\end{aligned}
 	\right.\]</span></p>
+</section>
+<section id="dinámica-de-poblaciones-3" class="slide level3 frame">
+<h3>Dinámica de poblaciones</h3>
 <p>En general las tasas de natalidad y mortalidad varían con el tiempo y
 con el tamaño de la población, por lo que en realidad <span
 class="math inline">\(\beta\)</span> y <span
@@ -246,6 +255,8 @@ el modelo sin migración queda de la forma <span class="math display">\[\left\{
 	P(0)&amp;=P_0.
 \end{aligned}
 \right.\]</span></p>
+<div style="position:fixed; bottom:-100px; font-size: 12pt"><p><em>2. Mathematical Researches into the Law of Population
+Growth Increase</em>, 1845<a href="#/fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></div>
 </section>
 <section id="dinámica-de-poblaciones-4" class="slide level3 frame">
 <h3>Dinámica de poblaciones</h3>
@@ -275,18 +286,18 @@ class="math inline">\(P(K-P)\)</span> se puede interpretar como la
 interacción entre la población actual y el “espacio
 disponible”.</p></li>
 </ul>
-<!--</section>
+</section>
 <section id="dinámica-de-poblaciones-5" class="slide level3 frame">
-<h3>Dinámica de poblaciones</h3>-->
-<div class="example fragment">
-<p> (Propagación de una enfermedad). En una comunidad cerrada con <span
+<h3>Dinámica de poblaciones</h3>
+<div class="example">
+    <p> <b>Propagación de una enfermedad</b>: En una comunidad cerrada con <span
 class="math inline">\(P_T\)</span> habitantes, la tasa de contagio de
 cierta enfermedad es proporcional a la interacciones entre individuos
 sanos y enfermos. Determine y resuelva una ecuación que modele la
 propagación de la enfermedad.</p>
 </div>
 <div class="solution-full fragment">
-    <div class="fragment">
+<div class="fragment">
 <p> <em>Si denotamos por <span class="math inline">\(P(t)\)</span> al
 número de personas contagiadas al instante <span
 class="math inline">\(t\)</span>, lo que nos dicen es que <span
@@ -297,7 +308,11 @@ role="doc-noteref"><sup>3</sup></a>. Es decir tenemos que <span
 class="math display">\[\frac{dP}{dt}=kP(P_T-P),\]</span> otra ecuación
 logística. <span class="math inline">\(\blacksquare\)</span></em></p>
 </div>
-    </div>
+</div>
+<div class="fragment" style="position:fixed; bottom:-100px; font-size: 12pt"><p><em>3. Observar que estamos modelando una “interacción”
+entre dos individuos, como el producto de las variables. Esto será
+utilizada constantemente en el futuro.</em><a href="#/fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></div>
 </section>
 <section id="leyes-de-movimiento-de-newton" class="slide level3 frame">
 <h3>Leyes de movimiento de Newton</h3>
@@ -344,9 +359,9 @@ donde <span class="math inline">\(h_0=h(0)\)</span> es la altura inicial
 del objeto.</p>
 <p>En otras palabras, la posición y la velocidad de la masa están
 completamente determinadas por su posición y velocidad inicial.</p>
-<!--</section>
+</section>
 <section id="objeto-en-caída-libre-2" class="slide level3 frame">
-<h3>Objeto en caída libre</h3>-->
+<h3>Objeto en caída libre</h3>
 <div class="example">
 <p> Se dispara verticalmente un balón desde el suelo con una velocidad
 inicial de 49 m/s. Determine la altura máxima del balón y el tiempo que
@@ -376,7 +391,7 @@ disparó el balón, y la solución <span
 class="math inline">\(t=10\)</span> representa el tiempo que demora el
 balón en impactar el suelo.</em></p>
 </div>
-    </div>
+</div>
 </section>
 <section id="leyes-de-newton" class="slide level3 frame">
 <h3>Leyes de Newton</h3>
@@ -396,9 +411,9 @@ queda <span class="math display">\[m\dot v=-mg-kv\Leftrightarrow \dot
 v+\frac km v=-g.\]</span> La cantidad <span
 class="math display">\[\rho:=\frac km\]</span> se denota <em>coeficiente
 de roce</em>.</p>
-<!--</section>
+</section>
 <section id="leyes-de-newton-1" class="slide level3 frame">
-<h3>Leyes de Newton</h3>-->
+<h3>Leyes de Newton</h3>
 <p>Para resolver la EDO utilizamos el factor integrante <span
 class="math inline">\(e^{\rho t}\)</span> y obtenemos que la solución
 general está dada por <span class="math display">\[v(t)=-\frac
@@ -406,7 +421,12 @@ g\rho+Ce^{-\rho t}.\]</span> Si consideramos que la velocidad inicial
 del objeto es <span class="math inline">\(v(0)=v_0\)</span>, obtenemos
 la fórmula para <span class="math inline">\(v(t)\)</span> <span
 class="math display">\[v(t)=\left( v_0+\frac g\rho \right)e^{-\rho
-t}-\frac g\rho.\]</span></p>
+t}-\frac g\rho.\]</span>
+    Si finalmente usamos que \(h(0)=h_0\) entonces la altura del objeto está dada por
+    \[h(t)=\int \left(\left( v_0+\frac g\rho \right)e^{-\rho
+t}-\frac g\rho\right)dt=h_0+\frac{1}{\rho}\left( v_0+\frac g\rho \right)-\frac{1}{\rho}\left( v_0+\frac g\rho \right)e^{-\rho
+t}-\frac{g}{\rho} t\]
+    </p>
 </section>
 <section id="leyes-de-newton-2" class="slide level3 frame">
 <h3>Leyes de Newton</h3>
@@ -416,28 +436,21 @@ coeficiente de roce con el aire de <span
 class="math inline">\(\rho=0.04\)</span>.</p>
 </div>
 <div class="solution-full fragment">
-    <div class="fragment">
-<p> <em>Utilizando la fórmula recién calculada, obtenemos que <span
-class="math display">\[v(t)=294e^{-\frac t{25}}-245.\]</span> Además si
-recordamos que <span class="math inline">\(\dot h=v\)</span>, obtenemos
-que <span class="math display">\[h(t)=7350-245t-7350e^{-\frac
+<div class="fragment">
+<p> <em>Utilizando la fórmula recién calculada, obtenemos que \(v(t)=294e^{-\frac t{25}}-245\). Además si
+recordamos que <span class="math inline">\(\dot h=v\)</span> y que \(h(0)=0\) obtenemos que <span class="math display">\[h(t)=\int v(t)dt=7350-245t-7350e^{-\frac
 t{25}}.\]</span> Ahora, para calcular la altura máxima imponemos la
-condición <span class="math inline">\(v(t)=0\)</span>, y encontramos que
+condición <span class="math inline">\(v(t)=0\)</span>, y encontramos que el tiempo de ascenso es
 <span class="math display">\[t_{max}=25\ln\frac{294}{245}\approx 4.56
-\text{ segundos},\]</span> de donde la altura máxima es <span
-class="math display">\[h_{max}=h(t_{max})\approx 108.3
-.\]</span></em></p>
-<p><em>En cuanto al tiempo de retorno, este es mucho mas complicado de
-calcular que en el caso anterior, ya que si bien la condición <span
-class="math inline">\(h(t)=0\)</span> sigue siendo correcta, el resolver
-dicha ecuación es algo no trivial, y que escapa a las técnicas de este
-curso. Una manera de hacerlo, es mediante el uso de un computador
-(técnicas numéricas), de donde obtenemos que <span
+\text{ segundos}\quad\Rightarrow\quad h_{max}=h(t_{max})\approx 108.3\]</span></em></p>
+<p><em>El tiempo de retorno es mucho mas complicado de
+calcular. Si bien la condición <span
+class="math inline">\(h(t)=0\)</span> sigue siendo correcta, resolver
+dicha ecuación es algo no trivial (escapa a las técnicas de este
+curso). Usando un un computador (técnicas numéricas) nos permite obtener que <span
 class="math display">\[t_{\text{impacto al suelo}}\approx 9.41 \text{
-segundos}.\]</span> Observar que <span
-class="math inline">\(9.14-4.56=4.85\)</span>, es decir, el tiempo de
-descenso es mas largo que tiempo de ascenso, confirmando que cuando hay
-roce, nuestra intuición puede ser incorrecta.</em></p>
+segundos}.\]</span> Observar que <span class="math inline">\(9.14-4.56=4.85\)</span>, es decir el tiempo de
+descenso es mas largo que tiempo de ascenso.</em></p>
 </div>
     </div>
 </section>
@@ -454,10 +467,10 @@ de donde tenemos que <span
 class="math display">\[\frac{dT}{dt}=k(T-T_M)\]</span> Una
 simplificación que se suele hacer, es suponer que <span
 class="math inline">\(T_M\)</span> es constante.</p>
-<!--</section>
+</section>
 <section id="ley-de-enfriamiento-de-newton-1"
 class="slide level3 frame">
-<h3>Ley de enfriamiento de Newton</h3>-->
+<h3>Ley de enfriamiento de Newton</h3>
 <div class="example fragment">
 <p> Una taza de café se enfría según la ley de Newton. Si inicialmente
 el café estaba hirviendo (<span
@@ -481,23 +494,8 @@ que la temperatura luego de 2 minutos es <span
 class="math inline">\(T(2)=13+87e^{-2}\approx 24.77^\circ\)</span>.</em></p>
 </div>
 </section>
-<section id="footnotes" class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1"><p><em>An Essay on the Principle of Population</em>, 1798<a
-href="#/fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><em>Mathematical Researches into the Law of Population
-Growth Increase</em>, 1845<a href="#/fnref2" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><em>Observar que estamos modelando una “interacción”
-entre dos individuos, como el producto de las variables. Esto será
-utilizada constantemente en el futuro.</em><a href="#/fnref3"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
-    </div>
-  </div>
+</div>
+ </div>
 
   <script src="../../../reveal/dist/reveal.js"></script>
 
