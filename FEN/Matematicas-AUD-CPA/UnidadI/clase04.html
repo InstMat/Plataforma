@@ -92,7 +92,7 @@ alt="image" /></p>
 <h3>Inecuaciones Algebraícas</h3>
 <div class="definition">
 <p> Una <u><strong>inecuación</strong></u> es un desigualdad de
-expresiones algebraícas.</p>
+expresiones algebraícas en la que aparece al menos una incógnita.</p>
 </div>
 <div class="example fragment">
 <p> Determinar cuales de las siguientes son inecuaciones</p>
@@ -111,8 +111,8 @@ inecuación</span></p></li>
 <h3>Inecuaciones Algebraícas</h3>
 <div class="definition">
 <p> <span class="math inline">\(\bullet\)</span> Una
-<u><strong>solución</strong> </u> de una inecuación es un número que al
-sustituir en la variable, satisface la desigualdad.</p>
+<u><strong>solución</strong> </u> de una inecuación de una variable es un número que al
+sustituir en la incógnita satisface la desigualdad.</p>
 </div>
 <div class="example fragment">
 <p> Dada la inecuación <span class="math inline">\(\sqrt{2x+5} &lt;
@@ -166,14 +166,12 @@ class="math inline">\(b\)</span> y <span class="math inline">\(c \in
 &amp; x-2 &amp; &lt; &amp;  7  &amp; \qquad / {\color{red}{+2}} \\
 \Longleftrightarrow  &amp; x-2 + {\color{red}{2}} &amp; &lt; &amp;
 7+{\color{red}{2}} &amp; \\
-\text{Luego} &amp; x &amp; &lt; &amp; 9 &amp; \\
+\Longleftrightarrow &amp; x &amp; &lt; &amp; 9 &amp; \\
 \end{array}\)</span></p>
-<p>Se tiene que <span class="math inline">\(x-2&lt;7\)</span> y <span
-class="math inline">\(x&lt;9\)</span> son equivalentes, luego el
-conjunto solución es <span class="math inline">\(S = ]-\infty \, , \,
-9[\)</span></p></li>
+<p class="fragment">Por lo tanto las inecuaciones: \(x-2&lt;7\) y \(x&lt;9\) son equivalentes<span class="fragment">, luego el
+conjunto solución es \[S = \{x\in\mathbb{R}: x&lt;9\}=\,]-\infty,9]\]</span></p></li>
 
-    <li class="fragment"><p> </p>
+<li class="fragment"><p> </p>
 <p><span class="math inline">\(\begin{array}{lrcll}
 &amp; 3x &amp; \geq &amp;  7 &amp; \qquad / {\color{red}{\div 3}}\\
 \Longleftrightarrow  &amp; \displaystyle \frac{3x}{{\color{red}{3}}}
@@ -187,6 +185,9 @@ class="math inline">\(S = \left [ \dfrac{7}{3} \, , \, +\infty \right
 [\)</span></p></li>
 </ol>
 </div>
+    <div class="remark fragment">
+        El conjunto solución de una ecuación es uno o mas <b>intervalos</b>.
+    </div>
 </section>
 <section id="ejemplo-1" class="slide level3 frame">
 <h3>Ejemplo</h3>
@@ -216,29 +217,27 @@ S = \left [ -2 \, , \, +\infty \right [\)</span>.</p></li>
 <div class="definition">
 <p> Una <u><strong>inecuación lineal</strong> </u> en la variable <span
 class="math inline">\(x\)</span> es aquella que puede escribirse en la
-forma <span class="math display">\[ax+b &lt; 0\]</span> donde <span
+forma <span class="math display">\[ax+b \color{red}{&lt;} 0\]</span> donde <span
 class="math inline">\(a\)</span> y <span
 class="math inline">\(b\)</span> son constantes y <span
-class="math inline">\(a\neq 0\)</span>. El simbolo de desigualdad <span
-class="math inline">\(&lt;\)</span> puede ser cambiado por <span
-class="math inline">\(\leq, \, &gt;\)</span> o <span
-class="math inline">\(\geq\)</span>.</p>
+class="math inline">\(a\neq 0\)</span>. El simbolo de desigualdad \(\color{red}{&lt;}\) puede ser cambiado por
+    \(\color{red}{\leq, \, &gt;}\) o \(\color{red}{\geq}\).</p>
 </div>
 <div class="example fragment">
 <p> </p>
 <ol style="list-style-type: upper-roman;" class="two-columns">
 <li class="fragment">Resolver las siguientes inecuaciones:
 <ol>
-<li class="fragment" style="margin-bottom: 100pt"><span class="math inline">\(3(2-3x) &gt;
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(3(2-3x) &gt;
 4(\sqrt3-4x)\)</span></li>
-<li class="fragment" style="margin-bottom: 100pt"><span class="math inline">\(x+2 \leq \sqrt{3} -
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(x+2 \leq \sqrt{3} -
 x\)</span></li>
 </ol></li>
 <li class="fragment">Resolver las siguientes inecuaciones dobles:
 <ol>
-<li class="fragment" style="margin-bottom: 150pt"><span class="math inline">\(2 &lt; 3x-1 \leq
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(2 &lt; 3x-1 \leq
 4\)</span></li>
-<li class="fragment" style="margin-bottom: 150pt"><span class="math inline">\(x+3 \leq 2x+5 &lt;
+<li class="fragment" style="margin-bottom: 140pt"><span class="math inline">\(x+3 \leq 2x+5 &lt;
 3x-1\)</span></li>
 </ol></li>
 </ol>
@@ -249,19 +248,17 @@ x\)</span></li>
 <div class="definition">
 <p> Una <u><strong>inecuación cuadrática</strong></u> en la variable
 <span class="math inline">\(x\)</span> es aquella que puede escribirse
-en la forma <span class="math display">\[ax^2+bx+c &lt; 0\]</span> donde
+en la forma <span class="math display">\[ax^2+bx+c \color{red}{&lt;} 0\]</span> donde
 <span class="math inline">\(a, \, b\)</span> y <span
 class="math inline">\(c\)</span> son constantes y <span
-class="math inline">\(a\neq 0\)</span>. El simbolo de desigualdad <span
-class="math inline">\(&lt;\)</span> puede ser cambiado por <span
-class="math inline">\(\leq, \, &gt;\)</span> o <span
-class="math inline">\(\geq\)</span>.</p>
+class="math inline">\(a\neq 0\)</span>. El simbolo de desigualdad \(\color{red}{&lt;}\) puede ser cambiado por
+    \(\color{red}{\leq, \, &gt;}\) o \(\color{red}{\geq}\).</p>
 </div>
 <p class="fragment">¿Cómo resolver una inecuación cuadrática?</p>
 <ol>
-<li class="fragment" style="margin-bottom: 50pt"><b>Factorizando.</b></li>
-<li class="fragment" style="margin-bottom: 50pt"><b>Usando las soluciones de la ecuación cuadrática
-como puntos claves y ver el signo en cada intervalo.</b></li>
+<li class="fragment" style="margin-bottom: 50pt">Factorizando.</li>
+<li class="fragment" style="margin-bottom: 50pt">Usando las soluciones de la ecuación cuadrática
+como <b>puntos claves</b> que dividen la recta real en intervalos, luego ver el signo en cada intervalo.</li>
 </ol>
 </section>
 <section id="ejemplos-de-inecuaciones-cuadráticas"
@@ -282,11 +279,11 @@ class="slide level3 frame">
 <div class="example">
 <p> Resolver las siguientes inecuaciones</p>
 <ol>
-<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(\displaystyle
+<li class="fragment" style="margin-bottom: 140pt"><p><span class="math inline">\(\displaystyle
 \frac{x+2}{1-x} \leq 0\)</span></p></li>
-<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(\displaystyle
+<li class="fragment" style="margin-bottom: 140pt"><p><span class="math inline">\(\displaystyle
 \frac{x-1}{x+1} \geq \frac{x-2}{2x+1}\)</span></p></li>
-<li class="fragment" style="margin-bottom: 100pt"><p><span class="math inline">\(\displaystyle
+<li class="fragment" style="margin-bottom: 140pt"><p><span class="math inline">\(\displaystyle
 \frac{2x+3}{x-3} &gt; \frac{x-2}{x+2}\)</span></p></li>
 </ol>
 </div>
