@@ -166,12 +166,27 @@ class="frame">
 <h3>Ecuaciones diferenciales con funciones homogéneas</h3>
 <div class="example">
 <p> Resolver la ecuación <span
-class="math inline">\(y&#39;=\dfrac{x+3y}{3x+y}\)</span>. Ayuda: Use la transformación \(y=\dfrac{x}{u}\) y la descomposición en fracciones parciales
-    \[\dfrac{3u+1}{u(1-u)(1+u)} = -\frac{1}{u}+\frac{2}{u-1}-\frac{1}{u+1}.\]
+class="math inline">\(y&#39;=\dfrac{x+3y}{3x+y}\)</span>. Ayuda: Use la transformación \(y=\dfrac{x}{u}\) y la descomposición en fracciones parciales \(\dfrac{3u+1}{u(1-u)(1+u)} = \dfrac{1}{u}+\dfrac{1}{1+u}+\dfrac{2}{1-u}\).
     </p>
 </div>
-<div class="solution fragment">
-<p>
+<div class="solution-full fragment">
+<p class="fragment">
+Notar que en la función \(f(x,y)\) es homogénea de grado \(0\). Si hacemos la transformación \(y=\dfrac{x}{u}\) obtenemos que la ecuación queda
+\[
+\frac{1}{u}-\frac{xu'}{u^2}=y'=\dfrac{x+3y}{3x+y}=\dfrac{y(\frac{x}y+3)}{y(3\frac{x}y+1)}=\dfrac{u+3}{3u+1}.
+\Rightarrow
+xu'=u^2\left({\frac1u-\dfrac{u+3}{3u+1}}\right)=\dfrac{u(1-u)(1+u)}{3u+1}
+\]
+es decir
+\[
+\int\dfrac{3u+1}{u(1-u)(1+u)}\mathrm{d} u = \int\frac{1}{x}\mathrm{d} x
+\Rightarrow
+\ln|u|+\ln|1+u|-2\ln|1-u|=\ln|x|+C.
+\]
+Por lo tanto la solución satisface
+\[
+\ln\left|\frac{x}{y}\right|+\ln\left|1+\frac{x}{y}\right|-2\ln\left|1-\frac{x}{y}\right|=\ln|x|+C
+\]
 </p>
 </div>
 </section>
