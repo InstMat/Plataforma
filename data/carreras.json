@@ -37,8 +37,8 @@
         },
         {
             "id": "fen",
-            "nombre": "Economía y Negocios",
-            "carreras": ["icom", "iie", "cpa", "aud"]
+            "nombre": "Ciencias Sociales, Jurídicas y Económicas",
+            "carreras": ["icom", "iie", "cpa", "aud", "apub"]
         },
         {
             "id": "salud",
@@ -46,7 +46,7 @@
             "carreras": ["tecmed", "enf", "kine", "med", "nut"]
         },
         {
-            "id": "artes",
+            "id": "arqdis",
             "nombre": "Arquitectura, Música y Diseño",
             "carreras": ["arq", "dis"]
         },
@@ -54,11 +54,6 @@
             "id": "agronomia",
             "nombre": "Ciencias Agrarias",
             "carreras": ["agro"]
-        },
-        {
-            "id": "sociales",
-            "nombre": "Ciencias Jurídicas y Sociales",
-            "carreras": ["apub"]
         }
     ],
     "carreras": [
@@ -122,21 +117,21 @@
             "id": "pcing",
             "nombre": "Plan Común Ingeniería",
             "modulos": [
-
+                "IntroMate","Algebra","CalcI","AlgLin"
             ]
         },
         {
             "id": "icom",
             "nombre": "Ingeniería Comercial",
             "modulos": [
-                
+                "ICOMI","ICOMII","ICOMIII","ICOMIV","ICOMV"
             ]
         },
         {
             "id": "iie",
             "nombre": "Ingeniería en Informática Empresarial",
             "modulos": [
-                
+                "IIEI","IIEII","IIEIII","IIEIV","IIEV"
             ]
         },
         

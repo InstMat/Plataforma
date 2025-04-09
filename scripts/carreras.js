@@ -100,8 +100,12 @@ async function cargarCarreras() {
 function verCursos(carreraId) {
     const lista = document.getElementById('lista-cursos');
     const spinner = document.getElementById('loading-spinner');
+    const mensaje = document.getElementById('mensaje-modulos');
 
+    // Resetear contenido
     lista.innerHTML = '';
+    mensaje.style.display = 'none';
+    mensaje.textContent = '';
     lista.style.opacity = 0;
     spinner.style.display = 'flex';
 
@@ -111,35 +115,52 @@ function verCursos(carreraId) {
             const carrera = data.carreras.find(c => c.id === carreraId);
             if (carrera) {
                 setTimeout(() => {
-                    // Ordenar módulos alfabéticamente por nombre
-                    const modulosOrdenados = carrera.modulos
+                    const modulos = carrera.modulos
                         .map(moduloId => data.modulos_comunes[moduloId])
-                        .filter(modulo => modulo && modulo.enlace !== "#")
-                        .sort((a, b) => 
+                        .filter(modulo => modulo);
+
+                    const modulosValidos = modulos.filter(modulo => modulo.enlace !== "#");
+
+                    if (modulosValidos.length === 0) {
+                        mensaje.textContent = "No hay módulos disponibles para esta carrera.";
+                        mensaje.style.display = 'block';
+                    } else {
+                        mensaje.style.display = 'none';
+
+                        // Ordenar módulos alfabéticamente
+                        modulosValidos.sort((a, b) =>
                             a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' })
                         );
 
-                    modulosOrdenados.forEach((modulo, index) => {
-                        const li = document.createElement('li');
-                        const a = document.createElement('a');
-                        a.textContent = modulo.nombre;
-                        a.href = modulo.enlace;
-                        a.classList.add('course-link');
-                        li.appendChild(a);
-                        lista.appendChild(li);
+                        modulosValidos.forEach((modulo, index) => {
+                            const li = document.createElement('li');
+                            const a = document.createElement('a');
+                            a.textContent = modulo.nombre;
+                            a.href = modulo.enlace;
+                            a.classList.add('course-link');
+                            li.appendChild(a);
+                            lista.appendChild(li);
 
-                        setTimeout(() => {
-                            li.classList.add('visible');
-                        }, index * 100);
-                    });
+                            setTimeout(() => {
+                                li.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
 
                     lista.style.opacity = 1;
                     spinner.style.display = 'none';
                 }, 500);
             }
         })
-        .catch(error => console.error('Error al cargar los módulos:', error));
+        .catch(error => {
+            console.error('Error al cargar los módulos:', error);
+            mensaje.textContent = "Error al cargar los módulos.";
+            mensaje.style.display = 'block';
+            spinner.style.display = 'none';
+        });
 }
+
+
 
 // Función para recargar las carreras (se mantiene igual)
 function recargarCarreras() {
