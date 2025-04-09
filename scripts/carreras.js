@@ -10,12 +10,22 @@ async function cargarCarreras() {
         // Limpiar lista antes de agregar elementos
         listaCarreras.innerHTML = '';
 
+        // Ordenar facultades alfabéticamente por nombre
+        const facultadesOrdenadas = [...data.facultades].sort((a, b) => 
+            a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' })
+        );
+
         // Generar la lista de facultades
-        data.facultades.forEach(facultad => {
+        facultadesOrdenadas.forEach(facultad => {
             // Obtener las carreras de esta facultad que tienen módulos
             const carrerasConModulos = facultad.carreras
                 .map(carreraId => data.carreras.find(c => c.id === carreraId))
                 .filter(carrera => carrera && carrera.modulos && carrera.modulos.length > 0);
+            
+            // Ordenar carreras alfabéticamente por nombre
+            carrerasConModulos.sort((a, b) => 
+                a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' })
+            );
             
             // Solo mostrar facultades que tienen carreras con módulos
             if (carrerasConModulos.length > 0) {
@@ -31,7 +41,7 @@ async function cargarCarreras() {
                 carrerasList.classList.add('submenu');
                 carrerasList.style.display = 'none';
 
-                // Agregar las carreras
+                // Agregar las carreras (ya ordenadas)
                 carrerasConModulos.forEach(carrera => {
                     const carrLi = document.createElement('li');
                     const carrA = document.createElement('a');
@@ -48,7 +58,7 @@ async function cargarCarreras() {
                     carrerasList.appendChild(carrLi);
                 });
 
-                // Configurar el click para expandir/colapsar
+                // Configurar el click para expandir/colapsar (igual que antes)
                 facA.onclick = (e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -86,7 +96,7 @@ async function cargarCarreras() {
     }
 }
 
-// Función para mostrar los módulos de una carrera (se mantiene igual)
+// Función para mostrar los módulos de una carrera en el área de contenido
 function verCursos(carreraId) {
     const lista = document.getElementById('lista-cursos');
     const spinner = document.getElementById('loading-spinner');
@@ -101,21 +111,26 @@ function verCursos(carreraId) {
             const carrera = data.carreras.find(c => c.id === carreraId);
             if (carrera) {
                 setTimeout(() => {
-                    carrera.modulos.forEach((moduloId, index) => {
-                        const modulo = data.modulos_comunes[moduloId];
-                        if (modulo && modulo.enlace !== "#") {
-                            const li = document.createElement('li');
-                            const a = document.createElement('a');
-                            a.textContent = modulo.nombre;
-                            a.href = modulo.enlace;
-                            a.classList.add('course-link');
-                            li.appendChild(a);
-                            lista.appendChild(li);
+                    // Ordenar módulos alfabéticamente por nombre
+                    const modulosOrdenados = carrera.modulos
+                        .map(moduloId => data.modulos_comunes[moduloId])
+                        .filter(modulo => modulo && modulo.enlace !== "#")
+                        .sort((a, b) => 
+                            a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' })
+                        );
 
-                            setTimeout(() => {
-                                li.classList.add('visible');
-                            }, index * 100);
-                        }
+                    modulosOrdenados.forEach((modulo, index) => {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.textContent = modulo.nombre;
+                        a.href = modulo.enlace;
+                        a.classList.add('course-link');
+                        li.appendChild(a);
+                        lista.appendChild(li);
+
+                        setTimeout(() => {
+                            li.classList.add('visible');
+                        }, index * 100);
                     });
 
                     lista.style.opacity = 1;
