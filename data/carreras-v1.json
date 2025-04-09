@@ -29,39 +29,9 @@
         "IIEIV": { "nombre": "Estadística I", "enlace": "#" },
         "IIEV": { "nombre": "Estadística II", "enlace": "#" }
     },
-    "facultades": [
-        {
-            "id": "ingenieria",
-            "nombre": "Ingeniería",
-            "carreras": ["ivideo", "ibio", "icminas", "icelec", "icc", "icociv", "ici", "icm", "icmec", "pcing"]
-        },
-        {
-            "id": "fen",
-            "nombre": "Economía y Negocios",
-            "carreras": ["icom", "iie", "cpa", "aud"]
-        },
-        {
-            "id": "salud",
-            "nombre": "Ciencias de la Salud",
-            "carreras": ["tecmed", "enf", "kine", "med", "nut"]
-        },
-        {
-            "id": "artes",
-            "nombre": "Arquitectura, Música y Diseño",
-            "carreras": ["arq", "dis"]
-        },
-        {
-            "id": "agronomia",
-            "nombre": "Ciencias Agrarias",
-            "carreras": ["agro"]
-        },
-        {
-            "id": "sociales",
-            "nombre": "Ciencias Jurídicas y Sociales",
-            "carreras": ["apub"]
-        }
-    ],
+    
     "carreras": [
+        
         {
             "id": "agro",
             "nombre": "Agronomía",
@@ -108,7 +78,7 @@
             "id": "med",
             "nombre": "Medicina",
             "modulos": [
-
+   
             ]
         },
         {

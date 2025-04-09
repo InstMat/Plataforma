@@ -1,8 +1,8 @@
-// Función para cargar el JSON y generar el menú
+// Función para cargar el JSON y generar el menú por facultades
 async function cargarCarreras() {
     try {
         const response = await fetch('data/carreras.json', {
-            cache: 'no-cache', // Evita usar la caché
+            cache: 'no-cache',
         });
         const data = await response.json();
         const listaCarreras = document.getElementById('lista-carreras');
@@ -10,39 +10,90 @@ async function cargarCarreras() {
         // Limpiar lista antes de agregar elementos
         listaCarreras.innerHTML = '';
 
-        // Generar la lista de carreras con módulos
-        data.carreras
-            .filter(carrera => carrera.modulos && carrera.modulos.length > 0) // Filtrar solo carreras con módulos
-            .forEach(carrera => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = '#';
-                a.innerHTML = `${carrera.nombre} <i class="fas fa-chevron-right"></i>`;
-                a.onclick = () => {
-                    verCursos(carrera.id);
-                    if (window.innerWidth <= 768) { // Solo en móviles
-                        sidebar.classList.remove('active');
-                    }
-                };
-                li.appendChild(a);
-                listaCarreras.appendChild(li);
-            });
+        // Generar la lista de facultades
+        data.facultades.forEach(facultad => {
+            // Obtener las carreras de esta facultad que tienen módulos
+            const carrerasConModulos = facultad.carreras
+                .map(carreraId => data.carreras.find(c => c.id === carreraId))
+                .filter(carrera => carrera && carrera.modulos && carrera.modulos.length > 0);
+            
+            // Solo mostrar facultades que tienen carreras con módulos
+            if (carrerasConModulos.length > 0) {
+                // Crear elemento de facultad
+                const facLi = document.createElement('li');
+                const facA = document.createElement('a');
+                facA.href = '#';
+                facA.innerHTML = `${facultad.nombre} <i class="fas fa-chevron-down"></i>`;
+                facA.classList.add('facultad-link');
+                
+                // Crear lista de carreras para esta facultad
+                const carrerasList = document.createElement('ul');
+                carrerasList.classList.add('submenu');
+                carrerasList.style.display = 'none';
 
-        // Ordenar la lista alfabéticamente
-        ordenarLista();
+                // Agregar las carreras
+                carrerasConModulos.forEach(carrera => {
+                    const carrLi = document.createElement('li');
+                    const carrA = document.createElement('a');
+                    carrA.href = '#';
+                    carrA.textContent = carrera.nombre;
+                    carrA.onclick = (e) => {
+                        e.stopPropagation();
+                        verCursos(carrera.id);
+                        if (window.innerWidth <= 768) {
+                            sidebar.classList.remove('active');
+                        }
+                    };
+                    carrLi.appendChild(carrA);
+                    carrerasList.appendChild(carrLi);
+                });
+
+                // Configurar el click para expandir/colapsar
+                facA.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Cerrar otros submenús primero
+                    document.querySelectorAll('.submenu').forEach(sub => {
+                        if (sub !== carrerasList) {
+                            sub.style.display = 'none';
+                            // Restaurar íconos de otras facultades
+                            const parentLi = sub.parentElement;
+                            if (parentLi) {
+                                const icon = parentLi.querySelector('i');
+                                if (icon) icon.className = 'fas fa-chevron-down';
+                            }
+                        }
+                    });
+                    
+                    // Alternar el submenú actual
+                    const isShowing = carrerasList.style.display === 'block';
+                    carrerasList.style.display = isShowing ? 'none' : 'block';
+                    
+                    // Cambiar el ícono
+                    const icon = facA.querySelector('i');
+                    icon.className = isShowing ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+                };
+
+                facLi.appendChild(facA);
+                facLi.appendChild(carrerasList);
+                listaCarreras.appendChild(facLi);
+            }
+        });
+
     } catch (error) {
         console.error('Error al cargar las carreras:', error);
     }
 }
 
-// Función para mostrar los módulos de una carrera
+// Función para mostrar los módulos de una carrera (se mantiene igual)
 function verCursos(carreraId) {
     const lista = document.getElementById('lista-cursos');
     const spinner = document.getElementById('loading-spinner');
 
     lista.innerHTML = '';
     lista.style.opacity = 0;
-    spinner.style.display = 'flex'; // Mostrar spinner
+    spinner.style.display = 'flex';
 
     fetch('data/carreras.json', { cache: 'no-cache' })
         .then(response => response.json())
@@ -51,10 +102,7 @@ function verCursos(carreraId) {
             if (carrera) {
                 setTimeout(() => {
                     carrera.modulos.forEach((moduloId, index) => {
-                        // Buscar el módulo en modulos_comunes
                         const modulo = data.modulos_comunes[moduloId];
-
-                        // Filtrar módulos que tienen enlace "#"
                         if (modulo && modulo.enlace !== "#") {
                             const li = document.createElement('li');
                             const a = document.createElement('a');
@@ -64,7 +112,6 @@ function verCursos(carreraId) {
                             li.appendChild(a);
                             lista.appendChild(li);
 
-                            // Aplicar animación con retraso incremental
                             setTimeout(() => {
                                 li.classList.add('visible');
                             }, index * 100);
@@ -72,42 +119,24 @@ function verCursos(carreraId) {
                     });
 
                     lista.style.opacity = 1;
-                    spinner.style.display = 'none'; // Ocultar spinner
-                }, 500); // Simular retraso de carga
-            } else {
-                console.error(`Carrera con ID "${carreraId}" no encontrada.`);
+                    spinner.style.display = 'none';
+                }, 500);
             }
         })
         .catch(error => console.error('Error al cargar los módulos:', error));
 }
 
-// Función para ordenar la lista alfabéticamente
-function ordenarLista() {
-    const lista = document.getElementById('lista-carreras');
-    const items = Array.from(lista.getElementsByTagName('li'));
-
-    items.sort((a, b) => {
-        const textoA = a.textContent.trim().toLowerCase();
-        const textoB = b.textContent.trim().toLowerCase();
-        return textoA.localeCompare(textoB);
-    });
-
-    lista.innerHTML = '';
-    items.forEach(item => lista.appendChild(item));
-}
-
-// Función para recargar las carreras
+// Función para recargar las carreras (se mantiene igual)
 function recargarCarreras() {
     const lista = document.getElementById('lista-cursos');
     lista.innerHTML = '';
     document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
 }
 
-// JavaScript para mostrar/ocultar la barra lateral en móviles
+// JavaScript para mostrar/ocultar la barra lateral en móviles (se mantiene igual)
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
 
-// Mostrar/ocultar la barra lateral al hacer clic en el botón de menú
 menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('active');
 });
