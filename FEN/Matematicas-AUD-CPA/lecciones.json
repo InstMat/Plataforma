@@ -20,6 +20,15 @@
                     "enlace": "UnidadI/clase04.html"
                 }
             ]
+        },
+        {
+            "nombre": "Unidad II",
+            "lecciones": [
+                {
+                    "nombre": "Funciones",
+                    "enlace": "UnidadII/clase05.html"
+                }
+            ]
         }
     ]
 }
