@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Matemáticas</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Matemáticas</h1>
+  <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+Contador Público y Auditor</p>
+  <p class="author"><img
+data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+alt="image" /></p>
+</section>
+
+<section id="algebra-de-funciones" class="slide level3 frame">
+<h3>Algebra de funciones</h3>
+<div class="definition">
+<p> Sean <span class="math inline">\(f\)</span> y <span
+class="math inline">\(g\)</span> funciones con, <span
+class="math inline">\(Dom(f) = A\)</span> y <span
+class="math inline">\(Dom(g) = B\)</span>. Entonces, las funciones \(f+g,~ f-g,~ f\cdot g\) y \(\dfrac{f}{g}\)
+están definidas como sigue</p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\displaystyle
+(f+g)(x) = f(x) + g(x) \qquad Dom(f+g) = A \cap B\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\displaystyle
+(f-g)(x) = f(x) - g(x) \qquad Dom(f-g) = A \cap B\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\displaystyle
+(f\cdot g)(x) = f(x) \cdot g(x) \qquad Dom(f\cdot g) = A \cap
+B\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\displaystyle \left(
+\frac{f}{g} \right)(x) = \frac{f(x)}{g(x)} \qquad \qquad  Dom \left(
+\frac{f}{g} \right) = \{ x \in A\cap B / g(x) \neq 0
+\}\)</span></p></li>
+</ul>
+</div>
+
+<div class="example fragment">
+<p>Considere las funciones <span class="math inline">\(\displaystyle f(x) =
+\frac{x}{x-2},~ g(x) = \sqrt{x+1}\)</span>.</p>
+<ol>
+<li class="fragment"><p>Encontrar <span class="math inline">\((f+g)(1),~(f-g)(4),~(f\cdot g)(3),~\left(\dfrac{f}{g}\right)(0)\)</span></p></li>
+<li class="fragment"><p>Determinar las siguientes funciones <span
+class="math inline">\(\displaystyle f, \, \, g, \, \, (f+g), \, \,
+(f-g), \, \, (f\cdot g), \, \, \left ( \frac{f}{g} \right )\)</span>   y
+sus dominios.</p></li>
+</ol>
+</div>
+</section>
+<section id="composición-de-funciones" class="slide level3 frame">
+<h3>Composición de funciones</h3>
+<div class="remark">
+<p> <em>Podemos describir <span class="math inline">\((f\circ
+g)\)</span> usando el siguiente diagrama</em></p>
+<div class="center">
+<p style="text-align: center;"><img data-src="clase06/func7.png" style="width:25cm" alt="image" /></p>
+</div>
+</div>
+</section>
+<section id="composición-de-funciones-1" class="slide level3 frame">
+<h3>Composición de funciones</h3>
+<div class="example">
+<p> Dadas las funciones <span class="math inline">\(f(x) = 2x-1 , \, \,
+g(x) = \sqrt{x+1}, \, \, h(x) = \dfrac{x+1}{x-3}, \, \,  l(x) =
+3x^2+2\)</span>. Determinar las siguientes funciones</p>
+<div class="multicols">
+<ol class="two-columns">
+<li class="fragment"><span class="math inline">\((f\circ
+g)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((g\circ
+f)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((f\circ
+h)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((h\circ
+f)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((g\circ
+h)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((h\circ
+g)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((f\circ
+l)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((l\circ
+f)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((g\circ
+l)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\((l\circ
+g)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\(((f\circ g)\circ
+h)(x)\)</span></li>
+<li class="fragment"><span class="math inline">\(((h\circ l)\circ
+g)(x)\)</span></li>
+</ol>
+</div>
+</div>
+<div class="remark fragment">
+<p> <em>En general <span style="color:red;">no es cierto</span> que <span class="math inline">\(f \circ
+g = g \circ f\)</span>.</em></p>
+</div>
+</section>
+<section id="respuestas-de-los-ejemplos-anteriores"
+class="slide level3 frame">
+<h3>Respuestas de los ejemplos anteriores</h3>
+<div class="example">
+<p> <span class="math inline">\(f(x) = 2x-1 , \quad  g(x) = \sqrt{x+1},
+\quad  h(x) = \dfrac{x+1}{x-3}, \quad   l(x) = 3x^2+2\)</span>.</p>
+<div class="multicols">
+<ol class="two-columns">
+<li><span class="math inline">\((f\circ g)(x) =
+2\sqrt{x+1}-1\)</span></li>
+<li><span class="math inline">\((g\circ f)(x) =
+\sqrt{2x}\)</span></li>
+<li><span class="math inline">\((f\circ h)(x) =
+\dfrac{2(x+1)}{x-3} -1\)</span></li>
+<li><span class="math inline">\((h\circ f)(x) =
+\dfrac{2x}{2x-4}\)</span></li>
+<li><span class="math inline">\((g\circ h)(x) =
+\sqrt{\dfrac{x+1}{x-3} +1}\)</span></li>
+<li><span class="math inline">\((h\circ g)(x)=
+\dfrac{\sqrt{x+1} +1}{\sqrt{x+1}-3}\)</span></li>
+<li><span class="math inline">\((f\circ l)(x) =
+6x^2+3\)</span></li>
+<li><span class="math inline">\((l\circ f)(x) =
+3(2x-1)^2 + 2\)</span></li>
+<li><span class="math inline">\((g\circ l)(x) =
+\sqrt{3x^2+3}\)</span></li>
+<li><span class="math inline">\((l\circ g)(x) =
+3x+5\)</span></li>
+<li><span class="math inline">\(((f\circ g)\circ
+h)(x) = 2\sqrt{\dfrac{x+1}{x-3}+1} - 1\)</span></li>
+<li><span class="math inline">\(((h\circ l)\circ
+g)(x) = \dfrac{3x+6}{3x+2}\)</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="ejercicios" class="slide level3 frame">
+<h3>Ejercicios</h3>
+<div class="exercise">
+<p><strong> 1</strong>. Expresar las siguientes funciones, como una
+composición de dos o más funciones</p>
+<ol style="list-style-type: lower-alpha;">
+<li class="fragment" style="margin-bottom: 80pt"><p><span class="math inline">\(\displaystyle h(x) =
+(3x+2)^4\)</span></p></li>
+<li class="fragment" style="margin-bottom: 80pt"><p><span class="math inline">\(\displaystyle h(x) =
+\sqrt{x^2+x-2}\)</span></p></li>
+<li class="fragment" style="margin-bottom: 80pt"><p><span class="math inline">\(\displaystyle h(x) =
+\frac{x+3}{(x+3)^2 +5}\)</span></p></li>
+<li class="fragment" style="margin-bottom: 80pt"><p><span class="math inline">\(\displaystyle h(x) =
+\sqrt[4]{x-2}\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="función-inversa" class="slide level3 frame">
+<h3>Función inversa</h3>
+<div class="definition">
+<p> Sea <span class="math inline">\(f\)</span> una función inyectiva con dominio <span class="math inline">\(A\)</span> y
+recorrido <span class="math inline">\(B\)</span>. Entonces su
+<em>función inversa</em> <span class="math inline">\(f^{-1}\)</span>
+tiene dominio <span class="math inline">\(B\)</span> y recorrido <span
+class="math inline">\(A\)</span>, la cual está definida mediente la
+relación <span class="math display">\[f^{-1}(y)=x \qquad \text{si y
+sólo si} \qquad f(x) = y\]</span> para todo <span
+class="math inline">\(y\)</span> en <span
+class="math inline">\(B\)</span></p>
+<div class="center">
+<p style="text-align: center;"><img data-src="clase06/func9.png" style="width:15cm" alt="image" /></p>
+</div>
+</div>
+</section>
+<section id="función-inversa-1" class="slide level3 frame">
+<h3>Función inversa</h3>
+<div class="example">
+<p> Sea <span class="math inline">\(f\)</span> una función inyectiva tal
+que <span class="math inline">\(f(0) = 4, \quad f(1) = 7 , \quad f(2) =
+1\)</span>, hallar <span class="math inline">\(f^{-1}(1), \quad
+f^{-1}(4), \quad f^{-1}(7)\)</span></p>
+</div>
+<div class="theorem fragment">
+<p> <em>Sea <span class="math inline">\(f\)</span> una función inyectiva
+(uno a uno) con dominio <span class="math inline">\(A\)</span> y
+recorrido <span class="math inline">\(B\)</span>. La función inversa
+<span class="math inline">\(f^{-1}\)</span>   satisface las siguientes
+propiedades</em></p>
+<ul>
+<li class="fragment"><p><em><span class="math display">\[f^{-1}(f(x)) =
+x \qquad \text{para toda $x$ en $A$}\]</span></em></p></li>
+<li class="fragment"><p><em><span class="math display">\[f(f^{-1}(y))= y
+\qquad \text{para toda $y$ en $B$}\]</span></em></p></li>
+</ul>
+<p class="fragment"><em>Recíprocamente, cualquier función <span
+class="math inline">\(f^{-1}\)</span> que satisface las dos propiedades
+anteriores es la inversa de <span
+class="math inline">\(f\)</span>.</em></p>
+</div>
+</section>
+<section id="ejercicios-1" class="slide level3 frame">
+<h3>Ejercicios</h3>
+<div class="exercise">
+<p><strong> 2</strong>. Probar que <span class="math inline">\(f(x) =
+x^3\)</span> y <span class="math inline">\(g(x) = x^{1/3}\)</span> son
+inversa entre si</p>
+</div>
+<div class="remark fragment">
+<p> <em>¿Cómo hallar la inversa de una función inyectiva?</em></p>
+<ol>
+<li class="fragment"><p><em>Escribir <span
+class="math inline">\(y=f(x)\)</span></em></p></li>
+<li class="fragment"><p><em>Despejar <span
+class="math inline">\(x\)</span> de la ecuación en términos de <span
+class="math inline">\(y\)</span>.</em></p></li>
+<li class="fragment"><p><em>Intercambiar <span
+class="math inline">\(x\)</span> e <span
+class="math inline">\(y\)</span>. La ecuación resultante es <span
+class="math inline">\(y = f^{-1}(x)\)</span></em></p></li>
+</ol>
+</div>
+<div class="example fragment">
+<p> </p>
+<ol>
+<li class="fragment"><p>Hallar la inversa de la función <span
+class="math inline">\(f(x) = 2x -5\)</span></p></li>
+<li class="fragment"><p>Sea <span class="math inline">\(\displaystyle
+f(x) = \frac{x-3}{2x+1}\)</span> determinar dominio y recorrido de <span
+class="math inline">\(f\)</span>. Probar que <span
+class="math inline">\(f\)</span> es inyectiva y encontrar <span
+class="math inline">\(f^{-1}(x)\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="ejercicios-2" class="slide level3 frame">
+<h3>Ejercicios</h3>
+<div class="exercise">
+<p><strong> 3</strong>. Un comerciante de café vende el kilo de café por
+$19.000. Los gastos mensuales son $450.000 más $8.500 por cada kilo de
+café vendido. Si <span class="math inline">\(x\)</span> representa los
+kilos de café vendidos.</p>
+<ol style="list-style-type: lower-alpha;">
+<li class="fragment"><p>Escribir una función <span
+class="math inline">\(I(x)\)</span> para el ingreso mensual total como
+una función del número de kilos de café vendidos.</p></li>
+<li class="fragment"><p>Escribir una función <span
+class="math inline">\(C(x)\)</span> para los gastos mensuales totales
+como una función del número de kilos de café vendidos.</p></li>
+<li class="fragment"><p>Escribir una función <span
+class="math inline">\((I-C)(x)\)</span> para la utilidad mensual total
+como una función del número de kilos de café vendidos.</p></li>
+</ol>
+</div>
+</section>
+<section id="ejercicios-3" class="slide level3 frame">
+<h3>Ejercicios</h3>
+<div class="exercise">
+<p><strong> 4</strong>. Un fabricante determina que el número total de
+unidades de producción por día, <span class="math inline">\(q\)</span>,
+es una función del número de empleados, <span
+class="math inline">\(m\)</span>, donde <span class="math display">\[q =
+f(m) = \frac{40m-m^2}{4}\]</span> El ingreso total, <span
+class="math inline">\(I\)</span>, que se recibe por la venta de <span
+class="math inline">\(q\)</span> unidades, está dado por la función
+<span class="math inline">\(g\)</span>, donde <span
+class="math inline">\(I = g(q) = 40q\)</span>. Determinar   <span
+class="math inline">\((g\circ f)(m)\)</span>. ¿Qué es lo que describe
+esta función compuesta?</p>
+</div>
+</section>
+<section id="ejercicios-4" class="slide level3 frame">
+<h3>Ejercicios</h3>
+<div class="exercise">
+<p><strong> 5</strong>. La ecuación de demanda de un producto está dada
+por <span class="math display">\[p = f(q) = \frac{100}{q+5}\]</span>
+donde <span class="math inline">\(p\)</span> es el precio y <span
+class="math inline">\(q\)</span> es la cantidad demandada. Encontrar
+<span class="math inline">\(f^{-1}\)</span>. ¿Qué representa esta
+función inversa?</p>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../../reveal/plugin/search/search.js"></script>
+  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
+<script src="../../../reveal/plugin/math/math.js"></script>
+
+<script src="../../../scripts/reveal-init.js"></script>
+    </body>
+</html>
