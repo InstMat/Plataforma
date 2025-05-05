@@ -98,7 +98,7 @@ ecuación homogénea (<span class="math inline">\(f(x)\equiv 0\)</span>) y
 obtenemos las funciones <span class="math inline">\(y_1\)</span> e <span
 class="math inline">\(y_2\)</span> como lo hicimos anteriormente
 (dependiendo de como sean las raíces de la ecuación auxiliar).</p>
-<div class="theorem">
+<div class="theorem fragment">
 <p> <em>La solución general de la ecuación <a href="#edo2orden"
 data-reference-type="eqref" data-reference="edo2orden">(1)</a>
 se puede escribir como <span
@@ -108,17 +108,21 @@ ecuación homogénea (<span class="math inline">\(f(x)=0\)</span>), es
 decir <span class="math display">\[y_h(t)=C_1y_1(t)+C_2y_2(t)\]</span>
 con <span class="math inline">\(y_1(t),y_2(t)\)</span> las soluciones
 fundamentales. Por otra parte, la función <span
-class="math inline">\(y_p(t)\)</span> es <em>cualquier</em> solución
+class="math inline">\(y_p(t)\)</span> es <strong>cualquier</strong> solución
 particular de la ecuación <a href="#edo2orden"
 data-reference-type="eqref"
 data-reference="edo2orden">(1)</a>.</em></p>
 </div>
+<div class="fragment">
+<p style="text-align: center;">¿Como encontrar soluciones particulares?
+</p>
+</div>
 </section>
 <section id="edos-lineales-de-segundo-orden-no-homogéneas-1"
 class="slide level3 frame">
-<h3>EDOs lineales de segundo orden no-homogéneas</h3>
+<h3>Principio de superposición II</h3>
 <div class="theorem">
-<p> (Principio de superposición). <em>Si <span
+<p><em>Si <span
 class="math inline">\(y_{p_1}\)</span> es una solución de la ecuación
 <span class="math display">\[ay&#39;&#39;+by&#39;+cy=f_1\]</span> y si
 <span class="math inline">\(y_{p_2}\)</span> es una solución de la
@@ -129,12 +133,12 @@ de <span
 class="math display">\[ay&#39;&#39;+by&#39;+cy=f_1+f_2.\]</span></em></p>
 </div>
 <div class="remark fragment">
-<p> <em>Este teorema dice que si quieremos resolver la EDO <span
-class="math display">\[ay&#39;&#39;+by&#39;+cy=f_1+f_2\]</span> se puede
-resovler por separado las EDOs <span
+<p> <em>Este teorema dice que si quieremos encontrar una solución particular de la EDO <span
+class="math display">\[\begin{equation}\label{edo-nh2}y&#39;&#39;+by&#39;+cy=f_1+f_2\end{equation}\]</span> se pueden
+buscar por separado soluciones particulares de las EDOs <span
 class="math display">\[ay&#39;&#39;+by&#39;+cy=f_1\quad\text{y}\quad
 ay&#39;&#39;+by&#39;+cy=f_1\]</span> y luego sumar las
-soluciones.</em></p>
+soluciones obtenidas para obtener una solución particular de \eqref{edo-nh2}.</em></p>
 </div>
 </section>
 <section id="coeficientes-indeterminados" class="slide level3 frame">
@@ -176,7 +180,12 @@ la ecuación se obtiene <span class="math display">\[\begin{aligned}
 class="math inline">\(-3A=7\)</span> y <span
 class="math inline">\(2A-3B=4\)</span>, por lo tanto <span
 class="math inline">\(A=-\frac73\)</span> y <span
-class="math inline">\(B=\dfrac{-\frac{14}3-4}3=-\frac{26}9\)</span>.</em></p>
+class="math inline">\(B=\dfrac{-\frac{14}3-4}3=-\dfrac{26}9\)</span>.</em>
+De acá deducimos que la solución general de la EDO es
+\[
+y(x)=C_1e^{-3x}+C_2e^{x}-\frac73x-\frac{26}{9}
+\]
+</p>
 </div>
 </div>
 </section>
