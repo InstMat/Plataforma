@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Matemáticas</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Matemáticas</h1>
+  <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+Contador Público y Auditor</p>
+  <p class="author"><img
+data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+alt="image" /></p>
+</section>
+
+<section id="funciones-exponenciales" class="slide level3 frame">
+<h3>Funciones Exponenciales</h3>
+<div class="block">
+<p><span>Definición</span> La función <span class="math inline">\(f:
+\mathbb{R} \longrightarrow \mathbb{R}\)</span> definida por <span
+class="math inline">\(f(x) = a^x\)</span>, donde <span
+class="math inline">\(a&gt;0\)</span> y <span
+class="math inline">\(a\neq 1\)</span>, es llamada función exponencial
+de base <span class="math inline">\(a\)</span>.</p>
+</div>
+<div class="example">
+<p> Analizar la gráfica de las funciones <span
+class="math inline">\(f_1(x) = 2^x\)</span> y de <span
+class="math inline">\(f_2(x) = \left (\dfrac{1}{2} \right
+)^x\)</span></p>
+</div>
+<div class="block">
+<p style="text-align: center;"><span>Gráfica</span></p>
+<div style="text-align: center;">
+<p><img data-src="clase08/exlog1.png" style="width:45%" alt="image" />
+<img data-src="clase08/exlog2.png" style="width:45%"
+alt="image" /></p>
+</div>
+</div>
+</section>
+<section id="una-aplicación" class="slide level3 frame">
+<h3>Una aplicación</h3>
+<div class="example">
+<p> </p>
+<ol>
+<li class="fragment"><p>Suponga que se invierten $100.000 a una tasa del
+6% compuesto anualmente. &gt;Cuánto se tendrá después de 3 años?</p>
+<div class="solution-full fragment">
+<p> <em><span class="math inline">\(S(t) = 100.000 (1+ 0,06)^t\)</span>
+donde <span class="math inline">\(t\)</span> es el tiempo en
+años.</em></p>
+<p><em>Para <span class="math inline">\(t=3\)</span> entonces <span
+class="math inline">\(S(3) = 100.000 (1,06)^3 \approx
+119101,6000\)</span></em></p>
+<p><em>Respuesta: Después de 3 años tendrá $ 119.102</em></p>
+</div></li>
+<li class="fragment"><p>Si los mismos $100.000 se invierten por 3 años a
+una tasa del 6% anual, compuesto mensualmente.&gt;Cuánto se tendrá
+después del periodo?</p>
+<div class="solution-full fragment">
+<p> <em><span class="math inline">\(S(t) = 100.000 (1+
+\frac{0,06}{12})^{12 t}\)</span> donde <span
+class="math inline">\(t\)</span> es el tiempo en años.</em></p>
+<p><em>Para <span class="math inline">\(t=3\)</span> entonces <span
+class="math inline">\(S(3) = 100.000 (1,005)^{12\cdot 3} \approx
+119668,0525\)</span></em></p>
+<p><em>Respuesta: Después de 3 años tendrá $ 119.668</em></p>
+</div></li>
+</ol>
+</div>
+</section>
+<section id="propiedades" class="slide level3 frame">
+<h3>Propiedades</h3>
+<p>Para trabajar con las funciones exponenciales, es bueno recordar
+algunas propiedades de los exponentes</p>
+<div class="theorem">
+<p> <em>Sean <span class="math inline">\(a\)</span> y <span
+class="math inline">\(b\)</span> números reales con <span
+class="math inline">\(a, b &gt;0\)</span></em></p>
+<ol class="two-columns">
+<li class="fragment"><em><span class="math inline">\(\displaystyle
+a^x a^y = a^{x+y}\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(\displaystyle
+\frac{a^x}{a^y} = a^{x-y}\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(\displaystyle
+(a^x)^y = a^{xy}\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(\displaystyle
+(a\cdot b)^x = a^x \cdot b^x\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(\displaystyle
+\left ( \frac{a}{b} \right )^x = \frac{a^x}{b^x}\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(\displaystyle
+a^{-x} = \frac{1}{a^x} = \left ( \frac{1}{a} \right
+)^x\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(\displaystyle
+a^1 = a\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(\displaystyle
+a^0 = 1\)</span></em></li>
+</ol>
+</div>
+<div class="remark fragment">
+<p> </p>
+<ul>
+<li class="fragment"><p><em><span class="math inline">\(f(x) =
+1^x\)</span> No es una función exponencial</em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(f(x) =
+0^x\)</span> No es una función exponencial</em></p></li>
+<li class="fragment"><p><em>&gt; <span class="math inline">\(f(x) =
+a^{-x}\)</span> con <span class="math inline">\(a&gt;0\)</span>, <span
+class="math inline">\(a\neq 1\)</span> Es una función exponencial, ya
+que <span class="math inline">\(f(x) = \left (\frac{1}{a} \right
+)^{x}\)</span></em></p></li>
+</ul>
+</div>
+</section>
+<section id="gráfico-de-funciones-exponenciales"
+class="slide level3 frame">
+<h3>Gráfico de funciones exponenciales</h3>
+<div class="example">
+<p> Graficar las siguientes funciones en un mismo eje de coordenadas</p>
+<p><span class="math inline">\(f_1(x) = 2^x , \qquad f_2(x) = 3^x,
+\qquad f_3(x) = 4^x\)</span></p>
+<div class="fragment">
+<p style="text-align: center;"><img data-src="clase08/exlog3.png" style="width:80%"
+alt="image" /></p>
+</div>
+</div>
+</section>
+<section id="gráfico-de-funciones-exponenciales-1"
+class="slide level3 frame">
+<h3>Gráfico de funciones exponenciales</h3>
+<div class="example">
+<p> Graficar las siguientes funciones en un mismo eje de coordenadas</p>
+<p><span class="math inline">\(f_1(x) = \left (\dfrac{1}{2} \right )^x ,
+\qquad f_2(x) = \left ( \dfrac{1}{3}\right )^x, \qquad f_3(x) = \left
+(\dfrac{1}{4} \right )^x\)</span></p>
+<div class="fragment">
+<p style="text-align: center;"><img data-src="clase08/exlog4.png" style="width:80%"
+alt="image" /></p>
+</div>
+</div>
+</section>
+<section id="gráfico-de-funciones-exponenciales-2"
+class="slide level3 frame">
+<h3>Gráfico de funciones exponenciales</h3>
+<p>En general los gráficos de funciones exponenciales <span
+class="math inline">\(f(x)=a^x\)</span> son de 2 tipos dependiendo del
+valor de la base <span class="math inline">\(a\)</span></p>
+<div class="fragment">
+<p style="text-align: center;"><img data-src="clase08/exlog5.png" style="width:90%"
+alt="image" /></p>
+</div>
+</section>
+<section id="propiedades-de-la-función-exponencial"
+class="slide level3 frame">
+<h3>Propiedades de la función exponencial</h3>
+<div class="theorem">
+<p> </p>
+<ul>
+<li class="fragment" style="margin-bottom: 20pt"><em>Dom<span class="math inline">\((f)=
+\mathbb{R}\)</span></em></li>
+<li class="fragment" style="margin-bottom: 20pt"><em>Rec<span class="math inline">\((f) = ]0, \,
++\infty[\)</span></em></li>
+<li class="fragment" style="margin-bottom: 20pt"><em>Intersección con eje <span
+class="math inline">\(y\)</span> se tiene en el punto <span
+class="math inline">\((0,1)\)</span>.</em></li>
+<li class="fragment" style="margin-bottom: 20pt"><em>No tiene intersección con el eje <span
+class="math inline">\(x\)</span>.</em></li>
+<li class="fragment" style="margin-bottom: 20pt"><em>Si <span
+class="math inline">\(a&gt;1\)</span> entonces <span
+class="math inline">\(f(x) = a^x\)</span> es una función
+creciente.</em></li>
+<li class="fragment" style="margin-bottom: 20pt"><em>Si <span
+class="math inline">\(0&lt;a&lt;1\)</span>, entonces <span
+class="math inline">\(f(x) = a^x\)</span> es una función
+decreciente.</em></li>
+<li class="fragment" style="margin-bottom: 20pt"><em>Como <span class="math inline">\(a^{x_1} =
+a^{x_2}\)</span> entonces <span class="math inline">\(x_1 =
+x_2\)</span>. Luego la función <span class="math inline">\(f(x) =
+a^x\)</span> es un función inyectiva.</em></li>
+</ul>
+</div>
+</section>
+<section id="propiedades-de-la-función-exponencial-1"
+class="slide level3 frame">
+<h3>Propiedades de la función exponencial</h3>
+<div class="example fragment">
+<p> Resolver las siguientes ecuaciones</p>
+<ol>
+<li class="fragment"><span class="math inline">\(\displaystyle 2^{x-2} =
+8^{x+1}\)</span></li>
+<li class="fragment"><span class="math inline">\(\displaystyle 3^{2(x+1)} =
+81\)</span></li>
+<li class="fragment"><span class="math inline">\(\displaystyle 2^x \cdot 3^x =
+36\)</span></li>
+<li class="fragment"><span class="math inline">\(\displaystyle (5^x)^2-26 (5^x)+25
+=0\)</span></li>
+</div>
+<div class="solution fragment">
+<p></p>
+</div>
+
+</section>
+<section id="un-ejemplo" class="slide level3 frame">
+<h3>Un ejemplo</h3>
+<div class="example">
+<p> Sea <span class="math inline">\(f(x) = 2^{x+1}\)</span>.
+Determinar:</p>
+<ol>
+<li class="fragment"><p>La imagen de 5</p></li>
+<div class="solution-full fragment"><p><em><span class="math inline">\(f(5) = 2^{5+1} =
+2^6 = 64\)</span></em></p></div>
+<li class="fragment"><p>La preimagen de 512</p></li>
+<div class="solution-full fragment"><p><em><span class="math inline">\(2^{x+1} = 512 =
+2^9 \quad \Longrightarrow \qquad x+1 = 9 \quad \Longrightarrow \qquad
+x=8\)</span></em></p>
+<p><em>Luego, la preimagen de 512 es 8.</em></p></div>
+</ol>
+</div>
+</section>
+<section id="constante-de-euler-e." class="slide level3 frame">
+<h3>Constante de Euler <span class="math inline">\(e\)</span>.</h3>
+<p>Una de las bases más usadas es el número irracional <span
+class="math inline">\(e = 2,71828...\)</span>, (<span>Nombre otorgado en
+honor al matemático suizo Leonardo Euler (1707 -1783)</span>)</p>
+<p>La definición usual del número <span class="math inline">\(e\)</span>
+es el número al cual <em>tiende</em> la cantidad <span
+class="math inline">\(\left (1+\frac{1}{n} \right )^n\)</span> cuando
+<span class="math inline">\(n\)</span> crece sin límite en dirección
+positiva, esto es,</p>
+<p><span class="math display">\[\left (1+\frac{1}{n} \right )^n
+\rightarrow e  \quad \text{cuando} \quad n\rightarrow
++\infty\]</span></p>
+<div class="definition fragment">
+<p> La función <strong>exponencial natural</strong> es la función
+exponencial <span class="math display">\[f(x)=e^x\]</span> Con base
+<span class="math inline">\(e\)</span>. Es frecuente llamarla
+simplemente <strong>la</strong> función exponencial.</p>
+</div>
+<div class="fragment">
+<p style="text-align: center;"><img data-src="clase08/fexp.png" style="width:30%" alt="image" /></p>
+</div>
+</section>
+<section id="por-qué-usar-este-número-interés-compuesto-continuamente"
+class="slide level3 frame">
+<h3>¿Por qué usar este número? Interés compuesto continuamente</h3>
+<p class="fragment">Ciertas inversiones, como las cuentas de ahorro, pagan una tasa anual
+de interés que se puede componer en forma anual, trimestral, mensual,
+semanal, a diario, etcétera.
+<div class="fragment">Si un capital de <span
+class="math inline">\(P\)</span> se invierte a una tasa de interés anual
+<span class="math inline">\(r\)</span>, que se compone <span
+class="math inline">\(n\)</span> veces por año, la cantidad <span
+class="math inline">\(S\)</span> que hay al final de <span
+class="math inline">\(t\)</span> años se calcula con
+</div>
+</p>
+<p class="fragment"><span class="math display">\[S(t) = P \left ( 1+ \frac{r}{n} \right
+)^{nt}\]</span></p>
+<p class="fragment"><span class="math inline">\(S\)</span> es el llamado valor futuro del
+capital <span class="math inline">\(P\)</span>. Si la cantidad <span
+class="math inline">\(n\)</span> aumenta sin límite, entonces se dice
+que el interés es compuesto <strong>continuamente</strong>. Para
+calcular el valor futuro de <span class="math inline">\(P\)</span> en
+este caso escribimos <span class="math inline">\(n=mr\)</span> y notamos
+que <span class="math display">\[\left ( 1+\frac{r}{n} \right )^{nt} =
+\left ( 1+\frac{1}{m} \right )^{m r t} = \left [ \left ( 1+\frac{1}{m}
+\right )^{m} \right ]^{rt}\]</span></p>
+<p class="fragment">Si <span class="math inline">\(n\)</span> es muy “grande”, es decir
+cerca del infinito, entonces <span class="math inline">\(m\)</span>
+también “grande” y como <span class="math inline">\(\left(1+\dfrac{1}{m}\right)^m
+\approx e\)</span> cuando <span class="math inline">\(m \approx
++\infty\)</span>. Luego la ecuación se transforma en</p>
+<p class="fragment"><span class="math display">\[P \left [ \left ( 1+\frac{1}{m} \right
+)^{m} \right ]^{rt} \approx P\, e^{rt}  \qquad \text{cuando }  m
+\approx +\infty\]</span></p>
+<p class="fragment">Así, si se compone continuamente una tasa de interés anual <span
+class="math inline">\(r\)</span>, el valor futuro <span
+class="math inline">\(S\)</span> de un capital <span
+class="math inline">\(P\)</span> en <span
+class="math inline">\(t\)</span> años es <span
+class="math display">\[S(t) = P e^{rt}\]</span></p>
+</section>
+<section id="cálculo-de-intereses" class="slide level3 frame">
+<h3>Cálculo de intereses</h3>
+<div class="example">
+<p> Suponga que se invierten $100.000 a una tasa anual del 6%. Comparar
+el valor futuro de esta inversión dentro de 3 años</p>
+<ol>
+<li class="fragment"><p>Si el interés se compone semanalmente.</p></li>
+<li class="fragment"><p>Si el interés se compone continuamente</p></li>
+</ol>
+</div>
+<div class="solution fragment">
+<p> </p>
+</div>
+</section>
+<section
+id="otroso-fenómenos-de-la-vida-real-que-usan-funciones-exponenciales"
+class="slide level3 frame">
+<h3>Otroso fenómenos de la vida real que usan funciones
+exponenciales</h3>
+<p>La función exponencial de base <span class="math inline">\(e\)</span>
+surge naturalmente en el estudio de crecimiento y decrecimiento de
+poblaciones. Supongamos que <span class="math inline">\(P_0\)</span> es
+el número de individuos presentes en una población en un tiempo <span
+class="math inline">\(t = 0\)</span> y <span
+class="math inline">\(\lambda\)</span> es un número real fijo, el
+modelo</p>
+<p><span class="math display">\[P(t) = P_0 e^{\lambda t}\]</span></p>
+<p>nos indica el número de individuos que tiene la población en un
+tiempo <span class="math inline">\(t\)</span>.</p>
+<p class="fragment">Note que si <span class="math inline">\(\lambda&gt;0\)</span> la
+función <span class="math inline">\(P\)</span> es creciente y por lo
+tanto estamos frente a un modelo de crecimiento poblacional.</p>
+<p class="fragment">Si <span class="math inline">\(\lambda &lt; 0\)</span> la situación
+se invierte y tenemos un modelo de decrecimiento de población.</p>
+<p class="fragment">Se puede probar que <span class="math inline">\(\lambda\)</span> es
+una buena aproximación del porcentaje de crecimiento o de decrecimiento
+expresado en decimales.</p>
+</section>
+<section id="crecimiento-de-una-población" class="slide level3 frame">
+<h3>Crecimiento de una población</h3>
+<div class="example">
+<p> La población de una ciudad de 5.000 habitantes crece a razón de 3%
+anual.</p>
+<ol>
+<li class="fragment"><p>Determinar una ecuación que proporcione la
+población después de <span class="math inline">\(t\)</span> años a
+partir de ahora.</p></li>
+<li class="fragment"><p>Determinar la población 9 años después de ahora.
+Obtenga la respuesta al entero más cercano</p></li>
+</ol>
+</div>
+<div class="solution-full fragment">
+<p> </p>
+<ol>
+<li class="fragment"><p><em><span class="math inline">\(P(t) = 5.000
+e^{0,03 t}\)</span></em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(P(9) = 5.000
+e^{0,03 \cdot 9} = 5.000 e^{27} \approx 6549,822255...\)</span><br />
+<span><strong>Respuesta:</strong></span> La población después de 9 años
+será de 6550 habitantes.</em></p></li>
+</ol>
+</div>
+</section>
+<section id="decrecimiento-de-una-población" class="slide level3 frame">
+<h3>Decrecimiento de una población</h3>
+<div class="example">
+<p> A causa de una recesión económica, la población de cierta área
+urbana disminuye a razón de 1% anual. Al inicio la población era de
+100.000 habitantes. ¿Cuál es la población después de 3 años?</p>
+<div class="solution-full fragment">
+<p> <em>Si la población disminuye, entonces <span
+class="math inline">\(P(t) = 100.000e^{-0,01t}\)</span></em></p>
+<p><em>Para <span class="math inline">\(t=3\)</span>, se tiene <span
+class="math inline">\(P(3) = 100.000 e^{-0,01 \cdot 3} = 100.000
+e^{-0,03} \approx 97044,55335...\)</span></em></p>
+<p><em><span><strong>Respuesta:</strong></span> Después de 3 años habrá
+97.045 habitantes.</em></p>
+</div>
+<p class="fragment">¿En cuántos años la población será aproximadamente de 94.000
+habitantes?</p>
+<div class="solution-full fragment">
+<p> <em>Debemos resolver la siguiente ecuación <span
+class="math inline">\(P(t)=100000e^{-0,01t}=94000\)</span>. Para ello,
+necesitamos determinar <strong>la función inversa</strong> de <span
+class="math inline">\(e^x\)</span>.</em></p>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../../reveal/plugin/search/search.js"></script>
+  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
+<script src="../../../reveal/plugin/math/math.js"></script>
+
+<script src="../../../scripts/reveal-init.js"></script>
+    </body>
+</html>
