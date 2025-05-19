@@ -110,7 +110,7 @@ dx.\]</span></p>
 <p>Estas fórmulas se obtiene al reemplazar la función <span
 class="math inline">\(y_p\)</span> en la ecuación, esto es <span
 class="math display">\[\begin{aligned}
-	g&amp;=a_2(x)y&#39;&#39;+a_1(x)y&#39;+a_0(x)y\\
+	g&amp;=a_2(x)y&#39;&#39;+a_1(x)y&#39;+a_0y\\
 	&amp;=a_2(x)(u_1y_1+u_2y_2)&#39;&#39;+a_1(x)(u_1y_1+u_2y_2)&#39;+a_0(x)(u_1y_1+u_2y_2)\\
 	&amp;=a_2(x)(\underbrace{\color{red}{u_1&#39;y_1+u_2&#39;y_2}}_{=0}+u_1y_1&#39;+u_2y_2&#39;)&#39;+a_1(x)(\underbrace{\color{red}{u_1&#39;y_1+u_2&#39;y_2}}_{=0}+u_1y_1&#39;+u_2y_2&#39;)+a_0(x)(u_1y_1+u_2y_2)\\
 	&amp;=a_2(x)(u_1&#39;y_1&#39;+u_1y_1&#39;&#39;+u_2&#39;y_2&#39;+u_2y_2&#39;&#39;)+a_1(x)(u_1y_1&#39;+u_2y_2&#39;)+a_0(x)(u_1y_1+u_2y_2)\\
@@ -192,7 +192,7 @@ e \(y_p(x)\) es una solución particular cualquiera.</p>
 <section id="variación-de-parámetros-2" class="slide level3 frame">
 <h3>Variación de parámetros</h3>
 <div class="example">
-<p> Encuenter una solución particular de la EDO <span
+<p> Encuentre una solución particular de la EDO <span
 class="math inline">\(y&#39;&#39;-4y=x+2\)</span>.</p>
 </div>
 <div class="solution-full fragment">
@@ -223,7 +223,7 @@ class="math display">\[y_p(x)=-\frac1{16}(2x+5)e^{-2x}e^{2x}+-\frac1{16}(2x+3)e^
 <section id="variación-de-parámetros-3" class="slide level3 frame">
 <h3>Variación de parámetros</h3>
 <div class="example">
-<p>Encuentre una solución particular de \(\quad y&#39;&#39;-4y+4y=(x+1)e^{2x}\).</p>
+<p>Encuentre una solución particular de \(\quad y&#39;&#39;-4y'+4y=(x+1)e^{2x}\).</p>
 </div>
 <div class="solution-full fragment">
 <div class="fragment">
@@ -279,7 +279,7 @@ class="math display">\[y_p(x)=-\frac{x}{12}\cos(3x)+\frac{1}{36}\ln\left\vert
 <h3>Problemas ded valor inicial</h3>
 <div class="example">
 <p> Resuelva el PVI <span
-class="math inline">\(y&#39;&#39;-4y+4y=(x+1)e^{2x}\)</span>, <span
+class="math inline">\(y&#39;&#39;-4y'+4y=(x+1)e^{2x}\)</span>, <span
 class="math inline">\(y(0)=0\)</span>, <span
 class="math inline">\(y&#39;(0)=1\)</span>.</p>
 </div>
