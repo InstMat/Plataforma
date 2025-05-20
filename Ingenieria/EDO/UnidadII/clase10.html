@@ -94,8 +94,8 @@ poderosa para modelar matemáticamente situaciones de la vida real. En el
 caso de EDOs de segundo orden, es bueno recordar que si la cantidad
 <span class="math inline">\(x(t)\)</span> representa la posición de una
 particula en el instante <span class="math inline">\(t\)</span> entonces
-<span class="math inline">\(x&#39;(t)\)</span> representa su velocidad,
-mientras que <span class="math inline">\(x&#39;&#39;(t)\)</span>
+<span class="math inline">\(\dot x(t)\)</span> representa su velocidad,
+mientras que <span class="math inline">\(\ddot x(t)\)</span>
 representa su <em>aceleración</em>.</p>
 <p>Por ejemplo, si una partícula tiene masa <span
 class="math inline">\(m\)</span> y sobre ella se aplica una fuerza <span
@@ -106,7 +106,7 @@ class="math inline">\(a\)</span> denota la aceleración de la partícula.
 Por lo tanto si la partícula está ubicada en el posición <span
 class="math inline">\(x(t)\)</span> entonces la segunda ley de Newton
 corresponde a una EDO de segundo orden de la forma <span
-class="math display">\[mx&#39;&#39;=F.\]</span></p>
+class="math display">\[m\ddot x=F.\]</span></p>
 </section>
 <section id="resortes-la-ley-de-hooke" class="slide level3 frame">
 <h3>Resortes: la ley de Hooke</h3>
@@ -116,7 +116,7 @@ resorte sobre una masa <span class="math inline">\(m\)</span> es
 proporcional al desplazamiento (estiramiento o compresión) del
 resorte</p>
 <div class="center">
-<p><img data-src="clase10/hooke.png" style="width:20.0%" alt="image" /></p>
+<p style="text-align: center;"><img data-src="clase10/hooke.png" style="width:20.0%" alt="image" /></p>
 </div>
 <p>es decir <span class="math inline">\(F_{\text{resorte}}=kx\)</span>
 para cierta constante <span class="math inline">\(k\)</span> positiva
@@ -125,16 +125,16 @@ que depende de la construcción del resorte.</p>
 <section id="resortes-no-amortiguados" class="slide level3 frame">
 <h3>Resortes no amortiguados</h3>
 <div class="center">
-<p><img data-src="clase10/resorte1.png" style="width:30.0%" alt="image" /></p>
+<p style="text-align: center;"><img data-src="clase10/resorte1.png" style="width:30.0%" alt="image" /></p>
 </div>
 <p>Si del resorte se cuelga una masa <span
 class="math inline">\(m\)</span> entonces sobre esta actuan 2 fuerzas:
 la gravedad y la del resorte (supondremos que no hay resistencia del
 aire ni otras fuerzas externas). Es decir, la ley de Newton nos dice que
 (suponiendo que la dirección positiva es hacia abajo) <span
-class="math display">\[mx&#39;&#39;=F_{\text{gravedad}}+F_{\text{resorte}}=mg-kx\]</span>
+class="math display">\[m\ddot x=F_{\text{gravedad}}+F_{\text{resorte}}=mg-kx\]</span>
 y éste alcanza el equilibrio cuando no hay movimiento, es decir si <span
-class="math inline">\(x&#39;(t)=x&#39;&#39;(t)=0\)</span>, es decir
+class="math inline">\(\dot x(t)=\ddot x(t)=0\)</span>, es decir
 cuando hay un desplazamiento de <span
 class="math inline">\(mg-ks=0\Rightarrow
 s_{\text{equilibrio}}=\dfrac{mg}{k}\)</span>.</p>
@@ -142,34 +142,37 @@ s_{\text{equilibrio}}=\dfrac{mg}{k}\)</span>.</p>
 <section id="resortes-no-amortiguados-1" class="slide level3 frame">
 <h3>Resortes no amortiguados</h3>
 <div class="center">
-<p><img data-src="clase10/resorte1.png" style="width:30.0%" alt="image" /></p>
+<p style="text-align: center;"><img data-src="clase10/resorte1.png" style="width:30.0%" alt="image" /></p>
 </div>
 <p>En un instante <span class="math inline">\(t\)</span> posterior se
 desplaza la masa <span class="math inline">\(x\)</span> unidades con
 respecto al equilibrio y nuevametne la Ley de Newton sigue aplicando por
 lo que se cumple <span
-class="math display">\[mx&#39;&#39;=F_{\text{gravedad}}+F_{\text{resorte}}=mg-k(s+x)=\underbrace{mg-ks}_{=0}-kx,\]</span>
+class="math display">\[m\ddot x=F_{\text{gravedad}}+F_{\text{resorte}}=mg-k(s+x)=\underbrace{mg-ks}_{=0}-kx,\]</span>
 es decir la posición de la masa <span
 class="math inline">\(x(t)\)</span> respecto al punto de equilibrio
 satisface la EDO lineal de segundo orden homogénea <span
-class="math display">\[x&#39;&#39;+\omega^2x=0,\]</span> donde <span
-class="math inline">\(\omega^2=\frac{k}{m}\)</span>.</p>
-<div class="definition fragment">
+class="math display">\[\ddot x+\omega^2x=0,\]</span> donde <span
+class="math inline">\(\omega^2=\dfrac{k}{m}\)</span>.</p>
+</section>
+<section id="resortes-no-amortiguados-1.5" class="slide level3 frame">
+<h3>Resortes no amortiguados</h3>
+<div class="definition">
 <p> La cantidad <span class="math inline">\(\omega\)</span> es la
 <em>frecuencia natural de oscilación</em> y su unidad de medida es
 <em>Hertz</em> que se abrevia como <em>Hz</em> y cumple la relación
 <span class="math display">\[1\text{ Hz}=\frac{1}{1\ s}\]</span></p>
 </div>
-</section>
-<section id="resortes-no-amortiguados-2" class="slide level3 frame">
-<h3>Resortes no amortiguados</h3>
-<p>Como <span class="math inline">\(\omega^2&gt;0\)</span> las raíces de
+<p class="fragment">Como <span class="math inline">\(\omega^2&gt;0\)</span> las raíces de
 la ecuación auxiliar <span class="math inline">\(r^2+\omega^2=0\)</span>
 son <span class="math inline">\(r=\pm i\omega\)</span> por lo que la
 solución general se puede escribir como <span
 class="math display">\[x(t)=A\cos(\omega t)+B\sin(\omega
-t).\]</span></p>
-<div class="example fragment">
+t).\]</span> para ciertas constantes \(A\) y \(B\).</p>
+</section>
+<section id="resortes-no-amortiguados-2" class="slide level3 frame">
+<h3>Resortes no amortiguados</h3>
+<div class="example">
 <p> Considere una masa de <span class="math inline">\(2\)</span> kilos
 que alarga <span class="math inline">\(4\)</span> metros a un
 determinado resorte para llegar al equilibrio. Si en <span
@@ -202,7 +205,7 @@ velocidad ascendente de <span class="math inline">\(2\)</span> m/s, es
 decir <span class="math inline">\(x&#39;(0)=-2\)</span> (recordar que la
 dirección positiva es hacia abajo). Por lo tanto <span
 class="math inline">\(A=8\)</span> y <span
-class="math inline">\(B=\dfrac{-2}{\sqrt{2.45}}\)</span> y la posición
+class="math inline">\(B=\frac{-2}{\sqrt{2.45}}\)</span> y la posición
 respecto al equilibrio de la particula en el instante <span
 class="math inline">\(t\)</span> está dada por <span
 class="math display">\[x(t)=8\cos(\sqrt{2.45}
@@ -214,11 +217,11 @@ t)-\frac{2}{\sqrt{2.45}}\sin(\sqrt{2.45} t).\]</span></em></p>
 <p>Un escenario mas realista es el caso en que existan fuerzas externas
 al movimiento del resorte como lo puede ser una fuerza de roce. En este
 caso, nuevamente aplica la ley de Newton, pero ésta queda la forma <span
-class="math display">\[mx&#39;&#39;=F_{\text{gravedad}}+F_{\text{resorte}}+F_{\text{roce}}=-kx-\beta
-x&#39;,\]</span> donde recordamos que usualmente la fuerza de roce es
-proporcional a la velocidad de la partícula y se opone al movimiento
-(por eso el signo negativo). En este caso la EDO queda <span
-class="math display">\[x&#39;&#39;+2\lambda x&#39;+\omega^2
+class="math display">\[m\ddot x=F_{\text{gravedad}}+F_{\text{resorte}}+F_{\text{roce}}=mg-kx-\beta
+\dot x,\]</span> donde recordamos que usualmente la fuerza de roce es
+proporcional a la velocidad de la partícula y se opone al movimiento, es decir \(F_{\text{roce}}=-\beta \dot x\). En este caso,
+y luego de hacer la traslación al lugar de equilibrio, la EDO queda de la forma <span
+class="math display">\[\ddot x+2\lambda x&#39;+\omega^2
 x=0,\]</span> donde <span
 class="math inline">\(\omega^2=\dfrac{k}{m}\)</span> y <span
 class="math inline">\(\lambda=\dfrac{\beta}{2m}\)</span></p>
@@ -252,17 +255,21 @@ class="math display">\[x(t)=e^{-\lambda t}\left( A\cos\left(
 {\sqrt{\lambda^2-\omega^2} t} \right) \right)\]</span></p></li>
 </ul>
 </section>
+<section id="resortes-amortiguados-2" class="slide level3 frame">
+<h3>Resortes amortiguados</h3>
+<p style="text-align: center;"><img data-src="clase10/amort.png" style="width:100.0%" alt="image"/></p>
+</section>
 <section id="sobreamortiguamiento" class="slide level3 frame">
 <h3>Sobreamortiguamiento</h3>
 <div class="example">
 <p> Considere el sistema resorte-masa dado por el PVI <span
-class="math display">\[x&#39;&#39;+5x&#39;+4x=0, \quad x(0)=1, \quad
+class="math display">\[\ddot x+5\dot x+4x=0, \quad x(0)=1, \quad
 x&#39;(0)=1.\]</span> Encuentre la posición de la particula en cada
 instante <span class="math inline">\(t\)</span></p>
 </div>
-<div class="solution-full fragment">
-<p> <em><span class="math inline">\(x(t)=\frac{5}{3} e^{-t}-\frac{2}{3}
-e^{-4 t}\)</span></em></p>
+<div class="solution fragment">
+<!--<p> <em><span class="math inline">\(x(t)=\frac{5}{3} e^{-t}-\frac{2}{3}
+e^{-4 t}\)</span></em></p>-->
 </div>
 </section>
 <section id="amortiguamiento-crítico" class="slide level3 frame">
@@ -270,32 +277,32 @@ e^{-4 t}\)</span></em></p>
 <div class="example">
 <p> Encuentre la posición <span class="math inline">\(x(t)\)</span> para
 el sistema resorte-masa dado por el PVI <span
-class="math inline">\(x&#39;&#39;+8x&#39;+16x=0, \quad x(0)=0, \quad
-x&#39;(0)=-3.\)</span></p>
+class="math display">\[\ddot x+8\dot x+16x=0, \quad x(0)=0, \quad
+x&#39;(0)=-3.\]</span></p>
 </div>
-<div class="solution-full fragment">
-<p> <em><span class="math inline">\(x(t)=-3 t e^{-4 t}\)</span></em></p>
+<div class="solution fragment">
+<!--<p> <em><span class="math inline">\(x(t)=-3 t e^{-4 t}\)</span></em></p>-->
 </div>
 </section>
 <section id="subamortiguamiento" class="slide level3 frame">
 <h3>Subamortiguamiento</h3>
 <div class="example">
 <p> Resuelva el sistema resorte-masa dado por el PVI <span
-class="math inline">\(x&#39;&#39;+2 x&#39;+10 x=0, \quad x(0)=-2, \quad
-x&#39;(0)=0.\)</span></p>
+class="math display">\[\ddot x+2 \dot x+10 x=0, \quad x(0)=-2, \quad
+x&#39;(0)=0.\]</span></p>
 </div>
-<div class="solution-full fragment">
-<p> <em><span class="math inline">\(x(t)=e^{-t}\left(-2 \cos(3
-t)-\frac{2}{3} \sin(3t)\right)\)</span></em></p>
+<div class="solution fragment">
+<!--<p> <em><span class="math inline">\(x(t)=e^{-t}\left(-2 \cos(3
+t)-\frac{2}{3} \sin(3t)\right)\)</span></em></p>-->
 </div>
 </section>
 <section id="modelos-que-usan-edos-de-segundo-orden-1"
 class="slide level3 frame">
 <h3>Modelos que usan EDOs de segundo orden</h3>
 <p>Otro escenario donde aparecen EDOs de segundo orden es en el caso de
-<em>circuitos eleéctricos</em></p>
+<em>circuitos eléctricos</em></p>
 <div class="center">
-<p><img data-src="clase10/rcl.png" style="width:20.0%" alt="image" /></p>
+<p style="text-align: center;"><img data-src="clase10/rcl.png" style="width:20.0%" alt="image" /></p>
 </div>
 <p>En un circuito en serie que cuenta con una resistencia <span
 class="math inline">\(R\)</span>, un condensador eléctrico <span
@@ -308,16 +315,63 @@ class="math inline">\(R\)</span> es la resistencia de <span
 class="math inline">\(R\)</span>, <span class="math inline">\(L\)</span>
 es la inductancia de la bobina, <span
 class="math inline">\(Q=Q(t)\)</span> es la carga eléctrica y <span
-class="math inline">\(C\)</span> es la capacitancia del capacitor. De
-acuerdo a la ley de Kirchoff, la suma de los voltajes en un circuito
+class="math inline">\(C\)</span> es la capacitancia del capacitor.</p>
+</section>
+<section id="modelos-que-usan-edos-de-segundo-orden-1"
+class="slide level3 frame">
+<h3>Modelos que usan EDOs de segundo orden</h3>
+<p>De acuerdo a la ley de Kirchoff, la suma de los voltajes en un circuito
 debe ser igual al voltaje total al que se somete el circuito, es decir
 <span
-class="math display">\[V=V_R+V_L+V_C=RI+LI&#39;+\frac{Q}{C}.\]</span>
+class="math display">\[V=V_R+V_L+V_C=RI+L\dot I+\frac{Q}{C}.\]</span>
 Sin embargo, se sabe que la corriente es la tasa a la cual cambia la
-carga, es decir <span class="math inline">\(Q=I&#39;\)</span>, por lo
-tanto podemos escribir la EDO de segundo orden para la carga <span
-class="math display">\[LQ&#39;&#39;+RQ&#39;+\frac1{C}Q=V.\]</span></p>
+carga eléctrica en el tiempo, es decir <span class="math inline">\(Q=\dot I\)</span>, por lo
+tanto podemos escribir <span class="math display">\[L\ddot Q+R\dot Q+\frac1{C}Q=V,\]</span> es decir
+la carga eléctrica en el circuito está determinada por una
+ecuación diferencial de segundo orden.</p>
 </section>
+<section id="ejercicios" class="slide level3 frame">
+  <div class="exercise">
+    <ol>
+      <li style="margin-bottom: 20pt">Una masa de 20 kilogramos se une a un resorte. Si la frecuencia del movimiento es \(\omega=2\) Hz,
+        <ol style="list-style-type: lower-roman">
+<li style="margin-bottom: 10pt">¿Cuál es la constante de resorte k?</li>
+<li style="margin-bottom: 10pt">¿Cuál es la frecuencia del movimiento si la masa original se reemplaza con una masa de 80 kilogramos?</li>
+</ol>
+</li>
+<li style="margin-bottom: 20pt">Una masa que pesa 24 kilos, unida al extremo de un resorte, lo alarga 4 metros hasta dejarlo en equilibrio.
+Al inicio, la masa se libera desde el reposo en un punto 3 metros arriba de la posición
+de equilibrio. Encuentre la ecuación de movimiento y la posición de la masa luego de \(t\) segundos.</li>
+<li style="margin-bottom: 20pt">Una masa de 1 kilogramo se fija a un resorte cuya constante es \(k=16~\frac{N}{m}\) y luego el sistema completo se sumerge
+en un líquido que imparte una fuerza amortiguadora igual a 10 veces la velocidad instantánea. Determine y resuelva las ecuaciones
+de movimiento si:
+<ol style="list-style-type: lower-roman">
+<li style="margin-bottom: 10pt">Al inicio la masa se libera desde un punto situado
+1 metro abajo de la posición de equilibrio</li>
+<li style="margin-bottom: 10pt">La masa se libera inicialmente desde un punto 1 metro
+abajo de la posición de equilibrio con una velocidad
+ascendente de 12 m/s.</li>
+</ol>
+</li>
+</section>
+<section id="ejercicios-2" class="slide level3 frame">
+  <div class="exercise">
+Cuando una fuerza externa de magnitud \(F\) actúa sobre la base del resorte, la ecuación diferencial
+que rige el movimiento está dada por
+<span class="math display">\[
+m\ddot x+\beta \dot x+kx=F.
+\]</span>
+Resuelva los siguientes problemas de valor inicial que modelan el movimiento forzado antes descrito:
+<ol>
+<li style="margin-bottom: 20pt">\(\ddot x+2\dot x+2x=4\cos t+2\sin t,\quad x(0)=0,\quad \dot x(0)=1\).</li>
+<li style="margin-bottom: 20pt">\(\ddot x+9x=10\sin(4t), \quad x(0)=0,\quad \dot x(0)=0\).</li>
+<li style="margin-bottom: 20pt">\(\ddot x+9x=10\sin(3t), \quad x(0)=0,\quad \dot x(0)=0,\) y compare con el ítem anterior.</li>
+</ol>
+
+</li>
+</ol>
+
+  </div></section>
     </div>
   </div>
 
