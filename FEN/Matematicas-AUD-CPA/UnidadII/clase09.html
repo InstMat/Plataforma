@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Matemáticas</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Matemáticas</h1>
+  <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+Contador Público y Auditor</p>
+  <p class="author"><img
+data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+alt="image" /></p>
+</section>
+
+<section id="función-logarítmica" class="slide level3 frame">
+<h3>Función Logarítmica</h3>
+<div class="definition">
+<p> Sea <span class="math inline">\(a&gt;0\)</span>,   <span
+class="math inline">\(a\neq 1\)</span>. La función logaritmica <span
+class="math inline">\(\log_a : \mathbb{R}^+ \longrightarrow
+\mathbb{R}\)</span> se define por la relación <span
+class="math display">\[\log_a (x) = y \qquad  \text{si y sólo si}
+\qquad  a^y = x\]</span></p>
+</div>
+<div class="example fragment">
+<p> Determinar los siguientes logaritmos, cambiando a una expresión
+exponencial.</p>
+<ol>
+<li class="fragment"><p><span class="math inline">\(\log_3 81 =
+y\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\log_8 2 =
+b\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\log_{10} 0,001 =
+x\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\log_\frac{1}{5} 25
+= t\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="grafíco-de-una-función-logarítmica"
+class="slide level3 frame">
+<h3>Grafíco de una función logarítmica</h3>
+<div class="center" style="text-align: center;">
+<p><img data-src="clase09/func11.png" style="width:75%" alt="image" /></p>
+</div>
+<div class="remark fragment">
+<p> <em>Sea <span class="math inline">\(f(x) = \log_a
+(x)\)</span></em></p>
+<ul>
+<li class="fragment"><p><em>Dom<span class="math inline">\((f) = ]0,\,
++\infty[\)</span></em></p></li>
+<li class="fragment"><p><em>Rec<span class="math inline">\((f) =
+\mathbb{R}\)</span></em></p></li>
+<li class="fragment"><p><em>Si <span
+class="math inline">\(a&gt;1\)</span> entonces <span
+class="math inline">\(f\)</span> es creciente</em></p></li>
+<li class="fragment"><p><em>Si <span
+class="math inline">\(0&lt;a&lt;1\)</span> entonces <span
+class="math inline">\(f\)</span> es decreciente</em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(f\)</span> es
+inyectiva luego: <span class="math inline">\(\log_a x = \log_a y \quad
+\Longrightarrow \quad  x=y\)</span></em></p></li>
+</ul>
+</div>
+</section>
+<section id="función-logarítmica-1" class="slide level3 frame">
+<h3>Función logarítmica</h3>
+<div class="example">
+<p> </p>
+<ol>
+<li class="fragment"><p>Calcular <span class="math inline">\(\log_2
+(-4)= \qquad  \quad \log_5 0 = \qquad  \quad \log_a 1
+=\)</span></p></li>
+<li class="fragment"><p>Resolver la ecuación <span
+class="math inline">\(\displaystyle \log_7 (2x+3) = \log_7
+x^2\)</span></p></li>
+</ol>
+</div>
+<div class="remark fragment">
+<p> <em>Bases más usadas:</em></p>
+<ul>
+<li class="fragment"><p><em>Si <span
+class="math inline">\(a=10\)</span>, entonces <span
+class="math inline">\(\log_{10} ( x) = \log (x)\)</span> Se conoce como
+<span><strong>logarítmo común</strong></span>. Luego <span
+class="math display">\[\log(x) = y \quad \Longleftrightarrow \quad x =
+10^y\]</span></em></p></li>
+<li class="fragment"><p><em>Si <span class="math inline">\(a=e\)</span>,
+entonces <span class="math inline">\(\log_e ( x) = \ln (x)\)</span> Se
+conoce como <span><strong>logarítmo natural</strong></span>. Luego <span
+class="math display">\[\ln(x) = y \quad \Longleftrightarrow \quad x =
+e^y\]</span></em></p></li>
+</ul>
+</div>
+</section>
+<section id="ejemplos" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> </p>
+<ol class="two-columns" style="list-style-type: upper-roman">
+<li class="fragment">Calcular los siguientes logarítmos
+<ol>
+<li class="fragment"><span class="math inline">\(\log
+1000\)</span></li>
+<li class="fragment"><span class="math inline">\(\ln
+1\)</span></li>
+<li class="fragment"><span class="math inline">\(\log_5
+25\)</span></li>
+</ol></li>
+<li class="fragment">Resolver las siguientes ecuaciones
+<ol>
+<li class="fragment"><span class="math inline">\(\log_3 x =
+4\)</span></li>
+<li class="fragment"><span class="math inline">\(\ln (x+2) =
+6\)</span></li>
+<li class="fragment"><span class="math inline">\(e^{3x} =
+7\)</span></li>
+</ol></li>
+</ol>
+</div>
+<div class="solution fragment">
+<p> </p>
+<ol class="two-columns" style="list-style-type: upper-roman">
+<li><ol>
+<li><em><span class="math inline">\(\log 1000 = y
+\Longrightarrow 10^y = 1000 = 10^3 \Longrightarrow
+y=3\)</span></em></li>
+<li><em><span class="math inline">\(\ln 1 = y
+\Longrightarrow e^y = 1 \Longrightarrow y=0\)</span></em></li>
+<li><em><span class="math inline">\(\log_5  25 = y
+\Longrightarrow 5^y = 25 = 5^2 \Longrightarrow
+y=2\)</span></em></li>
+</ol></li>
+<li><ol>
+<li><em><span class="math inline">\(\log_3 x = 4
+\Longrightarrow x = 3^4 = 81\)</span></em></li>
+<li><em><span class="math inline">\(\ln (x+2) = 6
+\Longrightarrow x+2 = e^6  \Longrightarrow x = e^6 -2\)</span></em></li>
+<li><em><span class="math inline">\(\displaystyle
+e^{3x} = 7 \Longrightarrow 3x = \ln 7 \Longrightarrow x = \frac{\ln
+7}{3}\)</span></em></li>
+</ol></li>
+</ol>
+</div>
+</section>
+<section id="propiedades" class="slide level3 frame">
+<h3>Propiedades</h3>
+<div class="theorem">
+<p> <em>Sean <span class="math inline">\(a&gt;0, \, a\neq 1\), </span>
+<span class="math inline">\(x, y \in \mathbb{R^+}\)</span>, <span
+class="math inline">\(n \in \mathbb{R}\)</span></em></p>
+<ol>
+<li class="fragment"><p><em><span class="math inline">\(\log_a 1 =
+0\)</span></em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(\log_a a =
+1\)</span></em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(\log_a ( x y) =
+\log_a x + \log_a y\)</span></em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(\log_a \left (
+\frac{x}{y} \right ) = \log_a x - \log_a y\)</span></em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(\log_a ( x^n) =
+n\log_a x\)</span></em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(\displaystyle
+a^{\log_a x} = x\)</span>, en particular <span class="math inline">\(\qquad 10^{\log x} = x \qquad \text{y} \qquad e^{\ln x}
+= x\)</span></em></p></li>
+</ol>
+</div>
+<div class="theorem fragment">
+<p> <em><span>Fórmula de cambio de base</span> Sean <span
+class="math inline">\(a,b\)</span> números reales positivos y distintos
+de 1. Entonces <span class="math display">\[\log_a (x) = \frac{\log_b
+(x)}{\log_b (a)}\]</span></em></p>
+</div>
+</section>
+<section id="ejemplos-1" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> </p>
+<ol>
+<li class="fragment"><p>Expresar en un sólo logarítmo</p>
+<ol>
+<li class="fragment"><p><span class="math inline">\(\log 7 + \log
+5\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\ln x - \ln
+y\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(2\log x + \log y -
+\log (x+y)\)</span></p></li>
+</ol></li>
+<li class="fragment"><p>Resolver las siguientes ecuaciones</p>
+<ol>
+<li class="fragment"><p><span class="math inline">\(\log (3x-2) = \log
+(x+7)\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(2^{x+1} =
+5\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\log_3(x+5)+\log_3(x-4)-\log_3x=2\)</span></p></li>
+</ol></li>
+</ol>
+</div>
+</section>
+<section
+id="volviendo-al-ejemplo-que-quedó-pendiente-de-la-clase-pasada"
+class="slide level3 frame">
+<h3>Volviendo al ejemplo que quedó pendiente de la clase pasada</h3>
+<div class="example">
+<p> A causa de una recesión económica, la población de cierta área
+urbana disminuye a razón de 1% anual. Al inicio la población era de
+100.000 habitantes. ¿En cuántos años la población será aproximadamente
+de 94.000 habitantes?</p>
+</div>
+<div class="solution fragment">
+<p> <em>Hay que resolver la ecuación <span
+class="math inline">\(P(t)=100000e^{-0,01t}=94000\)</span></em></p>
+</div>
+</section>
+<section id="aplicación" class="slide level3 frame">
+<h3>Aplicación</h3>
+<div class="example">
+<p> Suponga que la producción diaria de unidades de un nuevo producto en
+el <span class="math inline">\(t\)</span>-ésimo día de una corrida de
+producción está dada por:</p>
+<p><span class="math display">\[q = 500 (1-e^{-0,2t})\]</span></p>
+<p>Tal ecuación se llama <span><strong>ecuación de
+aprendizaje</strong></span>, la cual indica que conforme pase el tiempo,
+la producción por día aumentará. Esto puede deberse a un aumento en la
+habilidad de los trabajadores. Determine a la unidad completa más
+cercana la producción en:</p>
+<ol>
+<li><p>El primer día</p></li>
+<li><p>En el décimo día después del inicio de una
+producción.</p></li>
+<li><p>¿Después de cuántos días se alcanzará una
+producción diaria de 400 unidades? Proporcione sus respuestas
+redondeadas al día más cercano.</p></li>
+</ol>
+</div>
+</section>
+<section id="aplicación-1" class="slide level3 frame">
+<h3>Aplicación</h3>
+<div class="example">
+<p> La concentración de un medicamento en un órgano al instante <span
+class="math inline">\(t\)</span> (en minutos) está dada por <span
+class="math display">\[x(t) = 0.08 + 0.12 e^{-0.02t}\]</span> donde
+<span class="math inline">\(x(t)\)</span> son gramos/centímetros cúbicos
+(<span class="math inline">\(gr/cm^3\)</span>).</p>
+<ol>
+<li><p>¿Cuál es la concentración pasado 1
+hora?</p></li>
+<li><p>¿Cuánto tiempo tardará en alcanzar 0.09 <span
+class="math inline">\(gr/cm^3\)</span> de medicamento en el
+órgano?</p></li>
+</ol>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../../reveal/plugin/search/search.js"></script>
+  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
+<script src="../../../reveal/plugin/math/math.js"></script>
+
+<script src="../../../scripts/reveal-init.js"></script>
+    </body>
+</html>

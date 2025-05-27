@@ -221,7 +221,7 @@ class="math display">\[m\ddot x=F_{\text{gravedad}}+F_{\text{resorte}}+F_{\text{
 \dot x,\]</span> donde recordamos que usualmente la fuerza de roce es
 proporcional a la velocidad de la partícula y se opone al movimiento, es decir \(F_{\text{roce}}=-\beta \dot x\). En este caso,
 y luego de hacer la traslación al lugar de equilibrio, la EDO queda de la forma <span
-class="math display">\[\ddot x+2\lambda x&#39;+\omega^2
+class="math display">\[\ddot x+2\lambda \dot x+\omega^2
 x=0,\]</span> donde <span
 class="math inline">\(\omega^2=\dfrac{k}{m}\)</span> y <span
 class="math inline">\(\lambda=\dfrac{\beta}{2m}\)</span></p>
@@ -251,8 +251,8 @@ class="math display">\[x(t)=e^{-\lambda t}\left( A+Bt
 class="math inline">\(\lambda^2-\omega^2&lt;0\Leftrightarrow\)</span> 2
 raíces complejas conjugadas y la solución general es <span
 class="math display">\[x(t)=e^{-\lambda t}\left( A\cos\left(
-{\sqrt{\lambda^2-\omega^2} t} \right)+B\sin\left(
-{\sqrt{\lambda^2-\omega^2} t} \right) \right)\]</span></p></li>
+{\sqrt{\omega^2-\lambda^2} t} \right)+B\sin\left(
+{\sqrt{\omega^2-\lambda^2} t} \right) \right)\]</span></p></li>
 </ul>
 </section>
 <section id="resortes-amortiguados-2" class="slide level3 frame">
@@ -264,7 +264,7 @@ class="math display">\[x(t)=e^{-\lambda t}\left( A\cos\left(
 <div class="example">
 <p> Considere el sistema resorte-masa dado por el PVI <span
 class="math display">\[\ddot x+5\dot x+4x=0, \quad x(0)=1, \quad
-x&#39;(0)=1.\]</span> Encuentre la posición de la particula en cada
+\dot x(0)=1.\]</span> Encuentre la posición de la particula en cada
 instante <span class="math inline">\(t\)</span></p>
 </div>
 <div class="solution fragment">
@@ -278,7 +278,7 @@ e^{-4 t}\)</span></em></p>-->
 <p> Encuentre la posición <span class="math inline">\(x(t)\)</span> para
 el sistema resorte-masa dado por el PVI <span
 class="math display">\[\ddot x+8\dot x+16x=0, \quad x(0)=0, \quad
-x&#39;(0)=-3.\]</span></p>
+\dot x(0)=-3.\]</span></p>
 </div>
 <div class="solution fragment">
 <!--<p> <em><span class="math inline">\(x(t)=-3 t e^{-4 t}\)</span></em></p>-->
@@ -289,7 +289,7 @@ x&#39;(0)=-3.\]</span></p>
 <div class="example">
 <p> Resuelva el sistema resorte-masa dado por el PVI <span
 class="math display">\[\ddot x+2 \dot x+10 x=0, \quad x(0)=-2, \quad
-x&#39;(0)=0.\]</span></p>
+\dot x(0)=0.\]</span></p>
 </div>
 <div class="solution fragment">
 <!--<p> <em><span class="math inline">\(x(t)=e^{-t}\left(-2 \cos(3
@@ -325,7 +325,7 @@ debe ser igual al voltaje total al que se somete el circuito, es decir
 <span
 class="math display">\[V=V_R+V_L+V_C=RI+L\dot I+\frac{Q}{C}.\]</span>
 Sin embargo, se sabe que la corriente es la tasa a la cual cambia la
-carga eléctrica en el tiempo, es decir <span class="math inline">\(Q=\dot I\)</span>, por lo
+carga eléctrica en el tiempo, es decir <span class="math inline">\(I=\dot Q\)</span>, por lo
 tanto podemos escribir <span class="math display">\[L\ddot Q+R\dot Q+\frac1{C}Q=V,\]</span> es decir
 la carga eléctrica en el circuito está determinada por una
 ecuación diferencial de segundo orden.</p>
