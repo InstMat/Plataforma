@@ -103,7 +103,11 @@ L(f)(s)\)</span> será el conjunto de los valores de <span
 class="math inline">\(s\)</span> para los cuales la integral es
 convergente.</p>
 </div>
-<div class="example fragment">
+</section>
+
+<section id="transformada-de-laplace-0.5" class="slide level3 frame">
+<h3>Transformada de Laplace</h3>
+<div class="example">
 <p> Calcular la transformada de Laplace de la función <span
 class="math inline">\(f(t)=1\)</span>.</p>
 </div>
@@ -111,17 +115,19 @@ class="math inline">\(f(t)=1\)</span>.</p>
     <div class="fragment">
 <p> <em>Tenemos que de la definición <span
 class="math display">\[\begin{aligned}
-		\mathcal L(f)(s)&amp;=\int_0^\infty e^{-st}\cdot 1\mathrm dt
+		\mathcal L(1)(s)&amp;=\int_0^\infty e^{-st}\cdot 1\mathrm dt
 		=\int_0^\infty e^{-st}\mathrm dt\\
 		&amp;=\lim_{b\to\infty} \int_0^b e^{-st}\mathrm dt
 		=\lim_{b\to\infty} -\frac{e^{-st}}{s}\Big|_{0}^b\\
 		&amp;=\lim_{b\to\infty} -\frac{e^{-sb}}{s}+\frac1s
-		=\frac1s
-	
-\end{aligned}\]</span> cuando <span
+		=\frac1s,	
+\end{aligned}\]</span>así \(\mathcal L(1)(s)=\dfrac1s\) cuando <span
 class="math inline">\(s&gt;0\)</span>.</em></p>
 </div>
-    </div>
+</div>
+<div class="remark fragment">
+    Notar que \(\displaystyle \mathcal L(1)(s)=\int_0^\infty e^{-st}\cdot 1\mathrm dt\) no está definida para \(s\leq 0\) pues la integral es divergente.
+</div>
 </section>
 <section id="transformada-de-laplace-1" class="slide level3 frame">
 <h3>Transformada de Laplace</h3>
@@ -140,11 +146,13 @@ class="math display">\[\begin{aligned}
 		=\lim_{b\to\infty} \frac1s\int_0^be^{-st}\mathrm dt\\
 		&amp;=\frac1s\mathcal L(1)(s)
 		=\frac1{s^2}\\
-	
-\end{aligned}\]</span> cuando <span
+\end{aligned}\]</span> así \(\mathcal L(t)(s)=\dfrac1{s^2}\) cuando <span
 class="math inline">\(s&gt;0\)</span>.</em></p>
 </div>
-    </div>
+</div>
+<div class="remark fragment">
+    Nuevamente \(\displaystyle \mathcal L(t)(s)=\int_0^\infty e^{-st}\cdot t\mathrm dt\) no está definida para \(s\leq 0\) pues la integral es divergente.
+</div>
 </section>
 <section id="transformada-de-laplace-2" class="slide level3 frame">
 <h3>Transformada de Laplace</h3>
@@ -173,7 +181,7 @@ class="math inline">\(s&gt;a\)</span>.</em></p>
 <div class="example">
 <p> Calcular la transformada de Laplace de la función <span
 class="math inline">\(f(t)=\sin(bt)\)</span> para <span
-class="math inline">\(a\in\mathbb R\)</span>.</p>
+class="math inline">\(b\in\mathbb R\)</span>.</p>
 </div>
 <div class="solution-full fragment">
     <div class="fragment">
@@ -198,7 +206,7 @@ class="math inline">\(s&gt;0\)</span>.</em></p>
 <p><em>La transformada de Laplace es un operador
 lineal, es decir, si <span class="math inline">\(m,n\in\mathbb
 R\)</span> y <span class="math inline">\(f,g\)</span> son funciones que
-tiene transformada de Laplace, entonces <span
+tienen transformada de Laplace, entonces <span
 class="math display">\[\mathcal L(mf+ng)=m\mathcal L(f)+n\mathcal
 L(g).\]</span></em></p>
 </div>
@@ -209,9 +217,9 @@ class="math inline">\(f(t)=7\sin(4t)-4e^{6t}\)</span>.</p>
 <div class="solution-full fragment">
     <div class="fragment">
 <p> <em>Sabemos que <span class="math inline">\(\mathcal
-L(\sin(4t))(s)=\frac{4}{s^2+16^2}\)</span> cuando <span
+L(\sin(4t))(s)=\dfrac{4}{s^2+16^2}\)</span> cuando <span
 class="math inline">\(s&gt;0\)</span> y que <span
-class="math inline">\(\mathcal  L(e^{6t})(s)=\frac{1}{s-6}\)</span>
+class="math inline">\(\mathcal  L(e^{6t})(s)=\dfrac{1}{s-6}\)</span>
 cuando <span class="math inline">\(s&gt;6\)</span>, entonces <span
 class="math display">\[\mathcal
 L(\sin(4t)+e^{6t})(s)=7\cdot\frac{4}{s^2+16^2}-4\cdot\frac{1}{s-6}\]</span>
@@ -285,18 +293,21 @@ dominio es <span class="math inline">\(s&gt;\alpha+a\)</span>.</em></p>
 </div>
 <div class="proof fragment">
 <p>Notar que <span class="math display">\[\mathcal
-L(e^{at}f(t))=\int_0^\infty e^{-st}\cdot e^{at}f(t)\mathrm dt
+L(e^{at}f(t))(s)=\int_0^\infty e^{-st}\cdot e^{at}f(t)\mathrm dt
 		=\int_0^\infty e^{-(s-a)t}f(t)\mathrm dt
 		=F(s-a).\]</span></p>
 </div>
-<div class="example fragment">
+</section>
+<section id="propiedades-fundamentales-0.5" class="slide level3 frame">
+<h3>Propiedades fundamentales</h3>
+<div class="example">
 <p> Calcular la transformada de <span
 class="math inline">\(e^{2t}t^2\)</span>.</p>
 </div>
 <div class="solution-full fragment">
     <div class="fragment">
 <p> <em>Recordar que <span class="math inline">\(\mathcal
-L(t^2)(s)=\frac{2}{s^3}\)</span> para <span
+L(t^2)(s)=\dfrac{2}{s^3}\)</span> para <span
 class="math inline">\(s&gt;0\)</span>, luego <span
 class="math display">\[\mathcal L(e^{2t}t^2)=\mathcal
 L(t^2)(s-2)=\frac{2}{(s-2)^2},\]</span> para <span
@@ -360,7 +371,10 @@ ocurre cuando <span class="math inline">\(f(t)\)</span> es de orden
 exponencial <span class="math inline">\(\left\vert f(t) \right\vert\leq
 Ce^{\alpha t}\)</span>.</p>
 </div>
-<div class="example fragment">
+</section>
+<section id="propiedades-fundamentales-2" class="slide level3 frame">
+<h3>Propiedades fundamentales</h3>
+<div class="example">
 <p> Calcule la transformada de Laplace de <span
 class="math inline">\(g(t)=\cos(bt)\)</span> sabiendo que la
 transformada de Laplace de <span
@@ -379,7 +393,7 @@ L(\cos(bt))(s)=\frac{s}{b^2+s^2}.\]</span></em></p>
 </section>
 <section id="propiedades-fundamentales-3" class="slide level3 frame">
 <h3>Propiedades fundamentales</h3>
-<div class="corollary">
+<div class="theorem">
 <p><em>Sea <span
 class="math inline">\(f(t)\)</span> de orden exponencial <span
 class="math inline">\(\alpha\)</span> (es decir, tendrá una transformada
@@ -414,14 +428,17 @@ class="math inline">\(s&gt;\alpha\)</span>.</em></p>
 </div>
 <div class="proof fragment">
 <p>Notar que <span
-class="math inline">\(\frac{d^n}{ds^n}\left( e^{-st}f(t)
+class="math inline">\(\dfrac{d^n}{ds^n}\left( e^{-st}f(t)
 \right)=(-1)^nt^ne^{-st}f(t)\)</span> y por lo tanto <span
 class="math display">\[\frac{d^n}{ds^n}\left( \int_0^\infty
 e^{-st}f(t)\mathrm dt \right)=\int_0^\infty \frac{d^n}{ds^n}\left(
 e^{-st}f(t) \right)\mathrm dt=\int_0^\infty (-1)^nt^ne^{-st}f(t)\mathrm
 dt=(-1)^n\mathcal L(t^nf(t))(s).\]</span></p>
 </div>
-<div class="example fragment">
+</section>
+<section id="propiedades-fundamentales-4.5" class="slide level3 frame">
+<h3>Propiedades fundamentales</h3>
+<div class="example">
 <p> Calcular <span class="math inline">\(\mathcal
 L(t\cos(2t))\)</span>.</p>
 </div>
@@ -478,6 +495,40 @@ class="math inline">\(s&gt;a\)</span></td>
 </tbody>
 </table>
 </div>
+</section>
+<section id="ejercicios" class="slide level3 frame">
+    <h3>Ejercicios</h3>
+  <div class="exercise">
+    <p><strong>1.</strong> Use la definición para calcular la transformada de Laplace de las siguientes funciones.</p>
+    <ol style="list-style-type: lower-roman">
+	<li style="margin-bottom: 10pt">\(e^{2t-7}\).</li>
+	<li style="margin-bottom: 10pt">\(te^{-5t}\).</li>
+	<li style="margin-bottom: 10pt">\(t\cos t\).</li>
+	<li style="margin-bottom: 10pt">\(t\sin t\).</li>
+	<li style="margin-bottom: 10pt">\(f_1(t)=\begin{cases} 0& \text{si }0\leq t &lt; 1,\\ 1& \text{si }t\geq 1. \end{cases}\) </li>
+	<li style="margin-bottom: 10pt">\(f_2(t)=\begin{cases} 0& \text{si }0\leq t &lt;1,\\ t& \text{si }t\geq 1. \end{cases}\)</li>
+	<li style="margin-bottom: 10pt">\(f_3(t)=\begin{cases} \sin t&\text{si } 0\leq t &lt;\pi,\\ \text{si } 0&\text{si } t\geq \pi. \end{cases}\)</li>
+	<li style="margin-bottom: 10pt">\(f_4(t)=\begin{cases} 0& \text{si } 0\leq t\leq a,\\
+        1& \text{si } a &lt; t \leq b,\\ 0& \text{si } t &gt; b. \end{cases}\) donde \(0&lt; a&lt;b&lt;\infty\) son número reales arbitrarios.</li>
+    </ol>
+  </div>
+  </section>
+<section id="ejercicios" class="slide level3 frame">
+    <h3>Ejercicios</h3>
+  <div class="exercise">
+   <p><strong>2.</strong> Calcule la transformada de Laplace de las siguiente funciones usando los teoremas y las tablas.</p>
+    <ol style="list-style-type: lower-roman">
+	<li style="margin-bottom: 10pt">\(1-3t^5\).</li>
+	<li style="margin-bottom: 10pt">\(4t^2-5t+20\).</li>
+	<li style="margin-bottom: 10pt">\((2t-1)^3\).</li>
+	<li style="margin-bottom: 10pt">\((2-e^{3t})^2\).</li>
+	<li style="margin-bottom: 10pt">\(\sinh(bt)\).</li>
+	<li style="margin-bottom: 10pt">\(\cosh(bt)\).</li>
+	<li style="margin-bottom: 10pt">\(\cos^2(t)\). <em>Ayuda: Use una identidad trigonométrica antes de calcular la transformada.</em></li>
+	<li style="margin-bottom: 10pt">\(\sin(2t)\cos(2t)\). <em>Ayuda: Use una identidad trigonométrica antes de calcular la transformada.</em></li>
+	<li style="margin-bottom: 10pt">\(\cos(\frac{\pi}{6}-t)\). <em>Ayuda: Use una identidad trigonométrica antes de calcular la transformada.</em></li>
+    </ol>
+  </div>
 </section>
     </div>
   </div>
