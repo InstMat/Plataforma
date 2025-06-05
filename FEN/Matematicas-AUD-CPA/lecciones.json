@@ -45,6 +45,15 @@
                     "enlace": "UnidadII/clase09.html"
                 }
             ]
+        },
+        {
+            "nombre": "Unidad III",
+            "lecciones": [
+                {
+                    "nombre": "Sucesiones y sumatorias",
+                    "enlace": "UnidadIII/clase10.html"
+                }
+            ]
         }
     ]
 }
