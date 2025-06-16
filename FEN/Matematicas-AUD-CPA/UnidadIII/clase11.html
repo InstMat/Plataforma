@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Matemáticas</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Matemáticas</h1>
+  <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+Contador Público y Auditor</p>
+  <p class="author"><img
+data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+alt="image" /></p>
+</section>
+
+<section id="progresión-aritmética" class="slide level3 frame">
+<h3>Progresión Aritmética</h3>
+<div class="definition">
+<p> Una sucesión se denomina <strong>Progresión Aritmética</strong>
+(P.A.) si la diferencia entre cualquier término y el anterior es la
+misma a lo largo de toda la sucesión.<br />
+La diferencia algebraica entre cada término y el anterior se denomina
+<span><strong>diferencia común</strong></span> y se denota por <span
+class="math inline">\(d\)</span>.</p>
+</div>
+<div class="example fragment">
+<p> </p>
+<ul>
+<li class="fragment"><p>La sucesión <span
+class="math inline">\(2,4,6,8,10...\)</span> es una Progresión
+Aritmética con diferencia <span
+class="math inline">\(d=2\)</span>.</p></li>
+<li class="fragment"><p>La sucesión <span class="math inline">\(-5, \,
+-1, \, 3, \, 7, \ldots\)</span> es una Progresión Aritmética con
+diferencia <span class="math inline">\(d = 4\)</span></p></li>
+<li class="fragment"><p>La sucesión <span class="math inline">\(5, \, 2,
+\, -1, \, -4, \ldots\)</span> es una Progresión Aritmética con
+diferencia <span class="math inline">\(d = -3\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="algunas-observaciones" class="slide level3 frame">
+<h3>Algunas observaciones</h3>
+<div class="remark">
+<p> </p>
+<ul>
+<li class="fragment"><p><em>Si <span
+class="math inline">\((a_k)_{k\in\mathbb N}\)</span> es una sucesión que
+está en progresión aritmética, entonces la diferencia es <span
+class="math inline">\(d=a_{k+1}-a_k\)</span> para cualqueir <span
+class="math inline">\(k\)</span>.</em></p></li>
+<li class="fragment"><p><em><span class="math inline">\(a_1, a_2,
+a_3....\)</span> es una P.A. si y solo si <span
+class="math inline">\(a_2-a_1=a_3-a_2=a_4-a_3=...=a_{k+1}-a_k\)</span>
+para cualquier <span class="math inline">\(k\)</span>.</em></p></li>
+<li class="fragment"><p><em>Si <span
+class="math inline">\((a_k)_{k\in\mathbb N}\)</span> es una P.A. con
+primer término <span class="math inline">\(a_1=a\)</span> y diferencia
+<span class="math inline">\(d\)</span>, entonces los terminos de esta
+sucesión se pueden expresar como <span class="math display">\[a,a+d,
+a+2d, a+3d,\ldots,a+(k-1)d,a+kd,\ldots .\]</span></em></p></li>
+<li class="fragment"><p><em>El termino <span
+class="math inline">\(n\)</span>-ésimo de una P.A. está dado por la
+siguiente expresión: <span
+class="math display">\[a_n=a_1+(n-1)d\]</span></em></p></li>
+</ul>
+</div>
+</section>
+<section id="ejemplos" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Considere la sucesión cuyos primeros términos son: <span
+class="math inline">\(-3, 1, 5, 9, 13\)</span>.</p>
+<ol>
+<li class="fragment"><p>Probar que esos números forman los primeros
+términos de una P.A. encontrando <span
+class="math inline">\(d\)</span>.</p></li>
+<li class="fragment"><p>Suponiendo que la lista continua en forma de
+P.A., determinar el término <span
+class="math inline">\(a_6\)</span>.</p></li>
+<li class="fragment"><p>Suponiendo que la lista continua en forma de
+P.A., determine el término general <span
+class="math inline">\(a_n\)</span> y <span
+class="math inline">\(a_{100}\)</span>.</p></li>
+</ol>
+</div>
+<div class="solution-full fragment">
+<p> </p>
+<ol>
+<li><p><em>La diferencia es <span
+class="math inline">\(d=4\)</span>, pues <span
+class="math inline">\(a_2-a_1=a_3-a_2=a_4-a_3=a_5-a_4=4\)</span></em></p></li>
+<li><p><em>Como <span
+class="math inline">\(d=4\)</span> el sexto término será <span
+class="math inline">\(a_6=a_5+4=13+4=17\)</span></em></p></li>
+<li><p><em>Si el primer término es <span
+class="math inline">\(a_1=-3\)</span> y la diferencia es <span
+class="math inline">\(d=4\)</span> entonces el término <span
+class="math inline">\(n\)</span>-ésimo es <span
+class="math inline">\(a_n=a_1+d\cdot (n-1)\)</span> y así <span
+class="math display">\[a_n=-3+4(n-1)=4n-7\]</span> por lo tanto <span
+class="math display">\[a_{100}=4\cdot 100 -7=393\]</span></em></p></li>
+</ol>
+</div>
+</section>
+<section id="ejemplos-1" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Si el cuarto término de una P.A. es <span
+class="math inline">\(5\)</span> y el noveno término es <span
+class="math inline">\(20\)</span>, encuentre el primer y el sexto
+término.</p>
+</div>
+<div class="solution-full fragment">
+<p> <em>En primer lugar debemos encontrar <span
+class="math inline">\(a_1\)</span> y <span
+class="math inline">\(d\)</span>, para esto usamos la fórmula <span
+class="math inline">\(a_n=a_1+(n-1)d\)</span>:</em></p>
+<p><em><span class="math display">\[\begin{aligned}
+	a_4 &amp;= a_1+3d=5\\
+	a_9 &amp;= a_1+8d=20
+\end{aligned}\]</span> de donde se obtiene que <span
+class="math display">\[a_1=-4\quad \text{y}\quad d=3.\]</span></em></p>
+<p><em>Finalmente podemos determinar que <span
+class="math inline">\(a_6=-4+5\cdot 3=11\)</span>.</em></p>
+</div>
+</section>
+<section id="interés-simple" class="slide level3 frame">
+<h3>Interés Simple</h3>
+<p>Si la cantidad de dinero <span class="math inline">\(P\)</span> es
+invertida a una tasa de interés anual del <span
+class="math inline">\(r\)</span> por ciento, en un año la cantidad de
+interés ganado será de <span
+class="math display">\[I=P\displaystyle\frac{R}{100}\]</span></p>
+<p>Si la inversión es a interés simple, entonces, en años sucesivos el
+interés sólo se paga sobre el capital <span
+class="math inline">\(P\)</span> y no sobre los montos de interés
+generados. Así que se agrega una cantidad constante <span
+class="math inline">\(I\)</span> a la inversión al final de cada año.
+Después de <span class="math inline">\(1\)</span> año el valor total es
+<span class="math inline">\(P+I\)</span>, después de <span
+class="math inline">\(2\)</span> años es <span
+class="math inline">\(P+2I\)</span>, y así sucesivamente.</p>
+<p>La sucesión de valores anuales de la inversión está dada por: <span
+class="math display">\[P+I, P+2I,P+3I, ...\]</span></p>
+<p>Estos términos forman una progresión aritmética, cuyo término inicial
+es <span class="math inline">\(P\)</span> y diferencia común <span
+class="math inline">\(d=I\)</span>.</p>
+<p>Notar que trasncurridos <span class="math inline">\(t\)</span> años,
+el monto de la inversión será de <span
+class="math inline">\(P+tI\)</span>.</p>
+</section>
+<section id="ejemplos-2" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Se invierten $2000 a una tasa de interés anual del 12% calculado de
+manera simple. Encuentre una expresión para el valor de la inversión
+<span class="math inline">\(t\)</span> años después de que se realizó.
+Calcule el valor después de 10 años.</p>
+</div>
+<div class="solution-full fragment">
+<p> <em>Aquí <span class="math inline">\(P=2000\)</span> y <span
+class="math inline">\(R=12\)</span>, luego la cantidad de interés que se
+obtiene anualmente es: <span
+class="math display">\[I=2000\cdot\dfrac{12}{100}=240.\]</span></em></p>
+<p><em>Cada año el interés es <span class="math inline">\(I\)</span>,
+por esto después de <span class="math inline">\(t\)</span> años el
+interés total agregado es <span class="math inline">\(tI=240t\)</span>,
+de modo que el valor de la inversión es: <span
+class="math display">\[P+tI=2000+240t,\]</span> que corresponde al
+término general de una P.A. con diferencia <span
+class="math inline">\(I=240\)</span>.</em></p>
+<p><em>En consecuencia, después de <span
+class="math inline">\(10\)</span> años, este valor es <span
+class="math inline">\(2000+10\cdot240=4400\)</span> dólares.</em></p>
+</div>
+</section>
+<section id="ejemplos-3" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Un sujeto invierte $200 en el fondo de una cooperativa que paga un
+interés simple del 10% al año. ¿Cuál es el valor de la inversión?:</p>
+<ol>
+<li class="fragment"><p>Después de <span
+class="math inline">\(n\)</span> años</p></li>
+<li class="fragment"><p>¿Cuánto tiempo debe pasar para que el valor de
+la inversión sea de $300?</p></li>
+<li class="fragment"><p>¿Cuanto tiempo debe pasar para que el valor de
+la inversión supere los $1.000?</p></li>
+</ol>
+</div>
+<div class="solution-full fragment">
+<p> </p>
+<ul>
+<li><p><em>Notar que <span
+class="math inline">\(P=200\)</span> y <span
+class="math inline">\(R=10\)</span>, luego la cantidad de interés anual
+es <span
+class="math inline">\(I=200\cdot\displaystyle\frac{10}{100}=20\)</span>
+y cada año el interés es I, así transcurridos <span
+class="math inline">\(n\)</span> años el valor de la inversión es <span
+class="math inline">\(a_n=P+nI=200+20n\)</span>.</em></p></li>
+<li><p><em>Debemos determinar <span
+class="math inline">\(n\)</span> de modo que <span
+class="math inline">\(a_n=300\)</span>. Es decir, hay que resolver la
+ecuación <span class="math inline">\(200 + 20n= 300\Rightarrow
+n=5\)</span>. Así, luego de 5 años el valor de la inversión es de $
+300.</em></p></li>
+<li><p><em>Buscamos ahora es <span
+class="math inline">\(n\)</span> de modo que <span
+class="math inline">\(a_n&gt;1000\)</span>, es decir hay que resolver la
+inecuación <span class="math inline">\(200+20n&gt;1000\Rightarrow n &gt;
+40\)</span>. Así deben pasar mas de 40 años para que el valor de
+inversión supere los $1.000.</em></p></li>
+</ul>
+</div>
+</section>
+<section id="sumatoria-de-una-p.a." class="slide level3 frame">
+<h3>Sumatoria de una P.A.</h3>
+<div class="definition">
+<p> Considere <span class="math inline">\((a_k)_{k\in\mathbb N}\)</span>
+una P.A. con primer término <span class="math inline">\(a_1\)</span> y
+diferencia <span class="math inline">\(d\)</span>. Entonces la suma de
+los <span class="math inline">\(n\)</span> primeros términos de esta
+sucesión está dada por: <span
+class="math display">\[S_n=\sum_{k=1}^{n}a_k=a_1+a_2+a_3+\ldots+a_{n-1}+a_n\]</span>
+y su valor se puede calcular como <span
+class="math display">\[S_n=\displaystyle\frac{n}{2}(a_1+a_n).\]</span></p>
+</div>
+</section>
+<section id="ejemplos-4" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Calcule la suma de los <span class="math inline">\(50\)</span>
+primeros términos de la progresión aritmética: <span
+class="math inline">\(2,5,8,11,14,\ldots\)</span></p>
+</div>
+<div class="solution-full fragment">
+<p> <em>Observemos en primer lugar que la sucesión es una P.A. con
+primer término <span class="math inline">\(a_1=2\)</span> y diferencia
+<span class="math inline">\(d=3\)</span></em></p>
+<p><em>Para poder usar la fórmula <span
+class="math inline">\(S_n=\displaystyle\frac{n}{2}(a_1+a_n)\)</span> con
+<span class="math inline">\(n=50\)</span> debemos determinar <span
+class="math inline">\(a_{50}\)</span>: <span
+class="math display">\[a_{50}=a_1+49d=2+(49\cdot 3)=149,\]</span> luego
+se sigue que <span class="math display">\[S_{50}=\frac{50}{2}\left(
+a_1+a_{50} \right)=25(2+149)=3775.\]</span></em></p>
+</div>
+</section>
+<section id="ejemplos-5" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> En una P.A. <span class="math inline">\(a_1=2\)</span> y <span
+class="math inline">\(d=3\)</span>. ¿Cuántos términos deben tomarse para
+que la suma sea <span class="math inline">\(155\)</span>?</p>
+</div>
+<div class="solution-full fragment">
+<p> <em>Queremos que se cumpla que <span
+class="math inline">\(S_n=155\)</span> suponiendo que <span
+class="math inline">\(a_1=2\)</span> y <span
+class="math inline">\(d=3\)</span>. Escribimos el término <span
+class="math inline">\(n\)</span>-ésimo como <span
+class="math inline">\(a_n=2+3(n-1)=3n-1\)</span> y usamos la fórmula
+<span class="math display">\[S_n=\frac{n}{2}(a_1+a_n).\]</span> Queremos
+encontrar <span class="math inline">\(n\)</span> de modo que <span
+class="math inline">\(155=\frac{n}{2}(a_1+a_n)\)</span> que es una
+ecuación para <span class="math inline">\(n\)</span> <span
+class="math display">\[155=\frac{n}{2}(2+(3n-1))\Leftrightarrow
+310=n(3n+1)\Leftrightarrow 3n^2+n-310=0\]</span> Resolvemos entonces la
+ecuación cuadrática <span class="math inline">\(3n^2+n-310=0\)</span>,
+de donde obtenemos que <span class="math inline">\(n=10\)</span> o <span
+class="math inline">\(n=-31/3\)</span>. Pero como <span
+class="math inline">\(n\)</span> debe ser un entero positivo entonces
+solo nos queda <span class="math inline">\(n=10\)</span>.</em></p>
+<p><em>Por lo tanto se deben sumar 10 términos se la P.A. para obtener
+como resultado <span class="math inline">\(155\)</span>.</em></p>
+</div>
+</section>
+<section id="ejemplos-6" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> Una persona debe pagar una deuda de $360.000 en 40 cuotas que forman
+una P.A. Cuando 30 de los pagos están cubiertos la persona fallece,
+dejando la tercera parte de la deuda sin pagar. Calcule el valor del
+primer pago.</p>
+</div>
+<div class="solution-full fragment">
+<p> <em>Si las cuotas forman una P.A. cuyo primer término es <span
+class="math inline">\(a_1\)</span> y diferencia <span
+class="math inline">\(d\)</span> entonces las cuotas son de <span
+class="math display">\[a_1,a_1+d,a_1+2d,\ldots,a_1+(k-1)d,\ldots.\]</span>
+Nos dicen que luego de pagar las 40 cuotas se cancela la deuda completa,
+es decir <span
+class="math display">\[S_{40}=20[2a_1+39d]=360000.\]</span> Además nos
+dicen que pagadas 30 cuotas quedó por pagar un tercio de la deuda total,
+es decir se canceló 2/3 de la deuda: <span
+class="math display">\[S_{30}=15[2a_1+29d]=\frac{2}{3}\cdot
+360000.\]</span></em></p>
+<p><em>Resolviendo las ecuaciones anteriores, se tiene que: <span
+class="math inline">\(a_1=5100\)</span> y <span
+class="math inline">\(d=200\)</span>. De esta manera, el primer pago fue
+de $5.100.</em></p>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../../reveal/plugin/search/search.js"></script>
+  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
+<script src="../../../reveal/plugin/math/math.js"></script>
+
+<script src="../../../scripts/reveal-init.js"></script>
+    </body>
+</html>
