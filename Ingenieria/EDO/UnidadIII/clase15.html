@@ -94,7 +94,7 @@ de una masa adherida a un resorte mediante una EDO lineal de segundo
 orden. Con la ayuda de las leyes de Newton y de Hooke también podemos
 modelar resortes acoplados.</p>
 <div class="center">
-<p><img data-src="clase15/resorte2.png" style="width:30.0%" alt="image" /></p>
+<p style="text-align: center;"><img data-src="clase15/resorte2.png" style="width:25.0%" alt="image" /></p>
 </div>
 <p>Dado que hay dos masas, para cada una de ellas aplica la ley de
 Newton. Una vez que el sistema está en equilibrio (de modo que la
@@ -102,12 +102,12 @@ gravedad ya hizo su efecto) sobre la masa <span
 class="math inline">\(m_1\)</span> actúan la fuerza del resorte <span
 class="math inline">\(A\)</span> y la fuerza del resorte <span
 class="math inline">\(B\)</span> por lo que se verifica que <span
-class="math display">\[m_1x_1&#39;&#39;=F_{\text{resorte \(A\) sobre
+class="math display">\[m_1\ddot x_1=F_{\text{resorte \(A\) sobre
 \(m_1\)}}+F_{\text{resorte \(B\) sobre
 \(m_1\)}}=-k_1x_1+k_2(x_2-x_1).\]</span></p>
 <p>Sobre la masa <span class="math inline">\(m_2\)</span> solo actúa el
 resorte <span class="math inline">\(B\)</span> por lo que se cumple
-<span class="math display">\[m_2x_2&#39;&#39;=F_{\text{resorte \(B\)
+<span class="math display">\[m_2\ddot x_2=F_{\text{resorte \(B\)
 sobre \(m_2\)}}=-k_2(x_2-x_1).\]</span></p>
 </section>
 <section id="resortes-acoplados" class="slide level3 frame">
@@ -116,8 +116,8 @@ sobre \(m_2\)}}=-k_2(x_2-x_1).\]</span></p>
 completamtente descrito por el sistema de EDOs de segundo orden <span
 class="math display">\[\left\{
 	\begin{aligned}
-	m_1x_1&#39;&#39;&amp;=-k_1x_1+k_2(x_2-x_1)\\
-	m_2x_2&#39;&#39;&amp;=-k_2(x_2-x_1).
+	m_1\ddot x_1 &=-k_1x_1+k_2(x_2-x_1)\\
+	m_2\ddot x_2 &=-k_2(x_2-x_1).
 	\end{aligned}
 	\right.\]</span> Sobre el cual se deben imponer condiciones iniciales
 para los desplazamientos <span class="math inline">\(x_1(0)\)</span>,
@@ -127,8 +127,8 @@ class="math inline">\(x_2&#39;(0)\)</span></p>
 <div class="example fragment">
 <p> Resuelva el sistema de EDOs <span class="math display">\[\left\{
 		\begin{aligned}
-			2x_1&#39;&#39;&amp;=-4x_1+2(x_2-x_1),&amp;&amp;x_1(0)=3,&amp;x_1&#39;(0)=0,\\
-			x_2&#39;&#39;&amp;=-2(x_2-x_1),&amp;&amp;x_2(0)=3,&amp;x_1&#39;(0)=0.
+			2\ddot x_1 &amp;=-4x_1+2(x_2-x_1),&amp;&amp;x_1(0)=3,&amp;\dot x_1(0)&=0,\\
+			\ddot x_2 &amp;=-2(x_2-x_1),&amp;&amp;x_2(0)=3,&amp;\dot x_1(0)&=0.
 		\end{aligned}
 		\right.\]</span></p>
 </div>
@@ -140,6 +140,20 @@ y(t)=4\cos t-\cos(2t).\]</span></em></p>
 </div>
     </div>
 </section>
+<section id="resortes-acoplados-2" class="slide level3 frame">
+<h3>Resortes acoplados</h3>
+<div class="example">
+<p> Resuelva el sistema de EDOs asociado a resortes acoplados
+	<span class="math display">\[\left\{
+		\begin{aligned}
+			\ddot x_1 &amp;=-10x_1+4x_2,&amp;&amp;x_1(0)=0,&amp;\dot x_1(0)&=1,\\
+			\ddot x_2 &amp;=4x_1-4x_2,&amp;&amp;x_2(0)=0,&amp;\dot x_1(0)&=-1.
+		\end{aligned}
+		\right.\]</span></p>
+</div>
+<div class="solution fragment">
+</div>
+</section>
 <section id="resortes-acoplados-con-fuerza-externa"
 class="slide level3 frame">
 <h3>Resortes acoplados con fuerza externa</h3>
@@ -148,30 +162,69 @@ class="math inline">\(m_2\)</span> actúe una fuerza externa (por ejemplo
 un motor)</p>
 <p>En este caso la ley de Newton aplicada sobre la masa <span
 class="math inline">\(m_2\)</span> nos dice que <span
-class="math display">\[m_2x_2&#39;&#39;=F_{\text{resorte \(B\) sobre
+class="math display">\[m_2\ddot x_2=F_{\text{resorte \(B\) sobre
 \(m_2\)}}+F_{\text{externa}}=-k_2(x_2-x_1)+F_e.\]</span> de donde el
 sistema queda de la forma <span class="math display">\[\left\{
 	\begin{aligned}
-		m_1x_1&#39;&#39;+(k_1+k_2)x_1-k_2x_2&amp;=0\\
-		m_2x_2&#39;&#39;-k_2x_1+k_2x_2&amp;=F_e.
+		m_1\ddot x_1 +(k_1+k_2)x_1-k_2x_2&amp;=0\\
+		m_2\ddot x_2 -k_2x_1+k_2x_2&amp;=F_e.
 	\end{aligned}
 	\right.\]</span></p>
-<div class="example fragment">
+</section>
+<section id="resortes-acoplados-con-fuerza-externa-2"
+class="slide level3 frame">
+<h3>Resortes acoplados con fuerza externa</h3>
+<div class="example">
 <p> Resuelva el sistema de EDOs <span class="math display">\[\left\{
 		\begin{aligned}
-			2x_1&#39;&#39;+6x_1-2x_2&amp;=0,&amp;&amp;x_1(0)=3,&amp;x_1&#39;(0)=0,\\
-			x_2&#39;&#39;-2x_1+2x_2&amp;=37\cos(3t),&amp;&amp;x_2(0)=3,&amp;x_1&#39;(0)=0.
+			2\ddot x_1+6x_1-2x_2&amp;=0,&amp;&amp;x_1(0)=3,&amp;\dot x_1(0)=0,\\
+			\ddot x_2-2x_1+2x_2&amp;=37\cos(3t),&amp;&amp;x_2(0)=3,&amp;\dot x_1(0)=0.
 		\end{aligned}
 		\right.\]</span></p>
 </div>
-<div class="solution-full fragment">
-    <div class="fragment">
-<p> <em>Usamos la transformada de Laplace para obtener que <span
-class="math display">\[x_1(t)=\ldots\quad\text{e}\quad
-y(t)=\ldots.\]</span></em></p>
+<div class="solution fragment">
 </div>
-    </div>
 </section>
+<section id="ejercicios" class="slide level3 frame">
+    <h3>Ejercicios</h3>
+  <div class="exercise">
+    <p>Use la transformada de Laplace para resolver los siguientes sistemas de ecuaciones diferenciales.</p>
+    <ol style="list-style-type: lower-alpha">
+        <li style="margin-bottom: 10pt">
+			\(\left\{
+		\begin{aligned}
+			\dot x &amp;=x-2y, &amp; x(0)&=-1,\\
+			\dot y &amp;=5x-y, &amp; y(0)&=2.
+		\end{aligned}
+		\right.\)
+        </li>
+		<li style="margin-bottom: 10pt">
+			\(\left\{
+		\begin{aligned}
+			\dot x +x -\dot y +y &=0, &amp; x(0)&=0,\\
+			\dot x +\dot y +2y &=0&amp; y(0)&=1.
+		\end{aligned}
+		\right.\)
+        </li>
+		<li style="margin-bottom: 10pt">
+			\(\left\{
+		\begin{aligned}
+			\ddot x +\ddot y &= t^2, &amp; x(0)&=8, \dot x(0)=0\\
+			\ddot x -\ddot y &= 4t &amp; y(0)&=0, \dot y(0)=0.
+		\end{aligned}
+		\right.\)
+        </li>
+		<li style="margin-bottom: 10pt">
+			\(\left\{
+		\begin{aligned}
+			\ddot x +3\dot y +3y &= 0, &amp; x(0)&=0, \dot x(0)=2,\\
+			\ddot x +3y &= te^{-t} &amp; y(0)&=0.
+		\end{aligned}
+		\right.\)
+        </li>
+    </ol>
+  </div>
+  </section>
     </div>
   </div>
 

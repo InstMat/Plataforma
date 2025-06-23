@@ -86,6 +86,34 @@
 style="width:30.0%" alt="image" /></p>
 </section>
 
+<section id="transformada-de-laplace-para-resolver-sistemas-de-edos-lineales-0" class="slide level3 frame">
+<h3>Transformada de Laplace para resolver sistemas de EDOs lineales</h3>
+<p>
+Un sistema de ecuaciones diferenciales lineales de primer orden consiste de \(n\) funciones incógnitas \(x_1(t), x_2(t), \ldots, x_n(t)\)
+y \(n\) ecuaciones diferenciales de la forma</p>
+\[
+\left\{\begin{aligned}
+\dfrac{dx_1}{dt}&=a_{11}(t)x_1(t)+a_{12}(t)x_2(t)+\ldots+a_{1n}(t)x_n(t)+f_1(t)\\
+\dfrac{dx_2}{dt}&=a_{21}(t)x_1(t)+a_{22}(t)x_2(t)+\ldots+a_{2n}(t)x_n(t)+f_2(t)\\
+&\vdots\\
+\dfrac{dx_n}{dt}&=a_{n1}(t)x_1(t)+a_{n2}(t)x_2(t)+\ldots+a_{nn}(t)x_n(t)+f_n(t).
+\end{aligned}\right.
+\Leftrightarrow
+
+\color{red}{\dot X(t)=A(t)\cdot X(t)+F(t)}.
+\]
+con condiciones iniciales para cada una de las funciones:
+\[
+\left\{\begin{aligned}
+x_1(0)&=x_1\\
+x_2(0)&=x_2\\
+&\vdots\\
+x_n(0)&=x_n\\
+\end{aligned}\right.
+\]
+<p class="fragment">Acá nos enfocarmos en sistemas lineales con coeficientes constantes, es decir, \(a_{ij}(t)=a_{ij}\in\mathbb R\).</p>
+</section>
+
 <section
 id="transformada-de-laplace-para-resolver-sistemas-de-edos-lineales"
 class="slide level3 frame">
@@ -94,19 +122,32 @@ class="slide level3 frame">
 EDOs lineales.</p>
 <div class="example">
 <p> Use la transformada de Laplace para resolver el sistema de
-ecuaciones diferenciales <span class="math display">\[\left\{
+ecuaciones diferenciales
+<span class="math display">\[\left\{
 	\begin{aligned}
-		x&#39;&amp;=-x+y,\\
-		y&#39;&amp;=2x,\\
+		\dot x &=-x+y,\\
+		\dot y &=2x,\\
 		x(0)=0&amp;,y(0)=1.
 	\end{aligned}
-	\right.\]</span></p>
+  \color{red}{\Leftrightarrow 
+  \begin{pmatrix}
+  \dot x(t)\\ \dot y(t) 
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+  -1&1\\
+  2&0
+  \end{pmatrix}\cdot
+  \begin{pmatrix}
+  x(t)\\ y(t) 
+  \end{pmatrix}
+  }
+	\right.\]
+</span></p>
 </div>
 <div class="solution-full fragment">
     <div class="fragment">
-<p> <em>Si denotamos <span class="math inline">\(X(s)=\mathcal
-L(x(t))\)</span> e <span class="math inline">\(Y(s)=\mathcal
-L(y(t))\)</span> y aplicamos la transformada a ambas ecuaciones
+<p> <em>Aplicamos la transformada a ambas ecuaciones
 diferenciales obtenemos
     <span class="math display">\[
         x&#39;=-x+y,\ x(0)=0 \Rightarrow sX(s)=-X(s)+Y(s)
@@ -114,46 +155,39 @@ diferenciales obtenemos
         y&#39;=2x,\ y(0)=1 \Rightarrow sY(s)-1=2X(s).
     \]</span>
     Es decir ahora tenemos un sistema de ecuaciones
-lineales <span class="math display">\[\left\{
+lineales \(\left\{
 	\begin{aligned}
 		(1+s)X(s)-Y(s)&amp;=0,\\
 		-2X(s)+sY(s)&amp;=1,\\
 	\end{aligned}
-	\right.\]</span> que al resolver nos dice que <span
+	\right.\) que al resolver nos dice que <span
 class="math inline">\(
 		X(s)=\dfrac{1}{s^2+s-2}
         \quad\text{e}\quad
-		Y(s)=\dfrac{1+s}{s^2+s-2}\)</span>. Para concluir debemos usar la transformada inversa para obtener
-<span class="math inline">\(x(t)\)</span> e <span
-class="math inline">\(y(t)\)</span>. Notar que <span
-class="math inline">\(\dfrac{1}{s^2+s-2}=\dfrac{1}{(s+2)(s-1)}=\dfrac{\frac13}{s-1}-\dfrac{\frac13}{s+2},\)</span>
-de donde <span class="math display">\[x(t)=\mathcal L^{-1}\left(
-\frac{1}{s^2+s-2} \right)=\frac13\mathcal L^{-1}\left( \frac{1}{s-1}
-\right)-\frac13\mathcal
-L^{-1}\left(\frac{1}{s+2}\right)=\frac13e^{t}-\frac13e^{-2t}.\]</span></em></p>
-<p><em>Por otra parte <span
-class="math inline">\(\dfrac{1+s}{s^2+s-2}=\dfrac{1+s}{(s+2)(s-1)}=\dfrac{\frac23}{s-1}+\dfrac{\frac13}{s+2}\)</span>
-de donde <span class="math display">\[y(t)=\mathcal L^{-1}\left(
-\frac{1+s}{s^2+s-2} \right)=\frac23\mathcal L^{-1}\left( \frac{1}{s-1}
-\right)+\frac13\mathcal
-L^{-1}pt{\frac{1}{s+2}}=\frac23e^{t}+\frac13e^{-2t}.\]</span></em></p>
+		Y(s)=\dfrac{1+s}{s^2+s-2}\)</span>. Para concluir debemos usar la transformada inversa y obtenemos que
+    <span class="math display">\[x(t)=\mathcal L^{-1}\left(
+\frac{1}{s^2+s-2} \right)=\frac13e^{t}-\frac13e^{-2t},\quad y(t)=\mathcal L^{-1}\left(
+\frac{1+s}{s^2+s-2} \right)=\frac23e^{t}+\frac13e^{-2t}.\]</span>
+</em>
 </div>
-    </div>
+</div>
 </section>
+
 <section
 id="transformada-de-laplace-para-resolver-sistemas-de-edos-lineales-1"
 class="slide level3 frame">
 <h3>Transformada de Laplace para resolver sistemas de EDOs lineales</h3>
+<p>También se pueden resolver sistemas de segundo orden</p>
 <div class="example">
 <p> Usar la transformada de Laplace para resolver <span
-class="math display">\[\left\{
+class="math display">\(\left\{
 	\begin{aligned}
-		x&#39;&#39;+10x-4y&amp;=0,\\
-		y&#39;&#39;-4x+4y&amp;=0,\\
+		\ddot x+10x-4y&amp;=0,\\
+		\ddot y-4x+4y&amp;=0,\\
 		x(0)=0&amp;,y(0)=0,\\
 		x&#39;(0)=1&amp;,y&#39;(0)=-1.
 	\end{aligned}
-	\right.\]</span></p>
+	\right.\)</span></p>
 </div>
 <div class="solution-full fragment">
     <div class="fragment">
@@ -169,17 +203,41 @@ el sistema <span class="math display">\[\left\{
 		-4X(s)+(4+s^2)Y(s)&amp;=-1,\\
 	\end{aligned}
 	\right.\]</span> que tiene como solución a <span
-class="math display">\[\begin{gathered}
-		X(s)=\frac{s^2}{(s^2+2)(s^2+12)}=\frac{-\frac15}{s^2+2}+\frac{\frac65}{s^2+12}\\
+class="math display">\[
+		X(s)=\frac{s^2}{(s^2+2)(s^2+12)}=\frac{-\frac15}{s^2+2}+\frac{\frac65}{s^2+12}\quad\text{e}\quad 
 		Y(s)=-\frac{s^2+6}{(s^2+2)(s^2+12)}=\frac{-\frac25}{s^2+2}+\frac{-\frac35}{s^2+12}
-	
-\end{gathered}\]</span> y si aplicamos la transformada inversa obtenemos
+	\]</span> y si aplicamos la transformada inversa obtenemos
 que <span
 class="math display">\[x(t)=-\frac{\sqrt2}{10}\sin(\sqrt 2
 t)+\frac{\sqrt 3}{5}\sin(2\sqrt 3 t)\quad\text{e}\quad y(t)=-\frac{\sqrt2}{5}\sin(\sqrt 2 t)-\frac{\sqrt
     3}{10}\sin(2\sqrt 3 t)\]</span></em></p>
     </div></div>
 </section>
+<section id="ejercicios" class="slide level3 frame">
+    <h3>Ejercicios</h3>
+  <div class="exercise">
+    <p>Use la transformada de Laplace para resolver los siguientes sistemas de ecuaciones diferenciales.</p>
+    <ol style="list-style-type: lower-alpha">
+        <li style="margin-bottom: 10pt">
+          \(
+            \left\{
+              \begin{aligned}
+          \dot x_1 & = 3x_1 - 3x_2 + 2, & x_1(0) & = 1,\\
+          \dot x_2 & = -6x_1 - t, & x_2(0)&=- 1
+          \end{aligned}\right.\)</li>
+          <li style="margin-bottom: 10pt">\(\left\{\begin{aligned}
+          \dot Q_1 & = 2 + \frac{Q_2}{100} - \frac{7Q_1}{400},& Q_1(0) &= 20\\
+          \dot Q_2 & = \frac{3Q_1}{800} - \frac{Q_2}{100},& Q_2(0) &= 80
+          \end{aligned}\right.\)
+        </li>
+          <li style="margin-bottom: 10pt">\(\left\{\begin{aligned}
+            \dot x_1 &= -3x_1+2x_3, & x_1(0)&=4\\
+            \dot x_2 &= -x_1+x_2, & x_2(0)&=-1\\
+            \dot x_3 &= -2x_1 -x_2, & x_3(0)&=2 
+            \end{aligned}\right.\)</li>
+    </ol>
+  </div>
+  </section>
     </div>
   </div>
 
