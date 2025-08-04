@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Matemáticas</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
+  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <!---Geogebra-->
+        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+        
+        <!--MathJAX-->
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
+					cancel: ["Extension","cancel"],
+					bcancel: ["Extension","cancel"],
+					xcancel: ["Extension","cancel"],
+					cancelto: ["Extension","cancel"]
+				});
+			});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+		</script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
+				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+			});
+		</script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Matemáticas</h1>
+  <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+Contador Público y Auditor</p>
+  <p class="author"><img
+data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+alt="image" /></p>
+</section>
+
+<section id="límites-con-exponenciales-y-logaritmos"
+class="slide level3 frame">
+<h3>Límites con exponenciales y logaritmos</h3>
+<div class="theorem">
+<p> <em>Sea <span class="math inline">\(b\)</span> un número real
+positivo. Entonces para cada número real <span
+class="math inline">\(a\)</span> se cumple que <span
+class="math display">\[\lim_{x\to a}b^x=b^a\]</span></em></p>
+</div>
+<div class="example">
+<p> Determinar los siguientes límites</p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 2}
+e^x\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow -4}
+2^{2x}\)</span></p></li>
+</ol>
+</div>
+</section>
+
+<section id="límites-con-exponenciales-y-logaritmos-1"
+class="slide level3 frame">
+<h3>Límites con exponenciales y logaritmos</h3>
+<div class="theorem">
+<p> <em>Sea <span class="math inline">\(b\)</span> un número real
+positivo. Entonces para cada número real positivo <span
+class="math inline">\(a\)</span> se cumple que <span
+class="math display">\[\lim_{x\to a}\log_b x=\log_b a\]</span></em></p>
+</div>
+<div class="example">
+<p> Determinar los siguientes límites</p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 1} \log
+x\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 2}
+\log_2(4x)\)</span></p></li>
+</ol>
+</div>
+</section>
+
+<section id="límites-infinitos" class="slide level3 frame">
+<h3>Límites infinitos</h3>
+<div class="examples">
+<p> </p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 0^+} \frac{1}{x}
+=\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 0^-} \frac{1}{x}
+=\)</span></p></li>
+</ol>
+</div>
+</section>
+
+<section id="asíntotas-verticales" class="slide level3 frame">
+<h3>Asíntotas Verticales</h3>
+<div class="definition">
+<p> La recta <span class="math inline">\(x=a\)</span> es una asíntota
+vertical de la gráfica de <span class="math inline">\(y=f(x)\)</span> si
+se cumple al menos una de las siguientes afirmaciones:</p>
+<ul>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow a^+} f(x) =
+\infty\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow a^-} f(x) =
+\infty\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow a^+} f(x) =
+-\infty\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow a^-} f(x) =
+-\infty\)</span></p></li>
+</ul>
+</div>
+<div class="example fragment">
+<p> Determinar los siguientes límites</p>
+<ul>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 2^+}
+\frac{3x+1}{x-2}\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 2^-}
+\frac{3x+1}{x-2}\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="ejemplos" class="slide level3 frame">
+<h3>Ejemplos</h3>
+<div class="example">
+<p> </p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 0^+}
+\frac{1}{x^2} =\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 0^-}
+\frac{1}{x^2} =\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 0} \frac{1}{x^2}
+=\)</span></p></li>
+</ol>
+</div>
+<div class="example fragment">
+<p> </p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 4} \frac{1}{x-4}
+=\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow 3}
+\frac{x+1}{x-3} =\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="límites-al-infinito" class="slide level3 frame">
+<h3>Límites al infinito</h3>
+<div class="definition">
+<p> Sea <span class="math inline">\(f\)</span> una función definida en
+el intervalo <span class="math inline">\((a, \, \infty )\)</span>.
+Entonces <span class="math display">\[\lim_{x\rightarrow \infty} f(x) =
+L\]</span> significa que los valores de <span
+class="math inline">\(f(x)\)</span> se acerca a <span
+class="math inline">\(L\)</span> cuando <span
+class="math inline">\(x\)</span> se incrementa lo suficiente.</p>
+<p>Sea <span class="math inline">\(f\)</span> una función definida en el
+intervalo <span class="math inline">\((- \infty , \, a)\)</span>.
+Entonces <span class="math display">\[\lim_{x\rightarrow -\infty} f(x) =
+L\]</span> significa que los valores de <span
+class="math inline">\(f(x)\)</span> se acerca a <span
+class="math inline">\(L\)</span> cuando <span
+class="math inline">\(x\)</span> es negativo y se incrementa lo
+suficiente.</p>
+</div>
+<div class="example fragment">
+<p> </p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow \infty}
+\frac{1}{x} =\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow -\infty}
+\frac{1}{x} =\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="límites-infinitos-de-funciones-racionales"
+class="slide level3 frame">
+<h3>Límites infinitos de funciones racionales</h3>
+<div class="theorem">
+<p> <em>Si <span class="math inline">\(p(x) = a_n x^n + a_{n-1} x^{n-1}
++ \cdots + a_1 x + a_0\)</span> con <span class="math inline">\(a_n \neq
+0\)</span>, es decir <span class="math inline">\(p(x)\)</span> es un
+polinomio de grado <span class="math inline">\(n\)</span> y <span
+class="math inline">\(q(x) = b_m x^m + b_{m-1} x^{m-1} + \cdots + b_1 x
++ b_0\)</span> con <span class="math inline">\(b_m \neq 0\)</span>, es
+decir <span class="math inline">\(q(x)\)</span> es un polinomio de grado
+<span class="math inline">\(m\)</span>.</em></p>
+<p><em>Si<span class="math inline">\(f\)</span> es la función racional
+<span class="math inline">\(f(x) = \frac{p(x)}{q(x)}\)</span>, entonces:
+<span class="math display">\[\lim_{x\rightarrow -\infty} f(x) =
+\lim_{x\rightarrow -\infty} \frac{a_n x^n}{b_m x^m}\]</span> y <span
+class="math display">\[\lim_{x\rightarrow \infty} f(x) =
+\lim_{x\rightarrow \infty} \frac{a_n x^n}{b_m x^m}\]</span></em></p>
+</div>
+<div class="theorem fragment">
+<p> <em>Sea <span class="math inline">\(n\)</span> un número racional
+positivo. Si <span class="math inline">\(x^n\)</span> está bien
+definida, entonces <span class="math display">\[\lim_{x\rightarrow
+\infty} \frac{1}{x^n} = 0  \qquad \quad  \text{y } \qquad
+\quad   \lim_{x\rightarrow -\infty} \frac{1}{x^n} =0\]</span></em></p>
+</div>
+</section>
+<section id="límites-infinitos-de-funciones-racionales-1"
+class="slide level3 frame">
+<h3>Límites infinitos de funciones racionales</h3>
+
+<div class="example">
+<p> Calcular los siguientes límites</p>
+<ol>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow \infty}
+\frac{2}{x^2} =\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow -\infty}
+\frac{4}{3x^3} =\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow \infty}
+\frac{2x^2}{3x^2} =\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow \infty}
+\frac{2x^2+x-5}{3x^2-2x+7} =\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow -\infty}
+\frac{x^2+x+2}{x^3+1} =\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\rightarrow \infty}
+\frac{x^2+x-1}{2x+5} =\)</span></p></li>
+</ol>
+</div>
+</section>
+<section id="gráficamente" class="slide level3 frame">
+<h3>Gráficamente</h3>
+<div class="example">
+<p> Observando que la gráfica de <span
+class="math inline">\(\displaystyle  f(x) =
+\frac{2x^2-1}{x^2+3}\)</span> es</p>
+<div class="center">
+<p style="text-align: center;"><img data-src="clase14/limit4.jpg" style="width:50%"
+alt="image" /></p>
+</div>
+<p>Podemos notar que</p>
+<p><span class="math display">\[\lim_{x\rightarrow \infty}
+\frac{2x^2-1}{x^2+3} = 2  \hspace{1in}  \lim_{x\rightarrow -\infty}
+\frac{2x^2-1}{x^2+3} = 2\]</span></p>
+</div>
+</section>
+<section id="asíntotas-horizontales" class="slide level3 frame">
+<h3>Asíntotas Horizontales</h3>
+<div class="definition">
+<p> La recta <span class="math inline">\(y=L\)</span> se llama asíntota
+horizontal de la curva <span class="math inline">\(y=f(x)\)</span> si se
+cumple cualquiera de las dos condiciones siguientes</p>
+<p><span class="math display">\[\lim_{x\rightarrow \infty} f(x) = L
+\qquad \text{o} \qquad \lim_{x\rightarrow -\infty} f(x) = L\]</span></p>
+</div>
+<div class="example">
+<p> Dado el gráfico de la función <span
+class="math inline">\(f\)</span></p>
+<p style="text-align: center;"><img data-src="clase14/limit5.jpg" style="width:30%in"
+alt="image" /></p>
+<p>determinar asíntotas horizontales y verticales, si es que
+existen.</p>
+</div>
+</section>
+<section id="límites-infinitos-con-exponenciales-y-logaritmos"
+class="slide level3 frame">
+<h3>Límites infinitos con exponenciales y logaritmos</h3>
+<div class="theorem">
+<p> <em>Sea <span class="math inline">\(b&gt;1\)</span> un número real
+positivo. Entonces se cumple que</em></p>
+<ul>
+<li class="fragment"><p><em><span
+class="math inline">\(\displaystyle\lim_{x\to+\infty}
+b^x=+\infty\)</span>.</em></p></li>
+<li class="fragment"><p><em><span
+class="math inline">\(\displaystyle\lim_{x\to-\infty}
+b^x=0\)</span>.</em></p></li>
+<li class="fragment"><p><em><span
+class="math inline">\(\displaystyle\lim_{x\to+\infty} \log_b
+x=+\infty\)</span>.</em></p></li>
+<li class="fragment"><p><em><span
+class="math inline">\(\displaystyle\lim_{x\to0^+} \log_b
+x=-\infty\)</span>.</em></p></li>
+</ul>
+</div>
+<div class="example fragment">
+<p> Determinar los siguientes límites</p>
+<ul>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\to 0^+} \ln
+(x)\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\to\infty}
+\frac{1}{2^{-x}}\)</span></p></li>
+<li class="fragment"><p><span
+class="math inline">\(\displaystyle  \lim_{x\to\infty}
+\frac{10}{5+4e^{-x}}\)</span></p></li>
+</ul>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="../../../reveal/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="../../../reveal/plugin/notes/notes.js"></script>
+  <script src="../../../reveal/plugin/search/search.js"></script>
+  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
+<script src="../../../reveal/plugin/math/math.js"></script>
+
+<script src="../../../scripts/reveal-init.js"></script>
+    </body>
+</html>
