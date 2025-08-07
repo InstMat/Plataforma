@@ -62,6 +62,23 @@
                     "enlace": "UnidadIII/clase12.html"
                 }
             ]
+        },
+        {
+            "nombre": "Unidad IV",
+            "lecciones": [
+                {
+                    "nombre": "Límites",
+                    "enlace": "UnidadIV/clase13.html"
+                },
+                {
+                    "nombre": "Límites y el infinito",
+                    "enlace": "UnidadIV/clase14.html"
+                },
+                {
+                    "nombre": "Continuidad",
+                    "enlace": "UnidadIV/clase15.html"
+                }
+            ]
         }
     ]
 }

@@ -1,45 +1,69 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="author" content="image">
-  <title>Matemáticas</title>
-  <!--
+	<meta charset="utf-8">
+	<meta name="generator" content="pandoc">
+	<meta name="author" content="image">
+	<title>Matemáticas</title>
+	<!--
 <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <style>
-    .reveal .sourceCode {  /* see #7635 */
-      overflow: visible;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<link rel="stylesheet" href="../../../reveal/dist/reset.css">
+	<link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+	<style>
+	.reveal .sourceCode {
+		/* see #7635 */
+		overflow: visible;
+	}
+
+	code {
+		white-space: pre-wrap;
+	}
+
+	span.smallcaps {
+		font-variant: small-caps;
+	}
+
+	div.columns {
+		display: flex;
+		gap: min(4vw, 1.5em);
+	}
+
+	div.column {
+		flex: auto;
+		overflow-x: auto;
+	}
+
+	div.hanging-indent {
+		margin-left: 1.5em;
+		text-indent: -1.5em;
+	}
+
+	/* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
-  <link rel="stylesheet" href="../../../styles/style.css"/>
-  <!---Geogebra-->
-        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-        
-        <!--MathJAX-->
-        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+	ul.task-list[class] {
+		list-style: none;
+	}
+
+	ul.task-list li input[type="checkbox"] {
+		font-size: inherit;
+		width: 0.8em;
+		margin: 0 0.8em 0.2em -1.6em;
+		vertical-align: middle;
+	}
+	</style>
+	<link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../../styles/style.css" />
+	<!---Geogebra-->
+	<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+	<!--MathJAX-->
+	<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
 					cancel: ["Extension","cancel"],
 					bcancel: ["Extension","cancel"],
@@ -48,17 +72,17 @@
 				});
 			});
 		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
 		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
 		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
 		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
 			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
 				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
 				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
@@ -75,406 +99,411 @@
 			});
 		</script>
 </head>
+
 <body>
-  <div class="reveal">
-    <div class="slides">
+	<div class="reveal">
+		<div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Matemáticas</h1>
-  <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
-Contador Público y Auditor</p>
-  <p class="author"><img
-data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
-alt="image" /></p>
-</section>
+			<section id="title-slide">
+				<h1 class="title">Matemáticas</h1>
+				<p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+					Contador Público y Auditor</p>
+				<p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+			</section>
 
-<section id="noción-de-límites" class="slide level3 frame">
-<h3>Noción de límites</h3>
-<p>La noción de estar cada vez más cerca de algo (o aproximarse), pero
-sin nunca llegar a ese algo, es la que en mátematicas se conoce como
-concepto de límite.</p>
-<p>Este concepto se estudia en el caso de funciones, y lo que ocurre es
-que una variable <span><em>se aproxima</em></span> a un valor particular
-para luego analizar el efecto que tiene sobre el valor de la
-función.</p>
-</section>
-<section id="noción-de-límites-1" class="slide level3 frame">
-<h3>Noción de límites</h3>
-<p>Sea <span class="math inline">\(\displaystyle
-f(x)=\frac{x^3-1}{x-1}\)</span> una función real. Note que <span
-class="math display">\[Dom(f) = \mathbb{R}\setminus\{ 1 \}\]</span></p>
-<p>Queremos analizar lo que sucede con los valores de la función <span
-class="math inline">\(f(x)\)</span> cuando <span
-class="math inline">\(x\)</span> se acerca a <span
-class="math inline">\(x=1\)</span>, tanto por la izquierda como por la
-derecha.</p>
-<p>Haciendo una tabla de valores, se tiene que:</p>
-<div style="text-align: center;">
-<table style="display: inline-block;">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Si <span
-class="math inline">\(x&lt;1\)</span></th>
-<th style="text-align: left;"><span
-class="math inline">\(x\)</span></th>
-<th style="text-align: left;"><span
-class="math inline">\(f(x)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span
-class="math inline">\(0.8\)</span></td>
-<td style="text-align: left;"><span
-class="math inline">\(2.44\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span
-class="math inline">\(0.9\)</span></td>
-<td style="text-align: left;"><span
-class="math inline">\(2.71\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span
-class="math inline">\(0.99\)</span></td>
-<td style="text-align: left;"><span
-class="math inline">\(2.9701\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span
-class="math inline">\(0.999\)</span></td>
-<td style="text-align: left;"><span
-class="math inline">\(2.997001\)</span></td>
-</tr>
-</tbody>
-</table>
-<table  style="display: inline-block;">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Si <span
-class="math inline">\(x&gt;1\)</span></th>
-<th style="text-align: left;"><span
-class="math inline">\(x\)</span></th>
-<th style="text-align: left;"><span
-class="math inline">\(f(x)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span
-class="math inline">\(1.2\)</span></td>
-<td style="text-align: left;"><span
-class="math inline">\(3.64\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span
-class="math inline">\(1.1\)</span></td>
-<td style="text-align: left;"><span
-class="math inline">\(3.31\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span
-class="math inline">\(1.01\)</span></td>
-<td style="text-align: left;"><span
-class="math inline">\(3.0301\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span
-class="math inline">\(1.001\)</span></td>
-<td style="text-align: left;"><span
-class="math inline">\(3.003001\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Observamos que cuando <span class="math inline">\(x\)</span> toma
-valores muy cerca de <span class="math inline">\(1\)</span>, tanto por
-el lado izquierdo <span class="math inline">\((x&lt;1)\)</span> como por
-el derecho <span class="math inline">\((x&gt;1)\)</span> los valores de
-la función <span class="math inline">\(f(x)\)</span> se acercan cada vez
-más al número <span class="math inline">\(3\)</span>.</p>
-</section>
-<section id="aproximación" class="slide level3 frame">
-<h3>Aproximación</h3>
-<div style="text-align: center;">
-<img data-src="clase13/limit1.jpg" style="width:30%" />
-</div>
-<p>Observando la gráfica de <span class="math inline">\(f\)</span>, nos
-damos cuenta que aunque la función no está definida en <span
-class="math inline">\(x= 1\)</span> (como se indica por un pequeño
-círculo vacío), los valores de la función se acercan cada vez más a
-<span class="math inline">\(3\)</span>, conforme <span
-class="math inline">\(x\)</span> se acerca más y más a <span
-class="math inline">\(1\)</span>. Para expresar esto, decimos que el
-límite de <span class="math inline">\(f(x)\)</span> cuando <span
-class="math inline">\(x\)</span> se aproxima (tiende) a <span
-class="math inline">\(1\)</span> es <span
-class="math inline">\(3\)</span>, es decir: <span
-class="math display">\[\lim_{x\rightarrow
-1}\frac{x^3-1}{x-1}=3\]</span></p>
-</section>
-<section id="noción-de-límite" class="slide level3 frame">
-<h3>Noción de límite</h3>
-<p>La noción de que <span class="math inline">\(f(x)\)</span> tiende al
-número <span class="math inline">\(3\)</span> cuando <span
-class="math inline">\(x\)</span> tiende al número <span
-class="math inline">\(1\)</span> se puede generalizar intuitivamente
-para otras funciones y valores como sigue:</p>
-<div class="definition fragment">
-<p> Diremos que el límite de <span class="math inline">\(f\)</span>
-cuando <span class="math inline">\(x\)</span> tiende al valor <span
-class="math inline">\(a\)</span> es <span
-class="math inline">\(L\)</span> si es que los valores de <span
-class="math inline">\(f(x)\)</span> son arbitrariamente cercanos a <span
-class="math inline">\(L\)</span> a medida que los valores de <span
-class="math inline">\(x\)</span> se acercan (por izquierda y por
-derecha) al valor <span class="math inline">\(a\)</span> <strong>pero
-nunca iguales a <span class="math inline">\(a\)</span></strong>.</p>
-<p>Entonces escribimos <span class="math display">\[\lim_{x \rightarrow
-a}f(x)=L\]</span> y decimos que el límite de <span
-class="math inline">\(f(x)\)</span>, cuando <span
-class="math inline">\(x\)</span> tiende a <span
-class="math inline">\(a\)</span>, es igual a <span
-class="math inline">\(L\)</span>.</p>
-</div>
-</section>
-<section id="notación-de-límite" class="slide level3 frame">
-<h3>Notación de límite</h3>
-<div class="definition">
-<ul>
-<li class="fragment"><p>Denotamos <span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a^+}f(x)\)</span> al límite por la derecha de
-<span class="math inline">\(f(x)\)</span> cuando <span
-class="math inline">\(x\)</span> se tiende a <span
-class="math inline">\(a\)</span> por valores que son mayores a \(a\).</p></li>
-<li class="fragment"><p>Denotamos <span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a^-}f(x)\)</span> al límite por la izquierda de
-<span class="math inline">\(f(x)\)</span> cuando <span
-class="math inline">\(x\)</span> tiende a <span
-class="math inline">\(a\)</span> por valores que son menores a \(a\).</p></li>
-</ul>
-<p>De este modo, si los límites laterales <span
-class="math inline">\(\displaystyle \lim_{x \rightarrow
-a^-}f(x)\)</span> y<span class="math inline">\(\displaystyle \lim_{x
-\rightarrow a^+}f(x)\)</span> tienen un valor común <span
-class="math inline">\(L\)</span>, se dice entonces que <span
-class="math inline">\(\displaystyle \lim_{x \rightarrow a}f(x)\)</span>
-existe y se escribe <span class="math display">\[\lim_{x \rightarrow
-a}f(x)=L\]</span></p>
-</div>
-<div class="fragment">
-<p>Volviendo al ejemplo \(\displaystyle f(x)=\frac{x^3-1}{x-1}\): <span class="math display">\[\lim_{x
-\rightarrow 1^-}\frac{x^3-1}{x-1}=3 \qquad \qquad \mbox{y}
-\qquad  \qquad \lim_{x \rightarrow 1^+}\frac{x^3-1}{x-1}=3\]</span></p>
-<p>como los límites laterales son iguales, entonces <span
-class="math inline">\(\displaystyle \lim_{x \rightarrow
-1}\frac{x^3-1}{x-1}\)</span> existe y su valor es <span
-class="math inline">\(3\)</span>.</p>
-</div>
-</section>
-<section id="ejemplo" class="slide level3 frame">
-<h3>Ejemplo:</h3>
-<p>Determinar si el siguiente límite <span
-class="math inline">\(\displaystyle \lim_{x \rightarrow -2}
-f(x)\)</span>, existe, donde <span class="math inline">\(f\)</span> está
-dada por la siguiente gráfica.</p>
-<div style="text-align: center;">
-<p><img data-src="clase13/limit2.jpg" style="width:25%" alt="image" /></p>
-</div>
-<div class="solution fragment">
-<p>Analicemos los limites laterales:</p>
-<ul>
-<li><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow -2^-}f(x)=1\)</span>, cuando nos acercamos por la
-izquierda al <span class="math inline">\(-2\)</span> los valores de
-<span class="math inline">\(f\)</span> se aproximan al <span
-class="math inline">\(1\)</span>.</p></li>
-<li><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow -2^+}f(x)=3\)</span>, cuando nos acercamos por la
-derecha al <span class="math inline">\(-2\)</span> los valores de <span
-class="math inline">\(f\)</span> se aproximan al <span
-class="math inline">\(3\)</span>.</p></li>
-</ul>
-<p>como los límites laterales son distintos, entonces el <span
-class="math inline">\(\displaystyle  \lim_{x \rightarrow
--2}f(x)\)</span> no existe.</p>
-</div>
-</section>
-<section id="propiedades-de-los-límites" class="slide level3 frame">
-<h3>Propiedades de los límites:</h3>
-<div class="theorem">
-<ul>
-<li><p><em>Si <span class="math inline">\(c\)</span> es
-una constante, entonces <span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a}c=c\)</span>.</em></p></li>
-<li class="fragment"><p><em><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a}x^n=a^n\)</span>, para cualquier entero positivo
-<span class="math inline">\(n\)</span>.</em></p></li>
-</ul>
-</div>
-<div class="example fragment">
-<ol>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 2} 4=\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow -5} 2=\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow -3} x^2=\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 2} x^3=\)</span></p></li>
-</ol>
-</div>
-</section>
-<section id="propiedades-de-los-límites-1" class="slide level3 frame">
-<h3>Propiedades de los límites:</h3>
-<div class="theorem">
-<p> <em>Si <span class="math inline">\(\displaystyle \lim_{x \rightarrow
-a}f(x)\)</span> y <span class="math inline">\(\displaystyle \lim_{x
-\rightarrow a}g(x)\)</span> existen, entonces</em></p>
-<ul>
-<li class="fragment"><p><em><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a}[f(x)\pm g(x)] =\lim_{x \rightarrow
-a}f(x)\pm   \lim_{x \rightarrow a} g(x)\)</span></em></p></li>
-<li class="fragment"><p><em><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a}[f(x)\cdot g(x)] =\lim_{x \rightarrow
-a}f(x)\cdot   \lim_{x \rightarrow a} g(x)\)</span></em></p></li>
-<li class="fragment"><p><em><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a}[c\cdot f(x)] =c\cdot \lim_{x \rightarrow
-a}f(x)\)</span>, donde <span class="math inline">\(c\)</span> es una
-constante.</em></p></li>
-</ul>
-</div>
-<div class="example fragment">
-<p> </p>
-<ol>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 2}(x^3-x) =\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow -1}((x+1)(x-3)) =\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 4}(2x^3-4x^2+5x+7) =\)</span></p></li>
-</ol>
-</div>
-</section>
-<section id="mas-ejemplos" class="slide level3 frame">
-<h3>Mas Ejemplos</h3>
-<div class="remark">
-<p> <em>Si <span class="math inline">\(f\)</span> es una función
-polinomial, entonces <span class="math display">\[\displaystyle  \lim_{x
-\rightarrow a}f(x)=f(a)\]</span></em></p>
-</div>
-<div class="example fragment">
-<p> La función de ingreso para cierto producto <span
-class="math inline">\(\displaystyle R(x)=500x-6x^2\)</span>. Determinar
-<span class="math inline">\(\displaystyle  \lim_{x \rightarrow
-8}R(x)\)</span>.</p>
-</div>
-<div class="solution fragment">
-<p> </p>
-</div>
-</section>
-<section id="propiedades-de-los-límites-2" class="slide level3 frame">
-<h3>Propiedades de los límites:</h3>
-<div class="theorem">
-<p> <em>Si <span class="math inline">\(\displaystyle \lim_{x \rightarrow
-a}f(x)\)</span> y <span class="math inline">\(\displaystyle \lim_{x
-\rightarrow a}g(x)\)</span> existen, entonces</em></p>
-<ul>
-<li class="fragment"><p><em><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a} \dfrac{f(x)}{g(x)} = \dfrac{\displaystyle \lim_{x
-\rightarrow a}f(x)}{\displaystyle \lim_{x \rightarrow a}g(x)}\)</span>,
-si <span class="math inline">\(\displaystyle \lim_{x \rightarrow a}g(x)
-\neq 0\)</span>.</em></p></li>
-<li class="fragment"><p><em><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow a}\sqrt[n]{f(x)} = \sqrt[n]{ \displaystyle \lim_{x
-\rightarrow a}f(x)}\)</span>, si <span class="math inline">\(\sqrt[n]{
-\displaystyle \lim_{x \rightarrow a}f(x)}\)</span> está bien
-definido.</em></p></li>
-</ul>
-</div>
-<div class="example fragment">
-<ol>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 1}\dfrac{x^2-x+1}{x-3}=\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 3}\sqrt[3]{x^2+18}=\)</span></p></li>
-</ol>
-</div>
-</section>
-<section id="manipulación-algebraica-de-los-límites"
-class="slide level3 frame">
-<h3>Manipulación algebraica de los límites:</h3>
-<div class="example">
-<p> Resolver el siguiente limite <span
-class="math inline">\(\displaystyle \lim_{x \rightarrow -1}
-\dfrac{x^2-1}{x+1}\)</span>, si es que existe.</p>
-</div>
-<div class="solution-full fragment">
-<p> <em>Cuando <span class="math inline">\(x \rightarrow -1\)</span>,
-tanto el numerador como el denominador tienden a <span
-class="math inline">\(0\)</span>. Por tanto no podemos utilizar las
-propiedades anteriores. Sin embargo, no nos interesa lo que suceda con
-la función cuando <span class="math inline">\(x=-1\)</span>, así podemos
-suponer que <span class="math inline">\(x\neq -1\)</span> y simplificar
-la función: <span
-class="math display">\[\frac{x^2-1}{x+1}=\frac{  (x+1)  (x-1)}{x+1}=\frac{  \cancel{(x+1)}  (x-1)}{\cancel{x+1}}=x-1\]</span></em></p>
-<p><em>Por tanto, calcular el limite en la función original es igual a
-calcular el límite en la función simplificada:</em></p>
-<p><em><span class="math display">\[\lim_{x \rightarrow -1}
-\dfrac{x^2-1}{x+1}=\lim_{x \rightarrow -1} (x-1)=-2\]</span></em></p>
-<p><em>Observar que, apesar de que la función original no está definida
-en <span class="math inline">\(x=-1\)</span>, existe un límite cuando
-<span class="math inline">\(x\rightarrow -1\)</span>.</em></p>
-</div>
-</section>
-<section id="ejercicios" class="slide level3 frame">
-<h3>Ejercicios</h3>
-<div class="exercise">
-<p>Determinar los siguientes límites, si es que
-existen.</p>
-<ol>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 2} 81\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 1/2} 8x^2\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 3} \dfrac{x-3}{x^2-9}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 1} \dfrac{x^3-1}{x-1}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 0} \dfrac{(x+2)^2-4}{x}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 0} \dfrac{\sqrt{1+x}-1}{x}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow -4} \dfrac{x^2+2x-8}{x^2+5x+4}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\displaystyle
-\lim_{x \rightarrow 6} \dfrac{\sqrt{x-2}-2}{x-6}\)</span></p></li>
-<li class="fragment"><p>Encuentre la constante <span
-class="math inline">\(c\)</span> de modo que <span
-class="math inline">\(\displaystyle \lim_{x \rightarrow 3}
-\dfrac{x^2+x+c}{x^2-5x+6}\)</span> exista.</p></li>
-</ol>
-</div>
-</section>
-    </div>
-  </div>
+			<section id="noción-de-límites" class="slide level3 frame">
+				<h3>Noción de límites</h3>
+				<p>La noción de estar cada vez más cerca de algo (o aproximarse), pero
+					sin nunca llegar a ese algo, es la que en mátematicas se conoce como
+					concepto de límite.</p>
+				<p>Este concepto se estudia en el caso de funciones, y lo que ocurre es
+					que una variable <span><em>se aproxima</em></span> a un valor particular
+					para luego analizar el efecto que tiene sobre el valor de la
+					función.</p>
+			</section>
 
-  <script src="../../../reveal/dist/reveal.js"></script>
+			<section id="noción-de-límites-1" class="slide level3 frame">
+				<h3>Noción de límites</h3>
+				<p>Sea <span class="math inline">\(\displaystyle
+						f(x)=\frac{x^3-1}{x-1}\)</span> una función real. Note que <span class="math display">\[Dom(f) = \mathbb{R}\setminus\{ 1 \}\]</span></p>
+				<p>Queremos analizar lo que sucede con los valores de la función <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> se acerca a <span class="math inline">\(x=1\)</span>, tanto por la izquierda como por la
+					derecha.</p>
+				<p>Haciendo una tabla de valores, se tiene que:</p>
+				<div style="text-align: center;">
+					<table style="display: inline-block;">
+						<thead>
+							<tr class="header">
+								<th style="text-align: left;">Si <span class="math inline">\(x&lt;1\)</span></th>
+								<th style="text-align: left;"><span class="math inline">\(x\)</span></th>
+								<th style="text-align: left;"><span class="math inline">\(f(x)\)</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="odd">
+								<td style="text-align: left;"></td>
+								<td style="text-align: left;"><span class="math inline">\(0.8\)</span></td>
+								<td style="text-align: left;"><span class="math inline">\(2.44\)</span></td>
+							</tr>
+							<tr class="even">
+								<td style="text-align: left;"></td>
+								<td style="text-align: left;"><span class="math inline">\(0.9\)</span></td>
+								<td style="text-align: left;"><span class="math inline">\(2.71\)</span></td>
+							</tr>
+							<tr class="odd">
+								<td style="text-align: left;"></td>
+								<td style="text-align: left;"><span class="math inline">\(0.99\)</span></td>
+								<td style="text-align: left;"><span class="math inline">\(2.9701\)</span></td>
+							</tr>
+							<tr class="even">
+								<td style="text-align: left;"></td>
+								<td style="text-align: left;"><span class="math inline">\(0.999\)</span></td>
+								<td style="text-align: left;"><span class="math inline">\(2.997001\)</span></td>
+							</tr>
+						</tbody>
+					</table>
+					<table style="display: inline-block;">
+						<thead>
+							<tr class="header">
+								<th style="text-align: left;">Si <span class="math inline">\(x&gt;1\)</span></th>
+								<th style="text-align: left;"><span class="math inline">\(x\)</span></th>
+								<th style="text-align: left;"><span class="math inline">\(f(x)\)</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="odd">
+								<td style="text-align: left;"></td>
+								<td style="text-align: left;"><span class="math inline">\(1.2\)</span></td>
+								<td style="text-align: left;"><span class="math inline">\(3.64\)</span></td>
+							</tr>
+							<tr class="even">
+								<td style="text-align: left;"></td>
+								<td style="text-align: left;"><span class="math inline">\(1.1\)</span></td>
+								<td style="text-align: left;"><span class="math inline">\(3.31\)</span></td>
+							</tr>
+							<tr class="odd">
+								<td style="text-align: left;"></td>
+								<td style="text-align: left;"><span class="math inline">\(1.01\)</span></td>
+								<td style="text-align: left;"><span class="math inline">\(3.0301\)</span></td>
+							</tr>
+							<tr class="even">
+								<td style="text-align: left;"></td>
+								<td style="text-align: left;"><span class="math inline">\(1.001\)</span></td>
+								<td style="text-align: left;"><span class="math inline">\(3.003001\)</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p>Observamos que cuando <span class="math inline">\(x\)</span> toma
+					valores muy cerca de <span class="math inline">\(1\)</span>, tanto por
+					el lado izquierdo <span class="math inline">\((x&lt;1)\)</span> como por
+					el derecho <span class="math inline">\((x&gt;1)\)</span> los valores de
+					la función <span class="math inline">\(f(x)\)</span> se acercan cada vez
+					más al número <span class="math inline">\(3\)</span>.</p>
+			</section>
+			
+      <section id="aproximación" class="slide level3 frame">
+				<h3>Aproximación</h3>
+				<div style="text-align: center;">
+					<img data-src="clase13/limit1.jpg" style="width:30%" />
+				</div>
+				<p>Observando la gráfica de <span class="math inline">\(f\)</span>, nos
+					damos cuenta que aunque la función no está definida en <span class="math inline">\(x= 1\)</span> (como se indica por un pequeño
+					círculo vacío), los valores de la función se acercan cada vez más a
+					<span class="math inline">\(3\)</span>, conforme <span class="math inline">\(x\)</span> se acerca más y más a <span class="math inline">\(1\)</span>. Para expresar esto, decimos que el
+					límite de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> se aproxima (tiende) a <span class="math inline">\(1\)</span> es <span class="math inline">\(3\)</span>, es decir: <span class="math display">\[\lim_{x\rightarrow
+						1}\frac{x^3-1}{x-1}=3\]</span>
+				</p>
+			</section>
+			
+      <section id="noción-de-límite" class="slide level3 frame">
+				<h3>Noción de límite</h3>
+				<p>La noción de que <span class="math inline">\(f(x)\)</span> tiende al
+					número <span class="math inline">\(3\)</span> cuando <span class="math inline">\(x\)</span> tiende al número <span class="math inline">\(1\)</span> se puede generalizar intuitivamente
+					para otras funciones y valores como sigue:</p>
+				<div class="definition fragment">
+					<p> Diremos que el límite de <span class="math inline">\(f\)</span>
+						cuando <span class="math inline">\(x\)</span> tiende al valor <span class="math inline">\(a\)</span> es <span class="math inline">\(L\)</span> si es que los valores de <span class="math inline">\(f(x)\)</span> son arbitrariamente cercanos a <span class="math inline">\(L\)</span> a medida que los valores de <span class="math inline">\(x\)</span> se acercan (por izquierda y por
+						derecha) al valor <span class="math inline">\(a\)</span> <strong>pero
+							nunca iguales a <span class="math inline">\(a\)</span></strong>.</p>
+					<p>Entonces escribimos <span class="math display">\[\lim_{x \rightarrow
+							a}f(x)=L\]</span> y decimos que el límite de <span class="math inline">\(f(x)\)</span>, cuando <span class="math inline">\(x\)</span> tiende a <span class="math inline">\(a\)</span>, es igual a <span class="math inline">\(L\)</span>.</p>
+				</div>
+			</section>
+			
+      <section id="notación-de-límite" class="slide level3 frame">
+				<h3>Notación de límite</h3>
+				<div class="definition">
+					<ul>
+						<li class="fragment">
+							<p>Denotamos <span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow a^+}f(x)\)</span> al límite por la derecha de
+								<span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> se tiende a <span class="math inline">\(a\)</span> por valores que son mayores a \(a\).
+							</p>
+						</li>
+						<li class="fragment">
+							<p>Denotamos <span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow a^-}f(x)\)</span> al límite por la izquierda de
+								<span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> tiende a <span class="math inline">\(a\)</span> por valores que son menores a \(a\).
+							</p>
+						</li>
+					</ul>
+					<span class="fragment">
+						<p>De este modo, si los límites laterales <span class="math inline">\(\displaystyle \lim_{x \rightarrow
+								a^-}f(x)\)</span> y<span class="math inline">\(\displaystyle \lim_{x
+								\rightarrow a^+}f(x)\)</span> tienen un valor común <span class="math inline">\(L\)</span>, se dice entonces que <span class="math inline">\(\displaystyle \lim_{x \rightarrow a}f(x)\)</span>
+							existe y se escribe <span class="math display">\[\lim_{x \rightarrow
+								a}f(x)=L\]</span></p>
+          </span>
+				</div>
+				<div class="fragment">
+					<p>Volviendo al ejemplo \(\displaystyle f(x)=\frac{x^3-1}{x-1}\): <span class="math display">\[\lim_{x
+							\rightarrow 1^-}\frac{x^3-1}{x-1}=3 \qquad \qquad \mbox{y}
+							\qquad \qquad \lim_{x \rightarrow 1^+}\frac{x^3-1}{x-1}=3\]</span></p>
+					<p>como los límites laterales son iguales, entonces <span class="math inline">\(\displaystyle \lim_{x \rightarrow
+							1}\frac{x^3-1}{x-1}\)</span> existe y su valor es <span class="math inline">\(3\)</span>.</p>
+				</div>
+			</section>
+			
+      <section id="ejemplo" class="slide level3 frame">
+				<h3>Ejemplo:</h3>
+				<p>Determinar si el siguiente límite <span class="math inline">\(\displaystyle \lim_{x \rightarrow -2}
+						f(x)\)</span>, existe, donde <span class="math inline">\(f\)</span> está
+					dada por la siguiente gráfica.</p>
+				<div style="text-align: center;">
+					<p><img data-src="clase13/limit2.jpg" style="width:25%" alt="image" /></p>
+				</div>
+				<div class="solution fragment">
+					<p>Analicemos los limites laterales:</p>
+					<ul>
+						<li>
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow -2^-}f(x)=1\)</span>, cuando nos acercamos por la
+								izquierda al <span class="math inline">\(-2\)</span> los valores de
+								<span class="math inline">\(f\)</span> se aproximan al <span class="math inline">\(1\)</span>.
+							</p>
+						</li>
+						<li>
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow -2^+}f(x)=3\)</span>, cuando nos acercamos por la
+								derecha al <span class="math inline">\(-2\)</span> los valores de <span class="math inline">\(f\)</span> se aproximan al <span class="math inline">\(3\)</span>.</p>
+						</li>
+					</ul>
+					<p>como los límites laterales son distintos, entonces el <span class="math inline">\(\displaystyle \lim_{x \rightarrow
+							-2}f(x)\)</span> no existe.</p>
+				</div>
+			</section>
+			<section id="propiedades-de-los-límites" class="slide level3 frame">
+				<h3>Propiedades de los límites:</h3>
+				<div class="theorem">
+					<ul>
+						<li>
+							<p><em>Si <span class="math inline">\(c\)</span> es
+									una constante, entonces <span class="math inline">\(\displaystyle
+										\lim_{x \rightarrow a}c=c\)</span>.</em></p>
+						</li>
+						<li class="fragment">
+							<p><em><span class="math inline">\(\displaystyle
+										\lim_{x \rightarrow a}x^n=a^n\)</span>, para cualquier entero positivo
+									<span class="math inline">\(n\)</span>.</em></p>
+						</li>
+					</ul>
+				</div>
+				<div class="example fragment">
+					<ol>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 2} 4=\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow -5} 2=\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow -3} x^2=\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 2} x^3=\)</span></p>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="propiedades-de-los-límites-1" class="slide level3 frame">
+				<h3>Propiedades de los límites:</h3>
+				<div class="theorem">
+					<p> <em>Si <span class="math inline">\(\displaystyle \lim_{x \rightarrow
+								a}f(x)\)</span> y <span class="math inline">\(\displaystyle \lim_{x
+								\rightarrow a}g(x)\)</span> existen, entonces</em></p>
+					<ul>
+						<li class="fragment">
+							<p><em><span class="math inline">\(\displaystyle
+										\lim_{x \rightarrow a}[f(x)\pm g(x)] =\lim_{x \rightarrow
+										a}f(x)\pm \lim_{x \rightarrow a} g(x)\)</span></em></p>
+						</li>
+						<li class="fragment">
+							<p><em><span class="math inline">\(\displaystyle
+										\lim_{x \rightarrow a}[f(x)\cdot g(x)] =\lim_{x \rightarrow
+										a}f(x)\cdot \lim_{x \rightarrow a} g(x)\)</span></em></p>
+						</li>
+						<li class="fragment">
+							<p><em><span class="math inline">\(\displaystyle
+										\lim_{x \rightarrow a}[c\cdot f(x)] =c\cdot \lim_{x \rightarrow
+										a}f(x)\)</span>, donde <span class="math inline">\(c\)</span> es una
+									constante.</em></p>
+						</li>
+					</ul>
+				</div>
+				<div class="example fragment">
+					<p> </p>
+					<ol>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 2}(x^3-x) =\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow -1}((x+1)(x-3)) =\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 4}(2x^3-4x^2+5x+7) =\)</span></p>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="mas-ejemplos" class="slide level3 frame">
+				<h3>Mas Ejemplos</h3>
+				<div class="remark">
+					<p> <em>Si <span class="math inline">\(f\)</span> es una función
+							polinomial, entonces <span class="math display">\[\displaystyle \lim_{x
+								\rightarrow a}f(x)=f(a)\]</span></em></p>
+				</div>
+				<div class="example fragment">
+					<p> La función de ingreso para cierto producto <span class="math inline">\(\displaystyle R(x)=500x-6x^2\)</span>. Determinar
+						<span class="math inline">\(\displaystyle \lim_{x \rightarrow
+							8}R(x)\)</span>.
+					</p>
+				</div>
+				<div class="solution fragment">
+					<p> </p>
+				</div>
+			</section>
+			<section id="propiedades-de-los-límites-2" class="slide level3 frame">
+				<h3>Propiedades de los límites:</h3>
+				<div class="theorem">
+					<p> <em>Si <span class="math inline">\(\displaystyle \lim_{x \rightarrow
+								a}f(x)\)</span> y <span class="math inline">\(\displaystyle \lim_{x
+								\rightarrow a}g(x)\)</span> existen, entonces</em></p>
+					<ul>
+						<li class="fragment">
+							<p><em><span class="math inline">\(\displaystyle
+										\lim_{x \rightarrow a} \dfrac{f(x)}{g(x)} = \dfrac{\displaystyle \lim_{x
+										\rightarrow a}f(x)}{\displaystyle \lim_{x \rightarrow a}g(x)}\)</span>,
+									si <span class="math inline">\(\displaystyle \lim_{x \rightarrow a}g(x)
+										\neq 0\)</span>.</em></p>
+						</li>
+						<li class="fragment">
+							<p><em><span class="math inline">\(\displaystyle
+										\lim_{x \rightarrow a}\sqrt[n]{f(x)} = \sqrt[n]{ \displaystyle \lim_{x
+										\rightarrow a}f(x)}\)</span>, si <span class="math inline">\(\sqrt[n]{
+										\displaystyle \lim_{x \rightarrow a}f(x)}\)</span> está bien
+									definido.</em></p>
+						</li>
+					</ul>
+				</div>
+				<div class="example fragment">
+					<ol>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 1}\dfrac{x^2-x+1}{x-3}=\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 3}\sqrt[3]{x^2+18}=\)</span></p>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="manipulación-algebraica-de-los-límites" class="slide level3 frame">
+				<h3>Manipulación algebraica de los límites:</h3>
+				<div class="example">
+					<p> Resolver el siguiente limite <span class="math inline">\(\displaystyle \lim_{x \rightarrow -1}
+							\dfrac{x^2-1}{x+1}\)</span>, si es que existe.</p>
+				</div>
+				<div class="solution-full fragment">
+					<p> <em>Cuando <span class="math inline">\(x \rightarrow -1\)</span>,
+							tanto el numerador como el denominador tienden a <span class="math inline">\(0\)</span>. Por tanto no podemos utilizar las
+							propiedades anteriores. Sin embargo, no nos interesa lo que suceda con
+							la función cuando <span class="math inline">\(x=-1\)</span>, así podemos
+							suponer que <span class="math inline">\(x\neq -1\)</span> y simplificar
+							la función: <span class="math display">\[\frac{x^2-1}{x+1}=\frac{ (x+1) (x-1)}{x+1}=\frac{ \cancel{(x+1)} (x-1)}{\cancel{x+1}}=x-1\]</span></em></p>
+					<p><em>Por tanto, calcular el limite en la función original es igual a
+							calcular el límite en la función simplificada:</em></p>
+					<p><em><span class="math display">\[\lim_{x \rightarrow -1}
+								\dfrac{x^2-1}{x+1}=\lim_{x \rightarrow -1} (x-1)=-2\]</span></em></p>
+					<p><em>Observar que, apesar de que la función original no está definida
+							en <span class="math inline">\(x=-1\)</span>, existe un límite cuando
+							<span class="math inline">\(x\rightarrow -1\)</span>.</em></p>
+				</div>
+			</section>
+			<section id="ejercicios" class="slide level3 frame">
+				<h3>Ejercicios</h3>
+				<div class="exercise">
+					<p>Determinar los siguientes límites, si es que
+						existen.</p>
+					<ol>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 2} 81\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 1/2} 8x^2\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 3} \dfrac{x-3}{x^2-9}\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 1} \dfrac{x^3-1}{x-1}\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 0} \dfrac{(x+2)^2-4}{x}\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 0} \dfrac{\sqrt{1+x}-1}{x}\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow -4} \dfrac{x^2+2x-8}{x^2+5x+4}\)</span></p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\displaystyle
+									\lim_{x \rightarrow 6} \dfrac{\sqrt{x-2}-2}{x-6}\)</span></p>
+						</li>
+						<li class="fragment">
+							<p>Encuentre la constante <span class="math inline">\(c\)</span> de modo que <span class="math inline">\(\displaystyle \lim_{x \rightarrow 3}
+									\dfrac{x^2+x+c}{x^2-5x+6}\)</span> exista.</p>
+						</li>
+					</ol>
+				</div>
+			</section>
+		</div>
+	</div>
 
-  <!-- reveal.js plugins -->
-  <script src="../../../reveal/plugin/notes/notes.js"></script>
-  <script src="../../../reveal/plugin/search/search.js"></script>
-  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
-<script src="../../../reveal/plugin/math/math.js"></script>
+	<script src="../../../reveal/dist/reveal.js"></script>
 
-<script src="../../../scripts/reveal-init.js"></script>
-    </body>
+	<!-- reveal.js plugins -->
+	<script src="../../../reveal/plugin/notes/notes.js"></script>
+	<script src="../../../reveal/plugin/search/search.js"></script>
+	<script src="../../../reveal/plugin/zoom/zoom.js"></script>
+	<script src="../../../reveal/plugin/math/math.js"></script>
+
+	<script src="../../../scripts/reveal-init.js"></script>
+</body>
+
 </html>

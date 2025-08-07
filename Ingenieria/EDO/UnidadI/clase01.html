@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="author" content="image">
-  <title>Ecuaciones diferenciales ordinarias</title>
-  <!--
+	<meta charset="utf-8">
+	<meta name="generator" content="pandoc">
+	<meta name="author" content="image">
+	<title>Ecuaciones diferenciales ordinarias</title>
+	<!--
 <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
-  <style>
-    .reveal .sourceCode {  /* see #7635 */
-      overflow: visible;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<link rel="stylesheet" href="../../../reveal/dist/reset.css">
+	<link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+	<style>
+	.reveal .sourceCode {
+		/* see #7635 */
+		overflow: visible;
+	}
+
+	code {
+		white-space: pre-wrap;
+	}
+
+	span.smallcaps {
+		font-variant: small-caps;
+	}
+
+	div.columns {
+		display: flex;
+		gap: min(4vw, 1.5em);
+	}
+
+	div.column {
+		flex: auto;
+		overflow-x: auto;
+	}
+
+	div.hanging-indent {
+		margin-left: 1.5em;
+		text-indent: -1.5em;
+	}
+
+	/* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
-  <link rel="stylesheet" href="../../../styles/style.css"/>
-  <!---Geogebra-->
-        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-        
-        <!--MathJAX-->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+	ul.task-list[class] {
+		list-style: none;
+	}
+
+	ul.task-list li input[type="checkbox"] {
+		font-size: inherit;
+		width: 0.8em;
+		margin: 0 0.8em 0.2em -1.6em;
+		vertical-align: middle;
+	}
+	</style>
+	<link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="../../../styles/style.css" />
+	<!---Geogebra-->
+	<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+	<!--MathJAX-->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
 				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
 					cancel: ["Extension","cancel"],
 					bcancel: ["Extension","cancel"],
@@ -48,17 +72,17 @@
 				});
 			});
 		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
 		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
 		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
 		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
 			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
 				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
 				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
@@ -75,322 +99,357 @@
 			});
 		</script>
 </head>
+
 <body>
-  <div class="reveal">
-    <div class="slides">
+	<div class="reveal">
+		<div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
-  <p class="subtitle">Ingeniería Civil</p>
-  <p class="author"><img data-src="../../../images/logoINSTMAT-color.png"
-style="width:30.0%" alt="image" /></p>
-  <p class="date"> </p>
-</section>
+			<section id="title-slide">
+				<h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+				<p class="subtitle">Ingeniería Civil</p>
+				<p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+				<p class="date"> </p>
+			</section>
 
-<section id="definiciones" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="definition">
-<p> Una ecuación diferencial (E.D.) es una ecuación que involucra
-derivadas de una o mas funciones desconocidas (incógnitas) de una o mas variables
-independientes. Dichas ecuaciones se pueden clasificar como:</p>
-<ul>
-<li class="fragment"><p><b>Ecuación diferencial ordinaria (E.D.O.)</b>: Una
-ecuación con solo una función desconocida que depende de una sola
-variable independiente.</p></li>
-<li class="fragment"><p><b>Sistema de ecuaciones diferenciales
-ordinarias</b>: Varias ecuaciones con 2 o mas funciones desconocidas que
-dependen de una sola variable independiente.</p></li>
-<li class="fragment"><p><b>Ecuación diferencial parcial (E.D.P.)</b>: Una
-ecuación con solo una función desconocida que depende de 2 o mas
-variables independientes.</p></li>
-<li class="fragment"><p><b>Sistema de ecuaciones diferenciales
-parciales</b>: Varias ecuaciones con 2 o mas funciones desconocidas que
-dependen de 2 o mas variables independientes.</p></li>
-</ul>
-</div>
-</section>
-<section id="definiciones" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="example">
-<p> </p>
-<ol>
-<li class="fragment fade-in">
-<span class="math inline">\(4y&#39;&#39;\color{red}{(x)}-5y&#39;\color{red}{(x)}+14y\color{red}{(x)}=2x^2e^{-5x}\cos(2x)\)</span> es una E.D.O. donde la incógnita es la función \(y\color{red}{(x)}\).
-</li>
-<li class="fragment"><span class="math inline">\(\left\{
-	\begin{aligned}
-		\frac{dx}{dt}+4x&amp;=2x^2-2y\\
-		\frac{d^2y}{dt^2}-\frac{dy}{dt}&amp;=x+3y\\
-    \end{aligned}
-	\right.\)</span>
-    es un sistema de E.D.O.s donde las incógintas son las funciones \(x(t)\) e \(y(t)\).</li>
-<li class="fragment">
-    <span class="math inline">\(\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\partial y^2}=e^u\)</span> es una E.D.P. donde la incógnita es la función \(u(x,y)\).
-</li>
-<li class="fragment">
-<span class="math inline">\(\left\{
-		\begin{aligned}
-			\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\partial y^2}&amp;=u-v\\
-			\dfrac{\partial^2 v}{\partial x^2}+\dfrac{\partial^2 v}{\partial y^2}&amp;=v(1-v)u(1-u)\\
-		\end{aligned}
-		\right.\)</span> es un sistema de E.D.P.s donde las incógnitas son las funciones \(u(x,y)\) y \(v(x,y)\).
-    </li>
-</ol>
-</div>
-</section>
+			<section id="definiciones" class="slide level3 frame">
+				<h3>Definiciones</h3>
+				<div class="definition">
+					<p> Una ecuación diferencial (E.D.) es una ecuación que involucra
+						derivadas de una o mas funciones desconocidas (incógnitas) de una o mas variables
+						independientes. Dichas ecuaciones se pueden clasificar como:</p>
+					<ul>
+						<li class="fragment">
+							<p><b>Ecuación diferencial ordinaria (E.D.O.)</b>: Una
+								ecuación con solo una función desconocida que depende de una sola
+								variable independiente.</p>
+						</li>
+						<li class="fragment">
+							<p><b>Sistema de ecuaciones diferenciales
+									ordinarias</b>: Varias ecuaciones con 2 o mas funciones desconocidas que
+								dependen de una sola variable independiente.</p>
+						</li>
+						<li class="fragment">
+							<p><b>Ecuación diferencial parcial (E.D.P.)</b>: Una
+								ecuación con solo una función desconocida que depende de 2 o mas
+								variables independientes.</p>
+						</li>
+						<li class="fragment">
+							<p><b>Sistema de ecuaciones diferenciales
+									parciales</b>: Varias ecuaciones con 2 o mas funciones desconocidas que
+								dependen de 2 o mas variables independientes.</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section id="definiciones" class="slide level3 frame">
+				<h3>Definiciones</h3>
+				<div class="example">
+					<p> </p>
+					<ol>
+						<li class="fragment fade-in">
+							<span class="math inline">\(4y&#39;&#39;\color{red}{(x)}-5y&#39;\color{red}{(x)}+14y\color{red}{(x)}=2x^2e^{-5x}\cos(2x)\)</span> es una E.D.O. donde la incógnita es la función \(y\color{red}{(x)}\).
+						</li>
+						<li class="fragment"><span class="math inline">\(\left\{
+								\begin{aligned}
+								\frac{dx}{dt}+4x&amp;=2x^2-2y\\
+								\frac{d^2y}{dt^2}-\frac{dy}{dt}&amp;=x+3y\\
+								\end{aligned}
+								\right.\)</span>
+							es un sistema de E.D.O.s donde las incógintas son las funciones \(x(t)\) e \(y(t)\).</li>
+						<li class="fragment">
+							<span class="math inline">\(\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\partial y^2}=e^u\)</span> es una E.D.P. donde la incógnita es la función \(u(x,y)\).
+						</li>
+						<li class="fragment">
+							<span class="math inline">\(\left\{
+								\begin{aligned}
+								\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2 u}{\partial y^2}&amp;=u-v\\
+								\dfrac{\partial^2 v}{\partial x^2}+\dfrac{\partial^2 v}{\partial y^2}&amp;=v(1-v)u(1-u)\\
+								\end{aligned}
+								\right.\)</span> es un sistema de E.D.P.s donde las incógnitas son las funciones \(u(x,y)\) y \(v(x,y)\).
+						</li>
+					</ol>
+				</div>
+			</section>
 
-<section id="definiciones-1" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="definition">
-<p> El <b>orden</b> de una ecuación diferencial es el orden de la derivada mas alta que aparece
-en la ecuación</p>
-</div>
-<div class="example fragment">
-<p> </p>
-<ol>
-<li class="fragment"><p><span class="math inline">\(y&#39;=2x+y\)</span>
-es una E.D.O de primer orden.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(\ddot{x}-2\dot{x}-15x=0\)</span> es una E.D.O. de
-segundo orden.</p></li>
-<li class="fragment"><p><span class="math inline">\(\dfrac{\partial
-u}{\partial t}=\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2
-u}{\partial y^2}\)</span> es una E.D.P. de segundo orden.</p></li>
-<li class="fragment"><p><span class="math inline">\(\left\{
-		\begin{aligned}
-			\frac{dx}{dt}&amp;=2x+2y\\
-			\frac{dy}{dt}&amp;=x+3y
-		\end{aligned}
-		\right.\)</span> es un sistema de E.D.O.s de primer orden.</p></li>
-</ol>
-</div>
-</section>
-<section id="definiciones-2" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="definition">
-<p> Una <b>E.D.O. lineal</b> es una ecuación que puede ser escrita como
-<span
-class="math display">\[a_n(x)y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y&#39;+a_0(x)y=f(x),\]</span>
-donde <span class="math inline">\(a_i(x)\)</span> son funciones
-conocidas de <span class="math inline">\(x\)</span> para <span
-class="math inline">\(i=0,1,\ldots,n-1,n\)</span>. Si la ecuación no
-tiene esta forma, decimos que la EDO es <em>no-lineal</em>.</p>
-<p>Las EDOs en general se pueden escribir como <span
-class="math display">\[F(x,y,y&#39;,y&#39;&#39;,\ldots,y^{(n)})=0,\]</span>
-donde <span class="math inline">\(F\)</span> es una función de <span
-class="math inline">\(n+1\)</span> variables.</p>
-</div>
-<div class="example fragment">
-    <p></p>
-<ol class="two-columns">
-<li class="fragment"><span
-class="math inline">\(3y&#39;&#39;&#39;+y&#39;-10y=90\)</span> es una
-E.D.O. lineal.</li>
-<li class="fragment"><span
-class="math inline">\(y&#39;&#39;+3xy+4y=\cos x\)</span> es una E.D.O.
-lineal.</li>
-<li class="fragment"><span class="math inline">\(y&#39;+(\sin x)
-y=x\)</span> es una E.D.O. lineal.</li>
-<li class="fragment"><span
-class="math inline">\(y&#39;+\color{red}{y^2}+y=0\)</span> es una E.D.O.
-no-lineal.</li>
-<li class="fragment"><span
-class="math inline">\(y''=\color{red}{\dfrac{x}{y}}+1\)</span> es una E.D.O.
-no-lineal.</li>
-<li class="fragment"><span
-class="math inline">\(\color{red}{y\cdot }y'=1\)</span> es una E.D.O.
-no-lineal.</li>
-</ol>
-</div>
-</section>
-<section id="definiciones-4" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="definition">
-<p> Una <b>solución</b> de una E.D.O. es cualquier función <span
-class="math inline">\(y(x)\)</span> que satisface la ecuación. La
-solución se dice <b>explícita</b> si está dada en la forma <span
-class="math inline">\(y(x)=\ldots\)</span>. La solución se dice
-<b>implícita</b> si la solución está dada en la forma <span
-class="math inline">\(G(x,y(x))=0\)</span>.</p>
-</div>
-</section>
-<section id="definiciones-4" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="example">
-<p> Soluciones explícitas</p>
-<ol>
-<li class="fragment"><p><span class="math inline">\(y(x)=0\)</span> es una solución explícita de <span class="math inline">\(y''-2y'+y=0\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y(x)=\dfrac1{16}x^4\)</span> es una solución explícita de <span class="math inline">\(y&#39;=x\sqrt y\)</span> cuando \(x>0\).</p></li>
-<li class="fragment"><p><span class="math inline">\(y(x)=x+1\)</span> no es una solución de <span
-class="math inline">\(y&#39;+y=e^x\)</span> (Ejercicio).</p></li>
-</ol>
-</div>
-</section>
-<section id="definiciones-4" class="slide level3 frame">
-<h3>Definiciones</h3>
-<div class="example">
-<p> Soluciones implícitas</p>
-<ol>
-<li class="fragment"><p><span class="math inline">\(4x^2-y^2=k\)</span> para una constante \(k\) es una solución implícita de
-<span class="math inline">\(yy&#39;=4x\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(x+y+e^{xy}=0\)</span> es una solución implícita de <span
-class="math inline">\((1+xe^{xy})y&#39;+1+ye^{xy}=0\)</span>.</p></li>
-<li class="fragment"><p><span
-class="math inline">\(y^2-x^3+8=0\)</span> no es una solución implícita de <span
-class="math inline">\(y&#39;=\dfrac{x^2}{y}\)</span> (Ejercicio).</p></li>
-</ol>
-</div>
-</section>
-<section id="problemas-de-valor-inicial" class="slide level3 frame">
-<h3>Problemas de valor inicial</h3>
-<div class="definition">
-    <p> Un <b>problema de valor inicial</b> es una ecuación diferencial ordinaria
-de orden <span class="math inline">\(n\)</span>, sobre la cual se
-imponen <span class="math inline">\(n\)</span> condiciones sobre la
-función incógnita y sus derivadas en cierto valor <em>inicial</em> <span
-class="math inline">\(x_0\)</span>, es decir <span
-class="math display">\[\left\{
-	\begin{aligned}
-		F(x,y,y',y'',\ldots,y^{(n)})&=0\\
-		y(x_0)=y_0,\ y'(x_0)=y_1,\ y''(x_0)&=y_2,\ \cdots,\ y^{(n)}(x_0)=y_{n}.
-	\end{aligned}
-	\right.\]</span></p>
-</div>
-<div class="remark fragment">
-<p> <em>En este curso estudiaremos una versión mas simple de lo
-anterior, los llamados (PVI) de primer orden: <span
-class="math display">\[\label{eq-pvi}%\tag{PVI}
-	\left\{
-	\begin{aligned}
-		y&#39;&amp;=f(x,y)\\
-		y(x_0)&amp;=y_0
-	\end{aligned}
-	\right.\]</span> donde <span class="math inline">\(f(x,y)\)</span> es
-una función de 2 variables y <span
-class="math inline">\((x_0,y_0)\)</span> es un punto en el plano <span
-class="math inline">\(x\)</span>-<span
-class="math inline">\(y\)</span>.</em></p>
-</div>
-</section>
-<section id="problemas-de-valor-inicial-1" class="slide level3 frame">
-<h3>Problemas de valor inicial</h3>
-<div class="example">
-<p> Verifique que las siguientes funciones son soluciones del PVI
-dado.</p>
-<ol>
-<li><p><span
-class="math inline">\(y(x)=\dfrac{1}{1+x^2}\)</span>, <span
-class="math inline">\(y&#39;=-2xy^2\)</span>, <span
-class="math inline">\(y(3)=\dfrac{1}{10}\)</span>.</p></li>
-<li><p><span
-class="math inline">\(y(x)=\dfrac{2}{\sqrt{1+x^2}}\)</span>, <span
-class="math inline">\((1+x^2)y&#39;+xy=0\)</span>, <span
-class="math inline">\(y(0)=2\)</span>.</p></li>
-<li><p><span
-class="math inline">\(x^2+xy-y^2=1\)</span>, <span
-class="math inline">\((x-2y)y&#39;+2x+y=0\)</span>, <span
-class="math inline">\(y(0)=1\)</span> (Ejercicio).</p></li>
-</ol>
-</div>
-</section>
-<section id="ejercicios-1" class="slide level3 frame">
-<h3>Conceptos básicos</h3>
-<div class="exercise">
-<p><strong> 1</strong>. Establezca el orden de la ecuación diferencial y
-determine si es o no lineal.</p>
-<ol class="two-columns">
-<li><p><span
-class="math inline">\((1-x)y&#39;&#39;-4xy&#39;+5y=\cos
-x\)</span>.</p></li>
-<li><p><span
-class="math inline">\(x\dfrac{d^3y}{dx^3}-\left(\dfrac{dy}{dx}\right)^4+y=0\)</span>.</p></li>
-<li><p><span
-class="math inline">\(t^5y^{(4)}-t^3y&#39;&#39;+6y=0\)</span>.</p></li>
-<li><p><span
-class="math inline">\(\dfrac{d^2y}{dx^2}=\sqrt{1+\left(\dfrac{dy}{dx}\right)^2}\)</span>.</p></li>
-<li><p><span class="math inline">\(\sin\theta
-y&#39;&#39;&#39;-(\cos\theta) y&#39;=2\)</span>.</p></li>
-</ol>
-</div>
-</section>
-<section id="ejercicios-2" class="slide level3 frame">
-<h3>Conceptos básicos</h3>
-<div class="exercise">
-<p><strong> 2</strong>. Verifique que la función dada es solución de la
-ecuación diferencial.</p>
-<ol class="two-columns">
-<li><p><span
-class="math inline">\(y(x)=e^{-\frac{x}2}\)</span>, <span
-class="math inline">\(2y&#39;+y=0\)</span>.</p></li>
-<li><p><span class="math inline">\(y(x)=e^{3x}\cos
-2x\)</span>, <span
-class="math inline">\(y&#39;&#39;-6y&#39;+13y=0\)</span>.</p></li>
-<li><p><span class="math inline">\(y(x)=-(\cos
-x)\ln(\sec x+\tan x)\)</span>, <span
-class="math inline">\(y&#39;&#39;+y=\tan x\)</span>.</p></li>
-<li><p><span
-class="math inline">\(\ln\left({\dfrac{2y-1}{y-1}}\right)=x\)</span>, <span
-class="math inline">\(y&#39;=(y-1)(1-2y)\)</span>.</p></li>
-<li><p><span
-class="math inline">\(P(t)=\dfrac{Ce^t}{1+Ce^t}\)</span>, <span
-class="math inline">\(\dfrac{dP}{dt}=P(1-P)\)</span>, donde <span
-class="math inline">\(C\)</span> es una constante arbitraria.</p></li>
-<li><p><span
-class="math inline">\(y(x)=e^{-x^2}\int_0^xe^{t^2}\mathrm dt+Ce^{-x^2}\)</span>, <span class="math inline">\(y&#39;+2xy=1\)</span>
-donde <span class="math inline">\(C\)</span> es una constante
-arbitraria.</p></li>
-<li><p><span
-class="math inline">\(y(x)=c_1x^{-1}+c_2x+c_3x\ln x+4x^2\)</span>, <span
-class="math inline">\(x^3y&#39;&#39;&#39;+2x^2y&#39;&#39;-xy+y=12x^2\)</span>,
-donde <span class="math inline">\(c_1,c_2,c_3,c_4\)</span> son
-constantes arbitrarias.</p></li>
-</ol>
-</div>
-</section>
-<section id="ejercicios-3" class="slide level3 frame">
-<h3>Conceptos básicos</h3>
-<div class="exercise">  
-<p><strong> 3</strong>. Determine el valor de <span
-class="math inline">\(k\)</span> de modo que la función <span
-class="math inline">\(y(x)=e^{kx}\)</span> sea solución de la ecuación
-dada.</p>
-<ol class="two-columns">
-<li><p><span
-class="math inline">\(y&#39;+2y=0\)</span>.</p></li>
-<li><p><span
-class="math inline">\(y&#39;&#39;-5y&#39;+6y=0\)</span>.</p></li>
-<li><p><span
-class="math inline">\(5y&#39;=2y\)</span>.</p></li>
-<li><p><span
-class="math inline">\(2y&#39;&#39;+7y&#39;-4y=0\)</span>.</p></li>
-</ol>
-</div>
-<div class="exercise fragment">
-<p><strong> 4</strong>. Determine el valor de <span
-class="math inline">\(k\)</span> de modo que la función <span
-class="math inline">\(y(x)=x^{k}\)</span> sea solución de la ecuación
-dada.</p>
-<ol class="two-columns">
-<li><p><span
-class="math inline">\(xy&#39;+2y=0\)</span>.</p></li>
-<li><p><span
-class="math inline">\(x^2y&#39;&#39;-7xy+15y=0\)</span>.</p></li>
-</ol>
-</div>
-</section>        
-        
-    </div>
-  </div>
+			<section id="definiciones-1" class="slide level3 frame">
+				<h3>Definiciones</h3>
+				<div class="definition">
+					<p> El <b>orden</b> de una ecuación diferencial es el orden de la derivada mas alta que aparece
+						en la ecuación</p>
+				</div>
+				<div class="example fragment">
+					<p> </p>
+					<ol>
+						<li class="fragment">
+							<p><span class="math inline">\(y&#39;=2x+y\)</span>
+								es una E.D.O de primer orden.</p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\ddot{x}-2\dot{x}-15x=0\)</span> es una E.D.O. de
+								segundo orden.</p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\dfrac{\partial
+									u}{\partial t}=\dfrac{\partial^2 u}{\partial x^2}+\dfrac{\partial^2
+									u}{\partial y^2}\)</span> es una E.D.P. de segundo orden.</p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(\left\{
+									\begin{aligned}
+									\frac{dx}{dt}&amp;=2x+2y\\
+									\frac{dy}{dt}&amp;=x+3y
+									\end{aligned}
+									\right.\)</span> es un sistema de E.D.O.s de primer orden.</p>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="definiciones-2" class="slide level3 frame">
+				<h3>Definiciones</h3>
+				<div class="definition">
+					<p> Una <b>E.D.O. lineal</b> es una ecuación que puede ser escrita como
+						<span class="math display">\[a_n(x)y^{(n)}+a_{n-1}(x)y^{(n-1)}+\ldots+a_1(x)y&#39;+a_0(x)y=f(x),\]</span>
+						donde <span class="math inline">\(a_i(x)\)</span> son funciones
+						conocidas de <span class="math inline">\(x\)</span> para <span class="math inline">\(i=0,1,\ldots,n-1,n\)</span>. Si la ecuación no
+						tiene esta forma, decimos que la EDO es <em>no-lineal</em>.
+					</p>
+					<p class="fragment">Las EDOs en general se pueden escribir como <span class="math display">\[F(x,y,y&#39;,y&#39;&#39;,\ldots,y^{(n)})=0,\]</span>
+						donde <span class="math inline">\(F\)</span> es una función de <span class="math inline">\(n+1\)</span> variables.</p>
+				</div>
+				<div class="example fragment">
+					<p></p>
+					<ol class="two-columns">
+						<li class="fragment"><span class="math inline">\(3y&#39;&#39;&#39;+y&#39;-10y=90\)</span> es una
+							E.D.O. lineal.</li>
+						<li class="fragment"><span class="math inline">\(y&#39;&#39;+3xy+4y=\cos x\)</span> es una E.D.O.
+							lineal.</li>
+						<li class="fragment"><span class="math inline">\(y&#39;+(\sin x)
+								y=x\)</span> es una E.D.O. lineal.</li>
+						<li class="fragment"><span class="math inline">\(y&#39;+\color{red}{y^2}+y=0\)</span> es una E.D.O.
+							no-lineal.</li>
+						<li class="fragment"><span class="math inline">\(y''=\color{red}{\dfrac{x}{y}}+1\)</span> es una E.D.O.
+							no-lineal.</li>
+						<li class="fragment"><span class="math inline">\(\color{red}{y\cdot }y'=1\)</span> es una E.D.O.
+							no-lineal.</li>
+					</ol>
+				</div>
+			</section>
+			<section id="definiciones-4" class="slide level3 frame">
+				<h3>Definiciones</h3>
+				<div class="definition">
+					<p> Una <b>solución</b> de una E.D.O. es cualquier función <span class="math inline">\(y(x)\)</span> que satisface la ecuación. La
+						solución se dice <b>explícita</b> si está dada en la forma <span class="math inline">\(y(x)=\ldots\)</span>. La solución se dice
+						<b>implícita</b> si la solución está dada en la forma <span class="math inline">\(G(x,y(x))=0\)</span>.
+					</p>
+				</div>
+				<div class="example fragment">
+					<p> Soluciones explícitas</p>
+					<ol>
+						<li class="fragment">
+							<p><span class="math inline">\(y(x)=0\)</span> es una solución explícita de <span class="math inline">\(y''-2y'+y=0\)</span>.</p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(y(x)=\dfrac1{16}x^4\)</span> es una solución explícita de <span class="math inline">\(y&#39;=x\sqrt y\)</span> cuando \(x>0\).</p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(y(x)=x+1\)</span> no es una solución de <span class="math inline">\(y&#39;+y=e^x\)</span> (Ejercicio).</p>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="definiciones-4" class="slide level3 frame">
+				<h3>Definiciones</h3>
+				<div class="example">
+					<p> Soluciones implícitas</p>
+					<ol>
+						<li class="fragment">
+							<p><span class="math inline">\(4x^2-y^2=k\)</span> para una constante \(k\) es una solución implícita de
+								<span class="math inline">\(yy&#39;=4x\)</span>.
+							</p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(x+y+e^{xy}=0\)</span> es una solución implícita de <span class="math inline">\((1+xe^{xy})y&#39;+1+ye^{xy}=0\)</span>.</p>
+						</li>
+						<li class="fragment">
+							<p><span class="math inline">\(y^2-x^3+8=0\)</span> no es una solución implícita de <span class="math inline">\(y&#39;=\dfrac{x^2}{y}\)</span> (Ejercicio).</p>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="problemas-de-valor-inicial" class="slide level3 frame">
+				<h3>Problemas de valor inicial</h3>
+				<div class="definition">
+					<p> Un <b>problema de valor inicial</b> es una ecuación diferencial ordinaria
+						de orden <span class="math inline">\(n\)</span>, sobre la cual se
+						imponen <span class="math inline">\(n\)</span> condiciones sobre la
+						función incógnita y sus derivadas en cierto valor <em>inicial</em> <span class="math inline">\(x_0\)</span>, es decir <span class="math display">\[\left\{
+							\begin{aligned}
+							F(x,y,y',y'',\ldots,y^{(n)})&=0\\
+							y(x_0)=y_0,\ y'(x_0)=y_1,\ y''(x_0)&=y_2,\ \cdots,\ y^{(n)}(x_0)=y_{n}.
+							\end{aligned}
+							\right.\]</span></p>
+				</div>
+				<div class="remark fragment">
+					<p> <em>En este curso estudiaremos dos casos particulares de lo
+							anterior:
+							<ul>
+								<li>
+									(PVI) de primer orden:
+									<span class="math display">\[\label{eq-pvi}%\tag{PVI}
+										\left\{
+										\begin{aligned}
+										y' &=f(x,y)\\
+										y(x_0) & =y_0
+										\end{aligned}
+										\right.\]
+									</span>
+									donde <span class="math inline">\(f(x,y)\)</span> es
+									una función de 2 variables y <span class="math inline">\((x_0,y_0)\)</span> es un punto en el plano
+									<span class="math inline">\(x\)</span>-<span class="math inline">\(y\)</span>.</em></p>
+								</li>
+								<li>
+									(PVI) lineales de segundo orden:
+									<span class="math display">\[\label{eq-pvi2}%\tag{PVI2}
+										\left\{
+										\begin{aligned}
+										a_2y''+a_1y'+a_0y &=f(x)\\
+										y(x_0) & =y_0\\
+										y'(x_0) & =y_1
+										\end{aligned}
+										\right.\]
+									</span>
+									donde <span class="math inline">\(f(x,y)\)</span> es
+									una función de 2 variables y <span class="math inline">\((x_0,y_0)\)</span> es un punto en el plano
+									<span class="math inline">\(x\)</span>-<span class="math inline">\(y\)</span>.</em></p>
+								</li>
+							</ul>
+				</div>
+			</section>
+			<section id="problemas-de-valor-inicial-1" class="slide level3 frame">
+				<h3>Problemas de valor inicial</h3>
+				<div class="example">
+					<p> Verifique que las siguientes funciones son soluciones del PVI
+						dado.</p>
+					<ol>
+						<li>
+							<p><span class="math inline">\(y(x)=\dfrac{1}{1+x^2}\)</span>, <span class="math inline">\(y&#39;=-2xy^2\)</span>, <span class="math inline">\(y(3)=\dfrac{1}{10}\)</span>.</p>
+						</li>
+						<li>
+							<p><span class="math inline">\(y(x)=\dfrac{2}{\sqrt{1+x^2}}\)</span>, <span class="math inline">\((1+x^2)y&#39;+xy=0\)</span>, <span class="math inline">\(y(0)=2\)</span>.</p>
+						</li>
+						<li>
+							<p><span class="math inline">\(x^2+xy-y^2=1\)</span>, <span class="math inline">\((x-2y)y&#39;+2x+y=0\)</span>, <span class="math inline">\(y(0)=1\)</span> (Ejercicio).</p>
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="ejercicios-1" class="slide level3 frame">
+				<h3>Conceptos básicos</h3>
+				<div class="exercise">
+					<p><strong> 1</strong>. Establezca el orden de la ecuación diferencial y
+						determine si es o no lineal.</p>
+					<ol>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\((1-x)y&#39;&#39;-4xy&#39;+5y=\cos
+									x\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(x\dfrac{d^3y}{dx^3}-\left(\dfrac{dy}{dx}\right)^4+y=0\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(t^5y^{(4)}-t^3y&#39;&#39;+6y=0\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(\dfrac{d^2y}{dx^2}=\sqrt{1+\left(\dfrac{dy}{dx}\right)^2}\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(\sin\theta
+									y&#39;&#39;&#39;-(\cos\theta) y&#39;=2\)</span>.
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="ejercicios-2" class="slide level3 frame">
+				<h3>Conceptos básicos</h3>
+				<div class="exercise">
+					<p><strong> 2</strong>. Verifique que la función dada es solución de la
+						ecuación diferencial.</p>
+					<ol class="two-columns">
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(y(x)=e^{-\frac{x}2}\)</span>, <span class="math inline">\(2y&#39;+y=0\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(y(x)=e^{3x}\cos
+									2x\)</span>, <span class="math inline">\(y&#39;&#39;-6y&#39;+13y=0\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(y(x)=-(\cos
+									x)\ln(\sec x+\tan x)\)</span>, <span class="math inline">\(y&#39;&#39;+y=\tan x\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(\ln\left({\dfrac{2y-1}{y-1}}\right)=x\)</span>, <span class="math inline">\(y&#39;=(y-1)(1-2y)\)</span>.
+						</li style="margin-bottom: 25pt">
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(P(t)=\dfrac{Ce^t}{1+Ce^t}\)</span>, <span class="math inline">\(\dfrac{dP}{dt}=P(1-P)\)</span>, donde <span class="math inline">\(C\)</span> es una constante arbitraria.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(y(x)=e^{-x^2}\int_0^xe^{t^2}\mathrm dt+Ce^{-x^2}\)</span>, <span class="math inline">\(y&#39;+2xy=1\)</span>
+								donde <span class="math inline">\(C\)</span> es una constante
+								arbitraria.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(y(x)=c_1x^{-1}+c_2x+c_3x\ln x+4x^2\)</span>, <span class="math inline">\(x^3y&#39;&#39;&#39;+2x^2y&#39;&#39;-xy+y=12x^2\)</span>,
+								donde <span class="math inline">\(c_1,c_2,c_3,c_4\)</span> son
+								constantes arbitrarias.
+						</li>
+					</ol>
+				</div>
+			</section>
+			<section id="ejercicios-3" class="slide level3 frame">
+				<h3>Conceptos básicos</h3>
+				<div class="exercise">
+					<p><strong> 3</strong>. Determine el(los) valor(es) de <span class="math inline">\(k\)</span> de modo que la función <span class="math inline">\(y(x)=e^{kx}\)</span> sea solución de la ecuación
+						dada.</p>
+					<ol class="two-columns">
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(y&#39;+2y=0\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(y&#39;&#39;-5y&#39;+6y=0\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(5y&#39;=2y\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(2y&#39;&#39;+7y&#39;-4y=0\)</span>.
+						</li>
+					</ol>
+				</div>
+				<div class="exercise fragment">
+					<p><strong> 4</strong>. Determine el(los) valor(es) de <span class="math inline">\(k\)</span> de modo que la función <span class="math inline">\(y(x)=x^{k}\)</span> sea solución de la ecuación
+						dada.</p>
+					<ol class="two-columns">
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(xy&#39;+2y=0\)</span>.
+						</li>
+						<li style="margin-bottom: 25pt">
+							<span class="math inline">\(x^2y&#39;&#39;-7xy+15y=0\)</span>.
+						</li>
+					</ol>
+				</div>
+			</section>
 
-  <script src="../../../reveal/dist/reveal.js"></script>
+		</div>
+	</div>
 
-  <!-- reveal.js plugins -->
-  <script src="../../../reveal/plugin/notes/notes.js"></script>
-  <script src="../../../reveal/plugin/search/search.js"></script>
-  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
-<script src="../../../reveal/plugin/math/math.js"></script>
-<script src="../../../scripts/reveal-init.js"></script>
-    </body>
+	<script src="../../../reveal/dist/reveal.js"></script>
+
+	<!-- reveal.js plugins -->
+	<script src="../../../reveal/plugin/notes/notes.js"></script>
+	<script src="../../../reveal/plugin/search/search.js"></script>
+	<script src="../../../reveal/plugin/zoom/zoom.js"></script>
+	<script src="../../../reveal/plugin/math/math.js"></script>
+	<script src="../../../scripts/reveal-init.js"></script>
+</body>
+
 </html>
