@@ -11,8 +11,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-	<link rel="stylesheet" href="../../../reveal/dist/reset.css">
-	<link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+	<link rel="stylesheet" href="/reveal/dist/reset.css">
+	<link rel="stylesheet" href="/reveal/dist/reveal.css">
 	<style>
 	.reveal .sourceCode {
 		/* see #7635 */
@@ -55,8 +55,8 @@
 		vertical-align: middle;
 	}
 	</style>
-	<link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
-	<link rel="stylesheet" href="../../../styles/style.css" />
+	<link rel="stylesheet" href="/reveal/dist/theme/white.css" id="theme">
+	<link rel="stylesheet" href="/styles/style.css" />
 	<!---Geogebra-->
 	<script src="https://www.geogebra.org/apps/deployggb.js"></script>
 
@@ -108,7 +108,7 @@
 				<h1 class="title">Matemáticas</h1>
 				<p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
 					Contador Público y Auditor</p>
-				<p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+				<p class="author"><img data-src="/images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
 			</section>
 
 			<section id="derivada" class="slide level3 frame">
@@ -192,25 +192,25 @@
 				<div class="center">
 					<div id="ggb-element-2" class="fragment"></div>
 				</div>
-        <div class="block fragment">
-				<ul>
-					<li class="fragment">
-						<p>En <span class="math inline">\(x=2\)</span> la
-							derivada no existe pues la pendiente de la tangente por la izquierda es
-							distinta a la pendiente de la tangente por la derecha.</p>
-					</li>
-					<li class="fragment">
-						<p>En <span class="math inline">\(x=-4\)</span> y
-							en <span class="math inline">\(x=0\)</span> la derivada no existe pues
-							las tangentes se vuelven verticales.</p>
-					</li>
-					<li class="fragment">
-						<p>En <span class="math inline">\(x=-2\)</span> y
-							en <span class="math inline">\(x=4\)</span> la derivada no existe pues
-							la función no es continua.</p>
-					</li>
-				</ul>
-        </div>
+				<div class="block fragment">
+					<ul>
+						<li class="fragment">
+							<p>En <span class="math inline">\(x=2\)</span> la
+								derivada no existe pues la pendiente de la tangente por la izquierda es
+								distinta a la pendiente de la tangente por la derecha.</p>
+						</li>
+						<li class="fragment">
+							<p>En <span class="math inline">\(x=-4\)</span> y
+								en <span class="math inline">\(x=0\)</span> la derivada no existe pues
+								las tangentes se vuelven verticales.</p>
+						</li>
+						<li class="fragment">
+							<p>En <span class="math inline">\(x=-2\)</span> y
+								en <span class="math inline">\(x=4\)</span> la derivada no existe pues
+								la función no es continua.</p>
+						</li>
+					</ul>
+				</div>
 			</section>
 			<section id="la-derivada-de-una-función" class="slide level3 frame">
 				<h3>La derivada de una función</h3>
@@ -321,21 +321,21 @@
 		</div>
 	</div>
 
-	<script src="../../../reveal/dist/reveal.js"></script>
+	<script src="/reveal/dist/reveal.js"></script>
 
 	<!-- reveal.js plugins -->
-	<script src="../../../reveal/plugin/notes/notes.js"></script>
-	<script src="../../../reveal/plugin/search/search.js"></script>
-	<script src="../../../reveal/plugin/zoom/zoom.js"></script>
-	<script src="../../../reveal/plugin/math/math.js"></script>
+	<script src="/reveal/plugin/notes/notes.js"></script>
+	<script src="/reveal/plugin/search/search.js"></script>
+	<script src="/reveal/plugin/zoom/zoom.js"></script>
+	<script src="/reveal/plugin/math/math.js"></script>
 
-	<script src="../../../scripts/reveal-init.js"></script>
+	<script src="/scripts/reveal-init.js"></script>
 	<script>
 	var applet1 = new GGBApplet({
 		appName: "classic", // Puede ser "graphing", "geometry", etc.
 		width: 1250,
 		height: 650,
-    language: "es",
+		language: "es",
 		showToolBar: false, // Hide toolbar
 		showMenuBar: false, // Hide menu
 		showAlgebraInput: false, // Hide input bar
@@ -343,7 +343,7 @@
 		enableRightClick: false, // Optional: disable context menu
 		enableLabelDrags: false, // Optional: prevent label moving
 		showZoomButtons: false, // Optional: hide zoom buttons
-    showFullscreenButton: true,
+		showFullscreenButton: true,
 		allowStyleBar: false, // Optional: hide style bar
 		filename: "clase16/derivada.ggb" // Ruta al archivo local
 	}, true);
@@ -352,7 +352,7 @@
 		appName: "graphing", // Puede ser "graphing", "geometry", etc.
 		width: 1250,
 		height: 650,
-    language: "es",
+		language: "es",
 		showToolBar: false, // Hide toolbar
 		showMenuBar: false, // Hide menu
 		showAlgebraInput: false, // Hide input bar
@@ -360,14 +360,14 @@
 		enableRightClick: false, // Optional: disable context menu
 		enableLabelDrags: false, // Optional: prevent label moving
 		showZoomButtons: false, // Optional: hide zoom buttons
-    showFullscreenButton: true,
+		showFullscreenButton: true,
 		allowStyleBar: false, // Optional: hide style bar
 		filename: "clase16/sin-derivada.ggb" // Ruta al archivo local
 	}, true);
 
 	window.addEventListener("load", function() {
 		applet1.inject('ggb-element-1');
-    applet2.inject('ggb-element-2');
+		applet2.inject('ggb-element-2');
 	});
 	</script>
 </body>
