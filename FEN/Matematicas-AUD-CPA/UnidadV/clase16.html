@@ -144,7 +144,7 @@
 			<section id="derivada-3.5" class="slide level3 frame">
 				<h3>Derivada</h3>
 				<p>Veamos que ocurre cuando \(h\longrightarrow 0\):</p>
-				<div id="ggb-element" class="fragment"></div>
+				<div id="ggb-element-1" class="fragment"></div>
 			</section>
 
 			<section id="derivada-4" class="slide level3 frame">
@@ -331,7 +331,7 @@
 
 	<script src="../../../scripts/reveal-init.js"></script>
 	<script>
-	var applet = new GGBApplet({
+	var applet1 = new GGBApplet({
 		appName: "classic", // Puede ser "graphing", "geometry", etc.
 		width: 1250,
 		height: 650,
@@ -347,13 +347,8 @@
 		filename: "clase16/derivada.ggb" // Ruta al archivo local
 	}, true);
 
-	window.addEventListener("load", function() {
-		applet.inject('ggb-element');
-	});
-	</script>
-  <script>
-	var applet = new GGBApplet({
-		appName: "classic", // Puede ser "graphing", "geometry", etc.
+	var applet2 = new GGBApplet({
+		appName: "graphing", // Puede ser "graphing", "geometry", etc.
 		width: 1250,
 		height: 650,
     language: "es",
@@ -369,7 +364,8 @@
 	}, true);
 
 	window.addEventListener("load", function() {
-		applet.inject('ggb-element-2');
+		applet1.inject('ggb-element-1');
+    applet2.inject('ggb-element-2');
 	});
 	</script>
 </body>
