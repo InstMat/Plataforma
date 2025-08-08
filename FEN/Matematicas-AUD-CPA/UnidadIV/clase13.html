@@ -61,43 +61,7 @@
 	<script src="https://www.geogebra.org/apps/deployggb.js"></script>
 
 	<!--MathJAX-->
-	<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
-					cancel: ["Extension","cancel"],
-					bcancel: ["Extension","cancel"],
-					xcancel: ["Extension","cancel"],
-					cancelto: ["Extension","cancel"]
-				});
-			});
-		</script>
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
-		</script>
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
-		</script>
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
-		</script>
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
-			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
-				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
-				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
-				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
-				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
-				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
-			});
-			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
-				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
-				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
-				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
-				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
-				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
-			});
-		</script>
+	<script src="/scripts/mathjax-config.js" async></script>
 </head>
 
 <body>
@@ -501,8 +465,6 @@
 	<script src="/reveal/plugin/notes/notes.js"></script>
 	<script src="/reveal/plugin/search/search.js"></script>
 	<script src="/reveal/plugin/zoom/zoom.js"></script>
-	<script src="/reveal/plugin/math/math.js"></script>
-
 	<script src="/scripts/reveal-init.js"></script>
 </body>
 

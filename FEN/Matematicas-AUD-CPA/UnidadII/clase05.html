@@ -10,8 +10,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="/reveal/dist/reset.css">
+  <link rel="stylesheet" href="/reveal/dist/reveal.css">
   <style>
     .reveal .sourceCode {  /* see #7635 */
       overflow: visible;
@@ -31,49 +31,13 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
-  <link rel="stylesheet" href="../../../styles/style.css"/>
+  <link rel="stylesheet" href="/reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="/styles/style.css"/>
   <!---Geogebra-->
         <script src="https://www.geogebra.org/apps/deployggb.js"></script>
         
         <!--MathJAX-->
-        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
-				MathJax.Hub.Insert(MathJax.InputJax.TeX.Definitions.macros,{
-					cancel: ["Extension","cancel"],
-					bcancel: ["Extension","cancel"],
-					xcancel: ["Extension","cancel"],
-					cancelto: ["Extension","cancel"]
-				});
-			});
-		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
-		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({ TeX: { extensions: ["AMSmath.js", "AMSsymbols.js"] } });
-		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({"HTML-CSS": { scale: 90}});
-		</script>
-		<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({"HTML-CSS": {availableFonts: ["TeX"]},MMLorHTML: {prefer: "HTML"}});
-			MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
-				var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
-				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
-				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
-				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
-				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
-			});
-			MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
-				var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;
-				VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
-				VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
-				VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
-				VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
-			});
-		</script>
+	<script src="/scripts/mathjax-config.js" async></script>
 </head>
 <body>
   <div class="reveal">
@@ -84,7 +48,7 @@
   <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
 Contador Público y Auditor</p>
   <p class="author"><img
-data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+data-src="/images/logoINSTMAT-color.png" style="width:30.0%"
 alt="image" /></p>
 </section>
 
@@ -313,14 +277,12 @@ x^2-5x+6\)</span></li>
     </div>
   </div>
 
-  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="/reveal/dist/reveal.js"></script>
 
   <!-- reveal.js plugins -->
-  <script src="../../../reveal/plugin/notes/notes.js"></script>
-  <script src="../../../reveal/plugin/search/search.js"></script>
-  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
-<script src="../../../reveal/plugin/math/math.js"></script>
-
-<script src="../../../scripts/reveal-init.js"></script>
+  <script src="/reveal/plugin/notes/notes.js"></script>
+  <script src="/reveal/plugin/search/search.js"></script>
+  <script src="/reveal/plugin/zoom/zoom.js"></script>
+<script src="/scripts/reveal-init.js"></script>
     </body>
 </html>

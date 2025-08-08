@@ -1,187 +1,197 @@
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-          
-            // The "normal" size of the presentation, aspect ratio will
-  // be preserved when the presentation is scaled to fit different
-  // resolutions. Can be specified using percentage units.
-  width: 1280,
-  height: 960,
+// Full list of configuration options available at:
+// https://revealjs.com/config/
+Reveal.initialize({
 
-  // Factor of the display size that should remain empty around
-  // the content
-  margin: 0.04,
+	// The "normal" size of the presentation, aspect ratio will
+	// be preserved when the presentation is scaled to fit different
+	// resolutions. Can be specified using percentage units.
+	width: 1280,
+	height: 960,
 
-  // Bounds for smallest/largest possible scale to apply to content
-  minScale: 0.25,
-  maxScale: 1.5,
-          
-        // Display controls in the bottom right corner
-        controls: true,
+	// Factor of the display size that should remain empty around
+	// the content
+	margin: 0.04,
 
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: true,
+	// Bounds for smallest/largest possible scale to apply to content
+	minScale: 0.25,
+	maxScale: 1.5,
 
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'bottom-right',
+	// Display controls in the bottom right corner
+	controls: true,
 
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
+	// Help the user learn the controls by providing hints, for example by
+	// bouncing the down arrow when they first encounter a vertical slide
+	controlsTutorial: true,
 
-        // Display a presentation progress bar
-        progress: true,
+	// Determines where controls appear, "edges" or "bottom-right"
+	controlsLayout: 'bottom-right',
 
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
+	// Visibility rule for backwards navigation arrows; "faded", "hidden"
+	// or "visible"
+	controlsBackArrows: 'faded',
 
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
+	// Display a presentation progress bar
+	progress: true,
 
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
+	// Display the page number of the current slide
+	slideNumber: 'c/t',
 
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
+	// 'all', 'print', or 'speaker'
+	showSlideNumber: 'all',
 
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
+	// Add the current slide number to the URL hash so that reloading the
+	// page/copying the URL will return you to the same slide
+	hash: true,
 
-        // Push each slide change to the browser history
-        history: false,
+	// Start with 1 for the hash rather than 0
+	hashOneBasedIndex: false,
 
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
+	// Flags if we should monitor the hash and change slides accordingly
+	respondToHashChanges: true,
 
-        // Enable the slide overview mode
-        overview: true,
+	// Push each slide change to the browser history
+	history: false,
 
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
+	// Enable keyboard shortcuts for navigation
+	keyboard: true,
 
-        // Vertical centering of slides
-        center: false,
+	// Enable the slide overview mode
+	overview: true,
 
-        // Enables touch navigation on devices with touch input
-        touch: true,
+	// Disables the default reveal.js slide layout (scaling and centering)
+	// so that you can use custom CSS layout
+	disableLayout: false,
 
-        // Loop the presentation
-        loop: false,
+	// Vertical centering of slides
+	center: false,
 
-        // Change the presentation direction to be RTL
-        rtl: false,
+	// Enables touch navigation on devices with touch input
+	touch: true,
 
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'default',
+	// Loop the presentation
+	loop: false,
 
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
+	// Change the presentation direction to be RTL
+	rtl: false,
 
-        // Turns fragments on and off globally
-        fragments: true,
+	// see https://revealjs.com/vertical-slides/#navigation-mode
+	navigationMode: 'default',
 
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: true,
+	// Randomizes the order of slides each time the presentation loads
+	shuffle: false,
 
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
+	// Turns fragments on and off globally
+	fragments: true,
 
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
+	// Flags whether to include the current fragment in the URL,
+	// so that reloading brings you to the same fragment position
+	fragmentInURL: true,
 
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
+	// Flags if the presentation is running in an embedded mode,
+	// i.e. contained within a limited portion of the screen
+	embedded: false,
 
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
+	// Flags if we should show a help overlay when the questionmark
+	// key is pressed
+	help: true,
 
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
+	// Flags if it should be possible to pause the presentation (blackout)
+	pause: true,
 
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
+	// Flags if speaker notes should be visible to all viewers
+	showNotes: false,
 
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
+	// Global override for autoplaying embedded media (null/true/false)
+	autoPlayMedia: null,
 
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
+	// Global override for preloading lazy-loaded iframes (null/true/false)
+	preloadIframes: null,
 
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
+	// Number of milliseconds between automatically proceeding to the
+	// next slide, disabled when set to 0, this value can be overwritten
+	// by using a data-autoslide attribute on your slides
+	autoSlide: 0,
 
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
+	// Stop auto-sliding after user input
+	autoSlideStoppable: true,
 
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
+	// Use this method for navigation when auto-sliding
+	autoSlideMethod: null,
 
-        // The display mode that will be used to show slides
-        display: 'block',
+	// Specify the average time in seconds that you think you will spend
+	// presenting each slide. This is used to show a pacing timer in the
+	// speaker view
+	defaultTiming: null,
 
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
+	// Enable slide navigation via mouse wheel
+	mouseWheel: false,
 
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
+	// The display mode that will be used to show slides
+	display: 'block',
 
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
+	// Hide cursor if inactive
+	hideInactiveCursor: true,
 
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+	// Time before the cursor is hidden (in ms)
+	hideCursorTime: 5000,
 
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
+	// Opens links in an iframe preview overlay
+	previewLinks: false,
 
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'fade',
+	// Transition style (none/fade/slide/convex/concave/zoom)
+	transition: 'slide',
 
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
+	// Transition speed (default/fast/slow)
+	transitionSpeed: 'default',
 
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-        
-        //Do not export fragments into pdf
-        pdfSeparateFragments: false,  
+	// Transition style for full page slide backgrounds
+	// (none/fade/slide/convex/concave/zoom)
+	backgroundTransition: 'fade',
 
+	// Number of slides away from the current that are visible
+	viewDistance: 3,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
+	// Number of slides away from the current that are visible on mobile
+	// devices. It is advisable to set this to a lower number than
+	// viewDistance in order to save resources.
+	mobileViewDistance: 2,
 
-        // reveal.js plugins
-        plugins: [
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
-      });
+	//Do not export fragments into pdf
+	pdfSeparateFragments: false,
+
+	//Comment out if load mathax externally
+/*	math: {
+		mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+		config: 'TeX-AMS_HTML-full',
+		tex2jax: {
+			inlineMath: [
+				['\\(', '\\)']
+			],
+			displayMath: [
+				['\\[', '\\]']
+			],
+			balanceBraces: true,
+			processEscapes: false,
+			processRefs: true,
+			processEnvironments: true,
+			preview: 'TeX',
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+			ignoreClass: 'tex2jax_ignore',
+			processClass: 'tex2jax_process'
+		},
+	},
+*/
+	// reveal.js plugins
+	plugins: [
+		//RevealMath,
+		RevealNotes,
+		RevealSearch,
+		RevealZoom
+	]
+});
+
+Reveal.on('slidechanged', function(event) {
+	if (window.MathJax) {
+		MathJax.typesetPromise();
+	}
+});
