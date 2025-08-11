@@ -8,6 +8,7 @@ body {
 .frame{
     text-align: left;
     padding: 10px;
+    margin-top: 30px;
 }
 
 .example, .example-small, .example-medium, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .solution-full, .block, .fact, .proof {

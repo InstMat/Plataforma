@@ -139,7 +139,7 @@ Reveal.initialize({
 	previewLinks: false,
 
 	// Transition style (none/fade/slide/convex/concave/zoom)
-	transition: 'slide',
+	transition: 'fade',
 
 	// Transition speed (default/fast/slow)
 	transitionSpeed: 'default',

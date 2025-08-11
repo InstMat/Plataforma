@@ -1,217 +1,250 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="author" content="image">
-  <title>Ecuaciones diferenciales ordinarias</title>
-  <!--
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="author" content="image">
+    <title>Ecuaciones diferenciales ordinarias</title>
+    <!--
 <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="/reveal/dist/reset.css">
-  <link rel="stylesheet" href="/reveal/dist/reveal.css">
-  <style>
-    .reveal .sourceCode {  /* see #7635 */
-      overflow: visible;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="/reveal/dist/reset.css">
+    <link rel="stylesheet" href="/reveal/dist/reveal.css">
+    <style>
+        .reveal .sourceCode {
+            /* see #7635 */
+            overflow: visible;
+        }
+
+        code {
+            white-space: pre-wrap;
+        }
+
+        span.smallcaps {
+            font-variant: small-caps;
+        }
+
+        div.columns {
+            display: flex;
+            gap: min(4vw, 1.5em);
+        }
+
+        div.column {
+            flex: auto;
+            overflow-x: auto;
+        }
+
+        div.hanging-indent {
+            margin-left: 1.5em;
+            text-indent: -1.5em;
+        }
+
+        /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <link rel="stylesheet" href="/reveal/dist/theme/white.css" id="theme">
-  <link rel="stylesheet" href="/styles/style.css"/>
-  <!---Geogebra-->
-        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-        
-        <!--MathJAX-->
-	<script src="/scripts/mathjax-config.js" async></script>
+        ul.task-list[class] {
+            list-style: none;
+        }
+
+        ul.task-list li input[type="checkbox"] {
+            font-size: inherit;
+            width: 0.8em;
+            margin: 0 0.8em 0.2em -1.6em;
+            vertical-align: middle;
+        }
+    </style>
+    <link rel="stylesheet" href="/reveal/dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="/styles/style.css" />
+    <!---Geogebra-->
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+    <!--MathJAX-->
+    <script src="/scripts/mathjax-config.js" async></script>
 </head>
+
 <body>
-  <div class="reveal">
-    <div class="slides">
+    <div class="reveal">
+        <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
-  <p class="subtitle">Ingeniería Civil</p>
-  <p class="author"><img data-src="/images/logoINSTMAT-color.png"
-style="width:30.0%" alt="image" /></p>
-</section>
+            <section id="title-slide">
+                <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+                <p class="subtitle">Ingeniería Civil</p>
+                <p class="author"><img data-src="/images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+            </section>
 
-<section id="separación-de-variables" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<p>Este método aplica para ecuaciones de la forma
-    <span class="math display">\[y&#39;=f(x)g(y),\]</span>
-    donde <span class="math inline">\(f(x)\)</span> y <span class="math inline">\(g(y)\)</span> son funciones conocidas.
-</p>
-<div class="example fragment">
-<p class="fragment"> Las siguientes E.D.O.s son separables</p>
-    <ol class="two-columns">
-        <li class="fragment">
-            \(y'=x\).
-        </li>
-        <li class="fragment">
-            \(y'=x\cdot y\).
-        </li>
-        <li class="fragment">
-            \(y'=\dfrac{y^2+1}{e^x}\).
-        </li>
-        <li class="fragment">
-            \(y'=e^{x+y}\).
-        </li>
-    </ol>
-<p class="fragment"> Las siguientes E.D.O.s no son separables</p>
-    <ol class="two-columns">
-        <li class="fragment">
-            \(y'=x+y\).
-        </li>
-        <li class="fragment">
-            \(y'=\dfrac{x}{x+y}\).
-        </li>
-        <li class="fragment">
-            \(y'=\ln(x-y)\).
-        </li>
-        <li class="fragment">
-            \(y'=y^x\).
-        </li>
-    </ol>
-</div>
-</section>
+            <section id="separación-de-variables" class="slide level3 frame">
+                <h3>Separación de variables</h3>
+                <p>Este método aplica para ecuaciones de la forma
+                    <span class="math display">\[y&#39;=f(x)g(y),\]</span>
+                    donde <span class="math inline">\(f(x)\)</span> y <span class="math inline">\(g(y)\)</span> son
+                    funciones conocidas.
+                </p>
+                <div class="example fragment">
+                    <p class="fragment"> Las siguientes E.D.O.s son separables</p>
+                    <ol class="two-columns">
+                        <li class="fragment">
+                            \(y'=x\).
+                        </li>
+                        <li class="fragment">
+                            \(y'=x\cdot y\).
+                        </li>
+                        <li class="fragment">
+                            \(y'=\dfrac{y^2+1}{e^x}\).
+                        </li>
+                        <li class="fragment">
+                            \(y'=e^{x+y}\).
+                        </li>
+                    </ol>
+                    <p class="fragment"> Las siguientes E.D.O.s no son separables</p>
+                    <ol class="two-columns">
+                        <li class="fragment">
+                            \(y'=x+y\).
+                        </li>
+                        <li class="fragment">
+                            \(y'=\dfrac{x}{x+y}\).
+                        </li>
+                        <li class="fragment">
+                            \(y'=\ln(x-y)\).
+                        </li>
+                        <li class="fragment">
+                            \(y'=y^x\).
+                        </li>
+                    </ol>
+                </div>
+            </section>
 
-<section id="separación-de-variables" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<p>Para resolver una E.D.O. separable la idea es “separar” variables:
-    <span class="math display">
-        \[y'=f(x)g(y) \Leftrightarrow \frac{dy}{dx}=f(x)g(y) \Rightarrow \frac{1}{g(y)}\mathrm dy=f(x)\mathrm dx\]</span>
-    de donde podemos integrar para obtener <span
-class="math display">\[\int \frac{1}{g(y)}\mathrm dy=\int f(x)\mathrm
-dx\]</span> Luego si denotamos <span class="math inline">\(\displaystyle G(y)=\int
-\frac{1}{g(y)}dy\)</span> y <span class="math inline">\(\displaystyle F(x)=\int
-f(x)dx\)</span> a las respectivas primitivas, obtenemos la solución
-implícita <span class="math display">\[G(y)=F(x)+C.\]</span></p>
-</section>
+            <section id="separación-de-variables" class="slide level3 frame">
+                <h3>Separación de variables</h3>
+                <p>Para resolver una E.D.O. separable la idea es “separar” variables:
+                    <span class="math display">
+                        \[y'=f(x)g(y) \Leftrightarrow \frac{dy}{dx}=f(x)g(y) \Rightarrow \frac{1}{g(y)}\mathrm
+                        dy=f(x)\mathrm dx\]</span>
+                    de donde podemos integrar para obtener <span class="math display">\[\int \frac{1}{g(y)}\mathrm
+                        dy=\int f(x)\mathrm
+                        dx\]</span> Luego si denotamos <span class="math inline">\(\displaystyle G(y)=\int
+                        \frac{1}{g(y)}dy\)</span> y <span class="math inline">\(\displaystyle F(x)=\int
+                        f(x)dx\)</span> a las respectivas primitivas, obtenemos la solución
+                    implícita <span class="math display">\[G(y)=F(x)+C.\]</span>
+                </p>
+                <div class="remark fragment">
+                    <ul>
+                        <li class="fragment" style="margin-bottom: 15pt">Notar que lo el método entrega una <em>familia
+                                de soluciones implícitas</em> ya que para cada valor de la constante \(C\) se obtienen
+                            soluciones implícitas distintas.</li>
+                        <li class="fragment" style="margin-bottom: 15pt">Si se conoce la función inversa de \(G\)
+                            entonces es posible despejar \(y\) en función de \(x\) para obtener la solución explícita:
+                            \[y(x)=G^{-1}(F(x)+C).\]</li>
+                        <li class="fragment" style="margin-bottom: 15pt">Si se entrega una condición inicial, entonces
+                            se puede determinar el valor de la constante \(C\).</li>
+                    </ul>
+                </div>
+            </section>
 
-<section id="separación-de-variables" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<div class="example">
-<p> Resolver <span class="math inline">\(y&#39;=-\dfrac xy\)</span>.</p>
-</div>
-<div class="solution-full fragment">
-<p class="fragment">
-Escribimos \(y'=-\dfrac xy\Leftrightarrow y\mathrm dy=-x\mathrm dx\) y luego integramos a ambos lados para obtener
-\[\int y\mathrm dy=-\int x\mathrm dx\Leftrightarrow y^2=-x^2+C,\]
-es decir, obtenemos la solución implícita
-\[x^2+y^2=C.\]
-</p>
-</div>
-</section>
-<section id="separación-de-variables-2" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<div class="example">
-<p> Resolver la ecuación <span
-class="math inline">\(xy&#39;=y\)</span>.</p>
-</div>
-<div class="solution fragment">
-<p> </p>
-</div>
-<div class="remark fragment">
-<p> <em>Observar que si existe <span class="math inline">\(y_0\)</span>
-tal que <span class="math inline">\(g(y_0)=0\)</span> entonces la
-ecuación <span class="math inline">\(y&#39;=f(x)g(y)\)</span> también
-tiene como solución a la función constante <span
-class="math inline">\(y(x)=y_0\)</span>.</em>
-</p>
-    <p><em>Cuando esto ocurre diremos que la E.D.O. tiene una <b>solución constante</b>. <span class="fragment" style="color: red;"><b>No olvidar la búsqueda de soluciones constantes.</b></span></em> </p>
-</div>
-</section>
-<section id="separación-de-variables-4" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<div class="example">
-<p> Resolver el PVI dado por <span class="math inline">\(y&#39;=\left(
-1-y^2 \right)\tan x\)</span>, <span
-class="math inline">\(y(0)=1\)</span>.</p>
-</div>
-<div class="solution fragment">
-<p> </p>
-</div>
-</section>
-<section id="separación-de-variables-3" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<div class="example">
-<p> Resolver la ecuación diferencial <span
-class="math inline">\(y&#39;=\dfrac{6x^5-2x^3+6}{\sin
-y+e^{2y}-4}\)</span></p>
-</div>
-<div class="solution fragment">
-<p> </p>
-</div>
-</section>
-<section id="separación-de-variables-5" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<div id="no-lin:ej1" class="example">
-<p> Resolver la ecuación <span class="math inline">\(y&#39;=xy^{\frac
-12}\)</span>.</p>
-</div>
-<div class="solution fragment">
-<p> </p>
-</div>
-</section>
-<section id="separación-de-variables-6" class="slide level3 frame">
-<h3>Separación de variables</h3>
-<div class="exercise">
-<p><strong> 1</strong>. Resolver las siguientes EDOs usando el método de
-separación de variables:</p>
-<ol class="two-columns">
-<li><span
-class="math inline">\(y&#39;=-\dfrac{x}{y}\)</span>.</li>
-<li><span
-class="math inline">\(y&#39;=-\dfrac{y}{x}\)</span>.</li>
-<li><span
-class="math inline">\(y&#39;=e^y\sin(2x)\)</span>.</li>
-<li><span
-class="math inline">\(y&#39;=e^{3x+2y}\)</span>.</li>
-<li><span
-class="math inline">\(y&#39;=xy^2\)</span>.</li>
-<li><span
-class="math inline">\(y&#39;=x^2(y-y^2)\)</span>.</li>
-<li><span
-class="math inline">\(y&#39;=kx(y-B)\)</span>, donde <span
-class="math inline">\(k\)</span> y <span
-class="math inline">\(B\)</span> son constantes.</li>
-<li><span class="math inline">\(\left( e^{2y}-y
-\right)\dfrac{dy}{dx}=e^{y}\sin(x)\)</span>.</li>
-<li><span class="math inline">\(\left( e^x+e^{-x}
-\right)y&#39;=y^2\)</span>.</li>
-<li><span class="math inline">\(y\ln x\mathrm
-dx=\left( \dfrac{y+1}{x} \right)^2\mathrm dy\)</span>.</li>
-<li><span
-class="math inline">\(e^xyy&#39;=e^{-y}+e^{-2x-y}\)</span>.</li>
-<li><span
-class="math inline">\(y&#39;=\dfrac{xy+3x-y-3}{xy-2x+4y-8}\)</span>.</li>
-</ol>
-</div>
-</section>
-</div>
-  </div>
+            <section id="separación-de-variables-1.5" class="slide level3 frame">
+                <h3>Separación de variables</h3>
+                <div class="example">
+                    <p> Resolver <span class="math inline">\(y&#39;=-\dfrac xy\)</span>.</p>
+                </div>
+                <div class="solution-full fragment">
+                    <p class="fragment">
+                        Escribimos \(y'=-\dfrac xy\Leftrightarrow y\mathrm dy=-x\mathrm dx\) y luego integramos a ambos
+                        lados para obtener
+                        \[\int y\mathrm dy=-\int x\mathrm dx\Leftrightarrow y^2=-x^2+C,\]
+                        es decir, obtenemos la solución implícita
+                        \[x^2+y^2=C.\]
+                    </p>
+                </div>
+            </section>
+            <section id="separación-de-variables-2" class="slide level3 frame">
+                <h3>Separación de variables</h3>
+                <div class="example">
+                    <p> Resolver la ecuación <span class="math inline">\(xy&#39;=y\)</span>.</p>
+                </div>
+                <div class="solution fragment">
+                    <p> </p>
+                </div>
+                <div class="remark fragment">
+                    <p> <em>Observar que si existe <span class="math inline">\(y_0\)</span>
+                            tal que <span class="math inline">\(g(y_0)=0\)</span> entonces la
+                            ecuación <span class="math inline">\(y&#39;=f(x)g(y)\)</span> también
+                            tiene como solución a la función constante <span
+                                class="math inline">\(y(x)=y_0\)</span>.</em>
+                    </p>
+                    <p><em>Cuando esto ocurre diremos que la E.D.O. tiene una <b>solución constante</b>. <span
+                                class="fragment" style="color: red;"><b>No olvidar la búsqueda de soluciones
+                                    constantes.</b></span></em> </p>
+                </div>
+            </section>
+            <section id="separación-de-variables-4" class="slide level3 frame">
+                <h3>Separación de variables</h3>
+                <div class="example">
+                    <p> Resolver el PVI dado por <span class="math inline">\(y&#39;=\left(
+                            1-y^2 \right)\tan x\)</span>, <span class="math inline">\(y(0)=1\)</span>.</p>
+                </div>
+                <div class="solution fragment">
+                    <p> </p>
+                </div>
+            </section>
+            <section id="separación-de-variables-3" class="slide level3 frame">
+                <h3>Separación de variables</h3>
+                <div class="example">
+                    <p> Resolver la ecuación diferencial <span class="math inline">\(y&#39;=\dfrac{6x^5-2x^3+6}{\sin
+                            y+e^{2y}-4}\)</span></p>
+                </div>
+                <div class="solution fragment">
+                    <p> </p>
+                </div>
+            </section>
+            <section id="separación-de-variables-5" class="slide level3 frame">
+                <h3>Separación de variables</h3>
+                <div id="no-lin:ej1" class="example">
+                    <p> Resolver la ecuación <span class="math inline">\(y&#39;=x\sqrt{y}\)</span>.</p>
+                </div>
+                <div class="solution fragment">
+                    <p> </p>
+                </div>
+            </section>
+            <section id="separación-de-variables-6" class="slide level3 frame">
+                <h3>Separación de variables</h3>
+                <div class="exercise">
+                    <p><strong> 1</strong>. Resolver las siguientes EDOs usando el método de
+                        separación de variables:</p>
+                    <ol class="two-columns">
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(y&#39;=-\dfrac{x}{y}\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(y&#39;=-\dfrac{y}{x}\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(y&#39;=e^y\sin(2x)\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(y&#39;=e^{3x+2y}\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(y&#39;=xy^2\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(y&#39;=x^2(y-y^2)\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(y&#39;=kx(y-B)\)</span>, donde <span
+                                class="math inline">\(k\)</span> y <span class="math inline">\(B\)</span> son
+                            constantes.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(\left( e^{2y}-y
+                                \right)\dfrac{dy}{dx}=e^{y}\sin(x)\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(\left( e^x+e^{-x}
+                                \right)y&#39;=y^2\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span class="math inline">\(y\ln x\mathrm
+                                dx=\left( \dfrac{y+1}{x} \right)^2\mathrm dy\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span
+                                class="math inline">\(e^xyy&#39;=e^{-y}+e^{-2x-y}\)</span>.</li>
+                        <li style="margin-bottom: 35pt"><span
+                                class="math inline">\(y&#39;=\dfrac{xy+3x-y-3}{xy-2x+4y-8}\)</span>.</li>
+                    </ol>
+                </div>
+            </section>
+        </div>
+    </div>
 
-  <script src="/reveal/dist/reveal.js"></script>
+    <script src="/reveal/dist/reveal.js"></script>
 
-  <!-- reveal.js plugins -->
-  <script src="/reveal/plugin/notes/notes.js"></script>
-  <script src="/reveal/plugin/search/search.js"></script>
-  <script src="/reveal/plugin/zoom/zoom.js"></script>
-<script src="/scripts/reveal-init.js"></script>
-    </body>
+    <!-- reveal.js plugins -->
+    <script src="/reveal/plugin/notes/notes.js"></script>
+    <script src="/reveal/plugin/search/search.js"></script>
+    <script src="/reveal/plugin/zoom/zoom.js"></script>
+    <script src="/scripts/reveal-init.js"></script>
+</body>
+
 </html>
