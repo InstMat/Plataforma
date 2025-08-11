@@ -108,6 +108,7 @@
           </ul>
         </div>
       </section>
+      <!--
       <section id="aplicaciones-a-la-economía" class="slide level3 frame">
         <h3>Aplicaciones a la economía</h3>
         <div class="example">
@@ -183,7 +184,7 @@
           </p>
         </div>
       </section>
-
+      -->
       <section id="dinámica-de-poblaciones" class="slide level3 frame">
         <h3>Dinámica de poblaciones</h3>
         <p>De acuerdo a Thomas Malthus<a href="#/fn1" class="footnote-ref" id="fnref1"
@@ -195,15 +196,18 @@
           población del país al instante <span class="math inline">\(t\)</span>,
           entonces la tasa de crecimiento en dicho instante está dada por <span
             class="math inline">\(\dfrac{dP}{dt}(t)\)</span>, luego la proposición
-          de Malthus se puede escribir como <span class="math display">\[\frac{dP}{dt}=kP,\]</span> donde <span
-            class="math inline">\(k\)</span> es una constante de
-          proporcionalidad. Esta es una EDO lineal que tiene como solución <span
-            class="math inline">\(P(t)=Ae^{kt}\)</span> para cierta constante <span class="math inline">\(A\)</span>.
+          de Malthus se puede escribir como <span class="math display">\[\frac{dP}{dt}\varpropto
+            P\Leftrightarrow\frac{dP}{dt}=kP,\]</span> donde <span class="math inline">\(k\)</span> es una constante de
+          proporcionalidad. Esta constante \(k\) puede ser positiva o negativa, dependiendo de si la población está
+          creciendo o decreciendo respectivamente.</p>
+        <p>
+          Esta es una EDO lineal que tiene como solución \[\boxed{P(t)=Ae^{kt}}\] para cierta constante \(A\). Esta constante
+          \(A\) representa la población inicial en el instante \(t=0\).
         </p>
         <p>Este modelo es usualmente utilizado para modelar el crecimiento de
           pequeñas poblaciones en períodos cortos de tiempo, como por ejemplo, una
           colonia de bacterias en un plato de Petri.</p>
-        <div style="position:fixed; bottom:-100px; font-size: 12pt" class="fragment">
+        <div style="position:static; bottom:-100px; font-size: 12pt" class="fragment">
           <em>(1) An Essay on the Principle of Population</em>, 1798<a href="#/fnref1" class="footnote-back"
             role="doc-backlink">↩︎</a>
         </div>
@@ -221,26 +225,27 @@
         </div>
 
         <div class="solution-full fragment">
-          <p> <em>En este caso el PVI es <span class="math display">\[\left\{
-                \begin{aligned}
-                \frac{dP}{dt}&amp;=kP\\
-                P(0)&amp;=1000\\
-                P(1)&amp;=1500.
-                \end{aligned}
-                \right.\]</span></em></p>
-          <p><em>La solución del PVI es <span class="math inline">\(P(t)=1000e^{kt}\)</span> pero como <span
+          <p><em>En este caso el PVI es
+              \[\left\{
+              \begin{aligned}
+              \frac{dP}{dt}&amp;=kP\\
+              P(0)&amp;=1000\\
+              P(1)&amp;=1500.
+              \end{aligned}
+              \right.\]
+            </em></p>
+          <p><em>La solución del PVI es <span class="math inline">\(P(t)=P(0)e^{kt}=1000e^{kt}\)</span>, y como <span
                 class="math inline">\(1500=P(1)=1000e^{k\cdot 1}\)</span> obtenemos que
               <span class="math display">\[k=\ln \frac{3}{2}.\]</span> Finalmente, la
-              población se triplicará cuando <span class="math inline">\(P(t)=3000=1000e^{kt}\)</span> lo que nos dice
-              que
-              esto ocurre cuando <span class="math inline">\(t=\dfrac{1}{k}\ln
-                3=\dfrac{\ln 3}{\ln\frac32}\approx 2,7\) segundos.</span></em></p>
+              población se triplicará cuando <span class="math inline">\(P(t)=3000=1000e^{kt}\)</span>. Despejando \(t\)
+              obtenemos que esto ocurre cuando
+              \[t=\dfrac{1}{k}\ln 3=\dfrac{\ln 3}{\ln\frac32}\approx 2,7 \text{ segundos}.\]</span></em></p>
         </div>
       </section>
       <section id="dinámica-de-poblaciones-2" class="slide level3 frame">
         <h3>Dinámica de poblaciones</h3>
         <p>El modelo antes visto no considera situaciones en las que hay tasas
-          de natalidad, mortalidad, inmigración, emigración, etcétera.</p>
+          de natalidad, mortalidad, migración, etcétera.</p>
         <p class="fragment">Una modificación simple al modelo se puede hacer al incorporar tasas
           de inmigración <span class="math inline">\(r_i\)</span> y emigración
           <span class="math inline">\(r_e\)</span> de la siguiente forma <span
@@ -262,22 +267,22 @@
         <h3>Dinámica de poblaciones</h3>
         <p>En general las tasas de natalidad y mortalidad varían con el tiempo y
           con el tamaño de la población, por lo que en realidad <span class="math inline">\(\beta\)</span> y <span
-            class="math inline">\(\delta\)</span> son funciones <span
+            class="math inline">\(\delta\)</span> son funciones que dependen de \(t\) y \(P\), es decir <span
             class="math display">\[\beta=\beta(t,P)~\text{y}~\delta=\delta(t,P),\]</span>
-          lo que deja con una EDO no-lineal y bastante difícil de resolver en
+          lo que nos deja con una EDO no-lineal y bastante difícil de resolver en
           general.</p>
         <p class="fragment">El matemático belga Pierre Verhulst<a href="#/fn2" class="footnote-ref" id="fnref2"
             role="doc-noteref"><sup>(2)</sup></a>
           propuso un modelo en que la tasa de mortalidad es constante y que la
           tasa de natalidad es una función lineal de <span class="math inline">\(P\)</span>, es decir <span
-            class="math display">\[\beta(t,P)=\beta_0-\beta_1P(t),\]</span> de donde
+            class="math display">\[\beta(t,P)=\beta_0-\beta_1P,\]</span> de donde
           el modelo sin migración queda de la forma <span class="math display">\[\left\{
             \begin{aligned}
             \frac{dP}{dt}&amp;=(\beta_0-\delta-\beta_1P)P\\
             P(0)&amp;=P_0.
             \end{aligned}
             \right.\]</span></p>
-        <div style="position:fixed; bottom:-100px; font-size: 12pt" class="fragment">
+        <div style="position:static; bottom:-100px; font-size: 12pt" class="fragment">
           <p><em>(2) Mathematical Researches into the Law of Population
               Growth Increase</em>, 1845<a href="#/fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p>
         </div>
@@ -317,7 +322,7 @@
           \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int r\mathrm{d}t\Rightarrow \ln P-\ln(K-P)=rt+C\]
           que al despejar queda
           \[
-          P(t)=\frac{K}{1+Ae^{-rt}}
+            \boxed{P(t)=\frac{K}{1+Ae^{-rt}}}
           \]
           para cierta constante \(A\).
         </p>
@@ -368,7 +373,7 @@
             gravedad, por lo tanto la ecuación queda <span class="math display">\[m\dot v=-mg \Leftrightarrow \dot
               v=-g,\]</span>
             que se puede resolver integrando directamente (podemos suponer que <span class="math inline">\(g\)</span> es
-            constante con respecto a \(t\)), para obtener que <span class="math display">\[v(t)=v_0-gt\]</span> donde
+            constante con respecto a \(t\)), para obtener que <span class="math display">\[\boxed{v(t)=v_0-gt}\]</span> donde
             <span class="math inline">\(v_0=v(0)\)</span> la velocidad inicial del
             objeto.
           </div>
@@ -379,7 +384,7 @@
               class="math inline">\(v(t)=\dot h(t)\)</span>, por lo que tenemos la ecuación
             diferencial para determinar la altura del objeto al instante <span class="math inline">\(t\)</span> dada por
             <span class="math display">\[\dot h(t)=v(t)=v_0-gt,\]</span> integrando obtenemos
-            que <span class="math display">\[h(t)=h_0+v_0t-g\frac{t^2}{2},\]</span>
+            que <span class="math display">\[\boxed{h(t)=h_0+v_0t-g\frac{t^2}{2},}\]</span>
             donde <span class="math inline">\(h_0=h(0)\)</span> es la altura inicial
             del objeto.
           </p>
@@ -448,23 +453,20 @@
           general está dada por <span class="math display">\[v(t)=-\frac
             g\rho+Ce^{-\rho t}.\]</span> Si consideramos que la velocidad inicial
           del objeto es <span class="math inline">\(v(0)=v_0\)</span>, obtenemos
-          la fórmula para <span class="math inline">\(v(t)\)</span> <span class="math display">\[v(t)=\left( v_0+\frac
-            g\rho \right)e^{-\rho
-            t}-\frac g\rho.\]</span></p>
+          la fórmula para <span class="math inline">\(v(t)\)</span> <span class="math display">\[\boxed{v(t)=\left( v_0+\frac g\rho \right)e^{-\rho t}-\frac g\rho.}\]</span></p>
         <p class="fragment">Si finalmente usamos que \(h(0)=h_0\) entonces la altura del objeto está dada por
           \[h(t)=\int \left(\left( v_0+\frac g\rho \right)e^{-\rho
           t}-\frac g\rho\right)dt\]
           es decir
           \[
-          h(t)=h_0+\frac{1}{\rho}\left( v_0+\frac g\rho \right)-\frac{1}{\rho}\left( v_0+\frac g\rho \right)e^{-\rho
-          t}-\frac{g}{\rho} t
+          \boxed{h(t)=h_0+\frac{1}{\rho}\left( v_0+\frac g\rho \right)-\frac{1}{\rho}\left( v_0+\frac g\rho \right)e^{-\rho t}-\frac{g}{\rho} t.}
           \]
         </p>
       </section>
       <section id="leyes-de-newton-2" class="slide level3 frame">
         <h3>Leyes de Newton</h3>
         <div class="example">
-          <p> Resuelva el ejemplo anterior, suponiendo que el balón tiene un
+          <p>Resuelva el ejemplo anterior, suponiendo que el balón tiene un
             coeficiente de roce con el aire de <span class="math inline">\(\rho=0.04\)</span>.</p>
         </div>
         <div class="solution-full fragment">
@@ -497,15 +499,19 @@
           instante <span class="math inline">\(t\)</span>, y <span class="math inline">\(T_M\)</span> a la temperatura
           del medio, tenemos
           que <span class="math display">\[\frac{dT}{dt}\varpropto T-T_M,\]</span>
-          de donde se sigue que <span class="math display">\[\frac{dT}{dt}=k(T-T_M)\]</span> Una
-          simplificación que se suele hacer, es suponer que <span style="color:red;">\(T_M\) es constante</span>.</p>
+          de donde se sigue que <span class="math display">\[\frac{dT}{dt}=k(T-T_M).\]</span></p>
+          <p>Una simplificación que se suele hacer, es suponer que <span style="color:red;">\(T_M\) es constante</span>, en cuyo caso la ecuación se puede resolver mediante un factor integrante para obtener queda
+          \[\boxed{
+          T(t)=T_M+\left( T_0-T_M \right)e^{kt},
+          }\]
+        donde \(T_0\) es la temperatura inicial del objeto.</p>
       </section>
       <section id="ley-de-enfriamiento-de-newton-1" class="slide level3 frame">
         <h3>Ley de enfriamiento de Newton</h3>
         <div class="example">
           <p> Una taza de café se enfría según la ley de Newton. Si inicialmente
-            el café estaba hirviendo (<span class="math inline">\(T(0)=100^\circ\)</span>) y la temperatura ambiente
-            es de 13°, estime la temperatura del café luego de 2 minutos si es que<a href="#/fn4" class="footnote-ref"
+            el café estaba hirviendo (<span class="math inline">\(T(0)=100\) ºC</span>) y la temperatura ambiente
+            es de 13 ºC, estime la temperatura del café luego de 2 minutos si es que<a href="#/fn4" class="footnote-ref"
               id="fnref4" role="doc-noteref"><sup>(3)</sup></a>
             <span class="math inline">\(k=-1\)</span>.
           </p>
@@ -519,13 +525,12 @@
                   T(0)&amp;=100
                   \end{aligned}
                   \right.\]</span> Esta es una ecuación lineal que tiene como solución <span
-                  class="math inline">\(T(t)=13+Ae^{-t}\)</span>. Imponiendo la condición <span
-                  class="math inline">\(T(0)=100\)</span>, obtenemos que <span
+                  class="math inline">\(T(t)=13+(100-13)e^{-t}\)</span>, es decir <span
                   class="math display">\[T(t)=13+87e^{-t}.\]</span> Concluimos diciendo
                 que la temperatura luego de 2 minutos es <span class="math inline">\(T(2)=13+87e^{-2}\approx
-                  24.77^\circ\)</span>.</em></p>
+                  24.77\) ºC</span>.</em></p>
           </div>
-          <div style="position:fixed; bottom:-100px; font-size: 12pt" class="fragment">
+          <div style="position:static; bottom:-100px; font-size: 12pt" class="fragment">
             <p>
               <em>(3) La constante \(k\) es negativa pues el café se enfría.</em><a href="#/fnref4"
                 class="footnote-back" role="doc-backlink">↩︎</a>
