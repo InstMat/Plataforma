@@ -10,53 +10,55 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 	<link rel="stylesheet" href="/reveal/dist/reset.css">
 	<link rel="stylesheet" href="/reveal/dist/reveal.css">
 	<style>
-	.reveal .sourceCode {
-		/* see #7635 */
-		overflow: visible;
-	}
+		.reveal .sourceCode {
+			/* see #7635 */
+			overflow: visible;
+		}
 
-	code {
-		white-space: pre-wrap;
-	}
+		code {
+			white-space: pre-wrap;
+		}
 
-	span.smallcaps {
-		font-variant: small-caps;
-	}
+		span.smallcaps {
+			font-variant: small-caps;
+		}
 
-	div.columns {
-		display: flex;
-		gap: min(4vw, 1.5em);
-	}
+		div.columns {
+			display: flex;
+			gap: min(4vw, 1.5em);
+		}
 
-	div.column {
-		flex: auto;
-		overflow-x: auto;
-	}
+		div.column {
+			flex: auto;
+			overflow-x: auto;
+		}
 
-	div.hanging-indent {
-		margin-left: 1.5em;
-		text-indent: -1.5em;
-	}
+		div.hanging-indent {
+			margin-left: 1.5em;
+			text-indent: -1.5em;
+		}
 
-	/* The extra [class] is a hack that increases specificity enough to
+		/* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
-	ul.task-list[class] {
-		list-style: none;
-	}
+		ul.task-list[class] {
+			list-style: none;
+		}
 
-	ul.task-list li input[type="checkbox"] {
-		font-size: inherit;
-		width: 0.8em;
-		margin: 0 0.8em 0.2em -1.6em;
-		vertical-align: middle;
-	}
+		ul.task-list li input[type="checkbox"] {
+			font-size: inherit;
+			width: 0.8em;
+			margin: 0 0.8em 0.2em -1.6em;
+			vertical-align: middle;
+		}
 	</style>
 	<link rel="stylesheet" href="/reveal/dist/theme/white.css" id="theme">
 	<link rel="stylesheet" href="/styles/style.css" />
+
 	<!---Geogebra-->
 	<script src="https://www.geogebra.org/apps/deployggb.js"></script>
 
@@ -79,7 +81,8 @@
 				<h3>Límites con exponenciales y logaritmos</h3>
 				<div class="theorem">
 					<p> <em>Sea <span class="math inline">\(b\)</span> un número real
-							positivo. Entonces para cada número real <span class="math inline">\(a\)</span> se cumple que <span class="math display">\[\lim_{x\to a}b^x=b^a\]</span></em></p>
+							positivo. Entonces para cada número real <span class="math inline">\(a\)</span> se cumple
+							que <span class="math display">\[\lim_{x\to a}b^x=b^a\]</span></em></p>
 				</div>
 				<div class="example fragment">
 					<p> Determinar los siguientes límites</p>
@@ -100,7 +103,8 @@
 				<h3>Límites con exponenciales y logaritmos</h3>
 				<div class="theorem">
 					<p> <em>Sea <span class="math inline">\(b\)</span> un número real
-							positivo. Entonces para cada número real positivo <span class="math inline">\(a\)</span> se cumple que <span class="math display">\[\lim_{x\to a}\log_b x=\log_b a\]</span></em></p>
+							positivo. Entonces para cada número real positivo <span class="math inline">\(a\)</span> se
+							cumple que <span class="math display">\[\lim_{x\to a}\log_b x=\log_b a\]</span></em></p>
 				</div>
 				<div class="example fragment">
 					<p> Determinar los siguientes límites</p>
@@ -212,11 +216,15 @@
 					<p> Sea <span class="math inline">\(f\)</span> una función definida en
 						el intervalo <span class="math inline">\((a, \, \infty )\)</span>.
 						Entonces <span class="math display">\[\lim_{x\rightarrow \infty} f(x) =
-							L\]</span> significa que los valores de <span class="math inline">\(f(x)\)</span> se acerca a <span class="math inline">\(L\)</span> cuando <span class="math inline">\(x\)</span> se incrementa lo suficiente.</p>
+							L\]</span> significa que los valores de <span class="math inline">\(f(x)\)</span> se acerca
+						a <span class="math inline">\(L\)</span> cuando <span class="math inline">\(x\)</span> se
+						incrementa lo suficiente.</p>
 					<p class="fragment">Sea <span class="math inline">\(f\)</span> una función definida en el
 						intervalo <span class="math inline">\((- \infty , \, a)\)</span>.
 						Entonces <span class="math display">\[\lim_{x\rightarrow -\infty} f(x) =
-							L\]</span> significa que los valores de <span class="math inline">\(f(x)\)</span> se acerca a <span class="math inline">\(L\)</span> cuando <span class="math inline">\(x\)</span> es negativo y se incrementa lo
+							L\]</span> significa que los valores de <span class="math inline">\(f(x)\)</span> se acerca
+						a <span class="math inline">\(L\)</span> cuando <span class="math inline">\(x\)</span> es
+						negativo y se incrementa lo
 						suficiente.</p>
 				</div>
 				<div class="example fragment">
@@ -239,14 +247,16 @@
 					<p> <em>Si <span class="math inline">\(p(x) = a_n x^n + a_{n-1} x^{n-1}
 								+ \cdots + a_1 x + a_0\)</span> con <span class="math inline">\(a_n \neq
 								0\)</span>, es decir <span class="math inline">\(p(x)\)</span> es un
-							polinomio de grado <span class="math inline">\(n\)</span> y <span class="math inline">\(q(x) = b_m x^m + b_{m-1} x^{m-1} + \cdots + b_1 x
+							polinomio de grado <span class="math inline">\(n\)</span> y <span class="math inline">\(q(x)
+								= b_m x^m + b_{m-1} x^{m-1} + \cdots + b_1 x
 								+ b_0\)</span> con <span class="math inline">\(b_m \neq 0\)</span>, es
 							decir <span class="math inline">\(q(x)\)</span> es un polinomio de grado
 							<span class="math inline">\(m\)</span>.</em></p>
 					<p class="fragment"><em>Si <span class="math inline">\(f\)</span> es la función racional
 							<span class="math inline">\(f(x) = \frac{p(x)}{q(x)}\)</span>, entonces:
 							<span class="math display">\[\lim_{x\rightarrow -\infty} f(x) =
-								\lim_{x\rightarrow -\infty} \frac{a_n x^n}{b_m x^m}\]</span> y <span class="math display">\[\lim_{x\rightarrow \infty} f(x) =
+								\lim_{x\rightarrow -\infty} \frac{a_n x^n}{b_m x^m}\]</span> y <span
+								class="math display">\[\lim_{x\rightarrow \infty} f(x) =
 								\lim_{x\rightarrow \infty} \frac{a_n x^n}{b_m x^m}\]</span></em></p>
 				</div>
 				<div class="theorem fragment">
@@ -293,15 +303,18 @@
 			<section id="gráficamente" class="slide level3 frame">
 				<h3>Gráficamente</h3>
 				<div class="example">
-					<p> Observando que la gráfica de <span class="math inline">\(\displaystyle f(x) =
+					<p>Observe la gráfica de <span class="math inline">\(\displaystyle f(x) =
 							\frac{2x^2-1}{x^2+3}\)</span> es</p>
-					<div class="center">
-						<p style="text-align: center;"><img data-src="clase14/limit4.jpg" style="width:50%" alt="image" /></p>
+					<div style="text-align: center;">
+						<div id="ggb-element-1" class="fragment" style="display: inline-block;"></div>
 					</div>
-					<p>Podemos notar que</p>
-					<p><span class="math display">\[\lim_{x\rightarrow \infty}
-							\frac{2x^2-1}{x^2+3} = 2 \hspace{1in} \lim_{x\rightarrow -\infty}
-							\frac{2x^2-1}{x^2+3} = 2\]</span></p>
+					<!--<div class="center">
+						<p style="text-align: center;"><img data-src="clase14/limit4.jpg" style="width:50%" alt="image" /></p>
+					</div>-->
+					<div class="fragment">
+						<p>Note que \(\displaystyle \lim_{x\rightarrow \infty}
+								\frac{2x^2-1}{x^2+3} = 2\) y que \(\displaystyle\lim_{x\rightarrow -\infty}\frac{2x^2-1}{x^2+3} = 2\).</p>
+					</div>
 				</div>
 			</section>
 			<section id="asíntotas-horizontales" class="slide level3 frame">
@@ -314,10 +327,13 @@
 							\qquad \text{o} \qquad \lim_{x\rightarrow -\infty} f(x) = L\]</span></p>
 				</div>
 				<div class="example fragment">
-					<p> Dado el gráfico de la función <span class="math inline">\(f\)</span></p>
-					<p style="text-align: center;"><img data-src="clase14/limit5.jpg" style="width:30%in" alt="image" /></p>
-					<p>determinar asíntotas horizontales y verticales, si es que
-						existen.</p>
+					<p>Determine las asíntotas verticales y horizontales de la función <span
+							class="math inline">\(f\)</span></p>
+					<!--<p style="text-align: center;"><img data-src="clase14/limit5.jpg" style="width:30%in" alt="image" />-->
+					<div style="text-align: center;">
+						<div id="ggb-element-2" class="fragment" style="display:inline-block;"></div>
+					</div>
+					</p>
 				</div>
 			</section>
 			<section id="límites-infinitos-con-exponenciales-y-logaritmos" class="slide level3 frame">
@@ -372,6 +388,46 @@
 	<script src="/reveal/plugin/search/search.js"></script>
 	<script src="/reveal/plugin/zoom/zoom.js"></script>
 	<script src="/scripts/reveal-init.js"></script>
+
+	<script>
+		var applet1 = new GGBApplet({
+			appName: "classic", // Puede ser "graphing", "geometry", etc.
+			width: 1000,
+			height: 600,
+			language: "es",
+			showToolBar: false, // Hide toolbar
+			showMenuBar: false, // Hide menu
+			showAlgebraInput: false, // Hide input bar
+			showResetIcon: false, // Hide reset icon
+			enableRightClick: false, // Optional: disable context menu
+			enableLabelDrags: false, // Optional: prevent label moving
+			showZoomButtons: false, // Optional: hide zoom buttons
+			showFullscreenButton: true,
+			allowStyleBar: false, // Optional: hide style bar
+			filename: "clase14/asintota-horizontal.ggb" // Ruta al archivo local
+		}, true);
+		var applet2 = new GGBApplet({
+			appName: "classic", // Puede ser "graphing", "geometry", etc.
+			width: 800,
+			height: 400,
+			language: "es",
+			showToolBar: false, // Hide toolbar
+			showMenuBar: false, // Hide menu
+			showAlgebraInput: false, // Hide input bar
+			showResetIcon: false, // Hide reset icon
+			enableRightClick: false, // Optional: disable context menu
+			enableLabelDrags: false, // Optional: prevent label moving
+			showZoomButtons: false, // Optional: hide zoom buttons
+			showFullscreenButton: true,
+			allowStyleBar: false, // Optional: hide style bar
+			filename: "clase14/asintota-horizontal-2.ggb" // Ruta al archivo local
+		}, true);
+
+		window.addEventListener("load", function () {
+			applet1.inject('ggb-element-1');
+			applet2.inject('ggb-element-2');
+		});
+	</script>
 </body>
 
 </html>
