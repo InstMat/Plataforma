@@ -112,6 +112,15 @@ header h1 {
     padding: 1rem;
     overflow-y: auto;
     transition: transform 0.3s ease;
+    position: relative;
+}
+
+.sidebar-top {
+    position: sticky;
+    top: 0;
+    background: inherit; /* o color de fondo de la barra */
+    z-index: 10;
+    padding-top: 1em;
 }
 
 .sidebar h2 {
