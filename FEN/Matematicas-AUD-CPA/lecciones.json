@@ -86,6 +86,35 @@
                 {
                     "nombre": "Derivadas",
                     "enlace": "UnidadV/clase16.html"
+                },
+                {
+                    "nombre": "Reglas de derivación I",
+                    "enlace": "UnidadV/clase17.html"
+                },
+                {
+                    "nombre": "Reglas de derivación II",
+                    "enlace": "UnidadV/clase18.html"
+                },
+                {
+                    "nombre": "Aplicaciones de la derivada",
+                    "enlace": "UnidadV/clase19.html"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad VI",
+            "lecciones": [
+                {
+                    "nombre": "Extremos de funciones",
+                    "enlace": "UnidadVI/clase20.html"
+                },
+                {
+                    "nombre": "Concavidad y puntos de inflexión",
+                    "enlace": "UnidadVI/clase21.html"
+                },
+                {
+                    "nombre": "Problemas aplicados de optimización",
+                    "enlace": "UnidadVI/clase22.html"
                 }
             ]
         }

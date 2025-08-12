@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Matemáticas</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/reveal/dist/reset.css">
+  <link rel="stylesheet" href="/reveal/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {
+      /* see #7635 */
+      overflow: visible;
+    }
+
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    div.columns {
+      display: flex;
+      gap: min(4vw, 1.5em);
+    }
+
+    div.column {
+      flex: auto;
+      overflow-x: auto;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class] {
+      list-style: none;
+    }
+
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="/reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="/styles/style.css" />
+  <!---Geogebra-->
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+  <!--MathJAX-->
+  <script src="/scripts/mathjax-config.js" async></script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section id="title-slide">
+        <h1 class="title">Matemáticas</h1>
+        <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+          Contador Público y Auditor</p>
+        <p class="author"><img data-src="/images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+      </section>
+
+      <section id="recuerdo-de-derivadas-vistas-en-la-clase-pasada" class="slide level3 frame">
+        <h3>Recuerdo de derivadas vistas en la clase pasada</h3>
+        <div class="theorem">
+          <p> </p>
+          <ol>
+            <li class="fragment">
+              <p><em>Si <span class="math inline">\(f(x) =
+                    a\)</span> donde <span class="math inline">\(a\)</span> es una
+                  constante, entonces <span class="math inline">\(f&#39;(x) =
+                    0\)</span></em></p>
+            </li>
+            <li class="fragment">
+              <p><em>Si <span class="math inline">\(f(x) =
+                    x^n\)</span>, y <span class="math inline">\(n\)</span> es un número
+                  racional, entonces <span class="math inline">\(f&#39;(x) =
+                    nx^{n-1}\)</span></em></p>
+            </li>
+            <li class="fragment">
+              <p><em>Si <span class="math inline">\(f(x) =
+                    \sqrt{x}\)</span>, entonces <span class="math inline">\(\displaystyle
+                    f&#39;(x) = \frac{1}{2\sqrt{x}}\)</span></em></p>
+            </li>
+            <li class="fragment">
+              <p><em>Si <span class="math inline">\(f(x) =
+                    e^x\)</span> , entonces <span class="math inline">\(f&#39;(x) =
+                    e^x\)</span></em></p>
+            </li>
+            <li class="fragment">
+              <p><em>Si <span class="math inline">\(f(x) = \ln
+                    x\)</span> , entonces <span class="math inline">\(f&#39;(x) =
+                    \dfrac{1}{x}\)</span></em></p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section id="derivadas-de-funciones" class="slide level3 frame">
+        <h3>Derivadas de funciones</h3>
+        <div class="remark">
+          <p> <em>Dada la función <span class="math inline">\(y = f(x)\)</span>
+              entonces la derivada de <span class="math inline">\(f\)</span> se puede
+              escribir de las siguientes maneras <span class="math display">\[y&#39;,
+                \quad f&#39;(x) , \quad \frac{dy}{dx} , \quad
+                \frac{df}{dx}.\]</span></em></p>
+          <p><em>En el caso en que escribamos <span class="math inline">\(\dfrac{dy}{dx}\)</span> o <span
+                class="math inline">\(\dfrac{df}{dx}\)</span> diremos que estamos usando
+              la <em>notación de Liebniz</em>.</em></p>
+        </div>
+        <div class="theorem fragment">
+          <p> <em>Sean <span class="math inline">\(f(x)\)</span> y <span class="math inline">\(g(x)\)</span> funciones
+              derivables.
+              Entonces</em></p>
+          <ol>
+            <li class="fragment">
+              <p><em><span class="math inline">\(\displaystyle
+                    (k\cdot f(x))&#39; = k \cdot f&#39;(x)\)</span> donde <span class="math inline">\(k\)</span> es una
+                  constante</em></p>
+            </li>
+            <li class="fragment">
+              <p><em><span class="math inline">\(\displaystyle
+                    (f(x) + g(x))&#39; = f&#39;(x) + g&#39;(x)\)</span></em></p>
+            </li>
+            <li class="fragment">
+              <p><em><span class="math inline">\(\displaystyle
+                    (f(x) - g(x))&#39; = f&#39;(x) - g&#39;(x)\)</span></em></p>
+            </li>
+            <li class="fragment">
+              <p><em><span class="math inline">\(\displaystyle
+                    (f(x) \cdot g(x))&#39; = f&#39;(x) \cdot g(x) + f(x) \cdot
+                    g&#39;(x)\)</span></em></p>
+            </li>
+            <li class="fragment">
+              <p><em><span class="math inline">\(\displaystyle
+                    \left ( \frac{f(x)}{g(x)} \right )&#39; = \frac{f&#39;(x) \cdot g(x) -
+                    f(x) \cdot g&#39;(x)}{(g(x))^2}\)</span></em></p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section id="ejemplos" class="slide level3 frame">
+        <h3>Ejemplos</h3>
+        <div class="example">
+          <p> Encontrar las derivadas de las siguientes funciones</p>
+          <ol>
+            <li class="fragment" style="margin-bottom: 65pt">
+              <p><span class="math inline">\(\displaystyle f(x) =
+                  2x^5 + 4x^3 - x +5\)</span></p>
+            </li>
+            <li class="fragment" style="margin-bottom: 65pt">
+              <p><span class="math inline">\(\displaystyle g(x) =
+                  \frac{x^2 +2x}{\sqrt{x}}\)</span></p>
+            </li>
+            <li class="fragment" style="margin-bottom: 65pt">
+              <p><span class="math inline">\(\displaystyle h(x) =
+                  x e^x\)</span></p>
+            </li>
+            <li class="fragment" style="margin-bottom: 65pt">
+              <p><span class="math inline">\(\displaystyle l(x) =
+                  (2x+1)(x^2+6)(3x^5-4)\)</span></p>
+            </li>
+            <li class="fragment" style="margin-bottom: 65pt">
+              <p><span class="math inline">\(\displaystyle p(x) =
+                  \frac{x^2+x-3}{x^3+4}\)</span></p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section id="ejemplos-1" class="slide level3 frame">
+        <h3>Ejemplos</h3>
+        <div class="example">
+          <p> Encuentre la ecuación de la recta tangente al gráfico de la función
+            <span class="math display">\[f(x)=(7x^3-5x+2)(2x^4+7)\]</span> cuando
+            <span class="math inline">\(x=1\)</span>.
+          </p>
+        </div>
+        <div class="solution fragment">
+          <p> </p>
+        </div>
+      </section>
+      <section id="ejemplos-2" class="slide level3 frame">
+        <h3>Ejemplos</h3>
+        <div class="example">
+          <p> Sea <span class="math inline">\(p=100-q^2\)</span> la función de
+            demanda del producto de un fabricante donde <span class="math inline">\(p\)</span> está en dólares y <span
+              class="math inline">\(q\)</span> es la cantidad de unidades en el
+            mercado. Suponga que <span class="math inline">\(p\)</span> está en
+            dólares.</p>
+          <ol>
+            <li class="fragment" style="margin-bottom: 125pt">
+              <p>Encontrar la tasa de cambio instantánea del
+                precio <span class="math inline">\(p\)</span> por unidad con respecto a
+                la cantidad <span class="math inline">\(q\)</span>.</p>
+            </li>
+            <li class="fragment" style="margin-bottom: 155pt">
+              <p>¿Qué tan rápido está cambiando el precio con
+                respecto a <span class="math inline">\(q\)</span> cuando <span class="math inline">\(q=5\)</span>?</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section id="derivadas-de-orden-superior" class="slide level3 frame">
+        <h3>Derivadas de orden superior</h3>
+        <p>Si <span class="math inline">\(f\)</span> es una función derivable,
+          entonces su derivada <span class="math inline">\(f&#39;\)</span> también
+          es una función, así que <span class="math inline">\(f&#39;\)</span>
+          puede tener una derivada de sí misma, denotada por <span class="math inline">\((f&#39;)&#39; =
+            f&#39;&#39;\)</span>. Esta nueva
+          función <span class="math inline">\(f&#39;&#39;\)</span> se llama
+          segunda derivada de <span class="math inline">\(f\)</span> porque es la
+          derivada de la derivada de <span class="math inline">\(f\)</span>.</p>
+        <p>Utilizando la notación de Leibniz, la segunda derivada de <span class="math inline">\(y=f(x)\)</span> se
+          escribe como <span class="math display">\[\frac{d}{dx} \left ( \frac{dy}{dx} \right ) =
+            \frac{d^2 y}{dx^2}\]</span></p>
+        <div class="example">
+          <p> Encontrar la segunda derivada de las siguientes funciones</p>
+          <ol>
+            <li class="fragment" style="margin-bottom: 85pt">
+              <p><span class="math inline">\(f(x) =
+                  x^4+2x^3-x^2+3x+7\)</span></p>
+            </li>
+            <li class="fragment" style="margin-bottom: 85pt">
+              <p><span class="math inline">\(g(x) = \ln x\cdot
+                  \ln x=\left(\ln x\right)^2\)</span></p>
+            </li>
+            <li class="fragment" style="margin-bottom: 85pt">
+              <p><span class="math inline">\(h(x) = x^2
+                  e^x\)</span></p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section id="derivadas-de-orden-superior-1" class="slide level3 frame">
+        <h3>Derivadas de orden superior</h3>
+        <p>De manera similar la derivada de la segunda derivada de <span class="math inline">\(f\)</span>, se llama
+          tercera derivada y se denota
+          por <span class="math inline">\(f&#39;&#39;&#39;\)</span> y así
+          sucesivamente.</p>
+        <p>Notación:</p>
+        <table>
+          <tbody>
+            <tr class="odd">
+              <td style="text-align: left;"><span class="math inline">\(\bullet\)</span></td>
+              <td style="text-align: center;">Primera derivada</td>
+              <td style="text-align: left;"><span class="math inline">\(y&#39;\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(f&#39;\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(\displaystyle
+                  \frac{dy}{dx}\)</span></td>
+            </tr>
+            <tr class="even">
+              <td style="text-align: left;"><span class="math inline">\(\bullet\)</span></td>
+              <td style="text-align: center;">Segunda derivada</td>
+              <td style="text-align: left;"><span class="math inline">\(y&#39;&#39;\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(f&#39;&#39;\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(\displaystyle
+                  \frac{d^2y}{dx^2}\)</span></td>
+            </tr>
+            <tr class="odd">
+              <td style="text-align: left;"><span class="math inline">\(\bullet\)</span></td>
+              <td style="text-align: center;">Tercera derivada</td>
+              <td style="text-align: left;"><span class="math inline">\(y&#39;&#39;&#39;\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(f&#39;&#39;&#39;\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(\displaystyle
+                  \frac{d^3y}{dx^3}\)</span></td>
+            </tr>
+            <tr class="even">
+              <td style="text-align: left;"><span class="math inline">\(\bullet\)</span></td>
+              <td style="text-align: center;">Cuarta derivada</td>
+              <td style="text-align: left;"><span class="math inline">\(y^{(iv)}\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(f^{(iv)}\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(\displaystyle
+                  \frac{d^4y}{dx^4}\)</span></td>
+            </tr>
+            <tr class="odd">
+              <td style="text-align: left;"></td>
+              <td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;"><span class="math inline">\(\vdots\)</span></td>
+              <td style="text-align: left;"></td>
+            </tr>
+            <tr class="even">
+              <td style="text-align: left;"><span class="math inline">\(\bullet\)</span></td>
+              <td style="text-align: center;"><span class="math inline">\(n\)</span>-ésima derivada</td>
+              <td style="text-align: left;"><span class="math inline">\(y^{(n)}\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(f^{(n)}\)</span></td>
+              <td style="text-align: left;"><span class="math inline">\(\displaystyle
+                  \frac{d^n y}{dx^n}\)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="ejemplos-3" class="slide level3 frame">
+        <h3>Ejemplos</h3>
+        <div class="example">
+          <p> Determinar la primera, segunda y tercera derivada de las siguientes
+            funciones.</p>
+          <ol>
+            <li class="fragment">
+              <ol style="list-style-type: lower-alpha">
+                <li class="fragment" style="margin-bottom: 60pt">
+                  \(f(x) = 3x^2+x-4\)
+                </li>
+                <li class="fragment" style="margin-bottom: 60pt">
+                  \(f(x) = e^{2x}\)
+                </li>
+                <li class="fragment" style="margin-bottom: 60pt">
+                  \(f(x) = x\cdot \ln (x)\)
+                </li>
+                <li class="fragment" style="margin-bottom: 60pt">
+                  \(f(x) = (2x^2+1)^2\)
+                </li>
+              </ol>
+            </li>
+            <li class="fragment" style="margin-bottom: 60pt">
+              <p>Probar que la función <span class="math inline">\(\displaystyle y = x\cdot \ln (x)\)</span>
+                satisface la siguientes ecuación \[x^2\cdot y&#39;&#39;-x\cdot y&#39; +y
+                  =0.\]</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="/reveal/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="/reveal/plugin/notes/notes.js"></script>
+  <script src="/reveal/plugin/search/search.js"></script>
+  <script src="/reveal/plugin/zoom/zoom.js"></script>
+
+  <script src="/scripts/reveal-init.js"></script>
+</body>
+
+</html>
