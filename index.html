@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <!-- FontAwesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Archivo CSS externo -->
-    <link rel="stylesheet" href="styles/landing.css">
+    <link rel="stylesheet" href="/styles/landing.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Encabezado -->
@@ -19,7 +21,8 @@
             <div class="header-content">
                 <!-- Logo del Instituto (izquierda) -->
                 <div class="logo-left">
-                    <a href="http://inst-mat.utalca.cl" target="_blank"><img src="images/logo-instituto.png" alt="Logo del Instituto"></a>
+                    <a href="http://inst-mat.utalca.cl" target="_blank"><img src="/images/logo-instituto.png"
+                            alt="Logo del Instituto"></a>
                 </div>
 
                 <!-- Título centrado -->
@@ -31,7 +34,8 @@
 
                 <!-- Logo de la Universidad (derecha) -->
                 <div class="logo-right">
-                    <a href="http://www.utalca.cl" target=_blank><img src="images/logo-universidad.png" alt="Logo de la Universidad"></a>
+                    <a href="http://www.utalca.cl" target=_blank><img src="/images/logo-universidad.png"
+                            alt="Logo de la Universidad"></a>
                 </div>
             </div>
         </header>
@@ -40,11 +44,13 @@
         <div class="main-content">
             <!-- Menú lateral -->
             <div class="sidebar" id="sidebar">
-                <a href="#" class="home-button" onclick="recargarCarreras()">
-                    <i class="fas fa-home"></i> Volver al inicio
-                </a>
+                <div class="sidebar-top">
+                    <a href="#" class="home-button" onclick="recargarCarreras()">
+                        <i class="fas fa-home"></i> Volver al inicio
+                    </a>
+                </div>
                 <h2>Área del conocimiento</h2>
-                <ul id="lista-carreras"></ul> <!-- Contenedor para las carreras -->
+                <ul id="lista-carreras" class="sidebar-menu"></ul> <!-- Contenedor para las carreras -->
             </div>
 
             <!-- Área de contenido -->
@@ -59,6 +65,7 @@
             </div>
         </div>
     </div>
-    <script src="scripts/carreras.js"></script>
+    <script src="/scripts/carreras.js"></script>
 </body>
+
 </html>

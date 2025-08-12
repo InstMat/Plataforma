@@ -39,7 +39,7 @@ async function cargarCarreras() {
                 // Crear lista de carreras para esta facultad
                 const carrerasList = document.createElement('ul');
                 carrerasList.classList.add('submenu');
-                carrerasList.style.display = 'none';
+                //carrerasList.style.display = 'none';
 
                 // Agregar las carreras (ya ordenadas)
                 carrerasConModulos.forEach(carrera => {
@@ -58,15 +58,14 @@ async function cargarCarreras() {
                     carrerasList.appendChild(carrLi);
                 });
 
-                // Configurar el click para expandir/colapsar (igual que antes)
+                // Configurar el click para expandir/colapsar con animación
                 facA.onclick = (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    
                     // Cerrar otros submenús primero
                     document.querySelectorAll('.submenu').forEach(sub => {
                         if (sub !== carrerasList) {
-                            sub.style.display = 'none';
+                            sub.classList.remove('active');
                             // Restaurar íconos de otras facultades
                             const parentLi = sub.parentElement;
                             if (parentLi) {
@@ -75,11 +74,9 @@ async function cargarCarreras() {
                             }
                         }
                     });
-                    
-                    // Alternar el submenú actual
-                    const isShowing = carrerasList.style.display === 'block';
-                    carrerasList.style.display = isShowing ? 'none' : 'block';
-                    
+                    // Alternar el submenú actual con animación
+                    const isShowing = carrerasList.classList.contains('active');
+                    carrerasList.classList.toggle('active');
                     // Cambiar el ícono
                     const icon = facA.querySelector('i');
                     icon.className = isShowing ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
