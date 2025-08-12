@@ -169,6 +169,11 @@ function recargarCarreras() {
     const lista = document.getElementById('lista-cursos');
     lista.innerHTML = '';
     document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
+    // Restaurar el título de la sección
+    const titulo = document.querySelector('.section-title');
+    if (titulo) {
+        titulo.innerHTML = 'Lista de módulos disponibles';
+    }
 }
 
 // JavaScript para mostrar/ocultar la barra lateral en móviles (se mantiene igual)
