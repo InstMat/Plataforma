@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
@@ -9,21 +10,45 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="/reveal/dist/reset.css">
   <link rel="stylesheet" href="/reveal/dist/reveal.css">
   <style>
-    .reveal .sourceCode {  /* see #7635 */
+    .reveal .sourceCode {
+      /* see #7635 */
       overflow: visible;
     }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    div.columns {
+      display: flex;
+      gap: min(4vw, 1.5em);
+    }
+
+    div.column {
+      flex: auto;
+      overflow-x: auto;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
+    ul.task-list[class] {
+      list-style: none;
+    }
+
     ul.task-list li input[type="checkbox"] {
       font-size: inherit;
       width: 0.8em;
@@ -32,186 +57,181 @@
     }
   </style>
   <link rel="stylesheet" href="/reveal/dist/theme/white.css" id="theme">
-  <link rel="stylesheet" href="/styles/style.css"/>
+  <link rel="stylesheet" href="/styles/style.css" />
   <!---Geogebra-->
-        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-        
-        <!--MathJAX-->
-	<script src="/scripts/mathjax-config.js" async></script>
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+  <!--MathJAX-->
+  <script src="/scripts/mathjax-config.js" async></script>
 </head>
+
 <body>
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
-  <p class="subtitle">Ingeniería Civil</p>
-  <p class="author"><img data-src="/images/logoINSTMAT-color.png"
-style="width:30.0%" alt="image" /></p>
-</section>
+      <section id="title-slide">
+        <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+        <p class="subtitle">Ingeniería Civil</p>
+        <p class="author"><img data-src="/images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+      </section>
 
-<section id="transformada-de-laplace-para-resolver-pvis"
-class="slide level3 frame">
-<h3>Transformada de Laplace para resolver PVIs</h3>
-<p>Como mostramos en la sección anterior, se puede utilizar la
-transformada de Laplace para resolver PVIs lineales a coeficientes
-constantes <span class="math display">\[\begin{aligned}
-	a_ny^{(n)}(t)+a_{n-1}y^{(n-1)}(t)+&amp;\ldots+a_1y^1(t)+a_0y(t)=f(t)\\
-	y(0)&amp;=y_0\\
-	y&#39;(0)&amp;=y_1\\
-	\vdots\\
-	y^{(n-1)}(0)&amp;=y_{n-1}
-\end{aligned}\]</span> la estrategia es</p>
-<ul>
-<li class="fragment"><p>Aplicar la transformada de Laplace a la
-ecuación, utilizando las condiciones iniciales.</p></li>
-<li class="fragment"><p>Resolver la ecuación algebraica para <span
-class="math inline">\(Y(s)\)</span>.</p></li>
-<li class="fragment"><p>Aplicar la transformada inversa para obtener
-<span class="math inline">\(y(t)\)</span></p></li>
-</ul>
-</section>
-<section id="transformada-de-laplace-para-resolver-pvis-0.5"
-class="slide level3 frame">
-<h3>Transformada de Laplace para resolver PVIs</h3>
-<div class="example">
-<p> Resolver el PVI <span
-class="math display">\[y'+3y=0,\quad y(0)=-2.\]</span></p>
-</div>
-<div class="solution-full fragment">
-    <div class="fragment">
-    <p>Usando lo aprendido en la Unidad I sabemos que la solución es \(y(t)=-2e^{-3t}\). Veamos que se obtiene lo mismo usando Transformada de Laplace.</p>
-    <p class="fragment">Aplicamos la transformada de Laplace a ambos lados de la ecuación y se obtiene que
-    \[
-    \mathcal L(y'+3y)=\mathcal L(0)\Rightarrow sY(s)-y(0)+3Y(s)=0\Rightarrow (s+3)Y(s)=-2 \Rightarrow Y(s)=\dfrac{-2}{s+3},
-    \]
-    por lo tanto 
-    \[y(t)=\mathcal L^{-1}\left(-2\dfrac{1}{s+3}\right)=-2e^{-3t}.\]
-    </p>
-    </div>
-</div>
-</section>
-<section id="transformada-de-laplace-para-resolver-pvis-0.75"
-class="slide level3 frame">
-<h3>Transformada de Laplace para resolver PVIs</h3>
-<div class="example">
-<p> Resolver el PVI <span
-class="math display">\[y''-y'-2y=0,\quad y(0)=1,~y'(0)=0\]</span></p>
-</div>
-<div class="solution-full fragment">
-    <div class="fragment">
-    <p>Usando lo aprendido en la Unidad II sabemos que la solución es \(y(t)=\dfrac13 e^{2t}+\dfrac23e^{-t}\). Veamos que se obtiene lo mismo usando Transformada de Laplace.</p>
-    <p class="fragment">Aplicamos la transformada de Laplace a ambos lados de la ecuación y se obtiene que
-    \[
-    \mathcal L(y''-y'-2y)=\mathcal L(0)\Rightarrow s^2Y(s)-sy(0)+y'(0)-(sY(s)-y(0))-2Y(s)=0\Rightarrow Y(s)=\dfrac{s-1}{s^2-s-2},
-    \]
-    pero
-    \[
-    \frac{s-1}{s^2-s-2}=\frac{s-1}{(s+1)(s-2)}=\frac13\frac{1}{s-2}+\frac23\frac{1}{s+1}
-    \]
-    por lo tanto 
-    \[y(t)=\mathcal L^{-1}\left(\frac13\frac{1}{s-2}+\frac23\frac{1}{s+1}\right)=\frac13 e^{2t}+\frac23 e^{-t}.\]
-    </p>
-    </div>
-</div>
-</section>
-<section id="transformada-de-laplace-para-resolver-pvis-1"
-class="slide level3 frame">
-<h3>Transformada de Laplace para resolver PVIs</h3>
-<div class="example">
-<p> Resolver el PVI <span
-class="math display">\[y&#39;+3y=13\sin(2t),\quad y(0)=6.\]</span></p>
-</div>
-<div class="solution-full fragment">
-    <div class="fragment">
-<p> <em>Aplicamos la transformada de Laplace a ambos lados <span class="math display">\[\mathcal
-L(y&#39;+3y)=\mathcal L(13\sin(2t)),\]</span> de donde <span
-class="math display">\[sY(s)-6+3Y(s)=13\frac{2}{s^2+4}\Rightarrow
-Y(s)=\frac{6+13\frac{2}{s^2+4}}{s+3}=\frac{6s^2+50}{(s+3)(s^2+4)},\]</span>
-usamos fracciones parciales para obtener <span
-class="math display">\[\frac{6s^2+50}{(s+3)(s^2+4)}=\frac{A}{s+3}+\frac{Bs+C}{s^2+4}=\frac{8}{s+3}+\frac{6}{s^2+4}-2\frac{s}{s^2+4},\]</span>
-y así la solución del PVI es <span class="math display">\[y(t)=\mathcal L^{-1}\left(
-\frac{8}{s+3}+3\frac{2}{s^2+2^2}-2\frac{s}{s^2+2^2}
-\right)=8e^{-3t}+3\sin(2t)-2\cos(2t).\]</span></em></p>
-</div>
-    </div>
-</section>
-<section id="transformada-de-laplace-para-resolver-pvis-2"
-class="slide level3 frame">
-<h3>Transformada de Laplace para resolver PVIs</h3>
-<div class="example">
-<p> Resolver el PVI <span
-class="math display">\[y&#39;&#39;-3y&#39;+2y=e^{-4t},\quad y(0)=1,~
-y&#39;(0)=5.\]</span></p>
-</div>
-<div class="solution-full fragment">
-<div class="fragment">
-    <p> <em>Aplicamos la transformada de Laplace a ambos lados y obtenemos <span
-class="math display">\[s^2Y(s)-sy(0)-y&#39;(0)-3(sY(s)-y(0))+2Y(s)=\frac{1}{s+4}\]</span>
-de donde <span
-class="math display">\[Y(s)=\frac{s^2+6s+9}{(s-1)(s-2)(s+4)}\]</span> y
-como vimos antes <span class="math display">\[y(t)=\mathcal L^{-1}\left(
-\frac{s^2+6s+9}{(s-1)(s-2)(s+4)}
-\right)=-\frac{16}5e^t+\frac{25}{6}e^{2t}+\frac{1}{30}e^{-4t}.\]</span></em></p>
-</div>
-    </div>
-</section>
-<section id="transformada-de-laplace-para-resolver-pvis-3"
-class="slide level3 frame">
-<h3>Transformada de Laplace para resolver PVIs</h3>
-<div class="example">
-<p> Resolver el PVI <span
-class="math display">\[y&#39;&#39;-2y&#39;+5y=-8e^{-t},\quad y(0)=2,~
-y&#39;(0)=12.\]</span></p>
-</div>
-<div class="solution-full fragment">
-<div class="fragment">
-    <p> <em>Aplicamos transformada a la ecuación y obtenemos que <span
-class="math display">\[
-		s^2Y(s)-sy(0)-y'(0)-2(sY(s)-y(0))+5Y(s)=-\frac8{s+1}
-        \Rightarrow Y(s)=Y(s)=\dfrac{2s^2+10s}{(s+1)((s-1)^2+2^2)},
-\]</span> y además <span
-class="math display">\[\frac{2s^2+10s}{(s+1)(s^2-2s+5)}=\frac{A}{s+1}+\frac{B(s-1)+C}{(s-1)^2+2^2}=\frac{-1}{s+1}+\frac{3(s-1)+8}{(s-1)^2+2^2},\]</span>
-por lo tanto obtenemos que <span
-class="math display">\[y(t)=\mathcal L^{-1}\left(\frac{-1}{s+1}+3\frac{s-1}{(s-1)^2+2^2}+4\frac{2}{(s-1)^2+2^2}\right)=-e^{-t}+3e^{t}\cos(2t)+4e^{t}\sin(2t).\]</span></em></p>
-</div>
-</div>
-</section>
-<section id="transformada-de-laplace-para-resolver-pvis-4"
-class="slide level3 frame">
-<h3>Transformada de Laplace para resolver PVIs</h3>
-<div class="example">
-<p> Resolver el PVI <span
-class="math display">\[y''-6y'+15y=2\sin(3t),\quad y(0)=  1,~y'(0)=-4\]</span></p>
-</div>
-<div class="solution fragment">
-</div>
-</section>
-<section id="transformada-de-laplace-para-resolver-pvis-5"
-class="slide level3 frame">
-<h3>Transformada de Laplace para resolver PVIs</h3>
-<div class="example">
-<p> Resolver el PVI <span
-class="math display">\[2y''+3y'-2y= te^{-2t},\quad y(0)=0,~y'(0)=-2\]</span></p>
-</div>
-<div class="solution fragment">
-</div>
-</section>
-<section id="ejercicios" class="slide level3 frame">
-    <h3>Ejercicios</h3>
-  <div class="exercise">
-    <p>Use la transformada de Laplace para resolver los problemas de valores iniciales.</p>
-    <ol style="list-style-type: lower-alpha">
-        <li style="margin-bottom: 10pt">\(y'-y=1\), \(y(0)=0\).</li>
-        <li style="margin-bottom: 10pt">\(y'+6y=e^{4t}\), \(y(0)=2\).</li>
-        <li style="margin-bottom: 10pt">\(y''+5y'+4y=0\), \(y(0)=1\), \(y'(0)=0\).</li>
-        <li style="margin-bottom: 10pt">\(y''-y'=e^{4t}\cos t\), \(y(0)=0\), \(y'(0)=0\).</li>
-        <li style="margin-bottom: 10pt">\(y''-4y+4y=t^3\), \(y(0)=1\), \(y'(0)=0\).</li>
-        <li style="margin-bottom: 10pt">\(2y'''+3y''-3y'-2y=e^{-t}\), \(y(0)=0\), \(y'(0)=0\), \(y''(0)=1\).</li>
-        <li style="margin-bottom: 10pt">\(y^{(4)}-4y=0\), \(y(0)=1\), \(y'(0)=1\), \(y''(0)=-2, y'''(0)=0\).</li>
-    </ol>
-  </div>
-  </section>
+      <section id="transformada-de-laplace-para-resolver-pvis" class="slide level3 frame">
+        <h3>Transformada de Laplace para resolver PVIs</h3>
+        <p>Como mostramos en la sección anterior, se puede utilizar la
+          transformada de Laplace para resolver PVIs lineales a coeficientes
+          constantes <span class="math display">\[\begin{aligned}
+            a_ny^{(n)}(t)+a_{n-1}y^{(n-1)}(t)+&amp;\ldots+a_1y^1(t)+a_0y(t)=f(t)\\
+            y(0)&amp;=y_0\\
+            y&#39;(0)&amp;=y_1\\
+            \vdots\\
+            y^{(n-1)}(0)&amp;=y_{n-1}
+            \end{aligned}\]</span> la estrategia es</p>
+        <ul>
+          <li class="fragment">
+            <p>Aplicar la transformada de Laplace a la
+              ecuación, utilizando las condiciones iniciales.</p>
+          </li>
+          <li class="fragment">
+            <p>Resolver la ecuación algebraica para <span class="math inline">\(Y(s)\)</span>.</p>
+          </li>
+          <li class="fragment">
+            <p>Aplicar la transformada inversa para obtener
+              <span class="math inline">\(y(t)\)</span>
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section id="transformada-de-laplace-para-resolver-pvis-0.5" class="slide level3 frame">
+        <h3>Transformada de Laplace para resolver PVIs</h3>
+        <div class="example">
+          <p> Resolver el PVI <span class="math display">\[y'+3y=0,\quad y(0)=-2.\]</span></p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p>Usando lo aprendido en la Unidad I sabemos que la solución es \(y(t)=-2e^{-3t}\). Veamos que se obtiene
+              lo mismo usando Transformada de Laplace.</p>
+            <p class="fragment">Aplicamos la transformada de Laplace a ambos lados de la ecuación y se obtiene que
+              \[
+              \mathcal L(y'+3y)=\mathcal L(0)\Rightarrow sY(s)-y(0)+3Y(s)=0\Rightarrow (s+3)Y(s)=-2 \Rightarrow
+              Y(s)=\dfrac{-2}{s+3},
+              \]
+              por lo tanto
+              \[y(t)=\mathcal L^{-1}\left(-2\dfrac{1}{s+3}\right)=-2e^{-3t}.\]
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="transformada-de-laplace-para-resolver-pvis-0.75" class="slide level3 frame">
+        <h3>Transformada de Laplace para resolver PVIs</h3>
+        <div class="example">
+          <p> Resolver el PVI <span class="math display">\[y''-y'-2y=0,\quad y(0)=1,~y'(0)=0\]</span></p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p>Usando lo aprendido en la Unidad II sabemos que la solución es \(y(t)=\dfrac13 e^{2t}+\dfrac23e^{-t}\).
+              Veamos que se obtiene lo mismo usando Transformada de Laplace.</p>
+            <p class="fragment">Aplicamos la transformada de Laplace a ambos lados de la ecuación y se obtiene que
+              \[
+              \mathcal L(y''-y'-2y)=\mathcal L(0)\Rightarrow s^2Y(s)-sy(0)+y'(0)-(sY(s)-y(0))-2Y(s)=0\Rightarrow
+              Y(s)=\dfrac{s-1}{s^2-s-2},
+              \]
+              pero
+              \[
+              \frac{s-1}{s^2-s-2}=\frac{s-1}{(s+1)(s-2)}=\frac13\frac{1}{s-2}+\frac23\frac{1}{s+1}
+              \]
+              por lo tanto
+              \[y(t)=\mathcal L^{-1}\left(\frac13\frac{1}{s-2}+\frac23\frac{1}{s+1}\right)=\frac13 e^{2t}+\frac23
+              e^{-t}.\]
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="transformada-de-laplace-para-resolver-pvis-1" class="slide level3 frame">
+        <h3>Transformada de Laplace para resolver PVIs</h3>
+        <div class="example">
+          <p> Resolver el PVI <span class="math display">\[y&#39;+3y=13\sin(2t),\quad y(0)=6.\]</span></p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p> <em>Aplicamos la transformada de Laplace a ambos lados <span class="math display">\[\mathcal
+                  L(y&#39;+3y)=\mathcal L(13\sin(2t)),\]</span> de donde <span
+                  class="math display">\[sY(s)-6+3Y(s)=13\frac{2}{s^2+4}\Rightarrow
+                  Y(s)=\frac{6+13\frac{2}{s^2+4}}{s+3}=\frac{6s^2+50}{(s+3)(s^2+4)},\]</span>
+                usamos fracciones parciales para obtener <span
+                  class="math display">\[\frac{6s^2+50}{(s+3)(s^2+4)}=\frac{A}{s+3}+\frac{Bs+C}{s^2+4}=\frac{8}{s+3}+\frac{6}{s^2+4}-2\frac{s}{s^2+4},\]</span>
+                y así la solución del PVI es <span class="math display">\[y(t)=\mathcal L^{-1}\left(
+                  \frac{8}{s+3}+3\frac{2}{s^2+2^2}-2\frac{s}{s^2+2^2}
+                  \right)=8e^{-3t}+3\sin(2t)-2\cos(2t).\]</span></em></p>
+          </div>
+        </div>
+      </section>
+      <section id="transformada-de-laplace-para-resolver-pvis-2" class="slide level3 frame">
+        <h3>Transformada de Laplace para resolver PVIs</h3>
+        <div class="example">
+          <p> Resolver el PVI <span class="math display">\[y&#39;&#39;-3y&#39;+2y=e^{-4t},\quad y(0)=1,~
+              y&#39;(0)=5.\]</span></p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p> <em>Aplicamos la transformada de Laplace a ambos lados y obtenemos <span
+                  class="math display">\[s^2Y(s)-sy(0)-y&#39;(0)-3(sY(s)-y(0))+2Y(s)=\frac{1}{s+4}\]</span>
+                de donde <span class="math display">\[Y(s)=\frac{s^2+6s+9}{(s-1)(s-2)(s+4)}\]</span> y
+                como vimos antes <span class="math display">\[y(t)=\mathcal L^{-1}\left(
+                  \frac{s^2+6s+9}{(s-1)(s-2)(s+4)}
+                  \right)=-\frac{16}5e^t+\frac{25}{6}e^{2t}+\frac{1}{30}e^{-4t}.\]</span></em></p>
+          </div>
+        </div>
+      </section>
+      <section id="transformada-de-laplace-para-resolver-pvis-3" class="slide level3 frame">
+        <h3>Transformada de Laplace para resolver PVIs</h3>
+        <div class="example">
+          <p> Resolver el PVI <span class="math display">\[y&#39;&#39;-2y&#39;+5y=-8e^{-t},\quad y(0)=2,~
+              y&#39;(0)=12.\]</span></p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p> <em>Aplicamos transformada a la ecuación y obtenemos que <span class="math display">\[
+                  s^2Y(s)-sy(0)-y'(0)-2(sY(s)-y(0))+5Y(s)=-\frac8{s+1}
+                  \Rightarrow Y(s)=Y(s)=\dfrac{2s^2+10s}{(s+1)((s-1)^2+2^2)},
+                  \]</span> y además <span
+                  class="math display">\[\frac{2s^2+10s}{(s+1)(s^2-2s+5)}=\frac{A}{s+1}+\frac{B(s-1)+C}{(s-1)^2+2^2}=\frac{-1}{s+1}+\frac{3(s-1)+8}{(s-1)^2+2^2},\]</span>
+                por lo tanto obtenemos que <span class="math display">\[y(t)=\mathcal
+                  L^{-1}\left(\frac{-1}{s+1}+3\frac{s-1}{(s-1)^2+2^2}+4\frac{2}{(s-1)^2+2^2}\right)=-e^{-t}+3e^{t}\cos(2t)+4e^{t}\sin(2t).\]</span></em>
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="transformada-de-laplace-para-resolver-pvis-4" class="slide level3 frame">
+        <h3>Transformada de Laplace para resolver PVIs</h3>
+        <div class="example">
+          <p> Resolver el PVI <span class="math display">\[y''-6y'+15y=2\sin(3t),\quad y(0)= 1,~y'(0)=-4\]</span></p>
+        </div>
+        <div class="solution fragment">
+        </div>
+      </section>
+      <section id="transformada-de-laplace-para-resolver-pvis-5" class="slide level3 frame">
+        <h3>Transformada de Laplace para resolver PVIs</h3>
+        <div class="example">
+          <p> Resolver el PVI <span class="math display">\[2y''+3y'-2y= te^{-2t},\quad y(0)=0,~y'(0)=-2\]</span></p>
+        </div>
+        <div class="solution fragment">
+        </div>
+      </section>
+      <section id="ejercicios" class="slide level3 frame">
+        <h3>Ejercicios</h3>
+        <div class="exercise">
+          <p>Use la transformada de Laplace para resolver los problemas de valores iniciales.</p>
+          <ol style="list-style-type: lower-alpha">
+            <li style="margin-bottom: 10pt">\(y'-y=1\), \(y(0)=0\).</li>
+            <li style="margin-bottom: 10pt">\(y'+6y=e^{4t}\), \(y(0)=2\).</li>
+            <li style="margin-bottom: 10pt">\(y''+5y'+4y=0\), \(y(0)=1\), \(y'(0)=0\).</li>
+            <li style="margin-bottom: 10pt">\(y''-y'=e^{4t}\cos t\), \(y(0)=0\), \(y'(0)=0\).</li>
+            <li style="margin-bottom: 10pt">\(y''-4y+4y=t^3\), \(y(0)=1\), \(y'(0)=0\).</li>
+            <li style="margin-bottom: 10pt">\(2y'''+3y''-3y'-2y=e^{-t}\), \(y(0)=0\), \(y'(0)=0\), \(y''(0)=1\).</li>
+            <li style="margin-bottom: 10pt">\(y^{(4)}-4y=0\), \(y(0)=1\), \(y'(0)=1\), \(y''(0)=-2, y'''(0)=0\).</li>
+          </ol>
+        </div>
+      </section>
 
 
 
@@ -225,6 +245,7 @@ class="math display">\[2y''+3y'-2y= te^{-2t},\quad y(0)=0,~y'(0)=-2\]</span></p>
   <script src="/reveal/plugin/notes/notes.js"></script>
   <script src="/reveal/plugin/search/search.js"></script>
   <script src="/reveal/plugin/zoom/zoom.js"></script>
-<script src="/scripts/reveal-init.js"></script>
-    </body>
+  <script src="/scripts/reveal-init.js"></script>
+</body>
+
 </html>

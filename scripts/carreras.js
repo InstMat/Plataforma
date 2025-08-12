@@ -98,6 +98,7 @@ function verCursos(carreraId) {
     const lista = document.getElementById('lista-cursos');
     const spinner = document.getElementById('loading-spinner');
     const mensaje = document.getElementById('mensaje-modulos');
+    const titulo = document.querySelector('.section-title');
 
     // Resetear contenido
     lista.innerHTML = '';
@@ -111,6 +112,10 @@ function verCursos(carreraId) {
         .then(data => {
             const carrera = data.carreras.find(c => c.id === carreraId);
             if (carrera) {
+                // Cambiar el título de la sección con el nombre de la carrera
+                if (titulo) {
+                    titulo.innerHTML = `Lista de módulos disponibles para <em>${carrera.nombre}</em>`;
+                }
                 setTimeout(() => {
                     const modulos = carrera.modulos
                         .map(moduloId => data.modulos_comunes[moduloId])

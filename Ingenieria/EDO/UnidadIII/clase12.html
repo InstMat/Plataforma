@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
@@ -9,21 +10,45 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="/reveal/dist/reset.css">
   <link rel="stylesheet" href="/reveal/dist/reveal.css">
   <style>
-    .reveal .sourceCode {  /* see #7635 */
+    .reveal .sourceCode {
+      /* see #7635 */
       overflow: visible;
     }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    div.columns {
+      display: flex;
+      gap: min(4vw, 1.5em);
+    }
+
+    div.column {
+      flex: auto;
+      overflow-x: auto;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
+    ul.task-list[class] {
+      list-style: none;
+    }
+
     ul.task-list li input[type="checkbox"] {
       font-size: inherit;
       width: 0.8em;
@@ -32,195 +57,181 @@
     }
   </style>
   <link rel="stylesheet" href="/reveal/dist/theme/white.css" id="theme">
-  <link rel="stylesheet" href="/styles/style.css"/>
+  <link rel="stylesheet" href="/styles/style.css" />
   <!---Geogebra-->
-        <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-        
-        <!--MathJAX-->
-	<script src="/scripts/mathjax-config.js" async></script>
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+  <!--MathJAX-->
+  <script src="/scripts/mathjax-config.js" async></script>
 </head>
+
 <body>
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
-  <p class="subtitle">Ingeniería Civil</p>
-  <p class="author"><img data-src="/images/logoINSTMAT-color.png"
-style="width:30.0%" alt="image" /></p>
-</section>
+      <section id="title-slide">
+        <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+        <p class="subtitle">Ingeniería Civil</p>
+        <p class="author"><img data-src="/images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+      </section>
 
-<section id="transformada-de-laplace-inversa"
-class="slide level3 frame">
-<h3>Transformada de Laplace Inversa</h3>
-<p>Queremos resolver el PVI <span
-class="math display">\[y&#39;&#39;-y=-t,\quad y(0)=0,
-y&#39;(0)=1,\]</span> para ello supondremos que la función <span
-class="math inline">\(y(t)\)</span> tiene una transformada de Laplace
-<span class="math inline">\(Y(s)\)</span> y aplicaremos el operador
-transformada a la ecuación, es decir, se debe cumplir que <span
-class="math display">\[\mathcal L(y&#39;&#39;-y)=\mathcal
-L(-t),\]</span> usando las propiedades de la transformada, sabemos que
-<span class="math display">\[\begin{aligned}
-	\mathcal L(y&#39;&#39;-y)(s)&amp;=\mathcal L(y&#39;&#39;)(s)-\mathcal
-L(y)(s)\\
-	&amp;=s^2Y(s)-sy(0)-y&#39;(0)-Y(s)\\
-	&amp;=(s^2-1)Y(s)-1,
-\end{aligned}\]</span> y que <span class="math display">\[\mathcal
-L(-t)(s)=-\frac{1}{s^2},\]</span> por lo tanto se cumple que la
-transformada de Laplace <span class="math inline">\(Y(s)\)</span>
-satisface la ecuación <em>algebraica</em> <span
-class="math display">\[(s^2-1)Y(s)-1=-\frac{1}{s^2}\Rightarrow \mathcal
-L(y(t))(s)=\frac{1}{s^2},\]</span> Si tuviéramos una manera de revertir
-la transformada <span class="math inline">\(\mathcal L(y(t))(s)\)</span>
-para recuperar <span class="math inline">\(y(t)\)</span> entonces
-podríamos resolver la ecuación.</p>
-</section>
-<section id="transformada-de-laplace-inversa-1"
-class="slide level3 frame">
-<h3>Transformada de Laplace Inversa</h3>
-<div class="definition">
-<p> Dada una función <span class="math inline">\(F(s)\)</span>, decimos
-que <span class="math inline">\(f(t)\)</span> es la transformada de
-Laplace inversa de <span class="math inline">\(F(s)\)</span> si <span
-class="math inline">\(f(t)\)</span> es continua para <span
-class="math inline">\(t\geq0\)</span> y satisface que <span
-class="math display">\[\mathcal L(f(t))(s)=F(s).\]</span> Usualmente se
-denota <span class="math inline">\(\mathcal
-L^{-1}(F(s))(t)=f(t)\)</span>.</p>
-</div>
-<p class="fragment">Continuando con el ejemplo, entonces teníamos que <span
-class="math inline">\(Y(s)=\dfrac{1}{s^2}\)</span>, luego, usando la
-transformada inversa de Laplace podemos escribir que <span
-class="math display">\[y(t)=\mathcal L^{-1}\left( \frac{1}{s^2}
-\right)(t),\]</span> pero mirando nuestras tablas de transformadas,
-deducimos que <span class="math inline">\(\mathcal L^{-1}\left(
-\dfrac{1}{s^2} \right)(t)=t\)</span>, por lo que <span
-class="math inline">\(y(t)=t\)</span> aparentemente sería una solución
-del problema de valor inicial.</p>
-</section>
-<section id="transformada-de-laplace-inversa-2"
-class="slide level3 frame">
-<h3>Transformada de Laplace Inversa</h3>
-<div class="example">
-<p> Calcular <span class="math inline">\(f(t)=\mathcal L^{-1}\left(
-\dfrac{24}{s^5} \right)(t)\)</span></p>
-</div>
-<div class="solution-full fragment">
-    <div class="fragment">
-<p> <em>Notar que <span
-class="math inline">\(\dfrac{24}{s^5}=\dfrac{4!}{s^{4+1}}\)</span>, de
-donde deducimos que <span
-class="math inline">\(f(t)=t^4\)</span>.</em></p>
-</div>
-    </div>
-<div class="example fragment">
-<p> Calcular <span class="math inline">\(f(t)=\mathcal L^{-1}\left(
-\dfrac{4}{20-4s+s^2} \right)(t)\)</span></p>
-</div>
-<div class="solution-full fragment">
-    <div class="fragment">
-<p> <em>Notar que <span
-class="math inline">\(20-4s+s^2=(s-2)^2+4\)</span>, luego <span
-class="math inline">\(\dfrac{4}{20-4s+s^2}=\dfrac{4}{(s-2)^2+4}\)</span>
-por lo tanto <span
-class="math inline">\(f(t)=e^{2t}\sin(4t)\)</span>.</em></p>
-</div>
-    </div>
-</section>
-<section id="transformada-de-laplace-inversa-3"
-class="slide level3 frame">
-<h3>Transformada de Laplace Inversa</h3>
-<div class="theorem">
-<p> <em>La transformada de Laplace inversa es un operador
-lineal.</em></p>
-</div>
-<div class="example fragment">
-<p> Calcular <span class="math inline">\(\mathcal L^{-1}\left(
-\dfrac{1}{s^5}-\dfrac{10}{20-4s+s^2} \right)\)</span></p>
-</div>
-<div class="solution-full fragment">
-    <div class="fragment">
-<p> <em>Como <span class="math inline">\(\mathcal L^{-1}\left(
-\dfrac{24}{s^5} \right)=t^4\)</span> y <span
-class="math inline">\(\mathcal L^{-1}\left( \dfrac{4}{20-4s+s^2}
-\right)=e^{2t}\sin(4t)\)</span> entonces <span
-class="math display">\[\mathcal L^{-1}\left(
-\frac{1}{s^5}-\frac{10}{20-4s+s^2}
-\right)=\frac1{24}t^4-\frac{10}4e^{2t}\sin(4t).\]</span></em></p>
-</div>
-    </div>
-</section>
-<section id="transformada-de-laplace-inversa-4"
-class="slide level3 frame">
-<h3>Transformada de Laplace Inversa</h3>
-<div class="example">
-<p> Calcular <span class="math inline">\(\mathcal L^{-1}\left(
-\dfrac{6-2s}{s^2+4} \right)\)</span>.</p>
-</div>
-<div class="solution-full fragment">
-    <div class="fragment">
-<p> <em>Tenemos que <span class="math display">\[\begin{aligned}
-		\mathcal L^{-1}\left( \frac{6-2s}{s^2+4} \right)&amp;=6\mathcal
-L^{-1}\left( \frac{1}{s^2+4} \right)-2\mathcal L^{-1}\left(
-\frac{s}{s^2+4} \right)\\
-		&amp;=3\mathcal L^{-1}\left( \frac{2}{s^2+4} \right)-2\mathcal
-L^{-1}\left( \frac{s}{s^2+4} \right)\\
-		&amp;=3\sin(2t)-2\cos(2t).
-	
-\end{aligned}\]</span></em></p>
-</div>
-    </div>
-</section>
-<section id="transformada-de-laplace-inversa-5"
-class="slide level3 frame">
-<h3>Transformada de Laplace Inversa</h3>
-<div class="example">
-<p> Calcular <span class="math inline">\(\mathcal L^{-1}\left(
-\dfrac{s^2+6s+9}{(s-1)(s-2)(s+4)} \right)\)</span>.</p>
-</div>
-<div class="solution-full fragment">
-    <div class="fragment">
-<p> <em>Para este problema debemos usar fracciones parciales <span
-class="math display">\[\begin{aligned}
-		\frac{s^2+6s+9}{(s-1)(s-2)(s+4)}&amp;=\frac{A}{s-1}+\frac{B}{s-2}+\frac{C}{s+4}\\
-		&amp;=\frac{A(s-2)(s+4)+B(s-1)(s+4)+C(s-1)(s-2)}{(s-1)(s-2)(s+4)},
-	
-\end{aligned}\]</span> de donde obtenemos que <span
-class="math inline">\(A=-\dfrac{16}5\)</span>, <span
-class="math inline">\(B=\dfrac{25}6\)</span> y <span
-class="math inline">\(C=\dfrac{1}{30}\)</span>, así <span
-class="math display">\[\frac{s^2+6s+9}{(s-1)(s-2)(s+4)}=\frac{-\frac{16}5}{s-1}+\frac{\frac{25}{6}}{s-2}+\frac{\frac{1}{30}}{s+4}\]</span>
-y tenemos que <span class="math display">\[\begin{aligned}
-		\mathcal L^{-1}\left( \frac{s^2+6s+9}{(s-1)(s-2)(s+4)}
-\right)&amp;=-\frac{16}5\mathcal L^{-1}\left( \frac{1}{s-1}
-\right)+\frac{25}{6}\mathcal L^{-1}\left( \frac{1}{s-2}
-\right)+\frac{1}{30}\mathcal L^{-1}\left( \frac{1}{s+4} \right)\\
-		&amp;=-\frac{16}5e^t+\frac{25}{6}e^{2t}+\frac{1}{30}e^{-4t}.
-	
-\end{aligned}\]</span></em></p>
-</div>
-    </div>
-</section>
-<section id="ejercicios" class="slide level3 frame">
-    <h3>Ejercicios</h3>
-  <div class="exercise">
-    <p>Calcule las transformadas de Laplace inversas de las siguientes funciones.</p>
-    <ol style="list-style-type: lower-alpha" class="two-columns">
-	<li style="margin-bottom: 10pt">\(\dfrac{1}{s^4}\).</li>
-	<li style="margin-bottom: 10pt">\(\dfrac{1}{s^5}\).</li>
-	<li style="margin-bottom: 10pt">\(\dfrac{(2s-1)^2}{s^4}\).</li>
-	<li style="margin-bottom: 10pt">\(\dfrac{1}{s}-\dfrac2{(s-2)^2}+\dfrac{7}{(s+4)}\).</li>
-	<li style="margin-bottom: 10pt">\(\dfrac{s}{s^2+16}\) </li>
-  <li style="margin-bottom: 10pt">\(\dfrac{1}{4s^2+1}\).</li>
-<li style="margin-bottom: 10pt">\(\dfrac{1}{3s^2-s}\).</li>
-<li style="margin-bottom: 10pt">\(\dfrac{5s}{(s-2)^2}\).</li>
-<li style="margin-bottom: 10pt">\(\dfrac{(s-1)^2}{(s+2)^4}\)</li>
-<li style="margin-bottom: 10pt">\(\dfrac{s^2+1}{s(s-2)(s-3)(s-6)}\).</li>
-<li style="margin-bottom: 10pt">\(\dfrac{2s-4}{(s^2+s)(s^2-1)}\).</li>
-    </ol>
-  </div>
-  </section>
+      <section id="transformada-de-laplace-inversa" class="slide level3 frame">
+        <h3>Transformada de Laplace Inversa</h3>
+        <p>Queremos resolver el PVI <span class="math display">\[y&#39;&#39;-y=-t,\quad y(0)=0,
+            y&#39;(0)=1,\]</span> para ello supondremos que la función <span class="math inline">\(y(t)\)</span> tiene
+          una transformada de Laplace
+          <span class="math inline">\(Y(s)\)</span> y aplicaremos el operador
+          transformada a la ecuación, es decir, se debe cumplir que <span class="math display">\[\mathcal
+            L(y&#39;&#39;-y)=\mathcal
+            L(-t),\]</span> usando las propiedades de la transformada, sabemos que
+          <span class="math display">\[\begin{aligned}
+            \mathcal L(y&#39;&#39;-y)(s)&amp;=\mathcal L(y&#39;&#39;)(s)-\mathcal
+            L(y)(s)\\
+            &amp;=s^2Y(s)-sy(0)-y&#39;(0)-Y(s)\\
+            &amp;=(s^2-1)Y(s)-1,
+            \end{aligned}\]</span> y que <span class="math display">\[\mathcal
+            L(-t)(s)=-\frac{1}{s^2},\]</span> por lo tanto se cumple que la
+          transformada de Laplace <span class="math inline">\(Y(s)\)</span>
+          satisface la ecuación <em>algebraica</em> <span class="math display">\[(s^2-1)Y(s)-1=-\frac{1}{s^2}\Rightarrow
+            \mathcal
+            L(y(t))(s)=\frac{1}{s^2},\]</span> Si tuviéramos una manera de revertir
+          la transformada <span class="math inline">\(\mathcal L(y(t))(s)\)</span>
+          para recuperar <span class="math inline">\(y(t)\)</span> entonces
+          podríamos resolver la ecuación.
+        </p>
+      </section>
+      <section id="transformada-de-laplace-inversa-1" class="slide level3 frame">
+        <h3>Transformada de Laplace Inversa</h3>
+        <div class="definition">
+          <p> Dada una función <span class="math inline">\(F(s)\)</span>, decimos
+            que <span class="math inline">\(f(t)\)</span> es la transformada de
+            Laplace inversa de <span class="math inline">\(F(s)\)</span> si <span class="math inline">\(f(t)\)</span> es
+            continua para <span class="math inline">\(t\geq0\)</span> y satisface que <span
+              class="math display">\[\mathcal L(f(t))(s)=F(s).\]</span> Usualmente se
+            denota <span class="math inline">\(\mathcal
+              L^{-1}(F(s))(t)=f(t)\)</span>.</p>
+        </div>
+        <p class="fragment">Continuando con el ejemplo, entonces teníamos que <span
+            class="math inline">\(Y(s)=\dfrac{1}{s^2}\)</span>, luego, usando la
+          transformada inversa de Laplace podemos escribir que <span class="math display">\[y(t)=\mathcal L^{-1}\left(
+            \frac{1}{s^2}
+            \right)(t),\]</span> pero mirando nuestras tablas de transformadas,
+          deducimos que <span class="math inline">\(\mathcal L^{-1}\left(
+            \dfrac{1}{s^2} \right)(t)=t\)</span>, por lo que <span class="math inline">\(y(t)=t\)</span> aparentemente
+          sería una solución
+          del problema de valor inicial.</p>
+      </section>
+      <section id="transformada-de-laplace-inversa-2" class="slide level3 frame">
+        <h3>Transformada de Laplace Inversa</h3>
+        <div class="example">
+          <p> Calcular <span class="math inline">\(f(t)=\mathcal L^{-1}\left(
+              \dfrac{24}{s^5} \right)(t)\)</span></p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p> <em>Notar que <span class="math inline">\(\dfrac{24}{s^5}=\dfrac{4!}{s^{4+1}}\)</span>, de
+                donde deducimos que <span class="math inline">\(f(t)=t^4\)</span>.</em></p>
+          </div>
+        </div>
+        <div class="example fragment">
+          <p> Calcular <span class="math inline">\(f(t)=\mathcal L^{-1}\left(
+              \dfrac{4}{20-4s+s^2} \right)(t)\)</span></p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p> <em>Notar que <span class="math inline">\(20-4s+s^2=(s-2)^2+4\)</span>, luego <span
+                  class="math inline">\(\dfrac{4}{20-4s+s^2}=\dfrac{4}{(s-2)^2+4}\)</span>
+                por lo tanto <span class="math inline">\(f(t)=e^{2t}\sin(4t)\)</span>.</em></p>
+          </div>
+        </div>
+      </section>
+      <section id="transformada-de-laplace-inversa-3" class="slide level3 frame">
+        <h3>Transformada de Laplace Inversa</h3>
+        <div class="theorem">
+          <p> <em>La transformada de Laplace inversa es un operador
+              lineal.</em></p>
+        </div>
+        <div class="example fragment">
+          <p> Calcular <span class="math inline">\(\mathcal L^{-1}\left(
+              \dfrac{1}{s^5}-\dfrac{10}{20-4s+s^2} \right)\)</span></p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p> <em>Como <span class="math inline">\(\mathcal L^{-1}\left(
+                  \dfrac{24}{s^5} \right)=t^4\)</span> y <span class="math inline">\(\mathcal L^{-1}\left(
+                  \dfrac{4}{20-4s+s^2}
+                  \right)=e^{2t}\sin(4t)\)</span> entonces <span class="math display">\[\mathcal L^{-1}\left(
+                  \frac{1}{s^5}-\frac{10}{20-4s+s^2}
+                  \right)=\frac1{24}t^4-\frac{10}4e^{2t}\sin(4t).\]</span></em></p>
+          </div>
+        </div>
+      </section>
+      <section id="transformada-de-laplace-inversa-4" class="slide level3 frame">
+        <h3>Transformada de Laplace Inversa</h3>
+        <div class="example">
+          <p> Calcular <span class="math inline">\(\mathcal L^{-1}\left(
+              \dfrac{6-2s}{s^2+4} \right)\)</span>.</p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p> <em>Tenemos que <span class="math display">\[\begin{aligned}
+                  \mathcal L^{-1}\left( \frac{6-2s}{s^2+4} \right)&amp;=6\mathcal
+                  L^{-1}\left( \frac{1}{s^2+4} \right)-2\mathcal L^{-1}\left(
+                  \frac{s}{s^2+4} \right)\\
+                  &amp;=3\mathcal L^{-1}\left( \frac{2}{s^2+4} \right)-2\mathcal
+                  L^{-1}\left( \frac{s}{s^2+4} \right)\\
+                  &amp;=3\sin(2t)-2\cos(2t).
+
+                  \end{aligned}\]</span></em></p>
+          </div>
+        </div>
+      </section>
+      <section id="transformada-de-laplace-inversa-5" class="slide level3 frame">
+        <h3>Transformada de Laplace Inversa</h3>
+        <div class="example">
+          <p> Calcular <span class="math inline">\(\mathcal L^{-1}\left(
+              \dfrac{s^2+6s+9}{(s-1)(s-2)(s+4)} \right)\)</span>.</p>
+        </div>
+        <div class="solution-full fragment">
+          <div class="fragment">
+            <p> <em>Para este problema debemos usar fracciones parciales <span class="math display">\[\begin{aligned}
+                  \frac{s^2+6s+9}{(s-1)(s-2)(s+4)}&amp;=\frac{A}{s-1}+\frac{B}{s-2}+\frac{C}{s+4}\\
+                  &amp;=\frac{A(s-2)(s+4)+B(s-1)(s+4)+C(s-1)(s-2)}{(s-1)(s-2)(s+4)},
+
+                  \end{aligned}\]</span> de donde obtenemos que <span class="math inline">\(A=-\dfrac{16}5\)</span>,
+                <span class="math inline">\(B=\dfrac{25}6\)</span> y <span
+                  class="math inline">\(C=\dfrac{1}{30}\)</span>, así <span
+                  class="math display">\[\frac{s^2+6s+9}{(s-1)(s-2)(s+4)}=\frac{-\frac{16}5}{s-1}+\frac{\frac{25}{6}}{s-2}+\frac{\frac{1}{30}}{s+4}\]</span>
+                y tenemos que <span class="math display">\[\begin{aligned}
+                  \mathcal L^{-1}\left( \frac{s^2+6s+9}{(s-1)(s-2)(s+4)}
+                  \right)&amp;=-\frac{16}5\mathcal L^{-1}\left( \frac{1}{s-1}
+                  \right)+\frac{25}{6}\mathcal L^{-1}\left( \frac{1}{s-2}
+                  \right)+\frac{1}{30}\mathcal L^{-1}\left( \frac{1}{s+4} \right)\\
+                  &amp;=-\frac{16}5e^t+\frac{25}{6}e^{2t}+\frac{1}{30}e^{-4t}.
+
+                  \end{aligned}\]</span></em></p>
+          </div>
+        </div>
+      </section>
+      <section id="ejercicios" class="slide level3 frame">
+        <h3>Ejercicios</h3>
+        <div class="exercise">
+          <p>Calcule las transformadas de Laplace inversas de las siguientes funciones.</p>
+          <ol style="list-style-type: lower-alpha" class="two-columns">
+            <li style="margin-bottom: 10pt">\(\dfrac{1}{s^4}\).</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{1}{s^5}\).</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{(2s-1)^2}{s^4}\).</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{1}{s}-\dfrac2{(s-2)^2}+\dfrac{7}{(s+4)}\).</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{s}{s^2+16}\) </li>
+            <li style="margin-bottom: 10pt">\(\dfrac{1}{4s^2+1}\).</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{1}{3s^2-s}\).</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{5s}{(s-2)^2}\).</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{(s-1)^2}{(s+2)^4}\)</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{s^2+1}{s(s-2)(s-3)(s-6)}\).</li>
+            <li style="margin-bottom: 10pt">\(\dfrac{2s-4}{(s^2+s)(s^2-1)}\).</li>
+          </ol>
+        </div>
+      </section>
     </div>
   </div>
 
@@ -230,6 +241,7 @@ y tenemos que <span class="math display">\[\begin{aligned}
   <script src="/reveal/plugin/notes/notes.js"></script>
   <script src="/reveal/plugin/search/search.js"></script>
   <script src="/reveal/plugin/zoom/zoom.js"></script>
-<script src="/scripts/reveal-init.js"></script>
-    </body>
+  <script src="/scripts/reveal-init.js"></script>
+</body>
+
 </html>
