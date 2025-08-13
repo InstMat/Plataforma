@@ -11,7 +11,7 @@ body {
     margin-top: 30px;
 }
 
-.example, .example-small, .example-medium, .examples, .exercise, .exercises, .definition, .theorem, .remark, .solution, .solution-small, .solution-medium, .solution-full, .block, .fact, .proof {
+.example, .examples, .exercise, .exercises, .definition, .theorem, .proposition, .corollary, .remark, .solution, .block, .fact, .proof {
     display: inline-block;
     position: relative;
     width: 95%;
@@ -23,23 +23,11 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
 }
 
-.solution {
-    height: 400px;
-}
-
-.solution-small, .example-small {
-    height: 150px;
-}
-
-.solution-medium, .example-medium {
-    height: 250px;
-}
-
 .example ol li, .examples ol li, .exsercise ol li, .exercises ol li{
     margin-bottom: 10mm;
 }
     
-.example::before, .example-medium::before, .example-small::before {
+.example::before {
     content: "Ejemplo. ";
     /*
     content: "Ejemplo " counter(example-counter) ". ";
@@ -137,7 +125,37 @@ body {
     border-radius: 8px;
 }
 
-.solution::before, .solution-small::before, .solution-medium::before, .solution-full::before {
+.proposition::before {
+    content: "Proposición. ";
+    /*
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.lemma::before {
+    content: "Lema. ";
+    /*
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.solution::before {
     content: "Solución. "; /* Add "Solución. " */
     font-weight: bold;
     color: #333;

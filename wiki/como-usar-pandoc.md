@@ -1,18 +1,3 @@
-# Archivos necesarios para la conversión
-
-Para usar los comandos personalizados de Pandoc en este proyecto, necesitas los siguientes archivos:
-
-- [`remove-num.lua`](../pandoc-files/remove-num.lua): Filtro Lua para eliminar numeración de teoremas.
-- [`reveal.html`](../pandoc-files/reveal.html): Plantilla personalizada para presentaciones Reveal.js.
-
-Puedes descargarlos directamente desde el repositorio en la carpeta `pandoc-files/` o copiarlos desde este proyecto si ya lo tienes clonado.
-
-**Ejemplo de descarga manual:**
-
-1. Ve a la carpeta `pandoc-files/` en el repositorio.
-2. Haz clic derecho sobre el archivo y selecciona "Descargar" o "Guardar enlace como...".
-3. Ubica los archivos en la misma carpeta donde ejecutarás los comandos Pandoc.
-# ¿Se puede usar Pandoc online?
 
 Existen servicios web como [Pandoc Try Online](https://pandoc.org/try/) que permiten convertir texto entre algunos formatos desde el navegador, pero **no permiten ejecutar comandos personalizados** (por ejemplo, filtros Lua, plantillas, Reveal.js, etc.).
 
@@ -31,14 +16,54 @@ Si necesitas ejecutar comandos avanzados o personalizados, debes instalar Pandoc
    ```
    Deberías ver la versión instalada y detalles del sistema.
 
+# Archivos necesarios para la conversión
+
+
+Para usar los comandos personalizados de Pandoc en este proyecto, necesitas los siguientes archivos:
+
+- [`remove-num.lua`](../pandoc-files/remove-num.lua): Filtro Lua para eliminar numeración de teoremas.
+- [`reveal.html`](../pandoc-files/reveal.html): Plantilla personalizada para presentaciones Reveal.js.
+- [`default.html`](../pandoc-files/default.html): Plantilla personalizada para exportar páginas HTML simples.
+- [`style.css`](../styles/style.css): Hoja de estilos para la presentación y páginas HTML.
+
+Puedes descargarlos directamente desde el repositorio en la carpeta `pandoc-files/` o copiarlos desde este proyecto si ya lo tienes clonado.
+
+**Ejemplo de descarga manual:**
+
+1. Ve a la carpeta `pandoc-files/` y `styles/` en el repositorio.
+2. Haz clic derecho sobre el archivo (`remove-num.lua`, `reveal.html`, `default.html`, `style.css`) y selecciona "Descargar" o "Guardar enlace como...".
+3. Ubica los archivos en la misma carpeta donde ejecutarás los comandos Pandoc, o asegúrate de que la ruta en el comando coincida con la ubicación del archivo `style.css`.
+
+# ¿Se puede usar Pandoc online?
+
 # Cómo usar Pandoc
 
-1. Para convertir archivos `.tex` a HTML de una sola página:
+1. Para convertir archivos `.tex` a HTML básico de una sola página:
    ```bash
-   pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=default.html -c style.css
+   pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=default.html
    ```
-2. Para generar una presentación Reveal.js:
+2. Para generar una presentación Reveal.js (a partir de un beamer):
    ```bash
-   pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c /styles/style.css
+   pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css
    ```
-3. Compila los temas Sass si es necesario antes de exportar.
+
+# Limitaciones de la conversión de Beamer a Reveal.js
+
+La conversión de presentaciones Beamer (LaTeX) a Reveal.js usando Pandoc tiene varias limitaciones:
+
+- **No todos los comandos y entornos de Beamer son soportados.** Algunos estilos, bloques personalizados, animaciones y overlays pueden perderse o no traducirse correctamente. Algunos entornos que no funcionan bien son `multicols` y `minipage`, pero pueden haber otros que no se han revisado.
+- **Fragmentos y transiciones:** Las animaciones de fragmentos (`\pause`, `\onslide`, overlays) pueden no funcionar igual que en Beamer. Reveal.js tiene su propio sistema de fragmentos y transiciones.
+- **Diseño y formato:** El diseño visual (colores, fondos, temas) puede diferir, ya que Reveal.js usa CSS y HTML, no los temas de Beamer.
+- **Matemáticas:** Las fórmulas matemáticas se renderizan con MathJax ([ver documentación](https://mathjax.org/)), pero algunos paquetes o comandos avanzados de LaTeX pueden no ser compatibles. 
+- **Notas y referencias:** Las notas del presentador y referencias pueden requerir ajustes manuales.
+- **Tablas y gráficos:** Tablas complejas, gráficos TikZ y algunos entornos avanzados pueden no convertirse correctamente.
+
+**Recomendación:** Revisa y ajusta manualmente la presentación convertida. Prueba los comandos y entornos antes de usar conversiones masivas.
+
+---
+
+## Tutorial recomendado
+
+Consulta el tutorial: [Cómo usar Pandoc para obtener los mismos resultados que el sitio](tutorial-pandoc-resultados.md)
+
+En este tutorial se explica paso a paso cómo configurar y ejecutar Pandoc para generar presentaciones y páginas HTML idénticas a las del sitio, incluyendo filtros, plantillas y estilos.
