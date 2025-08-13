@@ -22,6 +22,28 @@ pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-
 - Es importante usar la ruta `/styles/style.css` en el comando de conversión, pues esa es la ruta que se usa en el servidor.
 - Revisa el resultado y ajusta el contenido si es necesario (ver [limitaciones](como-usar-pandoc.md#limitaciones-de-la-conversión-de-beamer-a-revealjs)). En esta parte se deben hacer los ajustes respecto a las pausas del beamer.
 
+## Preprocesamiento de archivos LaTeX
+
+Antes de convertir tus archivos `.tex` con Pandoc, puedes usar el script [`refinar-tex.py`](../pandoc-files/refinar-tex.py) para limpiar comandos Beamer y adaptar bloques al formato compatible con Pandoc/Reveal.js.
+
+### ¿Cómo usar el script?
+
+1. Abre una terminal y navega a la carpeta donde está tu archivo `.tex` y el script `refinar-tex.py`.
+2. Ejecuta el script indicando el archivo de entrada y el de salida:
+   ```bash
+   python3 refinar-tex.py -i INPUT.tex -o OUTPUT.tex
+   ```
+3. El archivo de salida (`OUTPUT.tex`) será el que usarás como entrada para Pandoc.
+
+**¿Qué hace el script?**
+**¿Qué hace el script?**
+- Elimina comandos `\onslide` y `\pause` que no son bien manejados por pandoc.
+- Convierte bloques Beamer (`block`, `Nota`, `Ejemplo`, etc.) a entornos estándar (`remark`, `example`, etc.).
+- Elimina los entornos `multicols` y `minipage`, conservando el contenido interno (por ejemplo, si tienes `\begin{multicols}{4} ... \end{multicols}`, el resultado será solo el contenido interno).
+- Ajusta los frames para compatibilidad con Pandoc. Si el beamer tiene el formato `\begin{frame}{Título}\end{frame}` lo convierte a `\begin{frame}\frametitle{Título}\end{frame}`.
+
+Revisa y ajusta el script según tus necesidades. Puedes agregar más patrones para otros comandos o bloques.
+
 ## 4. Recursos útiles
 - [Documentación Pandoc](https://pandoc.org/MANUAL.html)
 - [Documentación Reveal.js](https://revealjs.com/)

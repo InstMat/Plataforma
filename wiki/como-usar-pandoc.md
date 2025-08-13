@@ -18,13 +18,13 @@ Si necesitas ejecutar comandos avanzados o personalizados, debes instalar Pandoc
 
 # Archivos necesarios para la conversión
 
-
 Para usar los comandos personalizados de Pandoc en este proyecto, necesitas los siguientes archivos:
 
 - [`remove-num.lua`](../pandoc-files/remove-num.lua): Filtro Lua para eliminar numeración de teoremas.
 - [`reveal.html`](../pandoc-files/reveal.html): Plantilla personalizada para presentaciones Reveal.js.
 - [`default.html`](../pandoc-files/default.html): Plantilla personalizada para exportar páginas HTML simples.
 - [`style.css`](../styles/style.css): Hoja de estilos para la presentación y páginas HTML.
+- Opcional: [`refinar-tex.py`](../pandoc-files/refinar-tex.py): Script Python para limpiar y adaptar archivos LaTeX antes de la conversión.
 
 Puedes descargarlos directamente desde el repositorio en la carpeta `pandoc-files/` o copiarlos desde este proyecto si ya lo tienes clonado.
 
@@ -52,15 +52,13 @@ Puedes descargarlos directamente desde el repositorio en la carpeta `pandoc-file
 La conversión de presentaciones Beamer (LaTeX) a Reveal.js usando Pandoc tiene varias limitaciones:
 
 - **No todos los comandos y entornos de Beamer son soportados.** Algunos estilos, bloques personalizados, animaciones y overlays pueden perderse o no traducirse correctamente. Algunos entornos que no funcionan bien son `multicols` y `minipage`, pero pueden haber otros que no se han revisado.
-- **Fragmentos y transiciones:** Las animaciones de fragmentos (`\pause`, `\onslide`, overlays) pueden no funcionar igual que en Beamer. Reveal.js tiene su propio sistema de fragmentos y transiciones.
+- **Fragmentos y transiciones:** Las animaciones de fragmentos (`\pause`, `\onslide`, overlays) pueden no funcionar igual que en Beamer. Reveal.js tiene su propio sistema de fragmentos y transiciones. Pandoc incorpora automaticamente las pausas en los entornos `enumerate` e `itemize` de LaTeX. Para agregar manualmente una pausa en el archivo HTML generado se debe incorporar la linea `class="fragment"` dentro de un entorno HTML (`<div>`, `<p>`, `<img>`, etc.)
 - **Diseño y formato:** El diseño visual (colores, fondos, temas) puede diferir, ya que Reveal.js usa CSS y HTML, no los temas de Beamer.
 - **Matemáticas:** Las fórmulas matemáticas se renderizan con MathJax ([ver documentación](https://mathjax.org/)), pero algunos paquetes o comandos avanzados de LaTeX pueden no ser compatibles. 
 - **Notas y referencias:** Las notas del presentador y referencias pueden requerir ajustes manuales.
 - **Tablas y gráficos:** Tablas complejas, gráficos TikZ y algunos entornos avanzados pueden no convertirse correctamente.
 
 **Recomendación:** Revisa y ajusta manualmente la presentación convertida. Prueba los comandos y entornos antes de usar conversiones masivas.
-
----
 
 ## Tutorial recomendado
 
