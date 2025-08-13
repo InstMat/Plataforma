@@ -1,0 +1,13 @@
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I",
+            "lecciones": [
+                {
+                    "nombre": "Sistemas de desigualdades lineales",
+                    "enlace": "UnidadI/clase01.html"
+                }
+            ]
+        }
+    ]
+}
