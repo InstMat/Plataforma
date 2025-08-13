@@ -2,7 +2,7 @@
 
 Existen servicios web como [Pandoc Try Online](https://pandoc.org/try/) que permiten convertir texto entre algunos formatos desde el navegador, pero **no permiten ejecutar comandos personalizados** (por ejemplo, filtros Lua, plantillas, Reveal.js, etc.).
 
-Si necesitas ejecutar comandos avanzados o personalizados, debes instalar Pandoc en tu computador o usar un entorno online que permita acceso a la terminal, como [Replit](https://replit.com/), [Gitpod](https://gitpod.io/) o similares, donde puedes instalar Pandoc y ejecutar cualquier comando.
+Si necesitas ejecutar comandos avanzados o personalizados, debes instalar Pandoc en tu computador o usar un entorno online que permita acceso a la terminal, como [Replit](https://replit.com/), [Gitpod](https://gitpod.io/) o [Google Colab](https://colab.research.google.com/) (requiere instalar Pandoc y archivos necesarios en cada notebook), donde puedes instalar Pandoc y ejecutar cualquier comando.
 
 **Recomendación:** Para proyectos que requieren filtros, plantillas o integración avanzada, usa Pandoc instalado localmente o en un entorno online con terminal.
 
