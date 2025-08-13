@@ -77,10 +77,6 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 
 ## Recursos y documentación
 
-- Documentación y tutoriales en la carpeta [`wiki/`](wiki/).
-- [Documentación Reveal.js](https://revealjs.com/)
-- [Documentación MathJax](https://mathjax.org/)
-- [Guía de Pandoc](https://pandoc.org/MANUAL.html)
+ - Documentación y tutoriales en el [Wiki de GitHub](https://github.com/hcastro-cl/Plataforma/wiki).
 
-
-
+---
