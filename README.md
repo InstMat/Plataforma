@@ -11,6 +11,10 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 - **Carga dinámica de datos**: Los datos de las carreras, módulos y lecciones se cargan desde un archivo JSON.
 - **Diseño responsive**: La plataforma se adapta a diferentes tamaños de pantalla (móviles, tablets, escritorio).
 - **Spinner de carga**: Muestra un spinner mientras se cargan los módulos.
+ - **Presentaciones Reveal.js**: Slides interactivas generadas con Pandoc y Reveal.js para clases y unidades.
+ - **Renderizado matemático**: Integración con MathJax para mostrar fórmulas LaTeX en HTML y presentaciones.
+ - **Visualizaciones interactivas**: Soporte para applets GeoGebra embebidos.
+ - **Wiki colaborativo**: Documentación y tutoriales para usuarios y desarrolladores.
 
 ---
 
@@ -20,15 +24,26 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 - **CSS3**: Estilos y animaciones.
 - **JavaScript**: Lógica para cargar y mostrar datos dinámicamente.
 - **FontAwesome**: Íconos utilizados en la interfaz.
+ - **Pandoc**: Conversión de archivos LaTeX a HTML y Reveal.js.
+ - **MathJax**: Renderizado de matemáticas.
+ - **GeoGebra**: Visualizaciones matemáticas interactivas.
+ - **Reveal.js**: Framework para presentaciones tipo slides.
 
 ---
 
-## Cómo visualizar el proyecto
+## Estructura de carpetas
 
-### Requisitos previos
+- `data/`: Archivos JSON con la estructura de carreras, módulos y lecciones.
+- `FEN/`, `Ingenieria/`, `Salud/`, `Pedagogia/`: Contenido por carrera/asignatura, organizado en unidades y clases. Cada clase/unidad puede tener archivos `.html`, imágenes y subcarpetas.
+- `reveal/`: Framework Reveal.js, plugins, temas personalizados (Sass), scripts de inicialización y configuración.
+- `scripts/`: JavaScript para carga dinámica de datos, inicialización de MathJax y Reveal.js.
+- `styles/`: CSS para landing pages, presentaciones y temas personalizados.
+- `pandoc-files/`: Plantillas de Pandoc, filtros Lua, scripts de conversión y utilidades para preprocesar LaTeX.
+- `images/`: Logos e imágenes institucionales.
 
-- Un navegador web moderno (Chrome, Firefox, Edge, etc.).
-- Python (para probar localmente).
+---
+
+## Flujos de trabajo principales
 
 ### Usar un servidor local (recomendado)
 
@@ -40,3 +55,32 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
     - Si tienes Python 2.7:
       ```python -m SimpleHTTPServer 8000```
 4. Abre tu navegador y visita: http://localhost:8000
+
+- **Conversión de archivos LaTeX**:
+  - Usa Pandoc para convertir `.tex` a HTML o presentaciones Reveal.js. Ejemplo:
+    ```bash
+    pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css
+    ```
+  - El filtro Lua `remove-num.lua` elimina numeración de teoremas.
+  - El script Python `refinar-tex.py` limpia comandos Beamer y adapta bloques antes de la conversión.
+
+---
+
+## Integraciones y recomendaciones
+
+- **MathJax**: Configurado en `scripts/mathjax-config.js` para renderizar matemáticas en todo el sitio.
+- **GeoGebra**: Applets embebidos para visualizaciones interactivas.
+- **FontAwesome**: Íconos de interfaz vía CDN o archivos locales.
+- **Pandoc**: Requiere instalación local o uso en entornos online con terminal (Replit, Gitpod, Colab).
+
+---
+
+## Recursos y documentación
+
+- Documentación y tutoriales en la carpeta [`wiki/`](wiki/).
+- [Documentación Reveal.js](https://revealjs.com/)
+- [Documentación MathJax](https://mathjax.org/)
+- [Guía de Pandoc](https://pandoc.org/MANUAL.html)
+
+
+
