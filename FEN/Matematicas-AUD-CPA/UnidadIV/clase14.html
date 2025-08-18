@@ -74,7 +74,8 @@
 				<h1 class="title">Matemáticas</h1>
 				<p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
 					Contador Público y Auditor</p>
-				<p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+				<p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+						alt="image" /></p>
 			</section>
 
 			<section id="límites-con-exponenciales-y-logaritmos" class="slide level3 frame">
@@ -127,12 +128,56 @@
 					<p> </p>
 					<ol>
 						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0^+} \frac{1}{x}
-									=\)</span></p>
+							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0^+} \frac{1}{x}\)</span>:
+							</p>
+							<table style="border-collapse: collapse; width: 100%; text-align: center;" class="fragment">
+								<tr>
+									<th style="border: 1px solid #ccc; padding: 6px;">\(x\)</th>
+									<td style="border: 1px solid #ccc; padding: 6px;">0,1</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">0,01</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">0,001</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">0,0001</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">0,00001</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">0,000001</td>
+								</tr>
+								<tr>
+									<th style="border: 1px solid #ccc; padding: 6px;">\(\dfrac1x\)</th>
+									<td style="border: 1px solid #ccc; padding: 6px;">10</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">100</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">1.000</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">10.000</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">100.000</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">1.000.000</td>
+								</tr>
+							</table>
+							<p class="fragment"><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0^+}
+									\frac{1}{x}={\color{red}+\infty}\)</span></p>
 						</li>
 						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0^-} \frac{1}{x}
-									=\)</span></p>
+							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0^-} \frac{1}{x}\)</span>:
+							</p>
+							<table style="border-collapse: collapse; width: 100%; text-align: center;" class="fragment">
+								<tr>
+									<th style="border: 1px solid #ccc; padding: 6px;">\(x\)</th>
+									<td style="border: 1px solid #ccc; padding: 6px;">-0,1</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-0,01</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-0,001</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-0,0001</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-0,00001</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-0,000001</td>
+								</tr>
+								<tr>
+									<th style="border: 1px solid #ccc; padding: 6px;">\(\dfrac1x\)</th>
+									<td style="border: 1px solid #ccc; padding: 6px;">-10</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-100</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-1.000</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-10.000</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-100.000</td>
+									<td style="border: 1px solid #ccc; padding: 6px;">-1.000.000</td>
+								</tr>
+							</table>
+							<p class="fragment"><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0^+}
+									\frac{1}{x}={\color{red}-\infty}\)</span></p>
 						</li>
 					</ol>
 				</div>
@@ -144,37 +189,28 @@
 					<p> La recta <span class="math inline">\(x=a\)</span> es una asíntota
 						vertical de la gráfica de <span class="math inline">\(y=f(x)\)</span> si
 						se cumple al menos una de las siguientes afirmaciones:</p>
-					<ul>
+					<ul class="two-columns">
 						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow a^+} f(x) =
-									\infty\)</span></p>
+							\(\displaystyle \lim_{x\rightarrow a^+} f(x) = +\infty\)
 						</li>
 						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow a^-} f(x) =
-									\infty\)</span></p>
+							\(\displaystyle \lim_{x\rightarrow a^-} f(x) = +\infty\)
 						</li>
 						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow a^+} f(x) =
-									-\infty\)</span></p>
+							\(\displaystyle \lim_{x\rightarrow a^+} f(x) = -\infty\)
 						</li>
 						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow a^-} f(x) =
-									-\infty\)</span></p>
+							\(\displaystyle \lim_{x\rightarrow a^-} f(x) = -\infty\)
 						</li>
 					</ul>
+					<p style="margin-bottom: 20px;"> </p>
 				</div>
-				<div class="example fragment">
-					<p> Determinar los siguientes límites</p>
-					<ul>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 2^+}
-									\frac{3x+1}{x-2}\)</span></p>
-						</li>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 2^-}
-									\frac{3x+1}{x-2}\)</span></p>
-						</li>
-					</ul>
+				<div class="remark fragment">
+					<p>Como regla "general" se puede decir que si \(L\neq 0\), entonces
+						\[\lim_{x\to 0}\frac{L}{x^n}\]
+						dará como resultado uno de los dos "infinitos" para cualquier \(n>0\). El "infinito" que
+						corresponde dependerá del signo de la fracción.
+					</p>
 				</div>
 			</section>
 			<section id="ejemplos" class="slide level3 frame">
@@ -182,31 +218,33 @@
 				<div class="example">
 					<p> </p>
 					<ol>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0^+}
-									\frac{1}{x^2} =\)</span></p>
+						<li class="fragment" style="margin-bottom: 60px;">
+							\(\displaystyle \lim_{x\rightarrow 0^+}\frac{1}{x^2}\)
 						</li>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0^-}
-									\frac{1}{x^2} =\)</span></p>
+						<li class="fragment" style="margin-bottom: 60px;">
+							\(\displaystyle \lim_{x\rightarrow 0^-}\frac{1}{x^2}\)
 						</li>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 0} \frac{1}{x^2}
-									=\)</span></p>
+						<li class="fragment" style="margin-bottom: 60px;">
+							\(\displaystyle \lim_{x\rightarrow 0} \frac{1}{x^2}\)
 						</li>
 					</ol>
 				</div>
 				<div class="example fragment">
 					<p> </p>
-					<ol>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 4} \frac{1}{x-4}
-									=\)</span></p>
+					<ol class="two-columns">
+						<li class="fragment" style="margin-bottom: 80px;">
+							\(\displaystyle \lim_{x\rightarrow 4} \frac{1}{x-4}\)
 						</li>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow 3}
-									\frac{x+1}{x-3} =\)</span></p>
+						<li class="fragment" style="margin-bottom: 80px;">
+							\(\displaystyle \lim_{x\rightarrow 3}\frac{x+1}{x-3}\)
 						</li>
+						<li class="fragment" style="margin-bottom: 80px;">
+							\(\displaystyle \lim_{x\rightarrow 2^+} \frac{3x+1}{x-2}\)
+						</li>
+						<li class="fragment" style="margin-bottom: 80px;">
+							\(\displaystyle \lim_{x\rightarrow 2^-} \frac{3x+1}{x-2}\)
+						</li>
+
 					</ol>
 				</div>
 			</section>
@@ -229,14 +267,12 @@
 				</div>
 				<div class="example fragment">
 					<p> </p>
-					<ol>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow \infty}
-									\frac{1}{x} =\)</span></p>
+					<ol class="two-columns">
+						<li class="fragment" style="margin-bottom: 150px;">
+							\(\displaystyle \lim_{x\rightarrow \infty} \frac{1}{x}\)
 						</li>
-						<li class="fragment">
-							<p><span class="math inline">\(\displaystyle \lim_{x\rightarrow -\infty}
-									\frac{1}{x} =\)</span></p>
+						<li class="fragment" style="margin-bottom: 150px;">
+							\(\displaystyle \lim_{x\rightarrow -\infty} \frac{1}{x}\)
 						</li>
 					</ol>
 				</div>
@@ -313,7 +349,8 @@
 					</div>-->
 					<div class="fragment">
 						<p>Note que \(\displaystyle \lim_{x\rightarrow \infty}
-								\frac{2x^2-1}{x^2+3} = 2\) y que \(\displaystyle\lim_{x\rightarrow -\infty}\frac{2x^2-1}{x^2+3} = 2\).</p>
+							\frac{2x^2-1}{x^2+3} = 2\) y que \(\displaystyle\lim_{x\rightarrow
+							-\infty}\frac{2x^2-1}{x^2+3} = 2\).</p>
 					</div>
 				</div>
 			</section>
