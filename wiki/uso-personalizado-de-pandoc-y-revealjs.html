@@ -112,39 +112,35 @@
                 <li>Descarga los archivos necesarios:
                     <a href="macro.tex" download>macro.tex</a>,
                     <a href="remove-num.lua" download>remove-num.lua</a>,
-                    <a href="reveal.html" download>reveal.html</a>
+                    <a href="reveal.html" download>reveal.html</a>,
+                    <a href="style.css" download>style.css</a>
                     y
-                    <a href="style.css" download>style.css</a>.
+                    <a href="refinar-tex.py">refinar-tex.py</a>.
                 </li>
             </ul>
 
             <h2>2. Conversión a presentación Reveal.js</h2>
-            <pre><code class="language-bash">pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c /styles/style.css</code></pre>
+            <pre><code class="language-bash">pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css</code></pre>
             <ul>
                 <li><code>macro.tex</code>: tu archivo fuente LaTeX.</li>
                 <li><code>OUTPUT.html</code>: nombre del archivo HTML generado.</li>
                 <li><code>reveal.html</code>: archivo HTML macro que contiene código general.</li>
-                <li><code>remove-num.lua</code>: elimina numeraciones.</li>
-                <li><code>style.css</code>: hoja de estilos.</li>
+                <li><code>remove-num.lua</code>: elimina numeraciones automáticas de algunos entornos (opcional).</li>
+                <li><code>style.css</code>: hoja de estilos HTML para dar formato a la presentación.</li>
             </ul>
 
             <h2>3. Recomendaciones</h2>
             <ul>
                 <li>Ubica todos los archivos necesarios en la misma carpeta o ajusta las rutas en los comandos.</li>
-                <li>Es importante usar la ruta <code>/styles/style.css</code> en el comando de conversión, pues esa es
-                    la
-                    ruta
-                    que se usa en el servidor. Para pruebas locales basta usar:</li>
+                <li>Revisa el resultado y ajusta el contenido si es necesario (ver <a
+                        href="uso-basico-de-pandoc.html#limitaciones-de-la-conversion-de-beamer-a-revealjs">limitaciones</a>).
+                    En esta parte se deben hacer los ajustes respecto a las pausas del Beamer y otros posibles
+                    problemas.</p>
+                </li>
             </ul>
-            <pre><code class="language-bash">pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css</code></pre>
-            <p>Revisa el resultado y ajusta el contenido si es necesario (ver <a
-                    href="como-usar-pandoc.md#limitaciones-de-la-conversión-de-beamer-a-revealjs">limitaciones</a>). En
-                esta
-                parte se deben hacer los ajustes respecto a las pausas del Beamer y otros posibles problemas.</p>
-
-            <h2>Preprocesamiento de archivos LaTeX</h2>
+            <h2>4. Opcional: preprocesamiento de archivos LaTeX</h2>
             <p>Antes de convertir tus archivos <code>.tex</code> con Pandoc, puedes usar el script <a
-                    href="../pandoc-files/refinar-tex.py">refinar-tex.py</a> para limpiar comandos Beamer y adaptar
+                    href="refinar-tex.py">refinar-tex.py</a> para limpiar comandos Beamer y adaptar
                 bloques
                 al
                 formato compatible con Pandoc/Reveal.js.</p>
@@ -153,17 +149,13 @@
             <p><strong>Nota:</strong> Debes tener instalado <code>python3</code> en tu sistema para ejecutar el script.
             </p>
 
-            <h4>Instalación de Python3</h4>
+            <h4>Instalación de Python3 en Windows/macOS/Linux:</h4>
             <ul>
-                <li><strong>Windows/macOS/Linux:</strong>
-                    <ul>
-                        <li>Ve a la página oficial: <a href="https://www.python.org/downloads/">python.org</a>.</li>
-                        <li>Descarga el instalador para tu sistema operativo y sigue las instrucciones.</li>
-                        <li>Verifica la instalación abriendo una terminal y ejecutando:
-                            <pre><code class="language-bash">python3 --version</code></pre>
-                            Deberías ver la versión instalada.
-                        </li>
-                    </ul>
+                <li>Ve a la página oficial: <a href="https://www.python.org/downloads/">python.org</a>.</li>
+                <li>Descarga el instalador para tu sistema operativo y sigue las instrucciones.</li>
+                <li>Verifica la instalación abriendo una terminal y ejecutando:
+                    <pre><code class="language-bash">python3 --version</code></pre>
+                    Deberías ver la versión instalada.
                 </li>
             </ul>
 
@@ -218,9 +210,6 @@
                 <li><a href="https://revealjs.com/">Documentación Reveal.js</a></li>
                 <li><a href="https://mathjax.org/">Documentación MathJax</a></li>
             </ul>
-
-            <hr>
-            <p>¿Tienes dudas o sugerencias? Edita este documento en el wiki o consulta al equipo de desarrollo.</p>
         </main>
     </div>
     <script>

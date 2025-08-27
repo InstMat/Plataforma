@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cómo editar el archivo HTML generado por Pandoc con Reveal.js</title>
-    <meta name="description"
-        content="Cómo editar el archivo HTML generado por Pandoc con Reveal.js" />
+    <meta name="description" content="Cómo editar el archivo HTML generado por Pandoc con Reveal.js" />
 
     <!-- MathJax v3 -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
@@ -96,6 +95,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -104,34 +104,37 @@
 
         <main class="card">
             <p>Este documento explica cómo personalizar y editar el archivo HTML generado por Pandoc usando la plantilla
-                <a href="https://revealjs.com/" target="_blank" rel="noopener">Reveal.js</a> para presentaciones.</p>
+                <a href="https://revealjs.com/" target="_blank" rel="noopener">Reveal.js</a> para presentaciones.
+            </p>
 
             <h2>1. Estructura básica del archivo</h2>
             <ul>
                 <li>El encabezado del archivo HTML es generado automáticamente por Pandoc usando el archivo
-                    <code>reveal.html</code> o <code>default.html</code> como base. Se recomienda no modificar esta
-                    parte.</li>
+                    <code>reveal.html</code> como base. Se recomienda no modificar esta parte.
+                </li>
                 <li>Se recomienda solo editar los contenidos dentro del entorno HTML
-                    <code>&lt;body&gt;...&lt;/body&gt;</code>.</li>
+                    <code>&lt;body&gt;...&lt;/body&gt;</code>.
+                </li>
                 <li>Dentro de <code>body</code> se encuentra la estructura básica de Reveal.js: cada sección
-                    <code>&lt;section&gt;..&lt;/section&gt;</code> corresponde a un <code>frame</code> de LaTeX.</li>
+                    <code>&lt;section&gt;..&lt;/section&gt;</code> corresponde a un <code>frame</code> de LaTeX.
+                </li>
             </ul>
 
             <h2>2. Edición básica</h2>
             <ul>
+                <li>Si no sabes HTML puedes revisar el tutorial de <a
+                        href=https://www.w3schools.com/html />W3Schools</a>.</li>
                 <li>Abre el archivo HTML en cualquier editor de texto (VS Code, Sublime, Notepad++). Se recomienda VS
                     Code por su integración con <a href="https://github.com/features/copilot" target="_blank">GitHub
                         Copilot</a>.</li>
                 <li>Para modificar el contenido de una slide, busca la sección correspondiente:</li>
+                <pre>
+<code>&lt;section&gt;
+    &lt;h2&gt;Título&lt;/h2&gt;
+    &lt;p&gt;Contenido...&lt;/p&gt;
+ &lt;/section&gt;</code></pre>
             </ul>
-
-            <pre><code>&lt;section&gt;
-  &lt;h2&gt;Título&lt;/h2&gt;
-  &lt;p&gt;Contenido...&lt;/p&gt;
-&lt;/section&gt;
-</code></pre>
-
-            <p>Puedes agregar, quitar o modificar texto, fórmulas (MathJax), imágenes, enlaces, etc.</p>
+            <p>Puedes agregar, quitar o modificar texto, fórmulas (MathJax), imágenes, videos, enlaces, etc.</p>
 
             <h2>3. Personalización avanzada</h2>
             <ul>
@@ -140,19 +143,20 @@
                 <li>Agrega fragmentos (pausas) Reveal.js usando la clase <code>fragment</code>:</li>
             </ul>
 
-            <pre><code>&lt;li class="fragment"&gt;Elemento animado&lt;/li&gt;
-&lt;div class="fragment"&gt;Bloque animado&lt;/div&gt;
-&lt;p class="fragment"&gt;Párrafo animado&lt;/p&gt;
-&lt;img class="fragment" src="imagen.png" alt="Imagen animada"&gt;
+            <pre>
+<code>&lt;li class="fragment"&gt;Elemento animado&lt;/li&gt;
+ &lt;div class="fragment"&gt;Bloque animado&lt;/div&gt;
+ &lt;p class="fragment"&gt;Párrafo animado&lt;/p&gt;
+ &lt;img class="fragment" src="imagen.png" alt="Imagen animada"&gt;
 </code></pre>
 
             <p>En el archivo <code>style.css</code> está definida una clase para emular <code>multicols</code> en
                 listas:</p>
-
-            <pre><code>&lt;ol class="two-columns"&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-&lt;/ol&gt;
+            <pre>
+<code>&lt;ol class="two-columns"&gt;
+    &lt;li&gt;1&lt;/li&gt;
+    &lt;li&gt;2&lt;/li&gt;
+ &lt;/ol&gt;
 </code></pre>
 
             <p>También funciona con <code>&lt;ul&gt;</code>. Por ahora solo está implementada la clase para 2 columnas.
@@ -166,14 +170,12 @@
             <p>Reveal.js también permite slides verticales:</p>
 
             <pre>
-                <code>&lt;section&gt;Slide tradicional 1&lt;/section&gt;
-                    &lt;section&gt;
-                      &lt;section&gt;Slide vertical 2.1&lt;/section&gt;
-                      &lt;section&gt;Slide vertical 2.2&lt;/section&gt;
-                      &lt;section&gt;Slide vertical 2.3&lt;/section&gt;
-                    &lt;/section&gt;
-                </code>
-            </pre>
+<code>&lt;section&gt;Slide tradicional 1&lt;/section&gt;
+    &lt;section&gt;
+    &lt;section&gt;Slide vertical 2.1&lt;/section&gt;
+    &lt;section&gt;Slide vertical 2.2&lt;/section&gt;
+    &lt;section&gt;Slide vertical 2.3&lt;/section&gt;
+ &lt;/section&gt;</code></pre>
 
             <h2>4. Integración con MathJax</h2>
             <p>La conversión Pandoc deja las fórmulas con el formato:</p>
@@ -185,47 +187,51 @@
             <pre><code>\[e^{i\pi}+1=0\]</code></pre>
 
             <p>MathJax funciona con <code>\label</code> dentro de entornos <code>equation</code>:</p>
-            <pre><code>\[
-                \begin{equation}\label{eq:1} ... \end{equation}
-            \]</code></pre>
-
-            <p>Luego puedes referenciar:</p>
+            <pre>
+<code>\[
+    \begin{equation}\label{eq:1} ... \end{equation}
+ \]</code></pre>
+            <p><strong>Notar que se debe usar <code>\[..\]</code> para poder usar entornos LaTeX.</strong>. Luego puedes
+                referenciar la ecuación en cualquier parte de la página usando:</p>
             <pre><code>\eqref{eq:1}</code></pre>
-
             <p>Pandoc convierte entornos LaTeX a divs HTML:</p>
             <pre><code>\begin{center}...\end{center}</code></pre>
-            <p>se transforma en:</p>
+            <p>se transforma automáticamente en:</p>
             <pre><code>&lt;div class="center"&gt;...&lt;/div&gt;</code></pre>
 
             <h2>5. Ejemplo de un slide generado por Pandoc</h2>
             <p>Entrada <code>.tex</code>:</p>
-            <pre><code>\begin{frame}
-  \frametitle{Título del slide}
-  Primer párrafo
-  Segundo párrafo luego de una pausa
-  \begin{theorem}Un teorema \[a^2+b^2=c^2\].\end{theorem}
-  \begin{enumerate}
-    \item 1
-    \item 2
-  \end{enumerate}
-\end{frame}
+            <pre>
+<code>\begin{frame}
+    \frametitle{Título del slide}
+    Primer párrafo
+    Segundo párrafo luego de una pausa
+    \begin{theorem}Un teorema \[a^2+b^2=c^2\].\end{theorem}
+    \begin{enumerate}
+        \item 1
+        \item 2
+    \end{enumerate}
+ \end{frame}
 </code></pre>
 
             <p>Salida <code>.html</code>:</p>
-            <pre><code>&lt;section&gt;
-  &lt;h2&gt;Título del slide&lt;/h2&gt;
-  &lt;p&gt;Primer párrafo.&lt;/p&gt;
-  &lt;p&gt;Segundo párrafo luego de una pausa.&lt;/p&gt;
-  &lt;div class="theorem"&gt;Un teorema \[a^2+b^2=c^2.\]&lt;/div&gt;
-  &lt;ol&gt;
-    &lt;li class="fragment"&gt;&lt;p&gt;1&lt;/p&gt;&lt;/li&gt;
-    &lt;li class="fragment"&gt;&lt;p&gt;2&lt;/p&gt;&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/section&gt;
+            <pre>
+<code>&lt;section&gt;
+    &lt;h2&gt;Título del slide&lt;/h2&gt;
+    &lt;p&gt;Primer párrafo.&lt;/p&gt;
+    &lt;p&gt;Segundo párrafo luego de una pausa.&lt;/p&gt;
+    &lt;div class="theorem"&gt;Un teorema \[a^2+b^2=c^2.\]&lt;/div&gt;
+    &lt;ol&gt;
+        &lt;li class="fragment"&gt;&lt;p&gt;1&lt;/p&gt;&lt;/li&gt;
+        &lt;li class="fragment"&gt;&lt;p&gt;2&lt;/p&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+ &lt;/section&gt;
 </code></pre>
 
-            <p>Se pueden agregar pausas adicionales en el html resultante:</p>
-                        <pre><code>&lt;section&gt;
+            <p>Se pueden agregar pausas adicionales en el <code>.html</code> resultante. por ejemplo para poner una
+                pausa antes de que aparezca el teorema se incluye <code>fragment</code> en la clase del <code>div</code>
+                del teorema:</p>
+            <pre><code>&lt;section&gt;
   &lt;h2&gt;Título del slide&lt;/h2&gt;
   &lt;p&gt;Primer párrafo.&lt;/p&gt;
   &lt;p&gt;Segundo párrafo luego de una pausa.&lt;/p&gt;
@@ -242,7 +248,8 @@
                 <li>Haz una copia de seguridad antes de editar el HTML.</li>
                 <li>Si editas el HTML manualmente, evita sobrescribirlo con Pandoc.</li>
                 <li>Para cambios globales, edita la plantilla <code>reveal.html</code> o el archivo
-                    <code>style.css</code>.</li>
+                    <code>style.css</code>.
+                </li>
             </ul>
 
             <h2>7. Recursos útiles</h2>
@@ -251,11 +258,6 @@
                 <li><a href="https://mathjax.org/" target="_blank">Documentación MathJax</a></li>
                 <li><a href="https://pandoc.org/MANUAL.html" target="_blank">Guía de Pandoc</a></li>
             </ul>
-
-            <footer>
-                <p class="muted">¿Dudas o sugerencias? Edita este documento en el wiki o consulta al equipo de
-                    desarrollo.</p>
-            </footer>
         </main>
     </div>
 </body>

@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Uso básico de Pandoc</title>
-    <meta name="description"
-        content="Uso básico de Pandoc" />
+    <meta name="description" content="Uso básico de Pandoc" />
 
     <!-- MathJax v3 -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
@@ -114,7 +113,8 @@
                     rel="noopener">Replit</a>, <a href="https://gitpod.io/" target="_blank" rel="noopener">Gitpod</a> o
                 <a href="https://colab.research.google.com/" target="_blank" rel="noopener">Google Colab</a> (requiere
                 instalar Pandoc y archivos necesarios en cada notebook), donde puedes instalar Pandoc y ejecutar
-                cualquier comando.</p>
+                cualquier comando.
+            </p>
 
             <p><strong>Recomendación:</strong> Para proyectos que requieren filtros, plantillas o integración avanzada,
                 usa Pandoc instalado localmente o en un entorno online con terminal.</p>
@@ -132,32 +132,7 @@
 
             <p>Deberías ver la versión instalada y detalles del sistema.</p>
 
-            <h2>Archivos opcionales para la conversión</h2>
-            <p>Para usar los comandos personalizados de Pandoc en este proyecto, necesitas los siguientes archivos:</p>
-            <ul>
-                <li><code>remove-num.lua</code>: Filtro Lua para eliminar numeración de teoremas.</li>
-                <li><code>reveal.html</code>: Plantilla personalizada para presentaciones Reveal.js.</li>
-                <li><code>default.html</code>: Plantilla personalizada para exportar páginas HTML simples.</li>
-                <li><code>style.css</code>: Hoja de estilos para la presentación y páginas HTML. Acá se personalizan los
-                    entornos tipo <code>theorem</code> y similares.</li>
-                <li><code>refinar-tex.py</code>: Script Python para limpiar y adaptar archivos LaTeX/Beamer antes de la
-                    conversión.</li>
-            </ul>
-
-            <p>Puedes descargarlos directamente desde el repositorio en la carpeta <code>pandoc-files/</code> o
-                copiarlos desde este proyecto si ya lo tienes clonado.</p>
-
-            <h3>Ejemplo de descarga manual</h3>
-            <ol>
-                <li>Ve a la carpeta <code>pandoc-files/</code> y <code>styles/</code> en el repositorio.</li>
-                <li>Haz clic derecho sobre el archivo (<code>remove-num.lua</code>, <code>reveal.html</code>,
-                    <code>default.html</code>, <code>style.css</code>) y selecciona "Descargar" o "Guardar enlace
-                    como...".</li>
-                <li>Ubica los archivos en la misma carpeta donde ejecutarás los comandos Pandoc, o asegúrate de que la
-                    ruta en el comando coincida con la ubicación del archivo <code>style.css</code>.</li>
-            </ol>
-
-            <h2>Cómo usar Pandoc</h2>
+            <h2>¿Cómo usar Pandoc?</h2>
             <ol>
                 <li>Para convertir archivos <code>.tex</code> a HTML básico de una sola página sin formato especial:
                 </li>
@@ -170,7 +145,7 @@
                     especial:</li>
             </ol>
 
-            <pre><code>pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=default.html</code></pre>
+            <pre><code>pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html</code></pre>
 
             <ol start="3">
                 <li>Para generar una presentación Reveal.js (a partir de un Beamer) sin formato especial:</li>
@@ -178,13 +153,7 @@
 
             <pre><code>pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html</code></pre>
 
-            <ol start="3">
-                <li>Para generar una presentación Reveal.js (a partir de un Beamer) usando el formato especial:</li>
-            </ol>
-
-            <pre><code>pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css</code></pre>
-
-            <h2>Limitaciones de la conversión de Beamer a Reveal.js</h2>
+            <h2><a id="limitaciones-de-la-conversion-de-beamer-a-revealjs">Limitaciones de la conversión de Beamer a Reveal.js</a></h2>
             <p>La conversión de LaTeX/Beamer a HTML/Reveal.js usando Pandoc tiene varias limitaciones:</p>
             <ul>
                 <li><strong>No todos los comandos y entornos de Beamer son soportados.</strong> Algunos estilos, bloques
@@ -194,26 +163,26 @@
                 <li><strong>Fragmentos y transiciones:</strong> Para las presentaciones Beamer, las pausas
                     (<code>\pause</code>, <code>\onslide</code>, overlays) no son correctamente convertidas por Pandoc.
                     Sin embargo, Pandoc incorpora automaticamente las pausas en los entornos <code>enumerate</code> e
-                    <code>itemize</code> de LaTeX. Estos entornos son transformados de</li>
-            </ul>
-
-            <pre><code>\begin{enumerate}
+                    <code>itemize</code> de LaTeX. Estos entornos son transformados de
+                </li>
+                <pre><code>\begin{enumerate}
    \item ...
 \end{enumerate}
 </code></pre>
 
-            <p>a</p>
+                <p>a</p>
 
-            <pre><code>&lt;ol&gt;
+                <pre><code>&lt;ol&gt;
    &lt;li class="fragment"&gt; ... &lt;/li&gt;
 &lt;/ol&gt;
 </code></pre>
-
+            </ul>
             <p>Como se ve en el ejemplo anterior, Reveal.js tiene su propio sistema de pausas (<code>fragments</code>)
                 las cuales se deben incorporar manualmente en el documento HTML para pausas fuera de entornos de listas.
                 Para agregar manualmente una pausa en el archivo HTML se debe incorporar la linea
                 <code>class="fragment"</code> dentro de un entorno HTML (<code>&lt;div&gt;</code>,
-                <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>, etc.).</p>
+                <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>, etc.).
+            </p>
 
             <p><strong>Diseño y formato:</strong> El diseño visual (colores, fondos, temas) puede diferir, ya que
                 Reveal.js usa CSS y HTML, no los temas de Beamer. Al no usar el formato especial, el archivo HTML
@@ -235,10 +204,9 @@
             </div>
 
             <h2>Tutoriales recomendados</h2>
-            <p>Consulta el tutorial: <a href="tutorial-pandoc-resultados.md">Cómo usar Pandoc para obtener los mismos
-                    resultados que el sitio</a></p>
-            <p>Consulta también el tutorial: <a href="como-editar-html-revealjs.md">Cómo editar el HTML generado por
-                    Pandoc con Reveal.js</a></p>
+            <p>Consulta el tutorial: <a href="uso-personalizado-de-pandoc-y-revealjs.html">Uso personalizado de Pandoc y
+                    Reveal.js</a> para obtener resultados similares a los del sitio</p>
+            <p>Consulta también el tutorial: <a href="editando-html-y-revealjs.html">Editando HTML y Reveal.js</a> para hacer edición personalizada del html generado.</p>
 
             <footer>
                 <p class="muted">Última actualización: agosto 2025</p>
