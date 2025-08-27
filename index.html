@@ -13,6 +13,14 @@
 </head>
 
 <body>
+    <div id="login-modal" class="login-modal">
+        <div class="login-content">
+            <h2>Acceso</h2>
+            <input type="password" id="login-password" placeholder="Ingresa la clave">
+            <button id="login-btn">Entrar</button>
+            <p id="login-error" class="login-error" style="display:none;color:red;">Clave incorrecta</p>
+        </div>
+    </div>
     <div class="container">
         <!-- Encabezado -->
         <header>
@@ -68,6 +76,7 @@
         </div>
     </div>
     <script src="scripts/carreras.js"></script>
+    <script src="scripts/login.js"></script>
 </body>
 
 </html>
