@@ -1,5 +1,3 @@
-# Ignorar la carpeta wiki
-wiki/
 **/.DS_Store
 *.tex
 *.aux
@@ -20,3 +18,4 @@ Salud/MatematicasII-TecMed/license.png
 Salud/MatematicasII-TecMed/license2.png
 desktop.ini
 favicon_io.zip
+wiki/*.md

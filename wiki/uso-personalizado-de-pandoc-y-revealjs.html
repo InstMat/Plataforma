@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cómo usar Pandoc para obtener los mismos resultados que el sitio</title>
+    <meta name="description" content="Cómo usar Pandoc para obtener los mismos resultados que el sitio" />
+
+    <!-- MathJax v3 -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+
+    <style>
+        :root {
+            --bg: #f7f9fb;
+            --card: #ffffff;
+            --muted: #6b7280;
+            --accent: #0ea5a4
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+            line-height: 1.6;
+            margin: 0;
+            background: var(--bg);
+            color: #0f172a
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 28px
+        }
+
+        header {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 18px
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.4rem
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06)
+        }
+
+        a {
+            color: var(--accent)
+        }
+
+        pre {
+            background: #0b1220;
+            color: #e6eef6;
+            padding: 12px;
+            border-radius: 8px;
+            overflow: auto;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Roboto Mono, monospace
+        }
+
+        code {
+            padding: 2px 6px;
+            border-radius: 4px
+        }
+
+        h2 {
+            margin-top: 1.4rem
+        }
+
+        ul {
+            margin-left: 1.05rem
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        footer {
+            margin-top: 26px;
+            font-size: 0.9rem;
+            color: var(--muted)
+        }
+
+        .note {
+            border-left: 4px solid var(--accent);
+            padding: 10px 14px;
+            background: #f0fdfa;
+            border-radius: 6px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>¿Cómo usar Pandoc para obtener los mismos resultados que el sitio?</h1>
+        </header>
+        <main class="card">
+            <p>Este tutorial te guía paso a paso para convertir archivos LaTeX-Beamer (<code>.tex</code>) en
+                presentaciones
+                Reveal.js y páginas HTML idénticas a las del sitio, usando los mismos filtros, plantillas y estilos.</p>
+
+            <h2>1. Requisitos previos</h2>
+            <ul>
+                <li>Instala Pandoc (<a href="https://pandoc.org/installing.html">instrucciones aquí</a>).</li>
+                <li>Descarga los archivos necesarios:
+                    <a href="macro.tex" download>macro.tex</a>,
+                    <a href="remove-num.lua" download>remove-num.lua</a>,
+                    <a href="reveal.html" download>reveal.html</a>
+                    y
+                    <a href="style.css" download>style.css</a>.
+                </li>
+            </ul>
+
+            <h2>2. Conversión a presentación Reveal.js</h2>
+            <pre><code class="language-bash">pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c /styles/style.css</code></pre>
+            <ul>
+                <li><code>macro.tex</code>: tu archivo fuente LaTeX.</li>
+                <li><code>OUTPUT.html</code>: nombre del archivo HTML generado.</li>
+                <li><code>reveal.html</code>: archivo HTML macro que contiene código general.</li>
+                <li><code>remove-num.lua</code>: elimina numeraciones.</li>
+                <li><code>style.css</code>: hoja de estilos.</li>
+            </ul>
+
+            <h2>3. Recomendaciones</h2>
+            <ul>
+                <li>Ubica todos los archivos necesarios en la misma carpeta o ajusta las rutas en los comandos.</li>
+                <li>Es importante usar la ruta <code>/styles/style.css</code> en el comando de conversión, pues esa es
+                    la
+                    ruta
+                    que se usa en el servidor. Para pruebas locales basta usar:</li>
+            </ul>
+            <pre><code class="language-bash">pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css</code></pre>
+            <p>Revisa el resultado y ajusta el contenido si es necesario (ver <a
+                    href="como-usar-pandoc.md#limitaciones-de-la-conversión-de-beamer-a-revealjs">limitaciones</a>). En
+                esta
+                parte se deben hacer los ajustes respecto a las pausas del Beamer y otros posibles problemas.</p>
+
+            <h2>Preprocesamiento de archivos LaTeX</h2>
+            <p>Antes de convertir tus archivos <code>.tex</code> con Pandoc, puedes usar el script <a
+                    href="../pandoc-files/refinar-tex.py">refinar-tex.py</a> para limpiar comandos Beamer y adaptar
+                bloques
+                al
+                formato compatible con Pandoc/Reveal.js.</p>
+
+            <h3>¿Cómo usar el script python?</h3>
+            <p><strong>Nota:</strong> Debes tener instalado <code>python3</code> en tu sistema para ejecutar el script.
+            </p>
+
+            <h4>Instalación de Python3</h4>
+            <ul>
+                <li><strong>Windows/macOS/Linux:</strong>
+                    <ul>
+                        <li>Ve a la página oficial: <a href="https://www.python.org/downloads/">python.org</a>.</li>
+                        <li>Descarga el instalador para tu sistema operativo y sigue las instrucciones.</li>
+                        <li>Verifica la instalación abriendo una terminal y ejecutando:
+                            <pre><code class="language-bash">python3 --version</code></pre>
+                            Deberías ver la versión instalada.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Ejecución en sistemas online</h4>
+            <p>Si no quieres instalar Python localmente, puedes usar entornos online como <a
+                    href="https://replit.com/">Replit</a> o <a href="https://gitpod.io/">Gitpod</a>:</p>
+            <ul>
+                <li>Sube tu archivo <code>.tex</code> y el script <code>refinar-tex.py</code>.</li>
+                <li>Abre una terminal en el entorno online y ejecuta el script igual que en local:
+
+                    <pre><code class="language-bash">python3 refinar-tex.py -i INPUT.tex -o OUTPUT.tex</code></pre>
+                </li>
+            </ul>
+            <p>Si tienes instalado Python en tu computador:</p>
+            <ol>
+                <li>Abre una terminal y navega a la carpeta donde está tu archivo <code>.tex</code> y el script
+                    <code>refinar-tex.py</code>.
+                </li>
+                <li>Ejecuta el script indicando el archivo de entrada y el de salida:
+                    <pre><code class="language-bash">python3 refinar-tex.py -i INPUT.tex -o OUTPUT.tex</code></pre>
+                </li>
+                <li>El archivo de salida (<code>OUTPUT.tex</code>) será el que usarás como entrada para Pandoc.</li>
+            </ol>
+
+            <h3>¿Qué hace el script?</h3>
+            <ul>
+                <li>Elimina comandos <code>\onslide</code> y <code>\pause</code> que no son bien manejados por Pandoc.
+                </li>
+                <li>Convierte bloques Beamer en formato <code>\begin{block}{Teorema}</code>,
+                    <code>\begin{block}{Nota}</code>,
+                    <code>\begin{block}{Ejemplo}</code> a entornos estándar <code>\begin{theorem}</code>,
+                    <code>\begin{remark}</code>, <code>\begin{example}</code>. Solo funciona con algunos casos. <em>En
+                        caso
+                        de
+                        no estar seguro, se recomienda hacer los cambios de manera manual</em>.
+                </li>
+                <li>Elimina los entornos <code>multicols</code> y <code>minipage</code>, conservando el contenido
+                    interno.
+                </li>
+                <li>Ajusta los frames para compatibilidad con Pandoc. Si el Beamer tiene el formato
+                    <code>\begin{frame}{Título}</code> lo convierte a <code>\begin{frame}\frametitle{Título}</code>.
+                </li>
+            </ul>
+
+            <p>Revisa y ajusta el script según tus necesidades. Puedes agregar más patrones para otros comandos o
+                bloques.
+            </p>
+
+            <h2>4. Recursos útiles</h2>
+            <ul>
+                <li><a href="https://pandoc.org/MANUAL.html">Documentación Pandoc</a></li>
+                <li><a href="https://revealjs.com/">Documentación Reveal.js</a></li>
+                <li><a href="https://mathjax.org/">Documentación MathJax</a></li>
+            </ul>
+
+            <hr>
+            <p>¿Tienes dudas o sugerencias? Edita este documento en el wiki o consulta al equipo de desarrollo.</p>
+        </main>
+    </div>
+    <script>
+        document.querySelectorAll('a[download]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const url = link.getAttribute('href');
+                const filename = link.getAttribute('download') || url.split('/').pop();
+                fetch(url)
+                    .then(resp => resp.blob())
+                    .then(blob => {
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(blob);
+                        a.download = filename;
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+body {
+    counter-reset: example-counter;
+    counter-reset: exercise-counter;
+    counter-reset: def-counter;
+    counter-reset: thm-counter;
+}
+
+.frame{
+    text-align: left;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.example, .examples, .exercise, .exercises, .definition, .theorem, .proposition, .corollary, .remark, .solution, .block, .fact, .proof {
+    display: inline-block;
+    position: relative;
+    width: 95%;
+    padding: 10px 15px;
+    margin-bottom: 10px; /* Add spacing between examples */
+    background-color: #f0f0f0; /* Light blue background */
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #ccc; /* Optional: border for better definition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+
+.example ol li, .examples ol li, .exsercise ol li, .exercises ol li{
+    margin-bottom: 10mm;
+}
+    
+.example::before {
+    content: "Ejemplo. ";
+    /*
+    content: "Ejemplo " counter(example-counter) ". ";
+    counter-increment: example-counter;
+    */
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.examples::before {
+    content: "Ejemplos. ";
+    /*
+    content: "Ejemplo " counter(example-counter) ". ";
+    counter-increment: example-counter;
+    */
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.exercise::before {
+    content: "Ejercicio. ";
+    /*
+    content: "Ejercicio " counter(exercise-counter) ". ";
+    counter-increment: exercise-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2C3E50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.exercises::before {
+    content: "Ejercicios. ";
+    /*
+    content: "Ejercicio " counter(exercise-counter) ". ";
+    counter-increment: exercise-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2C3E50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.definition::before {
+    content: "Definición. ";
+    /*
+    content: "Definición " counter(def-counter) ". ";
+    counter-increment: def-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #F28C28;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.fact::before {
+    content: "Propiedades. ";
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.theorem::before {
+    content: "Teorema. ";
+    /*
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.proposition::before {
+    content: "Proposición. ";
+    /*
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.lemma::before {
+    content: "Lema. ";
+    /*
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.solution::before {
+    content: "Solución. "; /* Add "Solución. " */
+    font-weight: bold;
+    color: #333;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.remark::before {
+    content: "Observación. "; /* Add "Observación. " */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.proof::before {
+    content: "Demostración. ";
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #999;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+ol.two-columns, ul.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas iguales */
+  gap: 20px; /* Espacio entre las columnas */
+  list-style-position: inside; /* Asegura que los números o viñetas estén alineados */
+  padding-left: 0; /* Elimina el padding por defecto de la lista */
+  width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+}
+
+:root {
+  --r-main-font-size: 26px;
+}
