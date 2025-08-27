@@ -31,18 +31,6 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 
 ---
 
-## Estructura de carpetas
-
-- `data/`: Archivos JSON con la estructura de carreras, módulos y lecciones.
-- `FEN/`, `Ingenieria/`, `Salud/`, `Pedagogia/`: Contenido por carrera/asignatura, organizado en unidades y clases. Cada clase/unidad puede tener archivos `.html`, imágenes y subcarpetas.
-- `reveal/`: Framework Reveal.js, plugins, temas personalizados (Sass), scripts de inicialización y configuración.
-- `scripts/`: JavaScript para carga dinámica de datos, inicialización de MathJax y Reveal.js.
-- `styles/`: CSS para landing pages, presentaciones y temas personalizados.
-- `pandoc-files/`: Plantillas de Pandoc, filtros Lua, scripts de conversión y utilidades para preprocesar LaTeX.
-- `images/`: Logos e imágenes institucionales.
-
----
-
 ## Flujos de trabajo principales
 
 ### Usar un servidor local (recomendado)
@@ -78,5 +66,6 @@ Este proyecto es una **plataforma web** que permite a los usuarios explorar mód
 ## Recursos y documentación
 
  - Documentación y tutoriales en el [Wiki de GitHub](https://github.com/hcastro-cl/Plataforma/wiki).
+
 
 ---
