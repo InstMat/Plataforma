@@ -121,11 +121,11 @@ header h1 {
     position: fixed;
     z-index: 9999;
     left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.90);
     display: flex; align-items: center; justify-content: center;
 }
 .login-content {
-    background: #fff;
+    background: #d0d0d0;
     padding: 2em;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
