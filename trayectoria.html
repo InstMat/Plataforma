@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="image">
-  <title>Ecuaciones diferenciales ordinarias</title>
+  <title>Trayectorias</title>
   <!--
 <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -69,138 +69,234 @@
   <div class="reveal">
     <div class="slides">
 
-      <section id="title-slide">
-        <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+      <section id="title-slide" class="level1">
+        <h1 class="title">Trayectorias para llegar a Ecuaciones Diferenciales Ordinarias</h1>
         <p class="subtitle">Ingeniería Civil</p>
-        <p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+        <p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:25.0%" alt="image" /></p>
       </section>
 
       <section id="dinámica-de-poblaciones-4" class="slide level3 frame">
         <h3>Dinámica de poblaciones</h3>
         <p>Un modelo de poblaciones algo más realista que el de Malthus es
           \[\label{pob-log1}
-            \left\{
-            \begin{aligned}
-            \frac{dP}{dt}&amp;=\frac rKP(K-P)\\
-            P(0)&amp;=P_0.
-            \end{aligned}
-            \right.
+          \left\{
+          \begin{aligned}
+          \frac{dP}{dt}&amp;=\frac rKP(K-P)\\
+          P(0)&amp;=P_0.
+          \end{aligned}
+          \right.
           \]
-          </p>
-        <p>Esta última ecuación se conoce como <strong><em>ecuación logística de Verhulst</em></strong> y las cantidades que ahí aparecen tienen la
+        </p>
+        <p>Esta última ecuación se conoce como <strong><em>ecuación logística de Verhulst</em></strong> y las cantidades
+          que ahí aparecen tienen la
           siguiente interpretación:</p>
         <ul>
-          <li class="fragment">
+          <li>
             <p>La cantidad \(P=P(t)\) representa la población en un tiempo \(t\).</p>
           </li>
-          <li class="fragment">
-            <p>La cantidad \(\dfrac{dP}{dt}\) representa la tasa de cambio instantánea de la población con respecto al tiempo (Módulo Cálculo I).</p>
+          <li>
+            <p>La cantidad \(\dfrac{dP}{dt}\) representa la <em>tasa de cambio instantánea</em> de la población con
+              respecto al tiempo <span style="color: red;">(Cálculo I).</span></p>
           </li>
-          <li class="fragment">
-            <p>El valor de <span class="math inline">\(K\)</span> representa la capacidad máxima del sistema. Usualmente es un dato del problema.</p>
+          <li>
+            <p>El valor de <span class="math inline">\(K\)</span> representa la capacidad máxima del sistema. Usualmente
+              es un dato del problema.</p>
           </li>
-          <li class="fragment">
-            <p>La constante <span class="math inline">\(r\)</span> representa una tasa neta de natalidad (puede ser negativa).</p>
+          <li>
+            <p>La constante <span class="math inline">\(r\)</span> representa una tasa neta de natalidad (puede ser
+              negativa).</p>
           </li>
-          <li class="fragment">
-            <p>El producto <span class="math inline">\(P(K-P)\)</span> se puede interpretar como una interacción entre la población actual y el “espacio disponible”.</p>
+          <li>
+            <p>El producto <span class="math inline">\(P(K-P)\)</span> se puede interpretar como una interacción entre
+              la población actual y el “espacio disponible”.</p>
           </li>
         </ul>
-        </section>
-        <section class="slide level4 frame">
+      </section>
+      <section class="slide level4 frame">
         <h3>Solución de la ecuación logística</h3>
-        <p class="fragment">
-          Para resolver esta EDO se usa el método de <strong>separación de variables</strong>: Suponiendo que \(P&gt;0\) (población positiva) y \(P&lt;K\) (la población no supera la capacidad máxima disponible) entonces \(P\) verifica:
+        <p>
+          Para resolver esta EDO se usa el método de <strong>separación de variables</strong>: Suponiendo que \(P&gt;0\)
+          (población positiva) y \(P&lt;K\) (la población no supera la capacidad máxima disponible) entonces \(P\)
+          verifica:
           \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int r\mathrm{d}t.\]
-          Para resolver la integral del lado izquierdo, se usa fracciones parciales (Módulo Álgebra):
+          Para resolver la integral del lado izquierdo, se usa fracciones parciales <span
+            style="color: red;">(Álgebra)</span>:
           \[\frac{K}{P(K-P)}=\frac{1}{P}+\frac{1}{K-P},\]
-          por lo que (Módulo Cálculo II)
-          \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int\left(\frac1P+\frac1{K-P}\right)\mathrm{d}P=\int \frac1P\mathrm{d}P+\int\frac1{K-P}\mathrm{d}P.\]
-          Calculando las integrales (Módulo Cálculo II) se obtiene
+          por lo que
+          \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int\left(\frac1P+\frac1{K-P}\right)\mathrm{d}P=\int
+          \frac1P\mathrm{d}P+\int\frac1{K-P}\mathrm{d}P.\]
+          Calculando las integrales indefinidas <span style="color: red;">(Cálculo II)</span> se obtiene
           \[\ln P -\ln(K-P)=rt+C,\]
-          y si despejamos \(P\) (Módulo Introducción a las Matemáticas) se obtiene
+          y si despejamos \(P\) <span style="color: red;">(Introducción a las Matemáticas)</span> se obtiene
           \[
-            \boxed{P(t)=\frac{K}{1+Ae^{-rt}}}
+          \boxed{P(t)=\frac{K}{1+Ae^{-rt}}}
           \]
           para cierta constante \(A\).
         </p>
       </section>
       <section class="slide level4 frame">
         <h3>Algunas preguntas que se hacen en este tipo de problemas</h3>
-        <p class="fragment">
+        <p>
           Dado que la población inicial es \(P(0)=P_0\) y suponiendo que la población luego de 1 año es \(P(1)=P_1\),
-          <ul>
-            <li class="fragment">
-              <p>¿Cuál es la población en un tiempo \(t&gt;0\)?</p>
-              <p>Para responder hay que determinar \(A\) y \(r\) resolviendo ecuaciones usando \(P(0)\) y \(P(1)\):
-              \[
-              P(0)=\frac{K}{1+A}, \quad P(1)=\frac{K}{1+Ae^{-r}}.
-              \]
-              De donde se obtiene que
-              \[A=\frac{K-P_0}{P_0}, \quad r=\ln\left(\frac{P_1(K-P_0)}{P_0(K-P_1)}\right).
-              \]
-              (Módulo Introducción a las Matemáticas).</p>
-            </li>
-          </ul>
-          </section>
-          <section class="slide level4 frame">
-            <h3>Algunas preguntas que se hacen en este tipo de problemas</h3>
-            <ul>
-            <li class="fragment">
-              <p>¿Cuál es la población cuando \(t\to\infty\)?</p>
-              <p>Para responder esta pregunta debemos calcular el límite cuando \(t\to\infty\) de \(P(t)\). Se tiene que
+        <ul>
+          <li>
+            <p>¿Cuál es la población en un tiempo \(t&gt;0\)?</p>
+            <p>Para responder hay que determinar \(A\) y \(r\) resolviendo ecuaciones usando \(P(0)\) y \(P(1)\):
+              \[P(0)=\frac{K}{1+A}, \quad P(1)=\frac{K}{1+Ae^{-r}},\]
+              de donde se obtiene que
+              \[A=\frac{K-P_0}{P_0}, \quad r=\ln\left(\frac{P_1(K-P_0)}{P_0(K-P_1)}\right).\]
+              <span style="color: red;">(Introducción a las Matemáticas)</span>
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section class="slide level4 frame">
+        <h3>Algunas preguntas que se hacen en este tipo de problemas</h3>
+        <ul>
+          <li>
+            <p>¿Cuál es la población cuando \(t\to\infty\)?</p>
+            <p>Para responder esta pregunta debemos calcular el límite cuando \(t\to\infty\) de \(P(t)\). Se tiene que
               \[\lim_{t\to\infty}P(t)=\lim_{t\to\infty}\frac{K}{1+Ae^{-rt}}=K.\]
-              (Módulo Cálculo I).</p>
-            </li>
-          </ul>
-        </section>
-        <section class="slide level4 frame">
-          <h3>Algunas preguntas que se hacen en este tipo de problemas</h3>
-          <ul>
-            <li class="fragment">
-              <p>¿Cuánto tiempo tarda la población en alcanzar cierto valor \(P_0 &lt; P_2 &lt; K \)?</p>
-              <p>Para responder se plantea la ecuación \(P(t)=P_2\) y se resuelve para \(t\):
+              <span style="color: red;">(Cálculo I)</span>
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section class="slide level4 frame">
+        <h3>Algunas preguntas que se hacen en este tipo de problemas</h3>
+        <ul>
+          <li>
+            <p>¿Cuánto tiempo tarda la población en alcanzar cierto valor \(P_0 &lt; P_2 &lt; K \)?</p>
+            <p>Para responder se plantea la ecuación \(P(t)=P_2\) y se resuelve para \(t\):
               \[P_2=\frac{K}{1+Ae^{-rt}}\implies t=\frac1r\ln\left(\frac{P_2(K-P_0)}{P_0(K-P_2)}\right).
               \]
-              Luego se interpreta que el número obtenido es el tiempo que tarda la población en alcanzar el valor \(P_2\) medido en las mismas unidades de tiempo que se usaron para definir \(r\) y \(t\). (Módulo Introducción a las Matemáticas).</p>
-            </li>
-          </ul>
+              Luego se interpreta que el número obtenido es el tiempo que tarda la población en alcanzar el valor
+              \(P_2\) medido en las mismas unidades de tiempo que se usaron para definir \(r\) y \(t\). <span
+                style="color: red;">(Introducción a las Matemáticas)</span></p>
+          </li>
+        </ul>
         </p>
       </section>
 
-      <section class="slide level4 frame">
-  <h3>Mezcla de soluciones</h3>
-  Considere el siguiente problema de dos tanques conectados:
-  <p>Dos tanques, A y B, contienen cada uno 100 litros de agua. Inicialmente, el tanque A tiene 20 kg de sal disuelta y el tanque B tiene 5 kg. El agua se bombea del tanque A al B a razón de 4 litros/minuto, y del tanque B al A a razón de 2 litros/minuto. Además, ambos tanques se mezclan perfectamente. ¿Cuánta sal hay en cada tanque después de 15 minutos?</p>
-  <p>Para resolver este problema se debe plantear un <strong>sistema de ecuaciones diferenciales lineales</strong> que modele la situación. Sea \(x(t)\) la cantidad de sal (en kg) en el tanque A y \(y(t)\) la cantidad de sal en el tanque B en el tiempo \(t\) (en minutos). Entonces, las tasas de cambio están dadas por:</p>
-  <p>
-  \[
-  \begin{cases}
-  \dfrac{dx}{dt} = -\dfrac{4}{100}x + \dfrac{2}{100}y \\
-  \dfrac{dy}{dt} = \dfrac{4}{100}x - \dfrac{2}{100}y
-  \end{cases}
-  \quad \text{con condiciones iniciales} \quad
-  \begin{cases}
-  x(0) = 20 \\
-  y(0) = 5
-  \end{cases}
-  \]
-  </p>
-  <p>Este sistema se puede resolver usando métodos para sistemas lineales de ecuaciones diferenciales (Módulo Álgebra y Cálculo II).</p>
+      <section class="slide level3 frame">
+        <h3>Mezcla de soluciones</h3>
+        <p style="text-align: center;"><img data-src="tanques.png" style="width:30.0%" alt="image" /></p>
+        <p>
+          Dos tanques, cada uno de los cuales contiene 24 litros de una solución salina, están conectados entre
+          sí mediante unos tubos. El tanque A recibe agua pura a razón de 6 litros/minuto y el líquido sale del tanque B
+          con la misma razón; además, se bombean 8 litros/minuto de líquido del tanque A al tanque B y 2 litros/minuto
+          del tanque B al tanque A. Los líquidos dentro de cada tanque se mantienen bien revueltos, de modo que cada
+          mezcla es homogénea. Si en un principio la solución salina en el tanque A contiene \(x_0\) kg de sal y la del
+          tanque B contiene inicialmente \(y_0\) kg de sal, determinar la masa de sal en cada tanque en un instante
+          \(t>0\).</p>
+        <p>
+          \[
+          \left\{
+          \begin{aligned}
+          x'(t) &= \frac{1}{12}y(t) - \frac{1}{3}x(t),&&x(0)=x_0, \\
+          y'(t) &= \frac{1}{3}x(t) - \frac{1}{3}y(t),&&y(0)=y_0.
+          \end{aligned}
+          \right.
+          \]
+          En forma matricial <span style="color: red;">(Álgebra Lineal)</span>:
+          \[
+          \mathfrak X(t)=\begin{pmatrix} x'(t) \\ y'(t) \end{pmatrix}
+          =
+          \begin{pmatrix}
+          -\tfrac{1}{3} & \tfrac{1}{12} \\
+          \tfrac{1}{3} & -\tfrac{1}{3}
+          \end{pmatrix}
+          \begin{pmatrix} x(t) \\ y(t) \end{pmatrix}=A\mathfrak X(t),
+          \qquad
+          \mathfrak x(0)=\begin{pmatrix} x(0) \\ y(0) \end{pmatrix}=\begin{pmatrix} x_0 \\ y_0 \end{pmatrix}.
+          \]
+        </p>
+        <p>Para resolver este sistema se puede usar la Matriz Exponencial o la Transformada de Laplace.</p>
       </section>
-
-
+      <section class="slide level3 frame">
+        <h3>Solución usando la matriz exponencial</h3>
+        <p>La solución tiene la forma \(\mathfrak X(t) = e^{At} \mathfrak X(0)\). Para calcular \(e^{At}\) primero se
+          calculan los <em>valores propios</em> de la matriz:
+          \[
+          \lambda_1 = -\dfrac{1}{6}, \qquad \lambda_2 = -\dfrac{1}{2},
+          \]
+          luego los <em>vectores propios asociados</em>
+          \[
+          v_1 = \begin{pmatrix} 1 \\ 2 \end{pmatrix}, \qquad
+          v_2 = \begin{pmatrix} 1 \\ -2 \end{pmatrix}.
+          \]
+        </p>
+        <p>Así se tiene
+          \[
+          e^{At} = V\begin{pmatrix} e^{-t/6} & 0 \\ 0 & e^{-t/2} \end{pmatrix} V^{-1}\qquad
+          V=
+          \begin{pmatrix}
+          1 & 1 \\
+          2 & -2
+          \end{pmatrix},
+          V^{-1}=\frac14
+          \begin{pmatrix}
+          2 & 1 \\
+          2 & -1
+          \end{pmatrix},
+          \]
+        </p>
+        <p>
+          y por tanto, la solución es
+          \[
+          \mathfrak X(t)=
+          \begin{pmatrix}
+          \frac{2x_0+y_0}{4} e^{-t/6} + \frac{2x_0-y_0}{4} e^{-t/2} \\[1em]
+          \frac{2x_0+y_0}{2} e^{-t/6} - \frac{2x_0-y_0}{2} e^{-t/2}
+          \end{pmatrix}.
+          \]
+          <span style="color: red;">(Álgebra Lineal)</span>
+        </p>
+      </section>
+      <section class="slide level3 frame">
+        <h3>Solución usando Transformada de Laplace</h3>
+        <p>Aplicando la Transformada de Laplace al sistema de ecuaciones, se obtiene
+          \[
+          \begin{pmatrix} s+1/3 & -1/12 \\ -1/3 & s+1/3 \end{pmatrix}
+          \begin{pmatrix} X(s) \\ Y(s) \end{pmatrix} =
+          \begin{pmatrix} x_0 \\ y_0 \end{pmatrix}.
+          \]
+          resolviendo el sistema de ecuaciones algebraicas <span style="color: red;">(Álgebra Lineal)</span>
+          \[
+          X(s) = \frac{x_0 (s+1/3) + \frac{1}{12} y_0}{s^2 + \frac{2}{3}s + \frac{1}{6}},
+          \qquad
+          Y(s) = \frac{(s+1/3)y_0 + \frac{1}{3} x_0}{s^2 + \frac{2}{3}s + \frac{1}{6}}.
+          \]
+        </p>
+        <p>Descomponiendo en fracciones parciales <span style="color: red;">(Álgebra)</span>
+          \[
+          X(s) = \frac{2 x_0 + y_0}{4} \cdot \frac{1}{s+1/6} + \frac{2 x_0 - y_0}{4} \cdot \frac{1}{s+1/2},
+          \qquad
+          Y(s) = \frac{2 x_0 + y_0}{2} \cdot \frac{1}{s+1/6} - \frac{2 x_0 - y_0}{2} \cdot \frac{1}{s+1/2}.
+          \]
+          y aplicando la Transformada Inversa de Laplace se obtiene
+          \[ x(t) = \frac{2x_0+y_0}{4} e^{-t/6} + \frac{2x_0-y_0}{4} e^{-t/2}, \quad
+          y(t) = \frac{2x_0+y_0}{2} e^{-t/6} - \frac{2x_0-y_0}{2} e^{-t/2}
+          \]
+        </p>
+        <div class="remark fragment">
+          <ul>
+          <li style="margin-top: 10pt;">En otros modelos (resortes acoplados, circuitos eléctricos, etc.) se obtienen sistemas similares donde pueden aparecer valores propios complejos (<span style="color: red;"> \(\implies\)conocer y manipular números complejos</span>), lo que deriva en soluciones oscilatorias (<span style="color: red;">\(\implies\) conocer y manipular funciones trigonométricas</span>).</li>
+          <li style="margin-top: 10pt;">Al igual que con los sistemas de EDOs, al estudiar EDOs lineales de orden 2 o mayor, aparece el concepto de <em>independencia lineal.</em> (<span style="color: red;">\(\implies\) espacios vectoriales</span>)</li>
+          </ul>
+        </div>
+      </section>
     </div>
   </div>
 
 
-	<script src="reveal/dist/reveal.js"></script>
+  <script src="reveal/dist/reveal.js"></script>
 
-	<!-- reveal.js plugins -->
-	<script src="reveal/plugin/notes/notes.js"></script>
-	<script src="reveal/plugin/search/search.js"></script>
-	<script src="reveal/plugin/zoom/zoom.js"></script>
-	<script src="scripts/reveal-init.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="reveal/plugin/notes/notes.js"></script>
+  <script src="reveal/plugin/search/search.js"></script>
+  <script src="reveal/plugin/zoom/zoom.js"></script>
+  <script src="scripts/reveal-init.js"></script>
 </body>
 
 </html>
