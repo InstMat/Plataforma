@@ -168,6 +168,27 @@
         </p>
       </section>
 
+      <section class="slide level4 frame">
+  <h3>Mezcla de soluciones</h3>
+  Considere el siguiente problema de dos tanques conectados:
+  <p>Dos tanques, A y B, contienen cada uno 100 litros de agua. Inicialmente, el tanque A tiene 20 kg de sal disuelta y el tanque B tiene 5 kg. El agua se bombea del tanque A al B a razón de 4 litros/minuto, y del tanque B al A a razón de 2 litros/minuto. Además, ambos tanques se mezclan perfectamente. ¿Cuánta sal hay en cada tanque después de 15 minutos?</p>
+  <p>Para resolver este problema se debe plantear un <strong>sistema de ecuaciones diferenciales lineales</strong> que modele la situación. Sea \(x(t)\) la cantidad de sal (en kg) en el tanque A y \(y(t)\) la cantidad de sal en el tanque B en el tiempo \(t\) (en minutos). Entonces, las tasas de cambio están dadas por:</p>
+  <p>
+  \[
+  \begin{cases}
+  \dfrac{dx}{dt} = -\dfrac{4}{100}x + \dfrac{2}{100}y \\
+  \dfrac{dy}{dt} = \dfrac{4}{100}x - \dfrac{2}{100}y
+  \end{cases}
+  \quad \text{con condiciones iniciales} \quad
+  \begin{cases}
+  x(0) = 20 \\
+  y(0) = 5
+  \end{cases}
+  \]
+  </p>
+  <p>Este sistema se puede resolver usando métodos para sistemas lineales de ecuaciones diferenciales (Módulo Álgebra y Cálculo II).</p>
+      </section>
+
 
     </div>
   </div>
