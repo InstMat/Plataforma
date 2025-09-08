@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="image">
+  <title>Ecuaciones diferenciales ordinarias</title>
+  <!--
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+-->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal/dist/reset.css">
+  <link rel="stylesheet" href="reveal/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {
+      /* see #7635 */
+      overflow: visible;
+    }
+
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    div.columns {
+      display: flex;
+      gap: min(4vw, 1.5em);
+    }
+
+    div.column {
+      flex: auto;
+      overflow-x: auto;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class] {
+      list-style: none;
+    }
+
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="styles/style.css" />
+  <!---Geogebra-->
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+  <!--MathJAX-->
+  <script src="scripts/mathjax-config.js" async></script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section id="title-slide">
+        <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+        <p class="subtitle">Ingeniería Civil</p>
+        <p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+      </section>
+
+      <section id="dinámica-de-poblaciones-4" class="slide level3 frame">
+        <h3>Dinámica de poblaciones</h3>
+        <p>Un modelo de poblaciones algo más realista que el de Malthus es
+          \[\label{pob-log1}
+            \left\{
+            \begin{aligned}
+            \frac{dP}{dt}&amp;=\frac rKP(K-P)\\
+            P(0)&amp;=P_0.
+            \end{aligned}
+            \right.
+          \]
+          </p>
+        <p>Esta última ecuación se conoce como <strong><em>ecuación logística de Verhulst</em></strong> y las cantidades que ahí aparecen tienen la
+          siguiente interpretación:</p>
+        <ul>
+          <li class="fragment">
+            <p>La cantidad \(P=P(t)\) representa la población en un tiempo \(t\).</p>
+          </li>
+          <li class="fragment">
+            <p>La cantidad \(\dfrac{dP}{dt}\) representa la tasa de cambio instantánea de la población con respecto al tiempo (Módulo Cálculo I).</p>
+          </li>
+          <li class="fragment">
+            <p>El valor de <span class="math inline">\(K\)</span> representa la capacidad máxima del sistema. Usualmente es un dato del problema.</p>
+          </li>
+          <li class="fragment">
+            <p>La constante <span class="math inline">\(r\)</span> representa una tasa neta de natalidad (puede ser negativa).</p>
+          </li>
+          <li class="fragment">
+            <p>El producto <span class="math inline">\(P(K-P)\)</span> se puede interpretar como una interacción entre la población actual y el “espacio disponible”.</p>
+          </li>
+        </ul>
+        </section>
+        <section class="slide level4 frame">
+        <h3>Solución de la ecuación logística</h3>
+        <p class="fragment">
+          Para resolver esta EDO se usa el método de <strong>separación de variables</strong>: Suponiendo que \(P&gt;0\) (población positiva) y \(P&lt;K\) (la población no supera la capacidad máxima disponible) entonces \(P\) verifica:
+          \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int r\mathrm{d}t.\]
+          Para resolver la integral del lado izquierdo, se usa fracciones parciales (Módulo Álgebra):
+          \[\frac{K}{P(K-P)}=\frac{1}{P}+\frac{1}{K-P},\]
+          por lo que (Módulo Cálculo II)
+          \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int\left(\frac1P+\frac1{K-P}\right)\mathrm{d}P=\int \frac1P\mathrm{d}P+\int\frac1{K-P}\mathrm{d}P.\]
+          Calculando las integrales (Módulo Cálculo II) se obtiene
+          \[\ln P -\ln(K-P)=rt+C,\]
+          y si despejamos \(P\) (Módulo Introducción a las Matemáticas) se obtiene
+          \[
+            \boxed{P(t)=\frac{K}{1+Ae^{-rt}}}
+          \]
+          para cierta constante \(A\).
+        </p>
+      </section>
+      <section class="slide level4 frame">
+        <h3>Algunas preguntas que se hacen en este tipo de problemas</h3>
+        <p class="fragment">
+          Dado que la población inicial es \(P(0)=P_0\) y suponiendo que la población luego de 1 año es \(P(1)=P_1\),
+          <ul>
+            <li class="fragment">
+              <p>¿Cuál es la población en un tiempo \(t&gt;0\)?</p>
+              <p>Para responder hay que determinar \(A\) y \(r\) resolviendo ecuaciones usando \(P(0)\) y \(P(1)\):
+              \[
+              P(0)=\frac{K}{1+A}, \quad P(1)=\frac{K}{1+Ae^{-r}}.
+              \]
+              De donde se obtiene que
+              \[A=\frac{K-P_0}{P_0}, \quad r=\ln\left(\frac{P_1(K-P_0)}{P_0(K-P_1)}\right).
+              \]
+              (Módulo Introducción a las Matemáticas).</p>
+            </li>
+          </ul>
+          </section>
+          <section class="slide level4 frame">
+            <h3>Algunas preguntas que se hacen en este tipo de problemas</h3>
+            <ul>
+            <li class="fragment">
+              <p>¿Cuál es la población cuando \(t\to\infty\)?</p>
+              <p>Para responder esta pregunta debemos calcular el límite cuando \(t\to\infty\) de \(P(t)\). Se tiene que
+              \[\lim_{t\to\infty}P(t)=\lim_{t\to\infty}\frac{K}{1+Ae^{-rt}}=K.\]
+              (Módulo Cálculo I).</p>
+            </li>
+          </ul>
+        </section>
+        <section class="slide level4 frame">
+          <h3>Algunas preguntas que se hacen en este tipo de problemas</h3>
+          <ul>
+            <li class="fragment">
+              <p>¿Cuánto tiempo tarda la población en alcanzar cierto valor \(P_0 &lt; P_2 &lt; K \)?</p>
+              <p>Para responder se plantea la ecuación \(P(t)=P_2\) y se resuelve para \(t\):
+              \[P_2=\frac{K}{1+Ae^{-rt}}\implies t=\frac1r\ln\left(\frac{P_2(K-P_0)}{P_0(K-P_2)}\right).
+              \]
+              Luego se interpreta que el número obtenido es el tiempo que tarda la población en alcanzar el valor \(P_2\) medido en las mismas unidades de tiempo que se usaron para definir \(r\) y \(t\). (Módulo Introducción a las Matemáticas).</p>
+            </li>
+          </ul>
+        </p>
+      </section>
+
+
+    </div>
+  </div>
+
+
+	<script src="reveal/dist/reveal.js"></script>
+
+	<!-- reveal.js plugins -->
+	<script src="reveal/plugin/notes/notes.js"></script>
+	<script src="reveal/plugin/search/search.js"></script>
+	<script src="reveal/plugin/zoom/zoom.js"></script>
+	<script src="scripts/reveal-init.js"></script>
+</body>
+
+</html>
