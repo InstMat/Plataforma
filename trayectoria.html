@@ -55,6 +55,55 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+
+    .modal-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 2em 1.5em 1.5em 1.5em;
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+      width: 30vw;
+      height: 30vw;
+      max-width: 60vw;
+      max-height: 60vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 0.7em;
+      right: 1em;
+      font-size: 1.5em;
+      color: #c00;
+      cursor: pointer;
+    }
+
+    /* Indicador visual para elementos clickeables tipo info */
+    .clickable-info {
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+
+    .clickable-info:hover span {
+      filter: brightness(1.2) drop-shadow(0 0 2px #c00);
+      text-decoration: underline wavy #c00;
+    }
   </style>
   <link rel="stylesheet" href="reveal/dist/theme/white.css" id="theme">
   <link rel="stylesheet" href="styles/style.css" />
@@ -70,14 +119,42 @@
     <div class="slides">
 
       <section id="title-slide" class="level1">
-        <h1 class="title">Trayectorias para llegar a Ecuaciones Diferenciales Ordinarias</h1>
+        <h1 class="title">Trayectorias Matemáticas para llegar al módulo "Ecuaciones Diferenciales Ordinarias"</h1>
         <p class="subtitle">Ingeniería Civil</p>
-        <p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:25.0%" alt="image" /></p>
+        <p class="author"><img data-src="images/logoINSTMAT-color.png" style="width:25.0%" alt="image" /></p>
+      </section>
+      <section id="contenidos" class="slide level3 frame">
+        <h3>Contenidos del módulo "Ecuaciones Diferenciales Ordinarias"</h3>
+        <ul>
+          <li>Unidad 1</li>
+          <ul>
+            <li>Series: series de potencias, intervalo de convergencia, series de Taylor.</li>
+            <li>Ecuaciones diferenciales ordinarias de primer orden: variables separables, lineales, exactas, ED0 de
+              Bernoulli</li>
+            <li>Modelos que usan EDOs de primer orden: modelo logístico de Verhulst, mezcla de soluciones, leyes de
+              Newton, circuitos eléctricos.</li>
+          </ul>
+          <li>Unidad 2</li>
+          <ul>
+            <li>Ecuaciones diferenciales ordinarias de segundo orden: coeficientes indeterminados, variación de
+              parámetros.</li>
+            <li>Solución de una EDO usando series de potencias.</li>
+            <li>Transformada de Laplace y sus propiedades. Uso de la transformada para resolver EDOs de primer y segundo
+              orden.</li>
+          </ul>
+          <li>Unidad 3</li>
+          <ul>
+            <li>Sistemas de EDOs: definición</li>
+            <li>Solución de sistemas de EDOs usando transformada de Laplace.</li>
+            <li>Solución de sistemas de EDOs usando la matriz exponencial</li>
+            <li>Modelos que usan sistemas de EDOs: mezcla de soluciones, resortes acoplados, circuitos eléctricos.</li>
+          </ul>
+        </ul>
       </section>
 
       <section id="dinámica-de-poblaciones-4" class="slide level3 frame">
-        <h3>Dinámica de poblaciones</h3>
-        <p>Un modelo de poblaciones algo más realista que el de Malthus es
+        <h3>Un ejemplo: dinámica de poblaciones</h3>
+        <p>El modelo logístico de Verlhust es
           \[\label{pob-log1}
           \left\{
           \begin{aligned}
@@ -86,17 +163,36 @@
           \end{aligned}
           \right.
           \]
-        </p>
-        <p>Esta última ecuación se conoce como <strong><em>ecuación logística de Verhulst</em></strong> y las cantidades
-          que ahí aparecen tienen la
-          siguiente interpretación:</p>
+          y las cantidades que ahí aparecen tienen la siguiente interpretación:</p>
         <ul>
           <li>
             <p>La cantidad \(P=P(t)\) representa la población en un tiempo \(t\).</p>
           </li>
           <li>
             <p>La cantidad \(\dfrac{dP}{dt}\) representa la <em>tasa de cambio instantánea</em> de la población con
-              respecto al tiempo <span style="color: red;">(Cálculo I).</span></p>
+              respecto al tiempo
+              <span id="calc1-trigger" class="clickable-info">
+                <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                      fill="#fff">i</text>
+                  </svg>
+                  Cálculo I
+                </span>
+              </span>.
+            <div id="calc1-modal" class="modal-bg" style="display:none;">
+              <div class="modal-content">
+                <span class="close-modal" id="close-calc1">&times;</span>
+                <h4>¿Por qué "Cálculo I"?</h4>
+                <p>En la Unidad I <strong>Cálculo I</strong> se introduce el concepto de derivada y su interpretación
+                  como tasa de cambio instantánea.
+                  Este concepto es clave para entender lo que significa la ecuación diferencial y porqué sirve como
+                  modelo para representar una determinada población.
+                </p>
+              </div>
+            </div>
+            </p>
           </li>
           <li>
             <p>El valor de <span class="math inline">\(K\)</span> representa la capacidad máxima del sistema. Usualmente
@@ -119,19 +215,74 @@
           (población positiva) y \(P&lt;K\) (la población no supera la capacidad máxima disponible) entonces \(P\)
           verifica:
           \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int r\mathrm{d}t.\]
-          Para resolver la integral del lado izquierdo, se usa fracciones parciales <span
-            style="color: red;">(Álgebra)</span>:
-          \[\frac{K}{P(K-P)}=\frac{1}{P}+\frac{1}{K-P},\]
-          por lo que
-          \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int\left(\frac1P+\frac1{K-P}\right)\mathrm{d}P=\int
-          \frac1P\mathrm{d}P+\int\frac1{K-P}\mathrm{d}P.\]
-          Calculando las integrales indefinidas <span style="color: red;">(Cálculo II)</span> se obtiene
-          \[\ln P -\ln(K-P)=rt+C,\]
-          y si despejamos \(P\) <span style="color: red;">(Introducción a las Matemáticas)</span> se obtiene
-          \[
-          \boxed{P(t)=\frac{K}{1+Ae^{-rt}}}
-          \]
-          para cierta constante \(A\).
+          Para resolver la integral del lado izquierdo, se usa fracciones parciales
+          <span id="algebra-trigger" class="clickable-info">
+            <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                  fill="#fff">i</text>
+              </svg>
+              Álgebra
+            </span>
+          </span>
+        <div id="algebra-modal" class="modal-bg" style="display:none;">
+          <div class="modal-content">
+            <span class="close-modal" id="close-algebra">&times;</span>
+            <h4>¿Por qué "Álgebra"?</h4>
+            <p>En la Unidad III del módulo <strong>Álgebra</strong> se estudia la factorización de polinomios y el
+              método de descomposición en fracciones parciales.</p>
+          </div>
+        </div>
+        \[\frac{K}{P(K-P)}=\frac{1}{P}+\frac{1}{K-P},\]
+        por lo que
+        \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int\left(\frac1P+\frac1{K-P}\right)\mathrm{d}P=\int
+        \frac1P\mathrm{d}P+\int\frac1{K-P}\mathrm{d}P.\]
+        Calculando las integrales indefinidas
+        <span id="calculo2-trigger" class="clickable-info">
+          <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+              <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10" fill="#fff">i</text>
+            </svg>
+            Cálculo I
+          </span></span> se obtiene
+        <div id="calculo2-modal" class="modal-bg" style="display:none;">
+          <div class="modal-content">
+            <span class="close-modal" id="close-calculo2">&times;</span>
+            <h4>¿Por qué "Cálculo I"?</h4>
+            <p>
+              En la Unidad III de <strong>Cálculo I</strong> se estudian las técnicas de integración, incluyendo el
+              cálculo de integrales indefinidas y definidas.
+            </p>
+          </div>
+        </div>
+        \[\ln P -\ln(K-P)=rt+C,\]
+        y si despejamos \(P\) <span id="intro-mat-trigger" class="clickable-info"><span
+            style="color: red; text-decoration: underline dotted; cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+              <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10" fill="#fff">i</text>
+            </svg>
+            Introducción a las Matemáticas
+          </span></span> se obtiene
+
+        <div id="intro-mat-modal" class="modal-bg" style="display:none;">
+          <div class="modal-content">
+            <span class="close-modal" id="close-intro-mat">&times;</span>
+            <h4>¿Por qué "Introducción a las Matemáticas"?</h4>
+            <p>
+              En las Unidades I y II de <strong>Introducción a las Matemáticas</strong> se estudian los conceptos
+              básicos de lo que son expresiones algebráicas, lo que es una ecuación, que significa "despejar una
+              variable".
+              En la Unidad III se estudian funciones trigonométricas y exponenciales, y sus inversas.
+            </p>
+          </div>
+        </div>
+        \[
+        \boxed{P(t)=\frac{K}{1+Ae^{-rt}}}
+        \]
+        para cierta constante \(A\).
         </p>
       </section>
       <section class="slide level4 frame">
@@ -145,7 +296,26 @@
               \[P(0)=\frac{K}{1+A}, \quad P(1)=\frac{K}{1+Ae^{-r}},\]
               de donde se obtiene que
               \[A=\frac{K-P_0}{P_0}, \quad r=\ln\left(\frac{P_1(K-P_0)}{P_0(K-P_1)}\right).\]
-              <span style="color: red;">(Introducción a las Matemáticas)</span>
+              <span id="intro-mat2-trigger" class="clickable-info">
+                <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                      fill="#fff">i</text>
+                  </svg>
+                  Introducción a las Matemáticas
+                </span>
+              </span>
+            <div id="intro-mat2-modal" class="modal-bg" style="display:none;">
+              <div class="modal-content">
+                <span class="close-modal" id="close-intro-mat2">&times;</span>
+                <h4>¿Por qué "Introducción a las Matemáticas"?</h4>
+                <p>
+                  Nuevamente hay que lidiar con ecuaciones que involucran funciones exponciales, trigonométricas y sus
+                  inversas
+                </p>
+              </div>
+            </div>
             </p>
           </li>
         </ul>
@@ -157,7 +327,27 @@
             <p>¿Cuál es la población cuando \(t\to\infty\)?</p>
             <p>Para responder esta pregunta debemos calcular el límite cuando \(t\to\infty\) de \(P(t)\). Se tiene que
               \[\lim_{t\to\infty}P(t)=\lim_{t\to\infty}\frac{K}{1+Ae^{-rt}}=K.\]
-              <span style="color: red;">(Cálculo I)</span>
+              <span id="calc1b-trigger" class="clickable-info">
+                <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                      fill="#fff">i</text>
+                  </svg>
+                  Cálculo I
+                </span>
+              </span>
+            <div id="calc1b-modal" class="modal-bg" style="display:none;">
+              <div class="modal-content">
+                <span class="close-modal" id="close-calc1b">&times;</span>
+                <h4>¿Por qué "Cálculo I"?</h4>
+                <p>
+                  En la Unidad I de <strong>Cálculo I</strong> se estudian el concepto de límite y límites infinitos y
+                  al infinito, lo que permiten calcular el comportamiento asintótico de funciones como \(P(t)\) cuando
+                  \(t\to\infty\).
+                </p>
+              </div>
+            </div>
             </p>
           </li>
         </ul>
@@ -171,8 +361,28 @@
               \[P_2=\frac{K}{1+Ae^{-rt}}\implies t=\frac1r\ln\left(\frac{P_2(K-P_0)}{P_0(K-P_2)}\right).
               \]
               Luego se interpreta que el número obtenido es el tiempo que tarda la población en alcanzar el valor
-              \(P_2\) medido en las mismas unidades de tiempo que se usaron para definir \(r\) y \(t\). <span
-                style="color: red;">(Introducción a las Matemáticas)</span></p>
+              \(P_2\) medido en las mismas unidades de tiempo que se usaron para definir \(r\) y \(t\).
+              <span id="intro-mat3-trigger" class="clickable-info">
+                <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                      fill="#fff">i</text>
+                  </svg>
+                  Introducción a las Matemáticas
+                </span>
+              </span>
+            <div id="intro-mat3-modal" class="modal-bg" style="display:none;">
+              <div class="modal-content">
+                <span class="close-modal" id="close-intro-mat3">&times;</span>
+                <h4>¿Por qué "Introducción a las Matemáticas"?</h4>
+                <p>
+                  Nuevamente hay que lidiar con conceptos básicos de ecuaciones, despeje de variables y funciones
+                  elementales, necesarios para resolver ecuaciones como \(P(t)=P_2\) y despejar \(t\).
+                </p>
+              </div>
+            </div>
+            </p>
           </li>
         </ul>
         </p>
@@ -198,18 +408,37 @@
           \end{aligned}
           \right.
           \]
-          En forma matricial <span style="color: red;">(Álgebra Lineal)</span>:
-          \[
-          \mathfrak X(t)=\begin{pmatrix} x'(t) \\ y'(t) \end{pmatrix}
-          =
-          \begin{pmatrix}
-          -\tfrac{1}{3} & \tfrac{1}{12} \\
-          \tfrac{1}{3} & -\tfrac{1}{3}
-          \end{pmatrix}
-          \begin{pmatrix} x(t) \\ y(t) \end{pmatrix}=A\mathfrak X(t),
-          \qquad
-          \mathfrak x(0)=\begin{pmatrix} x(0) \\ y(0) \end{pmatrix}=\begin{pmatrix} x_0 \\ y_0 \end{pmatrix}.
-          \]
+          En forma matricial <span id="algebra-lineal1-trigger" class="clickable-info">
+            <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                  fill="#fff">i</text>
+              </svg>
+              Álgebra Lineal
+            </span>
+          </span>
+        <div id="algebra-lineal1-modal" class="modal-bg" style="display:none;">
+          <div class="modal-content">
+            <span class="close-modal" id="close-algebra-lineal1">&times;</span>
+            <h4>¿Por qué "Álgebra Lineal"?</h4>
+            <p>
+              En la Unidad I de <strong>Álgebra Lineal</strong> se estudian sistemas de ecuaciones lineales y su
+              representación matricial, necesario para entender ambas formas de ver un sistema de EDOs lineales.
+            </p>
+          </div>
+        </div>
+        \[
+        \mathfrak X(t)=\begin{pmatrix} x'(t) \\ y'(t) \end{pmatrix}
+        =
+        \begin{pmatrix}
+        -\tfrac{1}{3} & \tfrac{1}{12} \\
+        \tfrac{1}{3} & -\tfrac{1}{3}
+        \end{pmatrix}
+        \begin{pmatrix} x(t) \\ y(t) \end{pmatrix}=A\mathfrak X(t),
+        \qquad
+        \mathfrak x(0)=\begin{pmatrix} x(0) \\ y(0) \end{pmatrix}=\begin{pmatrix} x_0 \\ y_0 \end{pmatrix}.
+        \]
         </p>
         <p>Para resolver este sistema se puede usar la Matriz Exponencial o la Transformada de Laplace.</p>
       </section>
@@ -250,7 +479,27 @@
           \frac{2x_0+y_0}{2} e^{-t/6} - \frac{2x_0-y_0}{2} e^{-t/2}
           \end{pmatrix}.
           \]
-          <span style="color: red;">(Álgebra Lineal)</span>
+          <span id="algebra-lineal2-trigger" class="clickable-info">
+            <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                  fill="#fff">i</text>
+              </svg>
+              Álgebra Lineal
+            </span>
+          </span>
+        <div id="algebra-lineal2-modal" class="modal-bg" style="display:none;">
+          <div class="modal-content">
+            <span class="close-modal" id="close-algebra-lineal2">&times;</span>
+            <h4>¿Por qué "Álgebra Lineal"?</h4>
+            <p>
+              En la Unidad II de <strong>Álgebra Lineal</strong> se estudia el concepto de vectores.
+              En la Unidad III se estudian las propiedades de las transformaciones lineales, lo que incluye el estudio
+              de valores y vectores propios de una matriz.
+            </p>
+          </div>
+        </div>
         </p>
       </section>
       <section class="slide level3 frame">
@@ -261,14 +510,49 @@
           \begin{pmatrix} X(s) \\ Y(s) \end{pmatrix} =
           \begin{pmatrix} x_0 \\ y_0 \end{pmatrix}.
           \]
-          resolviendo el sistema de ecuaciones algebraicas <span style="color: red;">(Álgebra Lineal)</span>
-          \[
-          X(s) = \frac{x_0 (s+1/3) + \frac{1}{12} y_0}{s^2 + \frac{2}{3}s + \frac{1}{6}},
-          \qquad
-          Y(s) = \frac{(s+1/3)y_0 + \frac{1}{3} x_0}{s^2 + \frac{2}{3}s + \frac{1}{6}}.
-          \]
+          resolviendo el sistema de ecuaciones algebraicas <span id="algebra-lineal3-trigger" class="clickable-info">
+            <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                  fill="#fff">i</text>
+              </svg>
+              Álgebra Lineal
+            </span>
+          </span>
+        <div id="algebra-lineal3-modal" class="modal-bg" style="display:none;">
+          <div class="modal-content">
+            <span class="close-modal" id="close-algebra-lineal3">&times;</span>
+            <h4>¿Por qué "Álgebra Lineal"?</h4>
+            <p>
+              En la Unidad I de <strong>Álgebra Lineal</strong> se estudian como resolver sistemas de ecuaciones
+              lineales: eliminación Gaussiana, método de Gauss-Jordan, descomposición LU, regla de Cramer.
+            </p>
+          </div>
+        </div>
+        \[
+        X(s) = \frac{x_0 (s+1/3) + \frac{1}{12} y_0}{s^2 + \frac{2}{3}s + \frac{1}{6}},
+        \qquad
+        Y(s) = \frac{(s+1/3)y_0 + \frac{1}{3} x_0}{s^2 + \frac{2}{3}s + \frac{1}{6}}.
+        \]
         </p>
-        <p>Descomponiendo en fracciones parciales <span style="color: red;">(Álgebra)</span>
+        <p>Descomponiendo en fracciones parciales <span id="algebra-modal2-trigger" class="clickable-info">
+            <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                  fill="#fff">i</text>
+              </svg>
+              Álgebra
+            </span>
+          </span>
+        <div id="algebra-modal2" class="modal-bg" style="display:none;">
+          <div class="modal-content">
+              <span class="close-modal" id="close-algebra-modal2">&times;</span>
+            <h4>¿Por qué "Álgebra"?</h4>
+            <p>Nuevamente se usa el método de descomposición en fracciones parciales.</p>
+          </div>
+        </div>
           \[
           X(s) = \frac{2 x_0 + y_0}{4} \cdot \frac{1}{s+1/6} + \frac{2 x_0 - y_0}{4} \cdot \frac{1}{s+1/2},
           \qquad
@@ -281,8 +565,62 @@
         </p>
         <div class="remark fragment">
           <ul>
-          <li style="margin-top: 10pt;">En otros modelos (resortes acoplados, circuitos eléctricos, etc.) se obtienen sistemas similares donde pueden aparecer valores propios complejos (<span style="color: red;"> \(\implies\)conocer y manipular números complejos</span>), lo que deriva en soluciones oscilatorias (<span style="color: red;">\(\implies\) conocer y manipular funciones trigonométricas</span>).</li>
-          <li style="margin-top: 10pt;">Al igual que con los sistemas de EDOs, al estudiar EDOs lineales de orden 2 o mayor, aparece el concepto de <em>independencia lineal.</em> (<span style="color: red;">\(\implies\) espacios vectoriales</span>)</li>
+            <li style="margin-top: 10pt;">En otros modelos (resortes acoplados, circuitos eléctricos, etc.) se obtienen
+              sistemas similares donde pueden aparecer <span id="complejos-trigger" class="clickable-info">
+                <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                      fill="#fff">i</text>
+                  </svg>
+                  valores propios complejos
+                </span>
+              </span>
+              <div id="complejos-modal" class="modal-bg" style="display:none;">
+                <div class="modal-content">
+                  <span class="close-modal" id="close-complejos">&times;</span>
+                  <p>
+                    Esto requiere que el estudiante sepa lo que es un número complejo, lo que se revisa en la Unidad III de <strong>Álgebra</strong>.
+                  </p>
+                </div>
+              </div>, lo que deriva en 
+              <span id="oscilatorias-trigger" class="clickable-info">
+                <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                      fill="#fff">i</text>
+                  </svg>
+                  soluciones oscilatorias
+                </span>
+              </span>
+              <div id="oscilatorias-modal" class="modal-bg" style="display:none;">
+                <div class="modal-content">
+                  <span class="close-modal" id="close-oscilatorias">&times;</span>
+                  <p>
+                    Al tener valores propios complejos, las soluciones del sistema son oscilatorias, lo que requiere conocer funciones trigonométricas, lo que se estudia en la Unidad II de <strong>Introducción a las Matemáticas</strong>.
+                  </p>
+                </div>
+              </div>.
+            <li style="margin-top: 10pt;">Al igual que con los sistemas de EDOs, al estudiar EDOs lineales de orden 2 o
+              mayor, aparece el concepto de <span id="independencia-trigger" class="clickable-info">
+                <span style="color: red; text-decoration: underline dotted; cursor: pointer;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    style="vertical-align:middle;margin-right:3px;fill:#c00;" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8" /><text x="8" y="12" text-anchor="middle" font-size="10"
+                      fill="#fff">i</text>
+                  </svg>
+                  independencia lineal
+                </span>
+              </span>
+              <div id="independencia-modal" class="modal-bg" style="display:none;">
+                <div class="modal-content">
+                  <span class="close-modal" id="close-independencia">&times;</span>
+                  <p>
+                    El concepto de independencia lineal se estudian en la Unidad II de <strong>Álgebra Lineal</strong>.
+                  </p>
+                </div>
+              </div> de soluciones.
           </ul>
         </div>
       </section>
@@ -297,6 +635,210 @@
   <script src="reveal/plugin/search/search.js"></script>
   <script src="reveal/plugin/zoom/zoom.js"></script>
   <script src="scripts/reveal-init.js"></script>
+
+  <script>
+      // Handler para el modal de independencia lineal
+    const triggerIndependencia = document.getElementById('independencia-trigger');
+    const modalIndependencia = document.getElementById('independencia-modal');
+    const closeIndependencia = document.getElementById('close-independencia');
+    if (triggerIndependencia && modalIndependencia && closeIndependencia) {
+      triggerIndependencia.addEventListener('click', function () {
+        modalIndependencia.style.display = 'flex';
+      });
+      closeIndependencia.addEventListener('click', function () {
+        modalIndependencia.style.display = 'none';
+      });
+      modalIndependencia.addEventListener('click', function (e) {
+        if (e.target === modalIndependencia) {
+          modalIndependencia.style.display = 'none';
+        }
+      });
+    }
+    // Handler para el modal de soluciones oscilatorias
+    const triggerOscilatorias = document.getElementById('oscilatorias-trigger');
+    const modalOscilatorias = document.getElementById('oscilatorias-modal');
+    const closeOscilatorias = document.getElementById('close-oscilatorias');
+    if (triggerOscilatorias && modalOscilatorias && closeOscilatorias) {
+      triggerOscilatorias.addEventListener('click', function () {
+        modalOscilatorias.style.display = 'flex';
+      });
+      closeOscilatorias.addEventListener('click', function () {
+        modalOscilatorias.style.display = 'none';
+      });
+      modalOscilatorias.addEventListener('click', function (e) {
+        if (e.target === modalOscilatorias) {
+          modalOscilatorias.style.display = 'none';
+        }
+      });
+    }
+    // Handler para el modal de valores propios complejos
+    const triggerComplejos = document.getElementById('complejos-trigger');
+    const modalComplejos = document.getElementById('complejos-modal');
+    const closeComplejos = document.getElementById('close-complejos');
+    if (triggerComplejos && modalComplejos && closeComplejos) {
+      triggerComplejos.addEventListener('click', function () {
+        modalComplejos.style.display = 'flex';
+      });
+      closeComplejos.addEventListener('click', function () {
+        modalComplejos.style.display = 'none';
+      });
+      modalComplejos.addEventListener('click', function (e) {
+        if (e.target === modalComplejos) {
+          modalComplejos.style.display = 'none';
+        }
+      });
+    }
+    // Álgebra (segunda aparición)
+    const triggerAlgModal2 = document.getElementById('algebra-modal2-trigger');
+    const modalAlgModal2 = document.getElementById('algebra-modal2');
+    const closeAlgModal2 = document.getElementById('close-algebra-modal2');
+    if (triggerAlgModal2 && modalAlgModal2 && closeAlgModal2) {
+      triggerAlgModal2.addEventListener('click', function () {
+        modalAlgModal2.style.display = 'flex';
+      });
+      closeAlgModal2.addEventListener('click', function () {
+        modalAlgModal2.style.display = 'none';
+      });
+      modalAlgModal2.addEventListener('click', function (e) {
+        if (e.target === modalAlgModal2) {
+          modalAlgModal2.style.display = 'none';
+        }
+      });
+    }
+
+    // Álgebra Lineal (todas las apariciones)
+    ['1', '2', '3'].forEach(function(n) {
+      document.querySelectorAll('#algebra-lineal' + n + '-trigger').forEach(function(trigger) {
+        const modal = document.getElementById('algebra-lineal' + n + '-modal');
+        const close = document.getElementById('close-algebra-lineal' + n);
+        if (trigger && modal && close) {
+          trigger.addEventListener('click', function () {
+            modal.style.display = 'flex';
+          });
+          close.addEventListener('click', function () {
+            modal.style.display = 'none';
+          });
+          modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+              modal.style.display = 'none';
+            }
+          });
+        }
+      });
+    });
+    // Introducción a las Matemáticas (tercera aparición)
+    const triggerIntroMat3 = document.getElementById('intro-mat3-trigger');
+    const modalIntroMat3 = document.getElementById('intro-mat3-modal');
+    const closeIntroMat3 = document.getElementById('close-intro-mat3');
+    triggerIntroMat3.addEventListener('click', function () {
+      modalIntroMat3.style.display = 'flex';
+    });
+    closeIntroMat3.addEventListener('click', function () {
+      modalIntroMat3.style.display = 'none';
+    });
+    modalIntroMat3.addEventListener('click', function (e) {
+      if (e.target === modalIntroMat3) {
+        modalIntroMat3.style.display = 'none';
+      }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+      // Cálculo I
+      const triggerCalc = document.getElementById('calc1-trigger');
+      const modalCalc = document.getElementById('calc1-modal');
+      const closeCalc = document.getElementById('close-calc1');
+      triggerCalc.addEventListener('click', function () {
+        modalCalc.style.display = 'flex';
+      });
+      closeCalc.addEventListener('click', function () {
+        modalCalc.style.display = 'none';
+      });
+      modalCalc.addEventListener('click', function (e) {
+        if (e.target === modalCalc) {
+          modalCalc.style.display = 'none';
+        }
+      });
+
+      // Álgebra
+      const triggerAlg = document.getElementById('algebra-trigger');
+      const modalAlg = document.getElementById('algebra-modal');
+      const closeAlg = document.getElementById('close-algebra');
+      triggerAlg.addEventListener('click', function () {
+        modalAlg.style.display = 'flex';
+      });
+      closeAlg.addEventListener('click', function () {
+        modalAlg.style.display = 'none';
+      });
+      modalAlg.addEventListener('click', function (e) {
+        if (e.target === modalAlg) {
+          modalAlg.style.display = 'none';
+        }
+      });
+
+      // Cálculo II
+      const triggerCalc2 = document.getElementById('calculo2-trigger');
+      const modalCalc2 = document.getElementById('calculo2-modal');
+      const closeCalc2 = document.getElementById('close-calculo2');
+      triggerCalc2.addEventListener('click', function () {
+        modalCalc2.style.display = 'flex';
+      });
+      closeCalc2.addEventListener('click', function () {
+        modalCalc2.style.display = 'none';
+      });
+      modalCalc2.addEventListener('click', function (e) {
+        if (e.target === modalCalc2) {
+          modalCalc2.style.display = 'none';
+        }
+      });
+
+      // Introducción a las Matemáticas (primera aparición)
+      const triggerIntroMat = document.getElementById('intro-mat-trigger');
+      const modalIntroMat = document.getElementById('intro-mat-modal');
+      const closeIntroMat = document.getElementById('close-intro-mat');
+      triggerIntroMat.addEventListener('click', function () {
+        modalIntroMat.style.display = 'flex';
+      });
+      closeIntroMat.addEventListener('click', function () {
+        modalIntroMat.style.display = 'none';
+      });
+      modalIntroMat.addEventListener('click', function (e) {
+        if (e.target === modalIntroMat) {
+          modalIntroMat.style.display = 'none';
+        }
+      });
+
+      // Introducción a las Matemáticas (segunda aparición)
+      const triggerIntroMat2 = document.getElementById('intro-mat2-trigger');
+      const modalIntroMat2 = document.getElementById('intro-mat2-modal');
+      const closeIntroMat2 = document.getElementById('close-intro-mat2');
+      triggerIntroMat2.addEventListener('click', function () {
+        modalIntroMat2.style.display = 'flex';
+      });
+      closeIntroMat2.addEventListener('click', function () {
+        modalIntroMat2.style.display = 'none';
+      });
+      modalIntroMat2.addEventListener('click', function (e) {
+        if (e.target === modalIntroMat2) {
+          modalIntroMat2.style.display = 'none';
+        }
+      });
+
+      // Cálculo I (segunda aparición)
+      const triggerCalc1b = document.getElementById('calc1b-trigger');
+      const modalCalc1b = document.getElementById('calc1b-modal');
+      const closeCalc1b = document.getElementById('close-calc1b');
+      triggerCalc1b.addEventListener('click', function () {
+        modalCalc1b.style.display = 'flex';
+      });
+      closeCalc1b.addEventListener('click', function () {
+        modalCalc1b.style.display = 'none';
+      });
+      modalCalc1b.addEventListener('click', function (e) {
+        if (e.target === modalCalc1b) {
+          modalCalc1b.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
