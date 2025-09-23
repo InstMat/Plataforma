@@ -165,28 +165,22 @@
             posición de la masa en el instante <span class="math inline">\(t\)</span>.</p>
         </div>
         <div class="solution fragment">
-          <p> <em>Lo primero que debemos hacer es encontrar la constante del
-              resorte, para ello usamos la condición de equilibrio que nos dice que
+          <p> <em>Determinamos la constante del
+              resorte usando la condición de equilibrio:
               <span class="math display">\[s_{\text{equilibrio}}=\frac{mg}{k}
-                \Leftrightarrow k=\frac{mg}{s_{\text{equilibrio}}}\]</span> que en
-              nuestro caso nos dice <span class="math inline">\(k=\frac{2\cdot
-                9.8}{4}=4.9\)</span> N/m. Por lo tanto <span
-                class="math inline">\(\omega^2=\frac{k}{m}=\frac{4.9}{2}=2.45\)</span>
+                \Leftrightarrow k=\frac{mg}{s_{\text{equilibrio}}} \Longrightarrow k=\dfrac{2\cdot
+                9.8}{4}=4.9 \text{ N/m}.\]</span>
+              Por lo tanto <span class="math inline">\(\omega^2=\dfrac{k}{m}=\dfrac{4.9}{2}=2.45\)</span>
               Hz<span class="math inline">\(^2\)</span>, de donde <span class="math inline">\(\omega=\sqrt{2.45}\approx
                 1.57\)</span> Hz y la
               solución general de la EDO es de la forma <span class="math display">\[x(t)=A\cos(\sqrt{2.45}
                 t)+B\sin(\sqrt{2.45}
                 t).\]</span></em></p>
           <p><em>Para encontrar las constantes <span class="math inline">\(A\)</span> y <span
-                class="math inline">\(B\)</span> debemos usar las condiciones iniciales:
-              nos dicen que en <span class="math inline">\(t=0\)</span> hubo un
-              desplazamiento de 8 metros hacia abajo, es decir <span class="math inline">\(x(0)=8\)</span> y que la masa
-              se liberó con
-              velocidad ascendente de <span class="math inline">\(2\)</span> m/s, es
-              decir <span class="math inline">\(x&#39;(0)=-2\)</span> (recordar que la
-              dirección positiva es hacia abajo). Por lo tanto <span class="math inline">\(A=8\)</span> y <span
-                class="math inline">\(B=\frac{-2}{\sqrt{2.45}}\)</span> y la posición
-              respecto al equilibrio de la particula en el instante <span class="math inline">\(t\)</span> está dada por
+                class="math inline">\(B\)</span> usamos las condiciones iniciales:
+              <span class="math inline">\(x(0)=8\)</span> y <span class="math inline">\(x&#39;(0)=-2\)</span> (recordar
+              que la dirección positiva es hacia abajo). Por lo tanto <span class="math inline">\(A=8\)</span> y <span
+                class="math inline">\(B=\dfrac{-2}{\sqrt{2.45}}\)</span> de donde se sigue que 
               <span class="math display">\[x(t)=8\cos(\sqrt{2.45}
                 t)-\frac{2}{\sqrt{2.45}}\sin(\sqrt{2.45} t).\]</span></em></p>
         </div>
@@ -236,8 +230,14 @@
       </section>
       <section id="resortes-amortiguados-2" class="slide level3 frame">
         <h3>Resortes amortiguados</h3>
-        <p style="text-align: center;"><img data-src="clase10/amort.png" style="width:100.0%" alt="image" /></p>
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+          <div class="ggb-wrapper">
+            <div id="ggb-element-1"></div>
+          </div>
+        </div>
+        <!--<p style="text-align: center;"><img data-src="clase10/amort.png" style="width:100.0%" alt="image" /></p>-->
       </section>
+
       <section id="sobreamortiguamiento" class="slide level3 frame">
         <h3>Sobreamortiguamiento</h3>
         <div class="example">
@@ -368,6 +368,29 @@ t)-\frac{2}{3} \sin(3t)\right)\)</span></em></p>-->
   <script src="../../../reveal/plugin/search/search.js"></script>
   <script src="../../../reveal/plugin/zoom/zoom.js"></script>
   <script src="../../../scripts/reveal-init.js"></script>
+
+  <!--GEOGEBRA APPLETS-->
+	<script>
+		var applet1 = new GGBApplet({
+			appName: "classic", // Puede ser "graphing", "geometry", etc.
+			width: 1250,
+			height: 720,
+			language: "es",
+			showToolBar: false, // Hide toolbar
+			showMenuBar: false, // Hide menu
+			showAlgebraInput: false, // Hide input bar
+			showResetIcon: false, // Hide reset icon
+			enableRightClick: false, // Optional: disable context menu
+			enableLabelDrags: false, // Optional: prevent label moving
+			showZoomButtons: false, // Optional: hide zoom buttons
+			showFullscreenButton: true,
+			allowStyleBar: false, // Optional: hide style bar
+			filename: "clase10/resorte.ggb" // Ruta al archivo local
+		}, true);
+		window.addEventListener("load", function () {
+			applet1.inject('ggb-element-1');
+		});
+	</script>
 </body>
 
 </html>

@@ -5,28 +5,57 @@ body {
     counter-reset: thm-counter;
 }
 
-.frame{
+.frame {
     text-align: left;
     padding: 10px;
     margin-top: 30px;
 }
 
-.example, .examples, .exercise, .exercises, .definition, .theorem, .proposition, .corollary, .remark, .solution, .block, .fact, .proof {
+.ggb-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40pt;
+}
+
+.example,
+.examples,
+.exercise,
+.exercises,
+.definition,
+.theorem,
+.proposition,
+.corollary,
+.remark,
+.solution,
+.block,
+.fact,
+.proof {
     display: inline-block;
     position: relative;
     width: 95%;
     padding: 10px 15px;
-    margin-bottom: 10px; /* Add spacing between examples */
-    background-color: #f0f0f0; /* Light blue background */
-    border-radius: 8px; /* Rounded corners */
-    border: 1px solid #ccc; /* Optional: border for better definition */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    margin-bottom: 10px;
+    /* Add spacing between examples */
+    background-color: #f0f0f0;
+    /* Light blue background */
+    border-radius: 8px;
+    /* Rounded corners */
+    border: 1px solid #ccc;
+    /* Optional: border for better definition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Optional: subtle shadow */
 }
 
-.example ol li, .examples ol li, .exsercise ol li, .exercises ol li{
+.example ol li,
+.examples ol li,
+.exsercise ol li,
+.exercises ol li {
     margin-bottom: 10mm;
 }
-    
+
 .example::before {
     content: "Ejemplo. ";
     /*
@@ -156,7 +185,8 @@ body {
 }
 
 .solution::before {
-    content: "Solución. "; /* Add "Solución. " */
+    content: "Solución. ";
+    /* Add "Solución. " */
     font-weight: bold;
     color: #333;
     display: block;
@@ -168,7 +198,8 @@ body {
 }
 
 .remark::before {
-    content: "Observación. "; /* Add "Observación. " */
+    content: "Observación. ";
+    /* Add "Observación. " */
     font-weight: bold;
     display: block;
     font-weight: bold;
@@ -189,15 +220,21 @@ body {
     border-radius: 8px;
 }
 
-ol.two-columns, ul.two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas iguales */
-  gap: 20px; /* Espacio entre las columnas */
-  list-style-position: inside; /* Asegura que los números o viñetas estén alineados */
-  padding-left: 0; /* Elimina el padding por defecto de la lista */
-  width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+ol.two-columns,
+ul.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Divide el espacio en dos columnas iguales */
+    gap: 20px;
+    /* Espacio entre las columnas */
+    list-style-position: inside;
+    /* Asegura que los números o viñetas estén alineados */
+    padding-left: 0;
+    /* Elimina el padding por defecto de la lista */
+    width: 100%;
+    /* Asegura que el contenedor ocupe el 100% del ancho disponible */
 }
 
 :root {
-  --r-main-font-size: 26px;
+    --r-main-font-size: 26px;
 }

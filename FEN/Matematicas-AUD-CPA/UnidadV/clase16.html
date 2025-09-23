@@ -74,7 +74,8 @@
 				<h1 class="title">Matemáticas</h1>
 				<p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
 					Contador Público y Auditor</p>
-				<p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%" alt="image" /></p>
+				<p class="author"><img data-src="../../../images/logoINSTMAT-color.png" style="width:30.0%"
+						alt="image" /></p>
 			</section>
 
 			<section id="derivada" class="slide level3 frame">
@@ -117,8 +118,8 @@
 			<section id="derivada-3.5" class="slide level3 frame">
 				<h3>Derivada</h3>
 				<p>Veamos que ocurre cuando \(h\longrightarrow 0\):</p>
-				<div style="text-align: center;">
-					<div id="ggb-element-1" class="fragment" style="display: inline-block;"></div>
+				<div class="ggb-wrapper fragment">
+					<div id="ggb-element-1"></div>
 				</div>
 			</section>
 
@@ -139,7 +140,8 @@
 				</p>
 				<p>Volviendo al problema inicial, se obtiene que la pendiente de la
 					recta tangente, <span class="math inline">\(m_T\)</span>, a la curva
-					<span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\(x=c\)</span>, se puede determinar usando la siguiente definición.
+					<span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\(x=c\)</span>, se
+					puede determinar usando la siguiente definición.
 				</p>
 				<div class="definition">
 					<p> La pendiente de la recta tangente al gráfico de la función <span
@@ -180,10 +182,10 @@
 			</section>
 			<section id="cómo-reconocer-cuando-la-derivada-no-existe-en-un-gráfico-1" class="slide level3 frame">
 				<h3>¿Cómo reconocer cuando la derivada no existe en un gráfico?</h3>
-				<div style="text-align: center;">
-					<div id="ggb-element-2" style="display: inline-block;"></div>
+				<div class="ggb-wrapper">
+					<div id="ggb-element-2"></div>
 				</div>
-				<div class="block fragment">
+				<div class="block fragment" style="margin-top: 20pt;">
 					<ul>
 						<li class="fragment">
 							<p>En <span class="math inline">\(x=2\)</span> la
@@ -341,7 +343,7 @@
 		var applet1 = new GGBApplet({
 			appName: "classic", // Puede ser "graphing", "geometry", etc.
 			width: 1250,
-			height: 650,
+			height: 720,
 			language: "es",
 			showToolBar: false, // Hide toolbar
 			showMenuBar: false, // Hide menu
@@ -356,7 +358,7 @@
 		}, true);
 
 		var applet2 = new GGBApplet({
-			appName: "graphing", // Puede ser "graphing", "geometry", etc.
+			appName: "classic", // Puede ser "graphing", "geometry", etc.
 			width: 1100,
 			height: 550,
 			language: "es",
