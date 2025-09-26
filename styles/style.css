@@ -238,3 +238,10 @@ ul.two-columns {
 :root {
     --r-main-font-size: 26px;
 }
+
+@media print {
+  mjx-container[jax="SVG"] use[data-c], 
+  mjx-container[jax="SVG"] path[data-c] {
+    stroke-width: 0 !important;
+  }
+}
