@@ -240,8 +240,42 @@ ul.two-columns {
 }
 
 @media print {
-  mjx-container[jax="SVG"] use[data-c], 
-  mjx-container[jax="SVG"] path[data-c] {
-    stroke-width: 0 !important;
-  }
+
+    mjx-container[jax="SVG"] use[data-c],
+    mjx-container[jax="SVG"] path[data-c] {
+        stroke-width: 0 !important;
+    }
+}
+
+/* Mostrar imagen y ocultar applet GeoGebra al imprimir o exportar PDF Reveal.js */
+@media print,
+screen and (min-width:0px) and (orientation: landscape) {
+
+    .reveal.print-pdf .ggb-wrapper [id^="ggb-element-"],
+    .reveal.print-pdf .ggb-wrapper iframe {
+        display: none !important;
+    }
+
+    .reveal.print-pdf .ggb-wrapper .ggb-print-img {
+        display: block !important;
+    }
+}
+
+@media print {
+
+    .ggb-wrapper [id^="ggb-element-"],
+    .ggb-wrapper iframe {
+        display: none !important;
+    }
+
+    .ggb-wrapper .ggb-print-img {
+        display: block !important;
+    }
+}
+
+/* Por defecto, oculta la imagen en pantalla */
+.ggb-print-img {
+    display: none;
+    width: 100%;
+    height: auto;
 }
