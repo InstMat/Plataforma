@@ -55,6 +55,39 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+
+    /* Mostrar imagen y ocultar applet al imprimir o exportar PDF Reveal.js */
+    @media print,
+    screen and (min-width:0px) and (orientation: landscape) {
+
+      .reveal.print-pdf .ggb-wrapper [id^="ggb-element-"],
+      .reveal.print-pdf .ggb-wrapper iframe {
+        display: none !important;
+      }
+
+      .reveal.print-pdf .ggb-wrapper .ggb-print-img {
+        display: block !important;
+      }
+    }
+
+    @media print {
+
+      .ggb-wrapper [id^="ggb-element-"],
+      .ggb-wrapper iframe {
+        display: none !important;
+      }
+
+      .ggb-wrapper .ggb-print-img {
+        display: block !important;
+      }
+    }
+
+    /* Por defecto, oculta la imagen en pantalla */
+    .ggb-print-img {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
   </style>
   <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
   <link rel="stylesheet" href="../../../styles/style.css" />
@@ -180,7 +213,7 @@
                 class="math inline">\(B\)</span> usamos las condiciones iniciales:
               <span class="math inline">\(x(0)=8\)</span> y <span class="math inline">\(x&#39;(0)=-2\)</span> (recordar
               que la dirección positiva es hacia abajo). Por lo tanto <span class="math inline">\(A=8\)</span> y <span
-                class="math inline">\(B=\dfrac{-2}{\sqrt{2.45}}\)</span> de donde se sigue que 
+                class="math inline">\(B=\dfrac{-2}{\sqrt{2.45}}\)</span> de donde se sigue que
               <span class="math display">\[x(t)=8\cos(\sqrt{2.45}
                 t)-\frac{2}{\sqrt{2.45}}\sin(\sqrt{2.45} t).\]</span></em></p>
         </div>
@@ -233,6 +266,7 @@
         <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
           <div class="ggb-wrapper">
             <div id="ggb-element-1"></div>
+            <img src="clase10/amort.png" alt="Applet GeoGebra (versión para impresión)" class="ggb-print-img">
           </div>
         </div>
         <!--<p style="text-align: center;"><img data-src="clase10/amort.png" style="width:100.0%" alt="image" /></p>-->
@@ -370,27 +404,27 @@ t)-\frac{2}{3} \sin(3t)\right)\)</span></em></p>-->
   <script src="../../../scripts/reveal-init.js"></script>
 
   <!--GEOGEBRA APPLETS-->
-	<script>
-		var applet1 = new GGBApplet({
-			appName: "classic", // Puede ser "graphing", "geometry", etc.
-			width: 1250,
-			height: 720,
-			language: "es",
-			showToolBar: false, // Hide toolbar
-			showMenuBar: false, // Hide menu
-			showAlgebraInput: false, // Hide input bar
-			showResetIcon: false, // Hide reset icon
-			enableRightClick: false, // Optional: disable context menu
-			enableLabelDrags: false, // Optional: prevent label moving
-			showZoomButtons: false, // Optional: hide zoom buttons
-			showFullscreenButton: true,
-			allowStyleBar: false, // Optional: hide style bar
-			filename: "clase10/resorte.ggb" // Ruta al archivo local
-		}, true);
-		window.addEventListener("load", function () {
-			applet1.inject('ggb-element-1');
-		});
-	</script>
+  <script>
+    var applet1 = new GGBApplet({
+      appName: "classic", // Puede ser "graphing", "geometry", etc.
+      width: 1250,
+      height: 720,
+      language: "es",
+      showToolBar: false, // Hide toolbar
+      showMenuBar: false, // Hide menu
+      showAlgebraInput: false, // Hide input bar
+      showResetIcon: false, // Hide reset icon
+      enableRightClick: false, // Optional: disable context menu
+      enableLabelDrags: false, // Optional: prevent label moving
+      showZoomButtons: false, // Optional: hide zoom buttons
+      showFullscreenButton: true,
+      allowStyleBar: false, // Optional: hide style bar
+      filename: "clase10/resorte.ggb" // Ruta al archivo local
+    }, true);
+    window.addEventListener("load", function () {
+      applet1.inject('ggb-element-1');
+    });
+  </script>
 </body>
 
 </html>
