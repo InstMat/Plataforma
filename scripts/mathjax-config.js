@@ -1,6 +1,6 @@
 window.MathJax = {
 	loader: {
-		load: ['[tex]/ams', '[tex]/cancel', '[tex]/color']
+		load: ['[tex]/ams', '[tex]/cancel', '[tex]/color', 'output/svg']
 	},
 	tex: {
 		inlineMath: { '[+]': [['$', '$'], ['\\(', '\\)']] },
@@ -22,7 +22,7 @@ window.MathJax = {
 		//mathmlSpacing: true        // mejora el espaciado para que coincida mejor
 	},
 	output: {
-		font: 'mathjax-stix2'
+		font: 'mathjax-stix2',
 		/* Other fonts
 		mathjax-newcm: Based on New Computer Modern (now the default font)
 		mathjax-asana: A version of the Asana-Math font
@@ -41,7 +41,8 @@ window.MathJax = {
 
 (function () {
 	var script = document.createElement('script');
-	script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js';
+	/* script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js'; */
+	script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js	';
 	script.defer = true;
 	document.head.appendChild(script);
 })();
