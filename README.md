@@ -1,65 +1,139 @@
 # Plataforma de Módulos Matemáticos
 
-Este proyecto es una **plataforma web** que permite a los usuarios explorar módulos matemáticos asociados a diferentes carreras. La plataforma está diseñada para ser dinámica, fácil de usar y visualmente atractiva.
+Este proyecto es una **plataforma educativa web modular** que permite a los usuarios explorar módulos matemáticos asociados a diferentes carreras. La plataforma utiliza una arquitectura de 3 capas (datos JSON, presentación Reveal.js + MathJax, y navegación dinámica) para ofrecer una experiencia educativa interactiva y optimizada.
 
 ---
 
 ## Características principales
 
-- **Menú lateral interactivo**: Lista de carreras con animaciones y efectos hover.
-- **Grilla de módulos**: Los módulos de cada carrera se muestran en una grilla de 3 columnas con botones grandes y animaciones.
-- **Carga dinámica de datos**: Los datos de las carreras, módulos y lecciones se cargan desde un archivo JSON.
-- **Diseño responsive**: La plataforma se adapta a diferentes tamaños de pantalla (móviles, tablets, escritorio).
-- **Spinner de carga**: Muestra un spinner mientras se cargan los módulos.
- - **Presentaciones Reveal.js**: Slides interactivas generadas con Pandoc y Reveal.js para clases y unidades.
- - **Renderizado matemático**: Integración con MathJax para mostrar fórmulas LaTeX en HTML y presentaciones.
- - **Visualizaciones interactivas**: Soporte para applets GeoGebra embebidos.
- - **Wiki colaborativo**: Documentación y tutoriales para usuarios y desarrolladores.
+### Navegación y UI
+- **Sistema de shells dinámicos**: Carga de contenido via URL parameters (`curso.html?base=...`)
+- **Menú lateral interactivo**: Lista de carreras con animaciones y efectos hover
+- **Grilla de módulos responsive**: Adaptación automática a diferentes tamaños de pantalla
+- **Modales interactivos**: Sistema modular para términos matemáticos con soporte fullscreen móvil
+
+### Contenido Educativo
+- **Presentaciones Reveal.js optimizadas**: Slides con inicialización automática y configuración estandarizada
+- **Renderizado matemático avanzado**: MathJax con macros pre-definidas (`\RR`, `\NN`, `\ZZ`) y cache optimizado
+- **Bloques de contenido matemático**: Auto-estilizado con CSS counters (`.example`, `.definition`, `.theorem`)
+- **Visualizaciones GeoGebra**: Applets con auto-detección, centrado dinámico y reemplazo automático por imágenes al imprimir
+
+### Performance y Desarrollo
+- **Carga dinámica optimizada**: Cache de datos JSON y DocumentFragment para operaciones DOM
+- **Pipeline Pandoc personalizado**: Filtro `remove-num.lua` específico del proyecto
+- **Exportación PDF mejorada**: URL `?print-pdf` con reemplazo automático de applets por imágenes estáticas
 
 ---
 
 ## Tecnologías utilizadas
 
-- **HTML5**: Estructura de la plataforma.
-- **CSS3**: Estilos y animaciones.
-- **JavaScript**: Lógica para cargar y mostrar datos dinámicamente.
-- **FontAwesome**: Íconos utilizados en la interfaz.
- - **Pandoc**: Conversión de archivos LaTeX a HTML y Reveal.js.
- - **MathJax**: Renderizado de matemáticas.
- - **GeoGebra**: Visualizaciones matemáticas interactivas.
- - **Reveal.js**: Framework para presentaciones tipo slides.
+### Core Frontend
+- **HTML5**: Estructura semántica con optimizaciones de performance
+- **CSS3**: Estilos con `will-change`, media queries y CSS counters para auto-numeración
+- **JavaScript ES6+**: Módulos, async/await, DocumentFragment y cache optimizado
+- **FontAwesome**: Íconos con preload y CDN fallback
+
+### Frameworks Educativos
+- **Reveal.js**: Presentaciones con configuración estandarizada (`lesson-reveal-init.js`)
+- **MathJax 4**: Renderizado optimizado con macros pre-definidas y cache
+- **GeoGebra**: Applets con auto-detección, deployggb.js y responsive wrapper
+- **Pandoc + Lua**: Pipeline de conversión LaTeX→HTML con filtros personalizados
+
+### Arquitectura de Datos
+- **JSON estructurado**: Mapeo carreras→módulos→lecciones en `data/`
+- **Shells dinámicos**: `course-shell.js`, `lesson-shell.js` para navegación
+- **URL parameters**: Sistema de routing cliente (`?base=...&titulo=...`)
 
 ---
 
 ## Flujos de trabajo principales
 
-### Usar un servidor local (recomendado)
+### Servidor Local (Obligatorio)
 
-1. Clona o descarga este repositorio.
-2. Abre una terminal y navega a la carpeta del proyecto:
+1. Clona o descarga este repositorio
+2. Abre una terminal y navega a la carpeta del proyecto
 3. Inicia un servidor HTTP con Python:
-    - Si tienes Python 3:
-      ```python -m http.server 8000```
-    - Si tienes Python 2.7:
-      ```python -m SimpleHTTPServer 8000```
+```bash
+# Python 3 (recomendado)
+python -m http.server 8000
+
+# Python 2.7
+python -m SimpleHTTPServer 8000
+```
 4. Abre tu navegador y visita: http://localhost:8000
 
-- **Conversión de archivos LaTeX**:
-  - Usa Pandoc para convertir `.tex` a HTML o presentaciones Reveal.js. Ejemplo:
-    ```bash
-    pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css
-    ```
-  - El filtro Lua `remove-num.lua` elimina numeración de teoremas.
-  - El script Python `refinar-tex.py` limpia comandos Beamer y adapta bloques antes de la conversión.
+> ⚠️ **Importante**: El servidor local es obligatorio debido a políticas CORS para carga de JSON y applets GeoGebra.
+
+### Pipeline de Contenido Pandoc
+
+```bash
+# LaTeX → Presentación Reveal.js
+pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html \
+  --lua-filter=remove-num.lua --template=reveal.html -c style.css
+
+# LaTeX → HTML página única
+pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html \
+  --lua-filter=remove-num.lua --template=default.html -c style.css
+```
+
+**Filtros específicos del proyecto**:
+- `remove-num.lua`: Elimina numeración automática de teoremas/ejemplos
+- `refinar-tex.py`: Limpia comandos Beamer y adapta bloques
+
+### Navegación Dinámica
+
+```
+# Estructura de URLs
+curso.html?base=FEN/Matematicas-AUD-CPA&titulo=Matemática
+leccion.html?base=FEN/Matematicas-AUD-CPA&unidad=UnidadV&clase=clase16
+
+# Exportar a PDF
+leccion.html?base=...&print-pdf  # Reemplaza applets por imágenes
+```
 
 ---
 
-## Integraciones y recomendaciones
+## Integraciones y patrones específicos
 
-- **MathJax**: Configurado en `scripts/mathjax-config.js` para renderizar matemáticas en todo el sitio.
-- **GeoGebra**: Applets embebidos para visualizaciones interactivas.
-- **FontAwesome**: Íconos de interfaz vía CDN o archivos locales.
-- **Pandoc**: Requiere instalación local o uso en entornos online con terminal (Replit, Gitpod, Colab).
+### Applets GeoGebra (Patrón Obligatorio)
+```html
+<div class="ggb-wrapper">
+  <div id="ggb-element-1"></div>
+  <img src="path/image.png" alt="Versión impresión" class="ggb-print-img">
+</div>
+```
+```javascript
+var applet1 = new GGBApplet({
+  width: 1000, height: 600,
+  filename: "clase16/derivada.ggb"
+}, true);
+applet1.inject('ggb-element-1');
+```
+
+### Bloques de Contenido Matemático
+```html
+<div class="example">
+  <p>Contenido del ejemplo...</p>
+</div>
+<div class="definition">
+  <p>Definición matemática...</p>
+</div>
+```
+**CSS auto-genera headers**: "Ejemplo.", "Definición.", etc. con colores específicos.
+
+### Modales Interactivos
+```javascript
+// Patrón modular para términos matemáticos
+function showModal(modalId) {
+  document.getElementById(modalId).style.display = 'block';
+}
+```
+**Responsive**: Fullscreen automático en dispositivos móviles.
+
+### Configuraciones Optimizadas
+- **MathJax**: `scripts/mathjax-config.js` con macros pre-definidas (`\RR`, `\NN`, `\ZZ`)
+- **Reveal.js**: `scripts/lesson-reveal-init.js` con configuración estandarizada
+- **Performance**: CSS `will-change`, DocumentFragment, cache de datos JSON
 
 ---
 

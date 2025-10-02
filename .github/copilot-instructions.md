@@ -1,42 +1,117 @@
-# Instrucciones Copilot para Plataforma
+# Instrucciones Copilot para Plataforma Matemática
 
-## Descripción General del Proyecto
-- Plataforma web modular para explorar módulos matemáticos por carrera/asignatura.
-- Carga dinámica de datos desde archivos JSON (`data/`), interfaz responsiva y navegación interactiva.
-- Presentaciones generadas con Pandoc y Reveal.js, usando temas personalizados y MathJax para renderizado matemático.
+## Arquitectura del Proyecto
+Plataforma educativa web modular con 3 capas principales:
+- **Capa de datos**: JSON estructurado (`data/`) para carreras, módulos y lecciones
+- **Capa de presentación**: Reveal.js + MathJax para slides educativas interactivas
+- **Capa de navegación**: Sistema de shells dinámicos para exploración de contenido
 
-## Directorios y Archivos Clave
-- `data/`: Datos JSON de carreras, módulos y lecciones.
-- `FEN/`, `Ingenieria/`, `Salud/`: Contenido por asignatura, organizado en unidades y clases.
-- `reveal/`: Framework Reveal.js, plugins, temas personalizados (Sass) y scripts de inicialización.
-- `scripts/`: JS para carga de datos, configuración de MathJax y Reveal.js.
-- `styles/`: CSS para landing pages y presentaciones.
-- `pandoc-files/`: Plantillas de Pandoc, filtros y scripts de conversión.
+### Estructura de Datos Clave
+```
+data/carreras.json          # Mapeo de facultades → carreras → módulos
+data/FEN/modulo/lecciones.json    # Lecciones por unidad (ej: clase01, clase02)
+FEN/Matematicas-AUD-CPA/UnidadV/clase16.html  # Slides Reveal.js individuales
+```
 
-## Flujos de Trabajo para Desarrolladores
-- **Servidor local:**  Ejecuta `python -m http.server 8000` en la raíz del proyecto y abre `http://localhost:8000` en el navegador.
-- **Conversiones con Pandoc:**
-  - HTML de una sola página:  `pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=default.html -c style.css`
-  - Presentación Reveal.js:  `pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css`
-  - El filtro Lua `remove-num.lua` elimina la numeración de entornos tipo teorema.
-- **Temas Reveal.js:**  Los temas usan Sass (`.scss`) en `reveal/css/theme/`, compílalos con `npm run build -- css-themes`.  Flujo: duplica un `.scss` fuente, sobreescribe variables/selectores y compila.
-- **Inicialización Reveal.js:**  Configura transiciones, plugins y tema en `scripts/reveal-init.js`.
+## Flujos de Trabajo Críticos
+
+### Servidor Local (Obligatorio)
+```bash
+python -m http.server 8000    # En raíz del proyecto
+# Navega a http://localhost:8000
+```
+
+### Pipeline de Contenido Pandoc
+```bash
+# LaTeX → HTML presentación
+pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css
+
+# LaTeX → HTML página única
+pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=default.html -c style.css
+```
+**Crítico**: El filtro `remove-num.lua` es específico del proyecto - elimina numeración automática de teoremas/ejemplos.
+
+### Sistema de Shells Dinámicos
+- `curso.html?base=FEN/Matematicas-AUD-CPA&titulo=Matemática` → Carga shell con navegación lateral
+- `scripts/course-shell.js` + `scripts/lecciones.js` manejan carga dinámica iframe
+- `scripts/lesson-shell.js` detecta y configura applets GeoGebra automáticamente
 
 ## Patrones Específicos del Proyecto
-- **Interfaz dinámica:** JS carga/cachea datos desde JSON y actualiza la UI según selección (ver `scripts/carreras.js`).
-- **Diseño responsivo:** CSS en `styles/landing.css` y `styles/style.css` usa media queries.
-- **Presentaciones:**  Archivos HTML Reveal.js en carpetas de asignatura/unidad (ej: `Ingenieria/EDO/UnidadI/clase01.html`).  Configuración de MathJax en `scripts/mathjax-config.js`.
-- **Notas/Referencias:**  Para impresión/exportación, evita `position: fixed` o valores negativos; usa `absolute` o posicionamiento estático para visibilidad.
 
-## Puntos de Integración
-- **MathJax:** Para renderizado matemático, configurado en `scripts/mathjax-config.js`.
-- **Geogebra:** Embebido para visualizaciones matemáticas interactivas.
-- **FontAwesome:** Íconos de UI vía CDN o archivos locales.
+### Bloques de Contenido Matemático (CSS Crítico)
+```css
+.example, .definition, .theorem, .solution, .remark {
+    /* Auto-numeración con contadores CSS */
+    counter-increment: example-counter;
+}
+.example::before { content: "Ejemplo. "; }
+```
+**Patrón**: Usa estas clases para contenido matemático - auto-estilizado con headers coloreados.
 
-## Ejemplos
-- Agregar un módulo: actualiza `data/carreras.json`, agrega contenido en la carpeta correspondiente y actualiza JS si es necesario.
-- Personalizar una presentación: edita el `.tex`, convierte con Pandoc y ajusta Reveal.js en `reveal-init.js`.
-- Crear un tema: duplica un `.scss` en `reveal/css/theme/source`, sobreescribe y compila.
+### Applets GeoGebra (Patrón Obligatorio)
+```html
+<div class="ggb-wrapper">
+    <div id="ggb-element-1"></div>
+    <img src="path/image.png" alt="Versión impresión" class="ggb-print-img">
+</div>
+```
+```javascript
+var applet1 = new GGBApplet({
+    width: 1000, height: 600,
+    filename: "clase16/derivada.ggb"
+}, true);
+applet1.inject('ggb-element-1');
+```
+**Crítico**: `.ggb-print-img` se muestra automáticamente al imprimir/exportar PDF via CSS `@media print`.
 
----
-Para más detalles, revisa los archivos README principales y de subdirectorios.
+### Configuración MathJax (Pre-optimizada)
+- `scripts/mathjax-config.js` tiene configuración de rendimiento específica
+- Macros pre-definidas: `\RR`, `\NN`, `\ZZ` para conjuntos numéricos
+- **No modificar** sin probar rendimiento en presentaciones largas
+
+### Sistema de Modales Interactivos
+```javascript
+// Patrón modular para términos matemáticos
+function showModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+}
+```
+
+## Convenciones de Archivos
+
+### Estructura de Clases HTML
+```
+FEN/Matematicas-AUD-CPA/
+├── index.html           # Landing específico del módulo
+├── lecciones.json       # Navegación lateral
+└── UnidadV/
+    ├── clase16.html     # Slides Reveal.js individuales
+    └── clase16/         # Assets específicos (ggb, png)
+```
+
+### URLs de Navegación
+- Módulo: `curso.html?base=FEN/Matematicas-AUD-CPA&titulo=Matemática`
+- Lección: `leccion.html?base=FEN/Matematicas-AUD-CPA&unidad=UnidadV&clase=clase16`
+
+## Puntos de Integración Críticos
+
+### Inicialización Reveal.js
+`scripts/lesson-reveal-init.js` - configuración estándar (NO modificar dimensiones sin probar applets)
+
+### Detección de Applets
+`lesson-shell.js` busca automáticamente scripts con `GGBApplet` y carga `deployggb.js`
+
+### Exportación PDF
+URL: `leccion.html?base=...&print-pdf` activa modo impresión - verifica que applets se reemplacen por imágenes.
+
+## Debugging y Desarrollo
+
+### Errores Comunes
+- **Applets no cargan**: Verificar que `deployggb.js` esté cargado antes de `inject()`
+- **MathJax no renderiza**: Verificar configuración en `mathjax-config.js` cargada antes de contenido
+- **Navegación rota**: Verificar estructura JSON en `lecciones.json` coincide con archivos físicos
+
+### Performance
+- CSS `will-change` ya optimizado en elementos animados
+- MathJax tiene cache pre-configurado para macros comunes
+- Applets GeoGebra auto-detectan tamaño contenedor via CSS wrapper
