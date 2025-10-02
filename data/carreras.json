@@ -2,116 +2,136 @@
     "modulos_comunes": {
         "IntroMate": {
             "nombre": "Introducción a las Matemáticas",
-            "enlace": "#"
+            "enlace": "curso.html?base=Ingenieria/IntroMate&titulo=Introducción a las Matemáticas"
         },
         "EDO": {
             "nombre": "Ecuaciones Diferenciales Ordinarias",
-            "enlace": "Ingenieria/EDO/index.html"
+            "enlace": "curso.html?base=Ingenieria/EDO&titulo=Ecuaciones Diferenciales Ordinarias"
         },
         "CalcI": {
-            "nombre": "Cálculo I",
-            "enlace": "#"
+            "nombre": "Cálculo en Una Variable",
+            "enlace": "curso.html?base=Ingenieria/CalcI&titulo=Cálculo en Una Variable"
         },
         "CalcII": {
-            "nombre": "Cálculo II",
-            "enlace": "#"
-        },
-        "CalcIII": {
-            "nombre": "Cálculo III",
-            "enlace": "#"
+            "nombre": "Cálculo en Varias Variables",
+            "enlace": "curso.html?base=Ingenieria/CalcII&titulo=Cálculo en Varias Variables"
         },
         "Algebra": {
             "nombre": "Álgebra",
-            "enlace": "#"
+            "enlace": "curso.html?base=Ingenieria/Alg&titulo=Álgebra"
         },
         "AlgLin": {
             "nombre": "Álgebra Lineal",
-            "enlace": "#"
+            "enlace": "curso.html?base=Ingenieria/AlgLin&titulo=Álgebra Lineal"
         },
         "ProbEsta": {
             "nombre": "Probabilidad y Estadística",
-            "enlace": "#"
+            "enlace": "curso.html?base=Ingenieria/ProbEsta&titulo=Probabilidad y Estadística"
         },
         "MateCPAAUD": {
             "nombre": "Matemática",
-            "enlace": "FEN/Matematicas-AUD-CPA/index.html"
+            "enlace": "curso.html?base=FEN/Matematicas-AUD-CPA&titulo=Matemática"
         },
-        "MateITecMed": {
-            "nombre": "Matemáticas para Ciencias Biomédicas I",
-            "enlace": "#"
-        },
-        "MateIITecMed": {
-            "nombre": "Matemáticas para Ciencias Biomédicas II",
-            "enlace": "Salud/MatematicasII-TecMed/index.html"
-        },
-        "CalcICPAAUD": {
-            "nombre": "Cálculo I",
-            "enlace": "#"
-        },
-        "EstaICPAAUD": {
-            "nombre": "Estadística I",
-            "enlace": "#"
-        },
-        "EstaIICPAAUD": {
-            "nombre": "Estadística II",
-            "enlace": "#"
-        },
-        "AgroI": {
-            "nombre": "Álgebra",
-            "enlace": "#"
-        },
-        "AgroII": {
-            "nombre": "Cálculo I",
-            "enlace": "#"
-        },
-        "AgroIII": {
-            "nombre": "Cálculo II",
-            "enlace": "#"
-        },
-        "AgroIV": {
-            "nombre": "Estadística",
-            "enlace": "#"
-        },
-        "ICOMI": {
-            "nombre": "Matemática",
-            "enlace": "#"
-        },
-        "ICOMII": {
-            "nombre": "Cálculo",
-            "enlace": "#"
-        },
-        "ICOMIII": {
-            "nombre": "Álgebra Lineal",
-            "enlace": "#"
-        },
-        "ICOMIV": {
-            "nombre": "Estadística I",
-            "enlace": "#"
-        },
-        "ICOMV": {
-            "nombre": "Estadística II",
-            "enlace": "#"
-        },
-        "IIEI": {
+        "MateI-FEN": {
             "nombre": "Matemáticas I",
-            "enlace": "#"
+            "enlace": "curso.html?base=FEN/MatI&titulo=Matemáticas I"
         },
-        "IIEII": {
+        "MateII-FEN": {
             "nombre": "Matemáticas II",
-            "enlace": "#"
+            "enlace": "curso.html?base=FEN/MatII&titulo=Matemáticas II"
         },
-        "IIEIII": {
+        "MateIII-FEN": {
             "nombre": "Matemáticas III",
-            "enlace": "#"
+            "enlace": "curso.html?base=FEN/MatIII&titulo=Matemáticas III"
         },
-        "IIEIV": {
-            "nombre": "Estadística I",
-            "enlace": "#"
+        "MateIV-FEN": {
+            "nombre": "Matemáticas IV",
+            "enlace": "curso.html?base=FEN/MatIV&titulo=Matemáticas IV"
         },
-        "IIEV": {
-            "nombre": "Estadística II",
-            "enlace": "#"
-        }
+        "Esta-FEN": {
+            "nombre": "Estadística",
+            "enlace": "curso.html?base=FEN/Esta&titulo=Estadística"
+        },
+        "Calc-FEN": {
+            "nombre": "Cálculo",
+            "enlace": "curso.html?base=FEN/Calc&titulo=Cálculo"
+        },
+        "AlgLin-FEN": {
+            "nombre": "Álgebra Lineal",
+            "enlace": "curso.html?base=FEN/AlgLin&titulo=Álgebra Lineal"
+        },
+        "MetMat-FEN": {
+            "nombre": "Métodos Matemáticos",
+            "enlace": "curso.html?base=FEN/MetMat&titulo=Métodos Matemáticos"
+        },
+        "Mat-AdmPub": {
+            "nombre": "Matemáticas",
+            "enlace": "curso.html?base=FEN/Mat-AdmPub&titulo=Matemáticas"
+        },
+        "Esta-AdmPub": {
+            "nombre": "Estadística",
+            "enlace": "curso.html?base=FEN/Esta-AdmPub&titulo=Estadística"
+        },
+        "MateBas-Salud":{
+            "nombre": "Matemáticas Básicas",
+            "enlace": "curso.html?base=Salud/MatBas&titulo=Matemáticas Básicas"
+        },
+        "MateI-Salud":{
+            "nombre": "Matemáticas I",
+            "enlace": "curso.html?base=Salud/MatI&titulo=Matemáticas I"
+        },
+        "MateII-Salud":{
+            "nombre": "Matemáticas II",
+            "enlace": "curso.html?base=Salud/MatII&titulo=Matemáticas II"
+        },
+        "alg-abs":{
+            "nombre": "Álgebra Abstracta",
+            "enlace": "curso.html?base=Pedagogia/AlgAbs&titulo=Álgebra Abstracta"
+        },
+        "alg-absII":{
+            "nombre": "Álgebra Abstracta II",
+            "enlace": "curso.html?base=Pedagogia/AlgAbsII&titulo=Álgebra Abstracta II"
+        },
+        "alg-lin":{
+            "nombre": "Álgebra Lineal",
+            "enlace": "curso.html?base=Pedagogia/AlgLin&titulo=Álgebra Lineal"
+        },
+        "calc-dif":{
+            "nombre": "Cálculo Diferencial",
+            "enlace": "curso.html?base=Pedagogia/CalcDife&titulo=Cálculo Diferencial"
+        },
+        "calc-inte":{
+            "nombre": "Cálculo Integral",
+            "enlace": "curso.html?base=Pedagogia/CalcInte&titulo=Cálculo Integral"
+        },
+        "calc-vv":{
+            "nombre": "Cálculo en Varias Variables",
+            "enlace": "curso.html?base=Pedagogia/CalcVV&titulo=Cálculo en Varias Variables"
+        },
+        "estad":{
+            "nombre": "Estadística",
+            "enlace": "curso.html?base=Pedagogia/Estad&titulo=Estadística"
+        },
+        "fund-mate":{
+            "nombre": "Fundamentos de la Matemática",
+            "enlace": "curso.html?base=Pedagogia/FundMate&titulo=Fundamentos de la Matemática"
+        },
+        "geomI":{
+            "nombre": "Geometría I",
+            "enlace": "curso.html?base=Pedagogia/GeomI&titulo=Geometría I"
+        },
+        "geomII":{
+            "nombre": "Geometría II",
+            "enlace": "curso.html?base=Pedagogia/GeomII&titulo=Geometría II"
+        },
+        "geomIII":{
+            "nombre": "Geometría III",
+            "enlace": "curso.html?base=Pedagogia/GeomIII&titulo=Geometría III"
+        },
+        "proba":{
+            "nombre": "Probabilidades",
+            "enlace": "curso.html?base=Pedagogia/Proba&titulo=Probabilidades"
+        }        
     },
     "facultades": [
         {
@@ -132,13 +152,12 @@
         },
         {
             "id": "fen",
-            "nombre": "Ciencias Sociales, Jurídicas y Económicas",
+            "nombre": "Ciencias Sociales y Económicas",
             "carreras": [
                 "icom",
                 "iie",
                 "cpa",
-                "aud",
-                "apub"
+                "aud"
             ]
         },
         {
@@ -149,7 +168,8 @@
                 "enf",
                 "kine",
                 "med",
-                "nut"
+                "nut",
+                "psico"
             ]
         },
         {
@@ -180,26 +200,23 @@
             "id": "ped-mate",
             "nombre": "Pedagogía en Matemáticas y Física",
             "modulos": [
-                "CalcI"
-            ]
-        },
-        {
-            "id": "med",
-            "nombre": "Medicina",
-            "modulos": [
-                "IntroMate"
+                "alg-abs",
+                "alg-absII",
+                "alg-lin",
+                "calc-dif",
+                "calc-inte",
+                "calc-vv",
+                "estad",
+                "fund-mate",
+                "geomI",
+                "geomII",
+                "geomIII",
+                "proba"
             ]
         },
         {
             "id": "agro",
             "nombre": "Agronomía",
-            "modulos": [
-                "CalcI"
-            ]
-        },
-        {
-            "id": "apub",
-            "nombre": "Administración Pública",
             "modulos": []
         },
         {
@@ -213,63 +230,75 @@
             "modulos": []
         },
         {
-            "id": "enf",
-            "nombre": "Enfermería",
-            "modulos": []
-        },
-        {
-            "id": "kine",
-            "nombre": "Kinesiología",
-            "modulos": []
-        },
-        {
             "id": "med",
             "nombre": "Medicina",
             "modulos": []
         },
         {
+            "id": "enf",
+            "nombre": "Enfermería",
+            "modulos": [
+                "MateI-Salud"
+            ]
+        },
+        {
+            "id": "kine",
+            "nombre": "Kinesiología",
+            "modulos": [
+                "MateBas-Salud",
+                "MateI-Salud"
+            ]
+        },
+        {
             "id": "nut",
             "nombre": "Nutrición y Dietética",
-            "modulos": []
-        },
-        {
-            "id": "pcing",
-            "nombre": "Plan Común Ingeniería",
             "modulos": [
-                "IntroMate",
-                "Algebra",
-                "CalcI",
-                "AlgLin"
-            ]
-        },
-        {
-            "id": "icom",
-            "nombre": "Ingeniería Comercial",
-            "modulos": [
-                "ICOMI",
-                "ICOMII",
-                "ICOMIII",
-                "ICOMIV",
-                "ICOMV"
-            ]
-        },
-        {
-            "id": "iie",
-            "nombre": "Ingeniería en Informática Empresarial",
-            "modulos": [
-                "IIEI",
-                "IIEII",
-                "IIEIII",
-                "IIEIV",
-                "IIEV"
+                "MateI-Salud"
             ]
         },
         {
             "id": "tecmed",
             "nombre": "Tecnología Médica",
             "modulos": [
-                "MateITecMed",
-                "MateIITecMed"
+                "MateI-Salud",
+                "MateII-Salud"
+            ]
+        },
+        {
+            "id": "psico",
+            "nombre": "Psicología",
+            "modulos": [
+                "MateBas-Salud",
+                "MateI-Salud"
+            ]
+        },
+        {
+            "id": "icom",
+            "nombre": "Ingeniería Comercial",
+            "modulos": [
+                "MateI-FEN",
+                "MateII-FEN",
+                "MateIII-FEN",
+                "Calc-FEN",
+                "AlgLin-FEN",
+                "Esta-FEN",
+                "MetMat-FEN"
+            ]
+        },
+        {
+            "id": "apub",
+            "nombre": "Administración Pública",
+            "modulos": []
+        },
+        {
+            "id": "iie",
+            "nombre": "Ingeniería en Informática Empresarial",
+            "modulos": [
+                "MateI-FEN",
+                "MateII-FEN",
+                "MateIII-FEN",
+                "MateIV-FEN",
+                "Esta-FEN"
             ]
         },
         {
@@ -277,9 +306,10 @@
             "nombre": "Contador Público y Auditor",
             "modulos": [
                 "MateCPAAUD",
-                "CalcICPAAUD",
-                "EstaICPAAUD",
-                "EstaIICPAAUD"
+                "MateI-FEN",
+                "MateII-FEN",
+                "MateIII-FEN",
+                "Esta-FEN"
             ]
         },
         {
@@ -287,14 +317,24 @@
             "nombre": "Auditoría y Control de Gestión",
             "modulos": [
                 "MateCPAAUD",
-                "CalcICPAAUD",
-                "EstaICPAAUD",
-                "EstaIICPAAUD"
+                "MateI-FEN",
+                "MateII-FEN",
+                "MateIII-FEN",
+                "Esta-FEN"
+            ]
+        },
+        {
+            "id": "pcing",
+            "nombre": "Ingeniería Civil Plan Común",
+            "modulos": [
+                "IntroMate",
+                "Algebra",
+                "CalcI"
             ]
         },
         {
             "id": "ivideo",
-            "nombre": "Ingeniería en Desarrollo de Videojuegos y Realidad Virtual",
+            "nombre": "Ingeniería en Sistemas Inteligentes y Videojuegos",
             "modulos": [
                 "IntroMate",
                 "Algebra",
@@ -326,7 +366,6 @@
                 "CalcI",
                 "AlgLin",
                 "CalcII",
-                "CalcIII",
                 "EDO",
                 "ProbEsta"
             ]
@@ -340,7 +379,6 @@
                 "CalcI",
                 "AlgLin",
                 "CalcII",
-                "CalcIII",
                 "EDO",
                 "ProbEsta"
             ]
@@ -391,7 +429,6 @@
                 "CalcI",
                 "AlgLin",
                 "CalcII",
-                "CalcIII",
                 "ProbEsta",
                 "EDO"
             ]
@@ -405,7 +442,6 @@
                 "CalcI",
                 "AlgLin",
                 "CalcII",
-                "CalcIII",
                 "EDO",
                 "ProbEsta"
             ]

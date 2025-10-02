@@ -1,0 +1,568 @@
+<div class="slides">
+
+  <section id="title-slide">
+    <h1 class="title">Ecuaciones diferenciales ordinarias</h1>
+		<p class="subtitle">Ingeniería Civil</p>
+		<p class="main-logo"> Logo Instituto </p>
+	</section>
+    <section id="modelos-que-usan-edos-de-primer-orden" class="slide level3 frame">
+    <h3>Modelos que usan EDOs de primer orden</h3>
+    <p>Las EDs son una herramienta muy poderosa para modelar matemáticamente
+      situaciones de la vida real. La razón detrás de esto es una de las
+      interpretaciones de la derivada.</p>
+    <p>Si <span class="math inline">\(f(x)\)</span> es una función que
+      representa alguna cantidad, entonces <span class="math inline">\(f&#39;(x)=\dfrac{df}{dx}\)</span> representa
+      la
+      tasa de cambio de dicha cantidad respecto a <span class="math inline">\(x\)</span>.</p>
+    <div class="remark fragment">
+      <p> </p>
+      <ul>
+        <li class="fragment">
+          <p><em>Si <span class="math inline">\(s(t)\)</span>
+              describe la posición de un objeto en el tiempo <span class="math inline">\(t\)</span>, entonces <span
+                class="math inline">\(\dfrac{ds}{dt}(t)\)</span> describe la tasa de
+              cambio de la posición respecto al tiempo: la velocidad.</em></p>
+        </li>
+        <li class="fragment">
+          <p><em>Si <span class="math inline">\(P(t)\)</span>
+              describe la población de cierto país en un determinado tiempo <span class="math inline">\(t\)</span>
+              entonces <span class="math inline">\(\dfrac{dP}{dt}(t)\)</span> es la tasa a la cual
+              cambia la población con respecto al tiempo</em></p>
+        </li>
+        <li class="fragment">
+          <p><em>Si <span class="math inline">\(T(t)\)</span>
+              es la temperatura de una habitación en el tiempo <span class="math inline">\(t\)</span> entonces <span
+                class="math inline">\(\dfrac{dT}{dt}(t)\)</span> es la tasa a la cual
+              varía la temperatura con respecto al tiempo.</em></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!--
+      <section id="aplicaciones-a-la-economía" class="slide level3 frame">
+        <h3>Aplicaciones a la economía</h3>
+        <div class="example">
+          <p> El valor de reventa de cierta maquina decrece a lo largo de un
+            período de 10 años a una tasa que depende de la antiguedad de la
+            máquina. Cuando la maquina tiene <span class="math inline">\(t\)</span>
+            años de antiguedad, la tasa a la que varía su valor es <span class="math inline">\(220(t-10)\)</span>
+            dolares por año. Exprese el
+            valor de la máquina como una función del tiempo y de su valor inicial.
+            Si el precio inicial de la máquina es de $12.000 ¿cuánto valdrá luego de
+            10 años?</p>
+        </div>
+        <div class="solution fragment">
+          <p>
+            Si \(V(t)\) denota el valor del máquina luego de \(t\) años, entonces debe satisfacer la siguiente EDO
+            \[
+            \frac{dV}{dt}=220(t-10)=220t-2200
+            \]
+            Este problema se resuelve mediante integración, es decir
+            \[
+            V(t)=\int (220t-2200)\mathrm{d}t=110t^2-2200t+C.
+            \]
+            Si el valor inicial de la máquina es \(V(0)=V_0\) entonces
+            \[
+            V_0=V(0)=110\cdot 0^2-2200\cdot 0+C=C\Rightarrow C=V_0,
+            \]
+            y por lo tanto el valor es
+            \[
+            V(t)=110t^2-2200t+V_0.
+            \]
+          </p>
+        </div>
+      </section>
+      <section id="aplicaciones-a-la-economía-1" class="slide level3 frame">
+        <h3>Aplicaciones a la economía</h3>
+        <div class="example">
+          <p> Una tienda, que puede mantener como máximo 100 unidades de cierto
+            producto en su inventario, determina que dicho producto se vende a una
+            tasa semanal del 10% de la capacidad total disponible disponible en esa
+            semana. Suponga que inicialmente la tienda cuenta con 75 unidades del
+            producto</p>
+          <ol>
+            <li>
+              <p>Escriba un problema de valor inicial para el
+                número de unidades <span class="math inline">\(N(t)\)</span> en
+                inventario luego de <span class="math inline">\(t\)</span>
+                semanas.</p>
+            </li>
+            <li>
+              <p>Resuelva el problema de valor inicial antes
+                encontrado.</p>
+            </li>
+            <li>
+              <p>¿Cuánto tiempo le toma a la tienda vender todo
+                su inventario?</p>
+            </li>
+          </ol>
+        </div>
+        <div class="solution fragment">
+          <p>
+            La capacidad disponible luego de \(t\) semanas se puede escribir como \(100-N(t)\) por lo que el PVI queda
+            \[
+            \frac{dN}{dt}=-0,10(100-N),\quad N(0)=75.
+            \]
+            Esta EDO es lineal y su solución es
+            \(
+            N(t)=100-25e^{0,1t}.
+            \)
+            Para vender todo el inventario se debe cumplir que \(N(t)=0\) de donde se obtiene
+            \[
+            t=10\ln 4\approx 13,86\text{ semanas}.
+            \]
+          </p>
+        </div>
+      </section>
+      -->
+  <section id="dinámica-de-poblaciones" class="slide level3 frame">
+    <h3>Dinámica de poblaciones</h3>
+    <p>De acuerdo a Thomas Malthus<a href="#/fn1" class="footnote-ref" id="fnref1"
+        role="doc-noteref"><sup>(1)</sup></a>, la tasa a la cual la
+      población de un país crece en un instante <span class="math inline">\(t\)</span> es proporcional a la
+      población del país
+      en ese instante.</p>
+    <p>Si denotamos por <span class="math inline">\(P(t)\)</span> a la
+      población del país al instante <span class="math inline">\(t\)</span>,
+      entonces la tasa de crecimiento en dicho instante está dada por <span
+        class="math inline">\(\dfrac{dP}{dt}(t)\)</span>, luego la proposición
+      de Malthus se puede escribir como <span class="math display">\[\frac{dP}{dt}\varpropto
+        P\Leftrightarrow\frac{dP}{dt}=kP,\]</span> donde <span class="math inline">\(k\)</span> es una constante de
+      proporcionalidad. Esta constante \(k\) puede ser positiva o negativa, dependiendo de si la población está
+      creciendo o decreciendo respectivamente.</p>
+    <p>
+      Esta es una EDO lineal que tiene como solución \[\boxed{P(t)=Ae^{kt}}\] para cierta constante \(A\). Esta
+      constante
+      \(A\) representa la población inicial en el instante \(t=0\).
+    </p>
+    <p>Este modelo es usualmente utilizado para modelar el crecimiento de
+      pequeñas poblaciones en períodos cortos de tiempo, como por ejemplo, una
+      colonia de bacterias en un plato de Petri.</p>
+    <div style="position:static; bottom:-100px; font-size: 12pt" class="fragment">
+      <em>(1) An Essay on the Principle of Population</em>, 1798<a href="#/fnref1" class="footnote-back"
+        role="doc-backlink">↩︎</a>
+    </div>
+  </section>
+
+  <section id="dinámica-de-poblaciones-1" class="slide level3 frame">
+    <h3>Dinámica de poblaciones</h3>
+    <div class="example">
+      <p> Una placa de Petri contiene inicialmente una colonia de <span class="math inline">\(1000\)</span>
+        bacterias. Cuando <span class="math inline">\(t=1\)</span> segundo se mide que el número de bacterias es
+        de <span class="math inline">\(1500\)</span>. Si la tasa de crecimiento
+        de la colonia es proporcional al numero de bacterias <span class="math inline">\(P(t)\)</span> en ésta,
+        determine el tiempo
+        necesario para que la colonia se triplique en cantidad.</p>
+    </div>
+
+    <div class="solution fragment">
+      <p><em>En este caso el PVI es
+          \[\left\{
+          \begin{aligned}
+          \frac{dP}{dt}&amp;=kP\\
+          P(0)&amp;=1000\\
+          P(1)&amp;=1500.
+          \end{aligned}
+          \right.\]
+        </em></p>
+      <p><em>La solución del PVI es <span class="math inline">\(P(t)=P(0)e^{kt}=1000e^{kt}\)</span>, y como <span
+            class="math inline">\(1500=P(1)=1000e^{k\cdot 1}\)</span> obtenemos que
+          <span class="math display">\[k=\ln \frac{3}{2}.\]</span> Finalmente, la
+          población se triplicará cuando <span class="math inline">\(P(t)=3000=1000e^{kt}\)</span>. Despejando \(t\)
+          obtenemos que esto ocurre cuando
+          \[t=\dfrac{1}{k}\ln 3=\dfrac{\ln 3}{\ln\frac32}\approx 2,7 \text{ segundos}.\]</span></em></p>
+    </div>
+  </section>
+  <section id="dinámica-de-poblaciones-2" class="slide level3 frame">
+    <h3>Dinámica de poblaciones</h3>
+    <p>El modelo antes visto no considera situaciones en las que hay tasas
+      de natalidad, mortalidad, migración, etcétera.</p>
+    <p class="fragment">Una modificación simple al modelo se puede hacer al incorporar tasas
+      de inmigración <span class="math inline">\(r_i\)</span> y emigración
+      <span class="math inline">\(r_e\)</span> de la siguiente forma <span
+        class="math display">\[\frac{dP}{dt}=kP+r_i-r_e.\]</span>
+    </p>
+    <p class="fragment">Para incorporar una tasa de natalidad <em>per cápita</em> <span
+        class="math inline">\(\beta\)</span> y una tasa de mortalidad <em>per
+        cápita</em> <span class="math inline">\(\delta\)</span>, Malthus propone
+      que <span class="math inline">\(k=\beta-\delta\)</span> de donde
+      obtenemos el siguiente modelo mas general <span class="math display">\[\label{pob-ecu1}
+        \left\{
+        \begin{aligned}
+        \frac{dP}{dt}&amp;=(\beta-\delta)P+r_i-r_e\\
+        P(0)&amp;=P_0
+        \end{aligned}
+        \right.\]</span></p>
+  </section>
+  <section id="dinámica-de-poblaciones-3" class="slide level3 frame">
+    <h3>Dinámica de poblaciones</h3>
+    <p>En general las tasas de natalidad y mortalidad varían con el tiempo y
+      con el tamaño de la población, por lo que en realidad <span class="math inline">\(\beta\)</span> y <span
+        class="math inline">\(\delta\)</span> son funciones que dependen de \(t\) y \(P\), es decir <span
+        class="math display">\[\beta=\beta(t,P)~\text{y}~\delta=\delta(t,P),\]</span>
+      lo que nos deja con una EDO no-lineal y bastante difícil de resolver en
+      general.</p>
+    <p class="fragment">El matemático belga Pierre Verhulst<a href="#/fn2" class="footnote-ref" id="fnref2"
+        role="doc-noteref"><sup>(2)</sup></a>
+      propuso un modelo en que la tasa de mortalidad es constante y que la
+      tasa de natalidad es una función lineal de <span class="math inline">\(P\)</span>, es decir <span
+        class="math display">\[\beta(t,P)=\beta_0-\beta_1P,\]</span> de donde
+      el modelo sin migración queda de la forma <span class="math display">\[\left\{
+        \begin{aligned}
+        \frac{dP}{dt}&amp;=(\beta_0-\delta-\beta_1P)P\\
+        P(0)&amp;=P_0.
+        \end{aligned}
+        \right.\]</span></p>
+    <div style="position:static; bottom:-100px; font-size: 12pt" class="fragment">
+      <p><em>(2) Mathematical Researches into the Law of Population
+          Growth Increase</em>, 1845<a href="#/fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p>
+    </div>
+  </section>
+  <section id="dinámica-de-poblaciones-4" class="slide level3 frame">
+    <h3>Dinámica de poblaciones</h3>
+    <p>Si denotamos por <span class="math inline">\(r=\beta_0-\delta\)</span> y <span
+        class="math inline">\(K=\dfrac{\beta_0-\delta}{\beta_1}\)</span>,
+      entonces este último modelo se puede escribir de la forma <span class="math display">\[\label{pob-log1}
+        \left\{
+        \begin{aligned}
+        \frac{dP}{dt}&amp;=\frac rKP(K-P)\\
+        P(0)&amp;=P_0.
+        \end{aligned}
+        \right.\]</span></p>
+    <p>Esta última ecuación se conoce como <strong><em>ecuación logística de
+          Verhulst</em></strong> y las cantidades que ahí aparecen tienen la
+      siguiente interpretación:</p>
+    <ul>
+      <li class="fragment">
+        <p>El valor de <span class="math inline">\(K\)</span> representa la capacidad máxima del
+          sistema, también denotada como “población límite”.</p>
+      </li>
+      <li class="fragment">
+        <p>La constante <span class="math inline">\(r=\beta_0-\delta\)</span> representa una tasa neta
+          de natalidad (puede ser negativa).</p>
+      </li>
+      <li class="fragment">
+        <p>El producto <span class="math inline">\(P(K-P)\)</span> se puede interpretar como la
+          interacción entre la población actual y el “espacio
+          disponible”.</p>
+      </li>
+    </ul>
+    <p class="fragment">
+      Esta EDO se puede resolver separando variables y suponiendo que \(P&gt;0\) (población positiva) y \(P&lt;K\)
+      (la población no supera la capacidad máxima disponible):
+      \[\int\frac{K}{P(K-P)}\mathrm{d}P=\int r\mathrm{d}t\Rightarrow \ln P-\ln(K-P)=rt+C\]
+      que al despejar queda
+      \[
+      \boxed{P(t)=\frac{K}{1+Ae^{-rt}}}
+      \]
+      para cierta constante \(A\).
+    </p>
+  </section>
+  <section id="dinámica-de-poblaciones-5" class="slide level3 frame">
+    <h3>Dinámica de poblaciones</h3>
+    <div class="example">
+      <p> <b>Propagación de una enfermedad</b>: En una comunidad cerrada con <span class="math inline">\(P_T\)</span>
+        habitantes, la tasa de contagio de
+        cierta enfermedad es proporcional a la interacciones entre individuos
+        sanos y enfermos. Determine y resuelva una ecuación que modele la
+        propagación de la enfermedad.</p>
+    </div>
+    <div class="fragment">
+      <div class="solution">
+        <p> <em>Si denotamos por <span class="math inline">\(P(t)\)</span> al
+            número de personas contagiadas al instante <span class="math inline">\(t\)</span>, lo que nos dicen es
+            que <span class="math display">\[\frac{dP}{dt}\varpropto P(P_T-P),\]</span> donde
+            <span class="math inline">\((P_T-P)\)</span> es la cantidad de
+            individuos sanos y el producto \(P(P_T-P)\) representa la interacción entre enfermos y sanos.
+            Es decir tenemos que <span class="math display">\[\frac{dP}{dt}=kP(P_T-P),\]</span> otra ecuación
+            logística. <span class="math inline">\(\blacksquare\)</span></em></p>
+      </div>
+    </div>
+  </section>
+  <section id="leyes-de-movimiento-de-newton" class="slide level3 frame">
+    <h3>Leyes de movimiento de Newton</h3>
+    <p>De acuerdo a la segunda ley de Newton, tenemos que la sumatoria de
+      fuerzas sobre un objeto es igual a la masa \(m\) del mismo por su aceleración \(a\),
+      es decir <span class="math display">\[F_{\text{neta}}=ma.\]</span></p>
+    <p>La aceleración es la tasa a la cual cambia la velocidad, por lo que
+      si <span class="math inline">\(v\)</span> representa la velocidad de la
+      masa podemos escribir <span class="math display">\[a=\dfrac{dv}{dt}=\dot
+        v,\]</span> por lo que la segunda ley de Newton es una ecuación
+      diferencial de la forma <span class="math display">\[m\dot
+        v=F.\]</span></p>
+  </section>
+  <section id="objeto-en-caída-libre" class="slide level3 frame">
+    <h3>Objeto en caída libre</h3>
+    <div style="display: flex; align-items: flex-start;">
+      <div style="flex: 0 0 40%; text-align: left; margin-right: 2em;">
+        <img data-src="clase06/caida-libre.png" style="width:100%;" alt="image" />
+      </div>
+      <div style="flex: 1; text-align: left;">
+        En el caso de un objeto en caída libre (no hay fuerzas externas a la
+        gravedad) entonces <span class="math inline">\(F_{\text{neta}}=F_{\text{gravedad}}=-mg\)</span>
+        donde <span class="math inline">\(g\)</span> es la aceleración de
+        gravedad, por lo tanto la ecuación queda <span class="math display">\[m\dot v=-mg \Leftrightarrow \dot
+          v=-g,\]</span>
+        que se puede resolver integrando directamente (podemos suponer que <span class="math inline">\(g\)</span> es
+        constante con respecto a \(t\)), para obtener que <span class="math display">\[\boxed{v(t)=v_0-gt}\]</span>
+        donde
+        <span class="math inline">\(v_0=v(0)\)</span> la velocidad inicial del
+        objeto.
+      </div>
+    </div>
+    <div class="fragment">
+      <p>Similarmente, tenemos que si <span class="math inline">\(h\)</span>
+        denota la altitud del objeto, entonces su derivada corresponde a la velocidad, es decir <span
+          class="math inline">\(v(t)=\dot h(t)\)</span>, por lo que tenemos la ecuación
+        diferencial para determinar la altura del objeto al instante <span class="math inline">\(t\)</span> dada por
+        <span class="math display">\[\dot h(t)=v(t)=v_0-gt,\]</span> integrando obtenemos
+        que <span class="math display">\[\boxed{h(t)=h_0+v_0t-g\frac{t^2}{2},}\]</span>
+        donde <span class="math inline">\(h_0=h(0)\)</span> es la altura inicial
+        del objeto.
+      </p>
+      <p>En otras palabras, la posición y la velocidad de la masa están
+        completamente determinadas por su posición y velocidad inicial.</p>
+    </div>
+  </section>
+
+  <section id="objeto-en-caída-libre-2" class="slide level3 frame">
+    <h3>Objeto en caída libre</h3>
+    <div class="example">
+      <p> Se dispara verticalmente hacia arriba un balón desde el suelo con una velocidad
+        inicial de 49 m/s. Determine la altura máxima del balón y el tiempo que
+        toma en regresar al suelo.</p>
+    </div>
+    <div class="solution fragment">
+      <p>Usando la solución obtenida, tenemos que <span class="math inline">\(v(t)=49-9.8t,\)</span> y <span
+          class="math inline">\(h(t)=49t-4.9t^2\)</span>.
+      </p>
+      <p class="fragment">Notar que en la altura máxima el balón cambia de
+        dirección, es decir pasamos de una velocidad
+        positiva (se mueve hacia arriba) a una negativa (se mueve hacia abajo),
+        en otras palabras, la condición de <em>alcanzar el máximo</em> es que la velocidad es exactamente 0.
+        <span class="math display">\[v(t)=0 \Rightarrow 49-9.8t=0 \Rightarrow
+          t=\frac{49}{9.8}=5.\]</span> Es decir, luego de \(5\) segundos, el balón
+        alcanza su altura máxima.
+      </p>
+
+      <p class="fragment">Para determinar la altura máxima calculamos
+        <span class="math inline">\(h(5)=h(t)=49\cdot5-4.9(5)^2=122.5\)</span>
+        metros. Para determinar cuanto tiempo tarda el balón para regresar al
+        suelo, notamos que dicha situación ocurre cuando <span class="math inline">\(h(t)=0\)</span> (el balon llega
+        al nivel del
+        piso), es decir <span class="math display">\[h(t)=0 \Rightarrow
+          49t-4.9t^2=0 \Rightarrow t=0~\text{ó}~t=10.\]</span> La solución <span class="math inline">\(t=0\)</span>
+        representa el momento en que se
+        disparó el balón, y la solución <span class="math inline">\(t=10\)</span> representa el tiempo que demora el
+        balón en impactar el suelo.
+      </p>
+    </div>
+  </section>
+  <section id="leyes-de-newton" class="slide level3 frame">
+    <h3>Leyes de Newton</h3>
+    <p>Veamos que pasa si suponemos que aparte de la gravedad, tenemos una
+      fuerza de resistencia al movimiento (fuerza de roce), es decir <span
+        class="math display">\[F_{\text{neta}}=F_{\text{gravedad}}+F_{\text{roce}}.\]</span>
+      ¿Cómo se modela matemáticamente la fuerza de roce?</p>
+    <p class="fragment">La fuerza de roce se opone al movimiento, es decir debe tener el
+      signo opuesto al signo de la velocidad, y habitualmente se supone que es
+      de la forma <span class="math display">\[F_{\text{roce}}=-kv^p,\]</span>
+      donde <span class="math inline">\(k&gt;0\)</span> y <span class="math inline">\(p\geq1\)</span> son constantes
+      empíricas, siendo
+      los casos <span class="math inline">\(p=1\)</span> y <span class="math inline">\(p=2\)</span> los mas usados.
+    </p>
+    <p class="fragment">Cuando <span class="math inline">\(p=1\)</span> la ecuación de Newton
+      queda <span class="math display">\[m\dot v=-mg-kv\Leftrightarrow \dot
+        v+\frac km v=-g.\]</span> La cantidad <span class="math display">\[\rho:=\frac km\]</span> se denota
+      <em>coeficiente
+        de roce</em>.
+    </p>
+  </section>
+  <section id="leyes-de-newton-1" class="slide level3 frame">
+    <h3>Leyes de Newton</h3>
+    <p>Como la EDO es lineal utilizamos el factor integrante <span class="math inline">\(e^{\rho t}\)</span> y
+      obtenemos que la solución
+      general está dada por <span class="math display">\[v(t)=-\frac
+        g\rho+Ce^{-\rho t}.\]</span> Si consideramos que la velocidad inicial
+      del objeto es <span class="math inline">\(v(0)=v_0\)</span>, obtenemos
+      la fórmula para <span class="math inline">\(v(t)\)</span> <span class="math display">\[\boxed{v(t)=\left(
+        v_0+\frac g\rho \right)e^{-\rho t}-\frac g\rho.}\]</span></p>
+    <p class="fragment">Si finalmente usamos que \(h(0)=h_0\) entonces la altura del objeto está dada por
+      \[h(t)=\int \left(\left( v_0+\frac g\rho \right)e^{-\rho
+      t}-\frac g\rho\right)dt\]
+      es decir
+      \[
+      \boxed{h(t)=h_0+\frac{1}{\rho}\left( v_0+\frac g\rho \right)-\frac{1}{\rho}\left( v_0+\frac g\rho \right)e^{-\rho
+      t}-\frac{g}{\rho} t.}
+      \]
+    </p>
+  </section>
+  <section id="leyes-de-newton-2" class="slide level3 frame">
+    <h3>Leyes de Newton</h3>
+    <div class="example">
+      <p>Resuelva el ejemplo anterior, suponiendo que el balón tiene un
+        coeficiente de roce con el aire de <span class="math inline">\(\rho=0.04\)</span>.</p>
+    </div>
+    <div class="solution fragment">
+      <div class="fragment">
+        <p>Utilizando las fórmulas recién calculadas, obtenemos que \(v(t)=294e^{-\frac t{25}}-245\) y que
+          \[h(t)=7350-245t-7350e^{-\frac{t}{25}}\] pues \(h(0)=0\).</p>
+        <p class="fragment">Ahora, para calcular la altura máxima imponemos la
+          condición <span class="math inline">\(v(t)=0\)</span>, y encontramos que el tiempo de ascenso es
+          <span class="math display">\[t_{max}=25\ln\frac{294}{245}\approx 4,56
+            \text{ segundos}\quad\Rightarrow\quad h_{max}=h(t_{max})\approx 108,3.\]</span>
+        </p>
+        <p class="fragment">El tiempo de retorno es mucho mas complicado de
+          calcular. Si bien la condición <span class="math inline">\(h(t)=0\)</span> sigue siendo correcta, resolver
+          dicha ecuación es algo no trivial (escapa a las técnicas de este
+          curso). Usando un computador (técnicas numéricas) obtenemos que <span class="math display">\[t_{\text{impacto
+            al suelo}}\approx 9,41 \text{
+            segundos}.\]</span> Observar que <span class="math inline">\(9,14-4,56=4,85\)</span>, es decir el tiempo
+          de
+          descenso es mas largo que tiempo de ascenso.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section id="ley-de-enfriamiento-de-newton" class="slide level3 frame">
+    <h3>Ley de enfriamiento de Newton</h3>
+    <p>De acuerdo a Newton, la tasa a la cual cambia la temperatura de un
+      objeto es proporcional a la diferencia de la temperatura del objeto y el
+      medio en el cual está sumergido, es decir, si denotamos por <span class="math inline">\(T(t)\)</span> a la
+      temperatura del objeto al
+      instante <span class="math inline">\(t\)</span>, y <span class="math inline">\(T_M\)</span> a la temperatura
+      del medio, tenemos
+      que <span class="math display">\[\frac{dT}{dt}\varpropto T-T_M,\]</span>
+      de donde se sigue que <span class="math display">\[\frac{dT}{dt}=k(T-T_M).\]</span></p>
+    <p>Una simplificación que se suele hacer, es suponer que <span style="color:red;">\(T_M\) es constante</span>, en
+      cuyo caso la ecuación se puede resolver mediante un factor integrante para obtener queda
+      \[\boxed{
+      T(t)=T_M+\left( T_0-T_M \right)e^{kt},
+      }\]
+      donde \(T_0\) es la temperatura inicial del objeto.</p>
+  </section>
+  <section id="ley-de-enfriamiento-de-newton-1" class="slide level3 frame">
+    <h3>Ley de enfriamiento de Newton</h3>
+    <div class="example">
+      <p> Una taza de café se enfría según la ley de Newton. Si inicialmente
+        el café estaba hirviendo (<span class="math inline">\(T(0)=100\) ºC</span>) y la temperatura ambiente
+        es de 13 ºC, estime la temperatura del café luego de 2 minutos si es que<a href="#/fn4" class="footnote-ref"
+          id="fnref4" role="doc-noteref"><sup>(3)</sup></a>
+        <span class="math inline">\(k=-1\)</span>.
+      </p>
+    </div>
+    <div class="fragment">
+      <div class="solution">
+        <p> <em>De acuerdo al modelo, tenemos que la temperatura del café se
+            puede modelar mediante la ecuación diferencial <span class="math display">\[\left\{
+              \begin{aligned}
+              \dot T&amp;=-(T-13)\\
+              T(0)&amp;=100
+              \end{aligned}
+              \right.\]</span> Esta es una ecuación lineal que tiene como solución <span
+              class="math inline">\(T(t)=13+(100-13)e^{-t}\)</span>, es decir <span
+              class="math display">\[T(t)=13+87e^{-t}.\]</span> Concluimos diciendo
+            que la temperatura luego de 2 minutos es <span class="math inline">\(T(2)=13+87e^{-2}\approx
+              24.77\) ºC</span>.</em></p>
+      </div>
+      <div style="position:static; bottom:-100px; font-size: 12pt" class="fragment">
+        <p>
+          <em>(3) La constante \(k\) es negativa pues el café se enfría.</em><a href="#/fnref4" class="footnote-back"
+            role="doc-backlink">↩︎</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicios" class="slide level3 frame">
+    <h3>Ejercicios: Modelos de población</h3>
+    <div class="exercise">
+      <ol>
+        <li style='margin-bottom: 10pt'>La población de una comunidad crece a una tasa que es proporcional al número
+          de individuos en ella. Si la población inicial se duplicó luego de 5 años, ¿cuánto tiempo le toma a la
+          población triplicarse? ¿y cuadruplicarse?</li>
+        <li style='margin-bottom: 10pt'>
+          Un estudiante contagiado de influenza llega a un campus cerrado de una universidad con 1000 estudiantes
+          inicialmente sanos.
+          <ol style="list-style-type: lower-roman">
+            <li>Determine una ecuación diferencial para el número de estudiantes contagiados si es que la tasa de
+              contagio es proporcional al número de interacciones entre los estudiantes contagiados y los sanos.
+            </li>
+            <li>Si el número de estudiantes contagiados luego de 4 días es de 50 estudiantes, determine el número de
+              estudiantes contagiados luego de 6 días.</li>
+          </ol>
+        </li>
+        <li>La tasa a la cual personeros del gobierno de un país se ven involucrados en actos de corrupción es
+          directamente proporcional no solo al numero de personas que ya están implicadas en corrupción si no que
+          también al número de personas que aún no han sido acusadas de corrupción. Suponga que al día de hoy hay
+          \(50\) personas involucradas por corrupción en el gobierno, que cuenta con \(5000\) miembros permanentes,
+          y que en un año se estima que habrán 100 personas acusadas de corrupción.
+          <ol style="list-style-type: lower-roman">
+            <li style='margin-bottom: 10pt'>Establezca y resuelva una ecuación diferencial que modele el fenómeno
+              descrito.</li>
+            <li style='margin-bottom: 10pt'>Estime a cantidad de personeros de gobierno corruptos que habrá luego de
+              5 años.</li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="ejercicios-1" class="slide level3 frame">
+    <h3>Ejercicios: Leyes de movimiento</h3>
+    <div class="exercise">
+      <ol>
+        <li> Se dispara verticalmente una bala de cañón de 5 kilos desde el piso con velocidad inicial de 100 m/s.
+          Responda las siguientes preguntas suponiendo que: (a) no hay resistencia del aire, (b) la resistencia del
+          aire es la forma \(F_R=-0.025 v\).
+          <ol style="list-style-type: lower-roman">
+            <li style='margin-bottom: 10pt'>¿Cuál es la altura máxima de la bala?</li>
+            <li style='margin-bottom: 10pt'>¿A qué velocidad impactaría la bala a un avión que vuela a la mitad de
+              la altura máxima determinada en la parte anterior?</li>
+            <li style='margin-bottom: 10pt'>En el caso sin resistencia del aire: ¿Cuál es la velocidad a la que
+              regresa la bala al suelo si es que no impacta a ningún objeto?</li>
+            <li style='margin-bottom: 10pt'>En el caso con resistencia del aire, se puede calcular la determinada
+              <b>velocidad terminal</b>. Esta velocidad corresponde al límite de \(v\) cuando \(t\to\infty\).
+              Encuentre la velocidad terminal para este ejemplo.
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="ejercicios-2" class="slide level3 frame">
+    <h3>Ejercicios: Ley de enfriamiento</h3>
+    <div class="exercise">
+      <ol>
+        <li>
+          <p>Usando la ley de Newton para el enfriamiento/calentamiento, resuelva el siguiente escenario. Suponga
+            que se prepara una taza de café con agua hirviendo (\(T=100\)° C), la que se deja sobre una mesa en una
+            pieza a temperatura ambiente (suponga que \(T_M=10\)° C es constante). Si luego de 10 minutos, la
+            temperatura de la tasa de café es de \(40\)° C, determine la temperatura del café luego de 30 minutos.
+          </p>
+          <p>
+            Manteniendo la misma constante \(k\) encontrada antes, ¿Cómo cambiaría el modelo si es que la
+            temperatura ambiente no es constante? Suponga que
+            \(T_M(t)=10+10\cos (t)\) (es decir la temperatura oscila en torno a los 10°).</p>
+        </li>
+        <li style='margin-bottom: 10pt'> Cuando se saca un queque del horno, se mide que su temperatura es de 200°.
+          Tres minutos después su temperatura es de 100°. ¿Cuánto tiempo toma para que el queque alcance 21° de
+          temperatura si es que la temperatura ambiente es de 20°?
+        </li>
+        <li style='margin-bottom: 10pt'> Un termómetro se lleva del interior de una habitación aislada hacia el
+          exterior, donde la temperatura es de 5°. Luego de 1 minuto, el termómetro mide 15°, y luego de 5 minutes
+          mide 10°. ¿Cuál era la temperatura al interior de la habitación?
+        </li>
+        <li style='margin-bottom: 10pt'> Un cadáver se encuentra en una pieza cerrada donde la temperatura ambiente
+          es de 20°. Al momento en que se encontró el cadáver, la temperatura del cuerpo era de 35°. Una hora
+          después se hizo una segunda medición, que determinó que la temperatura era de 30°. Suponiendo que la hora
+          de muerte es $t=0$ y que la temperatura del cuerpo era de 37°, determine cuantas horas transcurrieron
+          desde que la persona murió, hasta que se encontró el cadáver.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+
+</div>

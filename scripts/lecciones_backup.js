@@ -111,16 +111,8 @@ function createUnidadSection(unidad, courseBase, courseCarrera) {
     
     unidad.lecciones.forEach((leccion) => {
         if (leccion.enlace !== "#") {
-            // Extract unit number from unidadNombre (e.g., "Unidad I" → "UnidadI")
-            const unidadPath = unidad.nombre.replace(/\s+/g, '');
-            
-            // Build full lesson path: courseBase + "/" + unidadPath + "/" + enlace
-            const fullLessonPath = `${courseBase}/${unidadPath}/${leccion.enlace}`;
-            
-            // Build lesson URL with automatic title
-            const lessonUrl = `leccion.html?base=${encodeURIComponent(fullLessonPath)}&titulo=${encodeURIComponent(leccion.nombre)}`;
-            
-            const lessonResult = createLessonItem(leccion, lessonUrl, courseBase, courseCarrera);
+            const href = __join__(courseBase, leccion.enlace);
+            const lessonResult = createLessonItem(leccion, href, courseBase, courseCarrera);
             
             fragment.appendChild(lessonResult.element);
             lessonData.push(lessonResult.href);

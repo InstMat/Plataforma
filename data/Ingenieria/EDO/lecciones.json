@@ -1,0 +1,79 @@
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I",
+            "lecciones": [
+                {
+                    "nombre": "Conceptos básicos",
+                    "enlace": "clase01"
+                },
+                {
+                    "nombre": "EDOs separables",
+                    "enlace": "clase02"
+                },
+                {
+                    "nombre": "EDOs lineales de primer orden",
+                    "enlace": "clase03"
+                },
+                {
+                    "nombre": "EDOs exactas",
+                    "enlace": "clase04"
+                },
+                {
+                    "nombre": "Otras EDOs de primer orden",
+                    "enlace": "clase05"
+                },
+                {
+                    "nombre": "Modelos que usan EDOs de primer orden",
+                    "enlace": "clase06"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad II",
+            "lecciones": [
+                {
+                    "nombre": "EDOs lineales de 2º orden",
+                    "enlace": "clase07"
+                },
+                {
+                    "nombre": "Coeficientes indeterminados",
+                    "enlace": "clase08"
+                },
+                {
+                    "nombre": "Variación de parámetros",
+                    "enlace": "clase09"
+                },
+                {
+                    "nombre": "Modelos que usan EDOs de segundo orden",
+                    "enlace": "clase10"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad III",
+            "lecciones": [
+                {
+                    "nombre": "Transformada de Laplace",
+                    "enlace": "clase11"
+                },
+                {
+                    "nombre": "Transformada de Laplace Inversa",
+                    "enlace": "clase12"
+                },
+                {
+                    "nombre": "Transformada de Laplace y PVIs",
+                    "enlace": "clase13"
+                },
+                {
+                    "nombre": "Transformada de Laplace y sistemas de EDOs",
+                    "enlace": "clase14"
+                },
+                {
+                    "nombre": "Modelos que usan sistemas de EDOs",
+                    "enlace": "clase15"
+                }
+            ]
+        }
+    ]
+}

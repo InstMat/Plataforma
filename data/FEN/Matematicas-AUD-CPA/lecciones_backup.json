@@ -1,0 +1,122 @@
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I",
+            "lecciones": [
+                {
+                    "nombre": "Conjuntos numéricos",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadI/clase01&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Expresiones algebráicas",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadI/clase02&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Ecuaciones",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadI/clase03&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Inecuaciones",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadI/clase04&titulo=Matem%C3%A1tica"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad II",
+            "lecciones": [
+                {
+                    "nombre": "Funciones",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadII/clase05&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Álgebra de funciones",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadII/clase06&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Funciones básicas",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadII/clase07&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Funciones exponenciales",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadII/clase08&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Funciones logarítmicas",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadII/clase09&titulo=Matem%C3%A1tica"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad III",
+            "lecciones": [
+                {
+                    "nombre": "Sucesiones y sumatorias",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadIII/clase10&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Progresiones aritméticas",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadIII/clase11&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Progresiones geométricas",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadIII/clase12&titulo=Matem%C3%A1tica"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad IV",
+            "lecciones": [
+                {
+                    "nombre": "Límites",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadIV/clase13&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Límites y el infinito",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadIV/clase14&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Continuidad",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadIV/clase15&titulo=Matem%C3%A1tica"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad V",
+            "lecciones": [
+                {
+                    "nombre": "Derivadas",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadV/clase16&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Reglas de derivación I",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadV/clase17&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Reglas de derivación II",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadV/clase18&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Aplicaciones de la derivada",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadV/clase19&titulo=Matem%C3%A1tica"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad VI",
+            "lecciones": [
+                {
+                    "nombre": "Extremos de funciones",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadVI/clase20&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Concavidad y puntos de inflexión",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadVI/clase21&titulo=Matem%C3%A1tica"
+                },
+                {
+                    "nombre": "Problemas aplicados de optimización",
+                    "enlace": "leccion.html?base=FEN/Matematicas-AUD-CPA/UnidadVI/clase22&titulo=Matem%C3%A1tica"
+                }
+            ]
+        }
+    ]
+}

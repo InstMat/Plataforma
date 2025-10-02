@@ -1,0 +1,285 @@
+<div class="slides">
+
+  <section id="title-slide">
+    <h1 class="title">Matemáticas</h1>
+    <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+      Contador Público y Auditor</p>
+    <p class="main-logo"> Logo Instituto </p>
+  </section>
+
+  <section id="progresión-geométrica" class="slide level3 frame">
+    <h3>Progresión Geométrica</h3>
+    <div class="definition">
+      <p> Una sucesión se denomina <strong>Progresión Geométrica</strong>
+        (P.G.) si el cociente entre cualquier término y el anterior es el misma
+        a lo largo de toda la sucesión.</p>
+      <p>El cociente entre cada término y el anterior se denomina
+        <span><strong>razón común</strong></span> y se denota por <span class="math inline">\(q\)</span>.
+      </p>
+    </div>
+    <div class="example fragment">
+      <p> </p>
+      <ul>
+        <li class="fragment">
+          <p>La sucesión <span class="math inline">\(1, \,
+              \dfrac{1}{2}, \, \dfrac{1}{4}, \, \dfrac{1}{8}, \ldots\)</span> puede
+            continuar como una P.G. con razón <span class="math inline">\(q=\dfrac{1}{2}\)</span>.</p>
+        </li>
+        <li class="fragment">
+          <p>La sucesión <span class="math inline">\(1, \,
+              -3, \, 9, \, -27, \ldots\)</span> puede continuar como una P.G. con
+            razón <span class="math inline">\(q = -3\)</span></p>
+        </li>
+        <li class="fragment">
+          <p>La sucesión <span class="math inline">\(3, \,
+              3\sqrt{2}, \, 6, \, 6\sqrt{2}, \ldots\)</span> puede continuar como una
+            P.G. con razón <span class="math inline">\(q =
+              \sqrt{2}\)</span></p>
+        </li>
+        <li class="fragment">
+          <p>Si <span class="math inline">\((a_n)\)</span>
+            una P.G, determinar <span class="math inline">\(a_n\)</span> sabiendo
+            que <span class="math inline">\(a_1 = 5\)</span> y <span class="math inline">\(q=\dfrac{2}{3}\)</span>.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="observaciones-de-la-pg" class="slide level3 frame">
+    <h3>Observaciones de la PG:</h3>
+    <div class="remark">
+      <p> </p>
+      <ul>
+        <li class="fragment">
+          <p><em>La razón es <span class="math inline">\(q=\dfrac{a_{k+1}}{a_k}\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em><span class="math inline">\(a_1, \, a_2,
+                \, a_3 \ldots\)</span> es una P.G. <span class="math inline">\(\Longleftrightarrow\)</span> <span
+                class="math inline">\(\displaystyle \dfrac{a_2}{a_1} = \dfrac{a_3}{a_2} =
+                \dfrac{a_4}{a_3} \ldots\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em>Si <span class="math inline">\({a_n}\)</span> es una P.G. con primer término
+              <span class="math inline">\(a_1\)</span> y razón <span class="math inline">\(q\)</span>, los términos
+              de esta sucesión se
+              pueden expresar como: <span class="math display">\[a_1, \quad a_1 \cdot
+                q,\quad a_1\cdot q^2,\quad a_1\cdot q^3,
+                \quad \ldots\]</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em>El termino <span class="math inline">\(n\)</span>-ésimo de una PG está dado por: <span
+                class="math display">\[a_n=a_1\cdot q^{n-1}\]</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em>El término <span class="math inline">\(n\)</span>-ésimo de una PG también se puede
+              expresar en términos del término anterior como <span class="math display">\[a_n = a_{n-1} \cdot
+                q\]</span></em></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="ejemplos" class="slide level3 frame">
+    <h3>Ejemplos</h3>
+    <div class="example">
+      <p> Considere la sucesión: <span class="math inline">\(4, \, 1.2, \,
+          0.36, \, 0.108, \, \ldots\)</span>.</p>
+      <ol>
+        <li class="fragment">
+          <p>Probar que es una PG, encontrando <span class="math inline">\(q\)</span>.</p>
+        </li>
+        <li class="fragment">
+          <p>Determinar el término <span class="math inline">\(a_5\)</span>.</p>
+        </li>
+        <li class="fragment">
+          <p>Determine el término general <span class="math inline">\(a_n\)</span> y <span
+              class="math inline">\(a_{100}\)</span>.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="solution fragment">
+      <p> </p>
+      <ol>
+        <li>
+          <p><em>La razón es <span class="math inline">\(q=\frac{3}{10}\)</span>, pues <span
+                class="math inline">\(\frac{a_2}{a_1} = \frac{a_3}{a_2} =
+                \frac{a_4}{a_3} = \frac{3}{10}\)</span></em></p>
+        </li>
+        <li>
+          <p><em><span class="math inline">\(a_5=a_1 \cdot
+                q^4 = 4 \cdot \left( \frac{3}{10}\right )^4 = \frac{324}{10.000}=
+                \frac{81 }{2500}\)</span></em></p>
+          <p><em>Otra forma de obtener <span class="math inline">\(a_5\)</span>
+              es: <span class="math inline">\(a_5 = a_4 \cdot q = 0.108 \cdot
+                \frac{3}{10}= \frac{108}{1000} \cdot \frac{3}{10} = \frac{27}{250} \cdot
+                \frac{3}{10} = \frac{81}{2500}\)</span></em></p>
+        </li>
+        <li>
+          <p><em>Como <span class="math inline">\(a_n = a_1
+                \cdot q^{n-1}\)</span>, luego <span class="math inline">\(a_n = 4 \cdot
+                \left( \frac{3}{10}\right )^{n-1} \quad \Longrightarrow \quad a_{100} =
+                4\cdot \frac{3^{99}}{10^{99}}\)</span></em></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section id="ejemplos-1" class="slide level3 frame">
+    <h3>Ejemplos</h3>
+    <div class="example">
+      <p> Si <span class="math inline">\((a_n)\)</span> es una P.G. con donde
+        <span class="math inline">\(a_4 = 40\)</span> y <span class="math inline">\(a_7=320\)</span>. Determinar
+        <span class="math inline">\(a_1\)</span>, <span class="math inline">\(q\)</span> y <span
+          class="math inline">\(a_n\)</span>.
+      </p>
+    </div>
+    <div class="solution fragment">
+      <p> <em>En primer lugar debemos encontrar <span class="math inline">\(a_1\)</span> y <span
+            class="math inline">\(q\)</span>, para esto usamos la fórmula <span class="math inline">\(a_n=a_1\cdot
+            q^{n-1}\)</span> y realizando el
+          cociente entre <span class="math inline">\(a_7\)</span> y <span class="math inline">\(a_4\)</span> se
+          tiene:</em></p>
+      <p><em><span class="math display">\[\frac{a_7}{a_4} = \frac{a_1 q^6}{a_1
+            q^3} = \frac{320}{40} \quad \Longrightarrow \quad q^3 = 8 \quad
+            \Longrightarrow \quad q=2.\]</span></em></p>
+      <p><em>Por otro lado <span class="math display">\[a_4=a_1 \cdot q^3 =
+            a_1 \cdot 2^3 = 40 \quad \Longrightarrow \quad a_1 = 5\]</span></em></p>
+      <p><em>Luego, <span class="math inline">\(\displaystyle a_1 = 5 ,
+            \quad q=2, \quad \Longrightarrow a_n = 5\cdot 2^{n-1}\)</span></em></p>
+    </div>
+  </section>
+  <section id="interés-compuesto" class="slide level3 frame">
+    <h3>Interés Compuesto</h3>
+    <p>Si una cantidad <span class="math inline">\(P\)</span> se invierte a
+      una tasa de interés del <span class="math inline">\(r\)</span> (en
+      escritura decimal) por ciento anual <span><strong>compuesto <span class="math inline">\(k\)</span> veces en el
+          año</strong></span>, el
+      valor de la inversión al término del <span class="math inline">\(n\)</span>-ésimo año está dada por la fórmula
+      <span class="math display">\[P_n = P\left( 1+\frac{r}{k}
+        \right)^{nk},\]</span> donde la cantidad <span class="math inline">\(i=\dfrac{r}{k}\)</span> denota la tasa
+      de interés
+      que se aplica en cada período y el número <span class="math inline">\(k\)</span> indica el número de
+      capitalizaciones
+      que ocurren en un año (por ejemplo, si interés se capitaliza
+      semestralmente, entonces <span class="math inline">\(k =
+        2\)</span>).
+    </p>
+    <p>Los términos <span class="math inline">\(P_n\)</span> forman una P.G.
+      cuyo primer término es <span class="math display">\[P_1 =
+        P(1+i)\]</span> y la razón es <span class="math display">\[q =
+        1+i.\]</span></p>
+  </section>
+  <section id="ejemplos-de-interés-compuesto" class="slide level3 frame">
+    <h3>Ejemplos de Interés Compuesto</h3>
+    <div class="example">
+      <p> Si se inviertes $100.000 a una tasa de interés anual del 8%
+        compuesto mensualmente. ¿Cuánto dinero tendrá en dos años?</p>
+    </div>
+    <div class="solution fragment">
+      <p> <em>En este caso la inversión inicial es <span class="math inline">\(P = 100.000\)</span> y la tasa de
+          interés mensual
+          es de <span class="math inline">\(i=\frac{0,8}{12} =
+            \frac{1}{150}\)</span>, por lo tanto luego de <span class="math inline">\(n\)</span> <b>meses</b> de
+          composición del interés se
+          tendrá <span class="math display">\[P_n=P(1+i)^{n}=100000\left( 1+\frac
+            1{150} \right)^n,\]</span> luego, luego de 2 años = 24 meses se tendrán
+          <span class="math display">\[P_{24} = 100.000\left( 1+ \frac{1}{150}
+            \right)^{24} \approx 117.288,7931745\ldots\]</span></em></p>
+      <p><em><span><strong>Respuesta.</strong> </span> Después de dos años
+          tendrá $117.289</em></p>
+    </div>
+  </section>
+  <section id="ejemplos-de-interés-compuesto-1" class="slide level3 frame">
+    <h3>Ejemplos de Interés Compuesto</h3>
+    <div class="example">
+      <p> Si se invierten $ 2000 en una cuenta de ahorro con interés del 8%
+        anual que se capitaliza trimestralmente, calcular su valor al cabo de 5
+        años.</p>
+    </div>
+    <div class="solution fragment">
+      <p> <em>En este contexto, tenemos que:</em></p>
+      <ul>
+        <li>
+          <p><em><span class="math inline">\(P=2000\)</span></em></p>
+        </li>
+        <li>
+          <p><em><span class="math inline">\(r =
+                0,08\)</span></em></p>
+        </li>
+        <li>
+          <p><em><span class="math inline">\(k = 4\)</span>
+              (pues hay cuatro trimestres en un año)</em></p>
+        </li>
+      </ul>
+      <p><em>Así luego de <span class="math inline">\(n\)</span> trimestres se
+          tendrá <span class="math display">\[P_n = 2000\cdot
+            \left(1+\dfrac{0,08}{4}\right)^{n} = 2000\cdot
+            \left(1+\dfrac{1}{50}\right)^{n}.\]</span> De esta manera, al cabo del 5
+          años = 20 trimestres se tendrá un valor de <span class="math display">\[P_{20} = 2000\cdot
+            \left(1+\dfrac{1}{50}\right)^{4 \cdot 5} \approx 2972.\]</span></em></p>
+    </div>
+  </section>
+  <section id="sumatorias-geométricas" class="slide level3 frame">
+    <h3>Sumatorias geométricas</h3>
+    <p>Recordemos la fórmula para sumatorias geométricas:</p>
+    <div class="theorem">
+      <p> <em>Para <span class="math inline">\(r\neq 1\)</span> y la sucesión
+          dada por <span class="math inline">\(1, r, r^2,
+            r^3,\ldots,r^k,\ldots\)</span> nos interesa calcular <span class="math display">\[\sum_{k=m}^n
+            r^k\]</span> para distintos valores
+          de <span class="math inline">\(m\)</span>. En el caso <span class="math inline">\(m=0\)</span> se tiene
+          que <span class="math display">\[\sum_{k=0}^n
+            r^k=1+r+r^2+r^3+\ldots+r^n=\dfrac{r^{n+1}-1}{r-1}\]</span> mientras que
+          para <span class="math inline">\(m=1\)</span> se cumple que <span class="math display">\[\sum_{k=1}^n r^k=
+            r+r^2+r^3+\ldots+r^n=\dfrac{r^{n+1}-r}{r-1}.\]</span></em></p>
+    </div>
+  </section>
+  <section id="ejemplos-2" class="slide level3 frame">
+    <h3>Ejemplos</h3>
+    <div class="example">
+      <p> Calcular las siguiente sumatorias</p>
+      <ol>
+        <li class="fragment">
+          <p><span class="math inline">\(\displaystyle
+              \sum_{k=1}^{20} \frac{4}{2^k}\)</span>.</p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\displaystyle
+              \sum_{k=0}^{20} (-1)^k\frac{3^{k+1}}{5^k}\)</span>.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="solution fragment">
+      <p> </p>
+    </div>
+  </section>
+  <section id="suma-de-n-términos-de-una-pg" class="slide level3 frame">
+    <h3>Suma de <span class="math inline">\(n\)</span> términos de una
+      PG</h3>
+    <div class="theorem">
+      <p> <em>Sea <span class="math inline">\(a_1,\, a_2,\, a_3,\,
+            \ldots\)</span> una P.G. con razón <span class="math inline">\(q\)</span>. La suma de los <span
+            class="math inline">\(n\)</span> primeros términos de esta sucesión está
+          dada por <span class="math display">\[S_n = a_1 \left(
+            \dfrac{q^n-1}{q-1}\right)\]</span> la cual es válida para <span class="math inline">\(q\neq
+            1\)</span>.</em></p>
+    </div>
+  </section>
+  <section id="suma-de-n-términos-de-una-pg-1" class="slide level3 frame">
+    <h3>Suma de <span class="math inline">\(n\)</span> términos de una
+      PG</h3>
+    <div class="example">
+      <p> Suponiendo que la secuencia cuyos primeros términos son: <span class="math display">\[2, \, 8, \, 32, \,
+          128, \, 512,\, \ldots\]</span>
+        es una P.G. encuentre la suma de los primeros 20 términos de esta
+        sucesión.</p>
+    </div>
+    <div class="solution fragment">
+      <p> <em>De la P.G. entregada se obtiene que <span class="math inline">\(a_1 = 2\)</span> y <span
+            class="math inline">\(q =
+            4\)</span>, por lo que <span class="math display">\[S_n = 2\left(
+            \dfrac{4^n-1}{4-1}\right) = \dfrac{2}{3}\left(4^n-1\right),\]</span> de
+          donde <span class="math display">\[S_{20} =
+            \dfrac{2}{3}\left(4^{20}-1\right) = 733.007.751.850.\]</span></em></p>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,299 @@
+<div class="slides">
+
+	<section id="title-slide">
+		<h1 class="title">Matemáticas</h1>
+		<p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+			Contador Público y Auditor</p>
+		<p class="main-logo"> Logo Instituto </p>
+	</section>
+
+	<section id="derivada" class="slide level3 frame">
+		<h3>Derivada</h3>
+		<div class="exercise">
+			<p><strong>Problema</strong>: Determinar la ecuación de
+				la recta tangente a la curva <span class="math inline">\(y =
+					f(x)\)</span> en el punto <span class="math inline">\(x=c\)</span>.</p>
+			<p style="text-align: center;"><img data-src="clase16/derivada1.png" style="width:70%" alt="image" /></p>
+		</div>
+
+	</section>
+	<section id="derivada-1" class="slide level3 frame">
+		<h3>Derivada</h3>
+		<p style="text-align: center;"><img data-src="clase16/derivada1.png" style="width:70%" alt="image" />
+		</p>
+		<p class="fragment">Recordar que la ecuación de la recta que pasa por el punto <span class="math inline">\((x_0,
+				y_0)\)</span> y pendiente <span class="math inline">\(m\)</span> es:
+			<span class="math display">\[y-y_0
+				= m(x-x_0)\]</span>
+		</p>
+	</section>
+	<section id="derivada-2" class="slide level3 frame">
+		<h3>Derivada</h3>
+		<p>Tenemos el punto <span class="math inline">\((x_0,y_0)=(c, f(c))\)</span> luego
+			nos falta establecer la pendiente de la recta tangente \(m_T\).</p>
+		<p style="text-align: center;"><img data-src="clase16/derivada2.png" style="width:70%" alt="image" />
+		</p>
+	</section>
+
+	<section id="derivada-3" class="slide level3 frame">
+		<h3>Derivada</h3>
+		<p>Si trazamos rectas secantes que cortan al punto \((c,f(c))\) y al punto (\(c+h,f(c+h))\),
+			entonces podemos calcularles su pendiente \(m_S\)</p>
+		<p style="text-align: center;"><img data-src="clase16/derivada3.png" style="width:70%" alt="image" />
+		</p>
+	</section>
+
+	<section id="derivada-3.5" class="slide level3 frame">
+		<h3>Derivada</h3>
+		<p>Veamos que ocurre cuando \(h\longrightarrow 0\):</p>
+		<div class="ggb-wrapper fragment">
+			<div id="ggb-element-1"></div>
+		</div>
+	</section>
+
+	<section id="derivada-4" class="slide level3 frame">
+		<h3>Derivada</h3>
+		<p>Como vimos antes la pendiente de la recta secante que pasa por \((c,f(c))\) y \((c+h,f(c+h))\)
+			es \(m_s = \dfrac{f(c+h)-f(c)}{c+h -c} = \dfrac{f(c+h)-f(c)}{h}\)</p>
+		<p style="text-align: center;"><img data-src="clase16/derivada4.png" style="width: 60%" alt="image" />
+		</p>
+		<p class="fragment">Y cuando \(h\longrightarrow 0\) entonces las rectas secantes se aproximan a la recta
+			tangente, por lo que
+			se debe cumplir que \[m_T = \lim_{h \rightarrow 0} m_S = \lim_{h \rightarrow 0}
+			\frac{f(c+h)-f(c)}{h}\]</p>
+	</section>
+	<section id="derivada-5" class="slide level3 frame">
+		<h3>Derivada</h3>
+		<p style="text-align: center;"><img data-src="clase16/derivada1.png" style="width:50%" alt="image" />
+		</p>
+		<p>Volviendo al problema inicial, se obtiene que la pendiente de la
+			recta tangente, <span class="math inline">\(m_T\)</span>, a la curva
+			<span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\(x=c\)</span>, se
+			puede determinar usando la siguiente definición.
+		</p>
+		<div class="definition">
+			<p> La pendiente de la recta tangente al gráfico de la función <span class="math inline">\(f\)</span> en el
+				punto <span class="math inline">\((c,f(c))\)</span>
+				se puede calcular como <span class="math display">\[m_T = \lim_{h \rightarrow 0} \frac{f(c+h) -
+					f(c)}{h}\]</span></p>
+		</div>
+	</section>
+	<section id="ejemplos" class="slide level3 frame">
+		<h3>Ejemplos</h3>
+		<div class="example">
+			<p> Determinar la ecuación de la recta tangente a la curva <span class="math inline">\(y = x^2 +
+					1\)</span>, en el punto <span class="math inline">\((1,2)\)</span> ¿Qué ocurre en el punto
+				<span class="math inline">\((0,1)\)</span> y en el punto <span class="math inline">\((-1,2)\)</span>?
+			</p>
+		</div>
+		<div class="solution fragment">
+			<p style="margin-bottom: 450px;"></p>
+		</div>
+	</section>
+	<section id="ejemplos-2" class="slide level3 frame">
+		<h3>Ejemplos</h3>
+		<div class="example">
+			<p> Determinar la ecuación de la recta tangente a la curva <span class="math inline">\(y =
+					\dfrac{3}{x}\)</span>, en el punto <span class="math inline">\((3,1)\)</span></p>
+		</div>
+		<div class="solution fragment">
+			<p style="margin-bottom: 450px;"></p>
+		</div>
+	</section>
+	<section id="cómo-reconocer-cuando-la-derivada-no-existe-en-un-gráfico" class="slide level3 frame">
+		<h3>¿Cómo reconocer cuando la derivada no existe en un gráfico?</h3>
+		<div class="center">
+			<p style="text-align: center;"><img data-src="clase16/sin-derivada.png" style="width:100%" alt="image" />
+			</p>
+		</div>
+	</section>
+	<section id="cómo-reconocer-cuando-la-derivada-no-existe-en-un-gráfico-1" class="slide level3 frame">
+		<h3>¿Cómo reconocer cuando la derivada no existe en un gráfico?</h3>
+		<div class="ggb-wrapper">
+			<div id="ggb-element-2"></div>
+		</div>
+		<div class="block fragment" style="margin-top: 20pt;">
+			<ul>
+				<li class="fragment">
+					<p>En <span class="math inline">\(x=2\)</span> la
+						derivada no existe pues la pendiente de la tangente por la izquierda es
+						distinta a la pendiente de la tangente por la derecha.</p>
+				</li>
+				<li class="fragment">
+					<p>En <span class="math inline">\(x=-4\)</span> y
+						en <span class="math inline">\(x=0\)</span> la derivada no existe pues
+						las tangentes se vuelven verticales.</p>
+				</li>
+				<li class="fragment">
+					<p>En <span class="math inline">\(x=-2\)</span> y
+						en <span class="math inline">\(x=4\)</span> la derivada no existe pues
+						la función no es continua.</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section id="la-derivada-de-una-función" class="slide level3 frame">
+		<h3>La derivada de una función</h3>
+		<div class="definition">
+			<p> La derivada de una función <span class="math inline">\(f\)</span> es otra función <span
+					class="math inline">\(x\)</span>, denotada por <span class="math inline">\(f&#39;(x)\)</span>, que
+				se define en \(x\) como
+			</p>
+			<p><span class="math display">\[f&#39;(x) = \lim_{h \rightarrow 0}
+					\frac{f(x+h) - f(x)}{h}\]</span> si el límite existe</p>
+		</div>
+		<div class="remark fragment">
+			<p> <em>La pendiente de la recta tangente a <span class="math inline">\(y=f(x)\)</span> en el punto
+					<span class="math inline">\((c, \, f(c))\)</span> es <span class="math inline">\(m_T =
+						f&#39;(c)\)</span></em></p>
+		</div>
+		<div class="example fragment">
+			<p> Usar la definición para calcular las derivadas de las siguientes
+				funciones:</p>
+			<ol>
+				<li class="fragment">
+					<p>Si <span class="math inline">\(f(x) = a\)</span>
+						donde <span class="math inline">\(a\)</span> es una constante, entonces
+						<span class="math inline">\(f&#39;(x) =\)</span>
+					</p>
+				</li>
+				<li class="fragment">
+					<p>Si <span class="math inline">\(f(x) =
+							x\)</span>, entonces <span class="math inline">\(f&#39;(x)
+							=\)</span></p>
+				</li>
+				<li class="fragment">
+					<p>Si <span class="math inline">\(f(x) =
+							x^2\)</span>, entonces <span class="math inline">\(f&#39;(x)
+							=\)</span></p>
+				</li>
+			</ol>
+		</div>
+	</section>
+	<section id="derivadas-de-algunas-funciones" class="slide level3 frame">
+		<h3>Derivadas de algunas funciones</h3>
+		<div class="theorem">
+			<p> </p>
+			<ol>
+				<li class="fragment">
+					<p><em>Si <span class="math inline">\(f(x) =
+								a\)</span> donde <span class="math inline">\(a\)</span> es una
+							constante, entonces <span class="math inline">\(f&#39;(x) =
+								0\)</span></em></p>
+				</li>
+				<li class="fragment">
+					<p><em>Si <span class="math inline">\(f(x) =
+								x^n\)</span>, y <span class="math inline">\(n\)</span> es un número
+							racional, entonces <span class="math inline">\(f&#39;(x) =
+								nx^{n-1}\)</span></em></p>
+				</li>
+				<li class="fragment">
+					<p><em>Si <span class="math inline">\(f(x) =
+								e^x\)</span> , entonces <span class="math inline">\(f&#39;(x) =
+								e^x\)</span></em></p>
+				</li>
+				<li class="fragment">
+					<p><em>Si <span class="math inline">\(f(x) = \ln
+								x\)</span> , entonces <span class="math inline">\(f&#39;(x) =
+								\dfrac{1}{x}\)</span></em></p>
+				</li>
+			</ol>
+		</div>
+		<div class="example fragment">
+			<p>Calcular la derivada de las siguientes funciones</p>
+			<ol>
+				<li class="fragment">
+					<p><span class="math inline">\(\displaystyle f(x) =
+							\sqrt{x}\)</span></p>
+				</li>
+				<li class="fragment">
+					<p><span class="math inline">\(\displaystyle f(x) =
+							\frac{1}{x}\)</span></p>
+				</li>
+				<li class="fragment">
+					<p><span class="math inline">\(\displaystyle f(x) =
+							\frac{1}{x^2}\)</span></p>
+				</li>
+			</ol>
+		</div>
+	</section>
+	<section id="derivada-como-tasa-de-cambio" class="slide level3 frame">
+		<h3>Derivada como tasa de cambio</h3>
+		<div class="definition">
+			<p> Si consideramos una función <span class="math inline">\(y=f(x)\)</span> entonces <span
+					class="math display">\[\frac{f(x_0+h)-f(x_0)}{h}\]</span> también
+				representa la <em>tasa promedio de cambio</em> de la función <span class="math inline">\(y\)</span>
+				respecto a <span class="math inline">\(x\)</span> en el
+				intervalo de <span class="math inline">\(x_0\)</span> a <span class="math inline">\(x_0+h\)</span>.</p>
+		</div>
+		<div class="example fragment">
+			<p> Un objeto se mueve a lo largo de un camino recto y se determina que
+				su posición está dada por la función <span class="math inline">\(y=f(x)=x^2\)</span> donde <span
+					class="math inline">\(x\)</span> está en segundos e <span class="math inline">\(y\)</span>
+				en metros.</p>
+			<p>Encuentre la velocidad promedio del objeto en el intervalo <span class="math inline">\([2,2.1]\)</span>.
+			</p>
+		</div>
+	</section>
+	<section id="derivada-como-tasa-de-cambio-1" class="slide level3 frame">
+		<h3>Derivada como tasa de cambio</h3>
+		<div class="definition">
+			<p> Si consideramos una función <span class="math inline">\(y=f(x)\)</span> entonces <span
+					class="math display">\[f&#39;(x_0)=\lim_{h\to0}\frac{f(x_0+h)-f(x_0)}{h}\]</span>
+				representa la <em>tasa de cambio instantánea</em> de la función <span class="math inline">\(y\)</span>
+				respecto a <span class="math inline">\(x\)</span>
+				exactamente en <span class="math inline">\(x=x_0\)</span>.</p>
+		</div>
+		<div class="example fragment">
+			<p> Un objeto se mueve a lo largo de un camino recto y se determina que
+				su posición está dada por la función <span class="math inline">\(y=f(x)=x^2\)</span> donde <span
+					class="math inline">\(x\)</span> está en segundos e <span class="math inline">\(y\)</span>
+				en metros.</p>
+			<p>Encuentre la velocidad instantánea del objeto cuando <span class="math inline">\(t=2\)</span>.
+			</p>
+		</div>
+	</section>
+</div>
+
+
+<!--GEOGEBRA APPLETS-->
+<script>
+	var applet1 = new GGBApplet({
+		appName: "classic", // Puede ser "graphing", "geometry", etc.
+		width: 1250,
+		height: 720,
+		language: "es",
+		showToolBar: false, // Hide toolbar
+		showMenuBar: false, // Hide menu
+		showAlgebraInput: false, // Hide input bar
+		showResetIcon: false, // Hide reset icon
+		enableRightClick: false, // Optional: disable context menu
+		enableLabelDrags: false, // Optional: prevent label moving
+		showZoomButtons: false, // Optional: hide zoom buttons
+		showFullscreenButton: true,
+		allowStyleBar: false, // Optional: hide style bar
+		filename: "clase16/derivada.ggb" // Ruta al archivo local
+	}, true);
+
+	var applet2 = new GGBApplet({
+		appName: "classic", // Puede ser "graphing", "geometry", etc.
+		width: 1100,
+		height: 550,
+		language: "es",
+		showToolBar: false, // Hide toolbar
+		showMenuBar: false, // Hide menu
+		showAlgebraInput: false, // Hide input bar
+		showResetIcon: false, // Hide reset icon
+		enableRightClick: false, // Optional: disable context menu
+		enableLabelDrags: false, // Optional: prevent label moving
+		showZoomButtons: false, // Optional: hide zoom buttons
+		showFullscreenButton: true,
+		allowStyleBar: false, // Optional: hide style bar
+		filename: "clase16/sin-derivada.ggb" // Ruta al archivo local
+	}, true);
+
+	window.addEventListener("load", function () {
+		applet1.inject('ggb-element-1');
+		applet2.inject('ggb-element-2');
+	});
+</script>

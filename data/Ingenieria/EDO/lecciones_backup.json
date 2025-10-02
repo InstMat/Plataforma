@@ -1,0 +1,79 @@
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I",
+            "lecciones": [
+                {
+                    "nombre": "Conceptos básicos",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadI/clase01&titulo=EDO%20-%20Conceptos%20b%C3%A1sicos"
+                },
+                {
+                    "nombre": "EDOs separables",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadI/clase02&titulo=EDO%20-%20EDOs%20separables"
+                },
+                {
+                    "nombre": "EDOs lineales de primer orden",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadI/clase03&titulo=EDO%20-%20EDOs%20lineales%20de%20primer%20orden"
+                },
+                {
+                    "nombre": "EDOs exactas",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadI/clase04&titulo=EDO%20-%20EDOs%20exactas"
+                },
+                {
+                    "nombre": "Otras EDOs de primer orden",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadI/clase05&titulo=EDO%20-%20Otras%20EDOs%20de%20primer%20orden"
+                },
+                {
+                    "nombre": "Modelos que usan EDOs de primer orden",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadI/clase06&titulo=EDO%20-%20Modelos%20con%20EDOs%20de%20primer%20orden"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad II",
+            "lecciones": [
+                {
+                    "nombre": "EDOs lineales de 2º orden",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadII/clase07&titulo=EDO%20-%20EDOs%20lineales%20de%202%C2%BA%20orden"
+                },
+                {
+                    "nombre": "Coeficientes indeterminados",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadII/clase08&titulo=EDO%20-%20Coeficientes%20indeterminados"
+                },
+                {
+                    "nombre": "Variación de parámetros",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadII/clase09&titulo=EDO%20-%20Variaci%C3%B3n%20de%20par%C3%A1metros"
+                },
+                {
+                    "nombre": "Modelos que usan EDOs de segundo orden",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadII/clase10&titulo=EDO%20-%20Modelos%20con%20EDOs%20de%20segundo%20orden"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad III",
+            "lecciones": [
+                {
+                    "nombre": "Transformada de Laplace",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadIII/clase11&titulo=EDO%20-%20Transformada%20de%20Laplace"
+                },
+                {
+                    "nombre": "Transformada de Laplace Inversa",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadIII/clase12&titulo=EDO%20-%20Transformada%20de%20Laplace%20Inversa"
+                },
+                {
+                    "nombre": "Transformada de Laplace y PVIs",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadIII/clase13&titulo=EDO%20-%20Transformada%20de%20Laplace%20y%20PVIs"
+                },
+                {
+                    "nombre": "Transformada de Laplace y sistemas de EDOs",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadIII/clase14&titulo=EDO%20-%20Transformada%20de%20Laplace%20y%20sistemas"
+                },
+                {
+                    "nombre": "Modelos que usan sistemas de EDOs",
+                    "enlace": "../../leccion.html?base=Ingenieria/EDO/UnidadIII/clase15&titulo=EDO%20-%20Modelos%20con%20sistemas%20de%20EDOs"
+                }
+            ]
+        }
+    ]
+}

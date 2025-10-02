@@ -1,0 +1,352 @@
+<div class="slides">
+
+  <section id="title-slide">
+    <h1 class="title">Matemáticas</h1>
+    <p class="subtitle">Auditoría e Ingeniería en Control de Gestión<br />
+      Contador Público y Auditor</p>
+    <p class="main-logo"> Logo Instituto </p>
+  </section>
+
+  <section id="potencias-y-raíces" class="slide level3 frame">
+    <h3>Potencias y raíces</h3>
+    <div class="definition">
+      <p> Sea <span class="math inline">\(a\in \mathbb{R}\)</span>, <span class="math inline">\(a\neq 0\)</span>.
+        Para <span class="math inline">\(n\)</span> número entero se define: <span class="math display">\[a^n=
+          \begin{cases}
+          \displaystyle \underbrace{a\cdot a\cdot\ldots\cdot a}_{n\text{
+          veces}}&amp; \hbox{si $n$ entero positivo}\\
+          \displaystyle 1&amp; \hbox{si $n=0$}\\
+          \displaystyle \frac{1}{a^{-n}}&amp; \hbox{si $n$ entero negativo}
+          \end{cases}\]</span></p>
+    </div>
+    <div class="remark fragment">
+      <p> <em>Si <span class="math inline">\(a=0\)</span> entonces <span class="math display">\[0^n=\begin{cases}
+            0&amp;\text{si \(n\) es entero positivo}\\
+            \text{indefinido}&amp;\text{si \(n\) es entero negativo o 0}
+            \end{cases}\]</span></em></p>
+    </div>
+    <div class="example fragment">
+      <p> </p>
+    </div>
+  </section>
+  <section id="potencias-y-raíces-1" class="slide level3 frame">
+    <h3>Potencias y raíces</h3>
+    <div class="definition">
+      <p> <span class="math inline">\(\sqrt{a}=b\)</span> significa que <span class="math inline">\(b^{2}=a\)</span>
+          y   <span class="math inline">\(b\geq0\)</span>.</p>
+    </div>
+    <div class="example fragment">
+      <p> </p>
+      <ul>
+        <li class="fragment">
+          <p><span class="math inline">\(\sqrt{36}=
+              6\)</span> pues <span class="math inline">\(6^{2}=36\)</span>,</p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\sqrt{-25}\)</span>
+            no está definida ya que <span class="math inline">\(\sqrt{-25}\)</span>
+            no es un número real.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="potencias-y-raíces-2" class="slide level3 frame">
+    <h3>Potencias y raíces</h3>
+    <div class="definition">
+      <p> Si <span class="math inline">\(n \in \mathbb{Z}^{+}\)</span>
+        entonces <span class="math inline">\(\sqrt[n]{a}=b\)</span> significa
+        que <span class="math inline">\(b^{n}=a\)</span>.</p>
+    </div>
+    <div class="remark fragment">
+      <p> <em>Si <span class="math inline">\(n\)</span> es par, entonces <span
+            class="math inline">\(\sqrt[n]{a}\)</span> solo tiene sentido cuando
+          <span class="math inline">\(a\geq0\)</span>.</em></p>
+    </div>
+    <div class="example fragment">
+      <p> </p>
+      <ol>
+        <li class="fragment">
+          <p><span class="math inline">\(\sqrt[4]{16}=
+              2\)</span> pues <span class="math inline">\(2^{4}=16\)</span>.</p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\sqrt[3]{-125}=
+              -5\)</span> pues <span class="math inline">\((-5)^{3}=-125\)</span>.</p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\sqrt[4]{-16}\)</span> no está definido.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section id="potencias-y-raíces-3" class="slide level3 frame">
+    <h3>Potencias y raíces</h3>
+    <div class="definition">
+      <p> Sean <span class="math inline">\(m\)</span> y <span class="math inline">\(n\)</span> enteros sin factores
+        comunes, <span class="math inline">\(n\geq 0\)</span>, <span class="math inline">\(a
+          \in \mathbb R\)</span>. Se define <span class="math display">\[\displaystyle a^{\frac{m}{n}} =
+          (\sqrt[n]{a})^m\]</span></p>
+    </div>
+    <div class="example fragment">
+      <p> </p>
+      <ol>
+        <li class="fragment">
+          <p><span class="math inline">\(4^{\frac{5}{2}}=\left( \sqrt{4}
+              \right)^5=2^5=32\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\((-125)^{\frac{-2}{3}}=\left( \sqrt[3]{-125}
+              \right)^{-2}=(-5)^{-2}=\dfrac{1}{(-5)^2}=\dfrac{1}{25}\)</span></p>
+        </li>
+      </ol>
+    </div>
+    <div class="remark fragment">
+      <p> <em>Notar que no se puede calcular la cantidad <span class="math inline">\((-2)^{\frac{5}{4}}\)</span>
+          pues para hacerlo se
+          debe escribir <span class="math inline">\(\left( \sqrt[4]{-2}
+            \right)^5\)</span> lo que no está bien definido.</em></p>
+    </div>
+  </section>
+  <section id="potencias-y-raíces-4" class="slide level3 frame">
+    <h3>Potencias y raíces</h3>
+    <div class="theorem">
+      <p> <em>Si <span class="math inline">\(m,n\)</span> son racionales no
+          nulos entonces</em></p>
+      <ol class="two-columns">
+        <li class="fragment">
+          <p><em><span class="math inline">\(\displaystyle
+                a^ma^n=a^{m+n}\)</span>, <span class="math inline">\(a\neq
+                0\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em><span class="math inline">\(\displaystyle
+                a^nb^n=(ab)^{n}\)</span>, <span class="math inline">\(a,b\neq
+                0\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em><span class="math inline">\(\displaystyle
+                \frac{a^n}{a^m}=a^{n-m}\)</span>, <span class="math inline">\(a\neq
+                0\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em><span class="math inline">\(\displaystyle
+                \frac{a^n}{b^n}=\left(\frac{a}{b}\right)^n\)</span>, <span class="math inline">\(a,b\neq
+                0\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em><span class="math inline">\(\displaystyle
+                (a^m)^n=(a^n)^m=a^{nm}\)</span>, <span class="math inline">\(a\neq
+                0\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em><span class="math inline">\(\displaystyle
+                a^{-n}=\frac{1}{a^n}=(a^n)^{-1}=\left(\frac{1}{a}\right)^n\)</span>,
+              <span class="math inline">\(n\in \mathbb Q, \quad a\neq
+                0\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em><span class="math inline">\(\displaystyle
+                1^n=1\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em><span class="math inline">\(\displaystyle
+                0^n=0\)</span>, siempre que <span class="math inline">\(n\)</span> sea
+              un número racional positivo.</em></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section id="potencias-y-raíces-5" class="slide level3 frame">
+    <h3>Potencias y raíces</h3>
+    <div class="remark">
+      <p> <em>Las propiedades anteriores son válidas en la medida que <b>todas</b>
+          las cantidades se puedan calcular.</em></p>
+    </div>
+    <div class="example fragment">
+      <p> Notar que <span class="math inline">\(\left( (-2)^2
+          \right)^{\frac12}=4^{\frac12}=\sqrt{4}=2\)</span> pero <span
+          class="math inline">\((-2)^{2\cdot\frac12}=(-2)^1=-2\)</span>. Esto
+        ocurre pues <span class="math inline">\(\left( (-2)^{\frac 12}
+          \right)^2\)</span> no se puede calcular</p>
+    </div>
+  </section>
+  <section id="productos-notables" class="slide level3 frame">
+    <h3>Productos notables</h3>
+    <div class="theorem">
+      <p> <em>Propiedad distributiva <span class="math display">\[x(y\pm
+            z)=xy\pm xz\]</span></em></p>
+    </div>
+    <div class="example fragment">
+      <p> Desarrollar</p>
+      <ol>
+        <li class="fragment">
+          <p><span class="math inline">\(\quad
+              (2x-3)(\frac{5}{2}x+\frac{1}{3})\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\quad
+              (3x^2-5)(2x+7)\)</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section id="productos-notables-1" class="slide level3 frame">
+    <h3>Productos notables</h3>
+    <div class="theorem">
+      <p> <em>Producto de binomios <span class="math display">\[(x+a)(x+b)=x^2+(a+b)x+ab\]</span></em></p>
+    </div>
+    <div class="example fragment">
+      <p> Desarrollar <span class="math inline">\((x+3)(x-2)\)</span></p>
+    </div>
+  </section>
+  <section id="productos-notables-2" class="slide level3 frame">
+    <h3>Productos Notables</h3>
+    <div class="theorem">
+      <p> <em>Suma por su diferencia <span class="math display">\[(x+a)(x-a)=x^2-a^2\]</span></em></p>
+    </div>
+    <div class="example">
+      <p> Desarrollar</p>
+      <ol>
+        <li class="fragment">
+          <p><span class="math inline">\(\quad
+              (2a+1)(2a-1)\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\quad
+              (3y+\sqrt{2})(3y-\sqrt{2})\)</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section id="productos-notables-3" class="slide level3 frame">
+    <h3>Productos notables</h3>
+    <div class="theorem">
+      <p> <em>Cuadrado de un binomio <span class="math display">\[(x\pm
+            a)^2=x^2\pm 2ax +a^2\]</span></em></p>
+    </div>
+    <div class="example">
+      <p> Desarrollar</p>
+      <ol>
+        <li class="fragment">
+          <p><span class="math inline">\(\quad
+              (5x+6)^2\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\quad
+              (4y-\frac{1}{2})^2\)</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section id="reglas-de-factorización" class="slide level3 frame">
+    <h3>Reglas de Factorización</h3>
+    <p>Si se invierten la fórmulas de los productos notables, se obtienen
+      fórmulas de factorización, Las más conocidas son:</p>
+    <div class="theorem">
+      <p> <em>Cuadrado perfecto <span class="math display">\[x^2 \pm 2ax +a^2
+            = (x\pm a)^2\]</span></em></p>
+    </div>
+    <div class="example fragment">
+      <p> Factorizar <span class="math inline">\(x^2 -6x+9\)</span></p>
+    </div>
+    <div class="theorem fragment">
+      <p> <em>Resta de cuadrados <span class="math display">\[x^2 -a^2 =
+            (x+a)(x-a)\]</span></em></p>
+    </div>
+    <div class="example fragment">
+      <p> </p>
+      <ul>
+        <li class="fragment">
+          <p>Factorizar <span class="math inline">\(x^2
+              -25\)</span></p>
+        </li>
+        <li class="fragment">
+          <p>Calcular <span class="math inline">\(2024^2-2023^2\)</span></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section id="reglas-de-factorización-1" class="slide level3 frame">
+    <h3>Reglas de Factorización</h3>
+    <div class="theorem">
+      <p> <em>Polinomios cuadráticos de la forma <span class="math display">\[x^2+(a+b)x+ab =
+            (x+a)(x+b)\]</span></em></p>
+    </div>
+    <div class="example fragment">
+      <p> Factorizar</p>
+      <ol>
+        <li class="fragment">
+          <p><span class="math inline">\(x^2
+              +10x+24\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(x^2-5x+6\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(x^2+5x-6\)</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section id="reglas-de-factorización-2" class="slide level3 frame">
+    <h3>Reglas de Factorización</h3>
+    <div class="remark">
+      <p> <em>Para factorizar polinomios cuadráticos de la forma <span class="math inline">\(mx^2+px+q\)</span> se
+          debe hacer lo
+          siguiente:</em></p>
+      <ul>
+        <li class="fragment">
+          <p><em>Encontrar dos números <span class="math inline">\(a, \, b\)</span> tales: <span
+                class="math inline">\(p=a+b\)</span> y <span class="math inline">\(mq=ab\)</span></em></p>
+        </li>
+        <li class="fragment">
+          <p><em>Escribir el polinomio de la siguiente forma
+              <span class="math display">\[\begin{aligned}
+                mx^2+px+q &amp;= mx^2 + (a+b)x +q \\
+                &amp; = mx^2 + ax + bx +q \\
+                &amp; =
+                \underbrace{(mx^2+ax)}_{\text{factorizar}}+\underbrace{(bx+q)}_{\text{factorizar}}
+
+                \end{aligned}\]</span></em></p>
+        </li>
+      </ul>
+    </div>
+    <div class="example fragment">
+      <p> Factorizar <span class="math inline">\(2x^2+17x+8\)</span></p>
+    </div>
+  </section>
+  <section id="reglas-de-factorización-3" class="slide level3 frame">
+    <h3>Reglas de Factorización</h3>
+    <div class="example">
+      <p>Factorizar <span class="math inline">\(8x^2+2x-3\)</span></p>
+    </div>
+  </section>
+  <section id="racionalizar-fracciones" class="slide level3 frame">
+    <h3>Racionalizar fracciones</h3>
+    <p>Racionalizar el denominador (o numerador) de una fracción es un
+      procedimiento en el que, una fracción que tiene un radical en su
+      denominador (o numerador) se expresa como una fracción equivalente sin
+      el radical aludido.</p>
+    <p>Para ello, se utiliza la propiedad de las raíces: <span class="math display">\[(\sqrt[n]{a})^n = a\]</span>
+      Siempre y cuando se
+      pueda calcular <span class="math inline">\(\sqrt[n]a\)</span>.</p>
+    <div class="example fragment">
+      <p> Racionalizar el denominador o numerador, según corresponda, de las
+        siguientes expresiones</p>
+      <ol class="two-columns">
+        <li class="fragment">
+          <p><span class="math inline">\(\dfrac{3}{\sqrt{5}}\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\dfrac{\sqrt{2}}{\sqrt[3]{4}}\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\dfrac{11}{5-\sqrt{3}}\)</span></p>
+        </li>
+        <li class="fragment">
+          <p><span class="math inline">\(\sqrt{a}+\sqrt{b}\)</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+</div>

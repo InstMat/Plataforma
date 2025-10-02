@@ -187,7 +187,7 @@ async function verCursos(carreraId) {
             elements.titulo.innerHTML = `Lista de módulos disponibles para <em>${carrera.nombre}</em>`;
         }
         
-        // Usar setTimeout para simular carga y mostrar el loading mejorado
+        // Usar setTimeout para simular carga y mejorar UX
         setTimeout(() => {
             const modulos = carrera.modulos
                 .map(moduloId => data.modulos_comunes[moduloId])
@@ -257,7 +257,7 @@ async function verCursos(carreraId) {
                     }, index * 50);
                 });
             });
-        }, 800); // Tiempo aumentado para mostrar mejor el loading mejorado
+        }, 300);
         
     } catch (error) {
         console.error('Error al cargar módulos:', error);

@@ -1,0 +1,122 @@
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I",
+            "lecciones": [
+                {
+                    "nombre": "Conjuntos numéricos",
+                    "enlace": "clase01"
+                },
+                {
+                    "nombre": "Expresiones algebráicas",
+                    "enlace": "clase02"
+                },
+                {
+                    "nombre": "Ecuaciones",
+                    "enlace": "clase03"
+                },
+                {
+                    "nombre": "Inecuaciones",
+                    "enlace": "clase04"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad II",
+            "lecciones": [
+                {
+                    "nombre": "Funciones",
+                    "enlace": "clase05"
+                },
+                {
+                    "nombre": "Álgebra de funciones",
+                    "enlace": "clase06"
+                },
+                {
+                    "nombre": "Funciones básicas",
+                    "enlace": "clase07"
+                },
+                {
+                    "nombre": "Funciones exponenciales",
+                    "enlace": "clase08"
+                },
+                {
+                    "nombre": "Funciones logarítmicas",
+                    "enlace": "clase09"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad III",
+            "lecciones": [
+                {
+                    "nombre": "Sucesiones y sumatorias",
+                    "enlace": "clase10"
+                },
+                {
+                    "nombre": "Progresiones aritméticas",
+                    "enlace": "clase11"
+                },
+                {
+                    "nombre": "Progresiones geométricas",
+                    "enlace": "clase12"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad IV",
+            "lecciones": [
+                {
+                    "nombre": "Límites",
+                    "enlace": "clase13"
+                },
+                {
+                    "nombre": "Límites y el infinito",
+                    "enlace": "clase14"
+                },
+                {
+                    "nombre": "Continuidad",
+                    "enlace": "clase15"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad V",
+            "lecciones": [
+                {
+                    "nombre": "Derivadas",
+                    "enlace": "clase16"
+                },
+                {
+                    "nombre": "Reglas de derivación I",
+                    "enlace": "clase17"
+                },
+                {
+                    "nombre": "Reglas de derivación II",
+                    "enlace": "clase18"
+                },
+                {
+                    "nombre": "Aplicaciones de la derivada",
+                    "enlace": "clase19"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad VI",
+            "lecciones": [
+                {
+                    "nombre": "Extremos de funciones",
+                    "enlace": "clase20"
+                },
+                {
+                    "nombre": "Concavidad y puntos de inflexión",
+                    "enlace": "clase21"
+                },
+                {
+                    "nombre": "Problemas aplicados de optimización",
+                    "enlace": "clase22"
+                }
+            ]
+        }
+    ]
+}

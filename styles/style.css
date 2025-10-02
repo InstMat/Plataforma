@@ -1,8 +1,6 @@
+/* Optimized counter reset for better performance */
 body {
-    counter-reset: example-counter;
-    counter-reset: exercise-counter;
-    counter-reset: def-counter;
-    counter-reset: thm-counter;
+    counter-reset: example-counter exercise-counter def-counter thm-counter;
 }
 
 .frame {
@@ -11,6 +9,7 @@ body {
     margin-top: 30px;
 }
 
+/* GEOGEBRA STYLES */
 .ggb-wrapper {
     position: relative;
     width: 100%;
@@ -20,6 +19,14 @@ body {
     margin-bottom: 40pt;
 }
 
+/* Por defecto, oculta la imagen en pantalla */
+.ggb-print-img {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+/* Optimized content blocks with better performance */
 .example,
 .examples,
 .exercise,
@@ -38,15 +45,12 @@ body {
     width: 95%;
     padding: 10px 15px;
     margin-bottom: 10px;
-    /* Add spacing between examples */
     background-color: #f0f0f0;
-    /* Light blue background */
     border-radius: 8px;
-    /* Rounded corners */
     border: 1px solid #ccc;
-    /* Optional: border for better definition */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* Optional: subtle shadow */
+    will-change: transform;
+    contain: layout style;
 }
 
 .example ol li,
@@ -273,9 +277,12 @@ screen and (min-width:0px) and (orientation: landscape) {
     }
 }
 
-/* Por defecto, oculta la imagen en pantalla */
-.ggb-print-img {
-    display: none;
-    width: 100%;
-    height: auto;
+/* LESSON TITLE SLIDE STYLES */
+.lesson-style {
+    font-size: 1.2em;
+    font-weight: 300;
+    font-style: italic;
+    color: #666;
+    margin: 0.5em 0;
+    text-align: center;
 }
