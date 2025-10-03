@@ -143,7 +143,6 @@ async function cargarCarreras() {
 }
 
 // Función para mostrar los módulos de una carrera en el área de contenido
-// Función para mostrar los módulos de una carrera en el área de contenido
 async function verCursos(carreraId) {
     // Cache DOM elements
     const elements = {
