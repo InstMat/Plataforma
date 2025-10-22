@@ -21,7 +21,7 @@ function parseParams() {
 
     const isPrintMode = urlParams.has('print-pdf');
     if (isPrintMode) {
-        // Crear botón de impresión en lugar de abrir diálogo automáticamente
+        // Crear botón de impresión cuando se ejecuta el mode impresión
         createPrintButton();
     }
     return isPrintMode;

@@ -30,7 +30,7 @@
         },
         "MateCPAAUD": {
             "nombre": "Matemática",
-            "enlace": "curso.html?base=FEN/Matematicas-AUD-CPA&titulo=Matemática"
+            "enlace": "curso.html?base=FEN/Matematicas&titulo=Matemática"
         },
         "MateI-FEN": {
             "nombre": "Matemáticas I",
