@@ -286,4 +286,60 @@ screen and (min-width:0px) and (orientation: landscape) {
     .ggb-wrapper .ggb-print-img {
         display: block !important;
     }
+
+    /* Ocultar el botón de impresión al imprimir - Múltiples selectores para máxima especificidad */
+    #print-button,
+    .no-print,
+    button#print-button,
+    #controls-container #print-button,
+    body #print-button {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+    }
+}
+
+/* CONTROLS CONTAINER - No interfiere con posicionamiento fijo */
+#controls-container {
+    position: relative;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+#controls-container > * {
+    pointer-events: auto;
+}
+
+/* PRINT BUTTON STYLES */
+#print-button {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    z-index: 99999 !important;
+    padding: 12px 20px;
+    background-color: #1D71B8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#print-button:hover {
+    background-color: #155a94;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+#print-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

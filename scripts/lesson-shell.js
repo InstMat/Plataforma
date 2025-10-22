@@ -21,10 +21,8 @@ function parseParams() {
 
     const isPrintMode = urlParams.has('print-pdf');
     if (isPrintMode) {
-        // Detectar automáticamente cuando todo esté listo antes de imprimir
-        waitForContentReady().then(() => {
-            window.print();
-        });
+        // Crear botón de impresión en lugar de abrir diálogo automáticamente
+        createPrintButton();
     }
     return isPrintMode;
 }
@@ -508,6 +506,34 @@ async function modifyTitleSlide() {
         
     } catch (error) {
         console.warn('Error modifying title slide:', error);
+    }
+}
+
+// Create print button in the top-right corner
+function createPrintButton() {
+    // Verificar que el botón no exista ya (prevenir duplicados)
+    if (document.getElementById('print-button')) {
+        return;
+    }
+    
+    // Crear el botón inmediatamente (sin esperar waitForContentReady)
+    const printBtn = document.createElement('button');
+    printBtn.id = 'print-button';
+    printBtn.className = 'no-print'; // Clase adicional para ocultar al imprimir
+    printBtn.innerHTML = '<i class="fas fa-print"></i> Imprimir';
+    printBtn.title = 'Imprimir presentación';
+    
+    printBtn.addEventListener('click', () => {
+        window.print();
+    });
+    
+    // Agregar al contenedor de controles (fuera del alcance de Reveal.js)
+    const controlsContainer = document.getElementById('controls-container');
+    if (controlsContainer) {
+        controlsContainer.appendChild(printBtn);
+    } else {
+        // Fallback: agregar al inicio del body
+        document.body.insertBefore(printBtn, document.body.firstChild);
     }
 }
 

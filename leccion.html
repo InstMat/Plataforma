@@ -116,6 +116,15 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+
+    /* Ocultar botón de impresión al imprimir - regla crítica inline */
+    @media print {
+      #print-button,
+      #controls-container {
+        display: none !important;
+        visibility: hidden !important;
+      }
+    }
   </style>
 
   <!-- CSS crítico de Reveal.js -->
@@ -149,6 +158,9 @@
 </head>
 
 <body>
+  <!-- Contenedor para botones de control (fuera del alcance de Reveal.js) -->
+  <div id="controls-container"></div>
+
   <div class="loading-message" id="loading-message">
     <div>
       <div style="font-size: 1.5em; margin-bottom: 0.5rem;"><i class="fas fa-spinner fa-spin"></i></div>
@@ -185,6 +197,7 @@
   <!-- Dynamic GeoGebra scripts will be injected here -->
   <div id="dynamic-scripts"></div>
 
+  <!-- Global error handler -->
   <script>
     // Initialize lesson when DOM is ready
     document.addEventListener('DOMContentLoaded', function () {
