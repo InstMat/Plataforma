@@ -84,8 +84,8 @@ pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html \
 
 ```
 # Estructura de URLs
-curso.html?base=FEN/Matematicas-AUD-CPA&titulo=Matemática
-leccion.html?base=FEN/Matematicas-AUD-CPA&unidad=UnidadV&clase=clase16
+curso.html?base=FEN/Matematicas&titulo=Matemática
+leccion.html?base=FEN/Matematicas&unidad=UnidadV&clase=clase16
 
 # Exportar a PDF
 leccion.html?base=...&print-pdf  # Reemplaza applets por imágenes
@@ -139,7 +139,8 @@ function showModal(modalId) {
 
 ## Recursos y documentación
 
- - Documentación y tutoriales en el [Wiki de GitHub](https://github.com/hcastro-cl/Plataforma/wiki).
+ - Documentación y tutoriales en la carpeta [Wiki](https://github.com/InstMat/Plataforma/tree/main/wiki).
 
 
 ---
+
