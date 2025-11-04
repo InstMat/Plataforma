@@ -18,8 +18,8 @@ $endif$
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../../reveal/dist/reset.css">
-  <link rel="stylesheet" href="../../../reveal/dist/reveal.css">
+  <link rel="stylesheet" href="reveal/dist/reset.css">
+  <link rel="stylesheet" href="reveal/dist/reveal.css">
   <style>
     .reveal .sourceCode {  /* see #7635 */
       overflow: visible;
@@ -27,12 +27,12 @@ $endif$
     $styles.html()$
   </style>
 $if(theme)$
-  <link rel="stylesheet" href="../../../reveal/dist/theme/$theme$.css" id="theme">
+  <link rel="stylesheet" href="reveal/dist/theme/$theme$.css" id="theme">
 $else$
-  <link rel="stylesheet" href="../../../reveal/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="reveal/dist/theme/white.css" id="theme">
 $endif$
 $for(css)$
-  <link rel="stylesheet" href="../../../$css$"/>
+  <link rel="stylesheet" href="$css$"/>
 $endfor$
 $if(math)$
   $math$
@@ -42,7 +42,7 @@ $if(mathjax)$
         <script src="https://www.geogebra.org/apps/deployggb.js"></script>
         
         <!--MathJAX-->
-        <script src="../../../scripts/mathjax-config.js" async></script>
+        <script src="mathjax-config.js" async></script>
 $endif$
 $for(header-includes)$
   $header-includes$
@@ -87,16 +87,16 @@ $body$
     </div>
   </div>
 
-  <script src="../../../reveal/dist/reveal.js"></script>
+  <script src="reveal/dist/reveal.js"></script>
 
   <!-- reveal.js plugins -->
-  <script src="../../../reveal/plugin/notes/notes.js"></script>
-  <script src="../../../reveal/plugin/search/search.js"></script>
-  <script src="../../../reveal/plugin/zoom/zoom.js"></script>
+  <script src="reveal/plugin/notes/notes.js"></script>
+  <script src="reveal/plugin/search/search.js"></script>
+  <script src="reveal/plugin/zoom/zoom.js"></script>
 $if(mathjax)$
 $endif$
 
-<script src="../../../scripts/reveal-init.js"></script>
+<script src="scripts/reveal-init.js"></script>
   $for(include-after)$
   $include-after$
   $endfor$
