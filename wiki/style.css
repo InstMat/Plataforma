@@ -12,7 +12,7 @@ body {
 }
 
 /* Optimized content blocks with better performance */
-challenge, .example, .examples, .exercise, .exercises, .definition, .theorem, .proposition, .corollary, .remark, .solution, .block, .fact, .proof {
+.challenge, .example, .examples, .exercise, .exercises, .definition, .theorem, .proposition, .corollary, .remark, .solution, .block, .fact, .proof {
     display: inline-block;
     position: relative;
     width: 95%;
@@ -216,4 +216,5 @@ ol.two-columns, ul.two-columns {
 :root {
   --r-main-font-size: 26px;
 }
+
 
