@@ -213,8 +213,22 @@ ol.two-columns, ul.two-columns {
   width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho disponible */
 }
 
+/* Listas anidadas */
+.reveal ol {
+    list-style-type: decimal;
+}
+
+.reveal ol ol{
+    list-style-type: lower-alpha;
+}
+
+.reveal ol ol ol{
+    list-style-type: lower-roman;
+}
+
 :root {
   --r-main-font-size: 26px;
 }
+
 
 
