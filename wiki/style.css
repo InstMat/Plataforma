@@ -11,7 +11,8 @@ body {
     margin-top: 30px;
 }
 
-.example, .examples, .exercise, .exercises, .definition, .theorem, .proposition, .corollary, .remark, .solution, .block, .fact, .proof {
+/* Optimized content blocks with better performance */
+challenge, .example, .examples, .exercise, .exercises, .definition, .theorem, .proposition, .corollary, .remark, .solution, .block, .fact, .proof {
     display: inline-block;
     position: relative;
     width: 95%;
@@ -26,7 +27,21 @@ body {
 .example ol li, .examples ol li, .exsercise ol li, .exercises ol li{
     margin-bottom: 10mm;
 }
-    
+
+.challenge::before {
+    content: "Desafío. ";
+    /*
+    content: "Ejemplo " counter(example-counter) ". ";
+    counter-increment: example-counter;
+    */
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #b81d8a;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
 .example::before {
     content: "Ejemplo. ";
     /*
@@ -201,3 +216,4 @@ ol.two-columns, ul.two-columns {
 :root {
   --r-main-font-size: 26px;
 }
+
