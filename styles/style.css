@@ -38,6 +38,7 @@ body {
 }
 
 /* Optimized content blocks with better performance */
+.challenge,
 .example,
 .examples,
 .exercise,
@@ -69,6 +70,16 @@ body {
 .exsercise ol li,
 .exercises ol li {
     margin-bottom: 10mm;
+}
+
+.challenge::before {
+    content: "Desafío. ";
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #b81d8a;
+    padding: 5px 10px;
+    border-radius: 8px;
 }
 
 .example::before {
@@ -342,4 +353,5 @@ screen and (min-width:0px) and (orientation: landscape) {
 #print-button:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
 }
