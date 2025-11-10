@@ -261,6 +261,19 @@ ul.two-columns {
     /* Asegura que el contenedor ocupe el 100% del ancho disponible */
 }
 
+/* Listas anidadas */
+.reveal ol {
+    list-style-type: decimal;
+}
+
+.reveal ol ol{
+    list-style-type: lower-alpha;
+}
+
+.reveal ol ol ol{
+    list-style-type: lower-roman;
+}
+
 :root {
     --r-main-font-size: 26px;
 }
@@ -355,3 +368,4 @@ screen and (min-width:0px) and (orientation: landscape) {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 }
+
