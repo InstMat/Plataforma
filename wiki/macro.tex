@@ -1,0 +1,200 @@
+\documentclass[10pt,spanish,compress,letterpaper,leqno,hyperref={pdfencoding=unicode},aspectratio=169,usenames,dvipsnames,leqno,notheorems]{beamer}
+
+\usetheme{Madrid}
+
+\definecolor{IMblue}{RGB}{29, 113, 184} % (primary)
+\definecolor{IMgrey}{RGB}{87, 87, 86} % (secondary)
+
+\setbeamercolor{palette primary}{bg=IMblue,fg=white}
+\setbeamercolor{palette secondary}{bg=IMblue,fg=white}
+\setbeamercolor{palette tertiary}{bg=IMblue,fg=white}
+\setbeamercolor{palette quaternary}{bg=IMblue,fg=white}
+\setbeamercolor{structure}{fg=IMblue} % itemize, enumerate, etc
+\setbeamercolor{section in toc}{fg=IMblue} % TOC sections
+
+% Override palette coloring with secondary
+\setbeamercolor{subsection in head/foot}{bg=IMgrey,fg=white}
+
+
+\setbeamertemplate{footline}
+{%
+	\leavevmode%
+	\hbox{\begin{beamercolorbox}[wd=.48\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fill,rightskip=.3cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.48\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.04\paperwidth,ht=2.5ex,dp=1.125ex,center]{framenumber in head/foot}%
+			\usebeamerfont{framenumber in head/foot}{\insertframenumber/\inserttotalframenumber}
+	\end{beamercolorbox}}%
+	\vskip0pt%
+}
+
+\setbeamertemplate{frametitle continuation}{}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{theorems}[numbered]
+
+\setbeamercovered{invisible}
+
+\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{amsmath,amsfonts,amstext,amsbsy,amsopn,amsthm,amscd,amsxtra,mathtools}
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{gris}{RGB}{100,100,100} 
+
+% Fonts
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}						% Fuentes T1 para pdf
+\usepackage{ae,aecompl}							% Alta calidad de fuentes
+
+\usepackage[capitalise]{cleveref}
+
+
+%Enviroments
+\setbeamertemplate{theorem}[ams style]
+\setbeamertemplate{theorems}[numbered]
+
+\makeatletter
+\ifbeamer@countsect
+\newtheorem{theorem}{\translate{Theorem}}[section]
+\else
+\newtheorem{theorem}{\translate{Theorem}}
+\fi
+\newtheorem{corollary}{\translate{Corollary}}
+\newtheorem{fact}{\translate{Fact}}
+\newtheorem{proposition}{\translate{Proposition}}
+\newtheorem{lemma}{\translate{Lemma}}
+\newtheorem{problem}{\translate{Problem}}
+\newtheorem*{solution}{\translate{Solution}}
+\newtheorem*{remark}{\translate{Remark}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{\translate{Definition}}
+\newtheorem{definitions}{\translate{Definitions}}
+
+\theoremstyle{example}
+\newtheorem*{example}{\translate{Example}}
+\newtheorem*{examples}{\translate{Examples}}
+\newtheorem*{exercise}{\translate{Exercise}}
+\newtheorem*{exercises}{\translate{Exercises}}
+
+
+% Compatibility
+\theoremstyle{plain}
+\newenvironment{Lemma}{\begin{lemma}}{\end{lemma}}
+\newenvironment{Proof}{\begin{proof}}{\end{proof}}
+\newenvironment{Theorem}{\begin{theorem}}{\end{theorem}}
+\newenvironment{Problem}{\begin{problem}}{\end{problem}}
+\newenvironment{Corollary}{\begin{corollary}}{\end{corollary}}
+\newenvironment{Example}{\begin{example}}{\end{example}}
+\newenvironment{Examples}{\begin{examples}}{\end{examples}}
+\newenvironment{Definition}{\begin{definition}}{\end{definition}}
+\makeatother
+
+%Some Shortcuts
+\providecommand{\abs}[1]{\left\vert #1 \right\vert}
+\providecommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\providecommand{\pt}[1]{\left( #1 \right)}
+\providecommand{\pin}[1]{\left\langle #1 \right\rangle}
+\providecommand{\set}[1]{\left\{ #1 \right\}}
+\providecommand{\spt}[1]{\left[ #1 \right]}
+\providecommand{\sign}[1]{\textup{sign}(#1)}
+\providecommand{\di}{\textup{div}}
+\renewcommand{\qed}{\hfill$\blacksquare$\vspace{1ex}}
+\renewcommand{\epsilon}{\varepsilon}
+\providecommand{\NN}{\mathbb N}
+\providecommand{\ZZ}{\mathbb Z}
+\providecommand{\QQ}{\mathbb Q}
+\providecommand{\RR}{\mathbb R}
+\providecommand{\CC}{\mathbb C}
+\providecommand{\D}{\mathrm d}
+\providecommand{\cl}[1]{\mkern 1mu \overline{\mkern-1mu #1 \mkern-2mu}\mkern 1mu}	
+\newcommand{\sublim}{\operatornamewithlimits{\longrightarrow}}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\Re}{\textup{Re}\,}
+\renewcommand{\Im}{\textup{Im}\,}
+\providecommand{\Res}{\textup{Res}\,}
+\providecommand{\Ind}{\textup{Ind}\,}
+\providecommand{\dist}{\textup{dist}\,}
+
+\newcommand{\function}[5]{
+	\begin{array}{rl}
+		#1: #2 &\longrightarrow #3 \\
+		#4 & \longmapsto #1(#4) = #5
+\end{array}}
+
+\newcommand{\quot}[2]{{\raisebox{.2em}{\(#1\)}\left/\raisebox{-.2em}{\(#2\)}\right.}}
+
+
+
+%INICIO DE LA PRESENTACION
+
+
+%Slide del título
+\title[Título corto]{Título completo (Acá va el nombre del módulo)}
+\subtitle{Subtítulo (Acá puede ir el nombre de la carrera)}
+
+%Esta es la ruta por defecto del logo del Instituto, no se debe modificar para que funcione con el sitio
+\author[]{Autor y/o logo}
+%Se puede agregar la fecha, pero no se recomienda
+\date{}
+\begin{document}
+
+%El sitio automáticamente genera la diapositiva de título, por lo que no es necesario incluirla acá. Si se incluye, se generará una diapositiva extra vacía al inicio
+
+%\begin{frame}
+%\titlepage
+%\end{frame}
+
+\begin{frame}
+	% Para que la conversión funcione correctamente, cada frame debe tener un \frametitle
+	\frametitle{Título de la diapositiva}
+
+	%Entornos que se pueden utilizar. En general no funciona usar el formato \begin{entorno}[Nombre especial]
+
+	\begin{definition}
+	\end{definition}
+
+	\begin{theorem}
+	\end{theorem}
+
+	\begin{proof}
+	\end{proof}
+
+	\begin{proposition}
+	\end{proposition}
+
+	\begin{corollary}
+	\end{corollary}
+
+	\begin{lemma}
+	\end{lemma}
+
+	\begin{remark}
+	\end{remark}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Título}
+	\begin{example}
+	\end{example}
+
+	\begin{exercise}
+	\end{exercise}
+
+	\begin{solution}
+	\end{solution}
+
+	\begin{challenge}
+	\end{challenge}
+
+	\begin{block} %no se le puede poner título.		
+	\end{block}
+
+\end{frame}
+
+\end{document}

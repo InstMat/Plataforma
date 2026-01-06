@@ -1,5 +1,4 @@
 **/.DS_Store
-*.tex
 *.aux
 *.log
 *.auxlock
@@ -13,4 +12,3 @@
 *.dpth
 *.md5
 desktop.ini
-wiki/*.md
