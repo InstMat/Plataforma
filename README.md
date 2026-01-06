@@ -1,4 +1,4 @@
-# Plataforma de Módulos Matemáticos
+# Plataforma frontend de Módulos Matemáticos
 
 Este proyecto es una **plataforma educativa web modular** que permite a los usuarios explorar módulos matemáticos asociados a diferentes carreras. La plataforma utiliza una arquitectura de 3 capas (datos JSON, presentación Reveal.js + MathJax, y navegación dinámica) para ofrecer una experiencia educativa interactiva y optimizada.
 
@@ -143,4 +143,5 @@ function showModal(modalId) {
 
 
 ---
+
 
