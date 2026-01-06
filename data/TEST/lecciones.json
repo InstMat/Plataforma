@@ -1,0 +1,13 @@
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I",
+            "lecciones": [
+                {
+                    "nombre": "Clase de prueba",
+                    "enlace": "OUTPUT"
+                }
+            ]
+        }
+    ]
+}

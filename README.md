@@ -1,4 +1,4 @@
-# Plataforma frontend de Módulos Matemáticos
+# Frontend Plataforma de Módulos Matemáticos
 
 Este proyecto es una **plataforma educativa web modular** que permite a los usuarios explorar módulos matemáticos asociados a diferentes carreras. La plataforma utiliza una arquitectura de 3 capas (datos JSON, presentación Reveal.js + MathJax, y navegación dinámica) para ofrecer una experiencia educativa interactiva y optimizada.
 
@@ -46,6 +46,127 @@ Este proyecto es una **plataforma educativa web modular** que permite a los usua
 
 ---
 
+## Estructura del Proyecto
+
+```
+Plataforma/
+├── .github/                    # Configuración GitHub (Copilot instructions)
+│   └── copilot-instructions.md
+├── data/                       # Datos JSON estructurados
+│   ├── carreras.json          # Mapeo de carreras y módulos (editar solo si sabe lo que está haciendo)
+│   ├── FEN/                   # Facultad de Economía y Negocios + Administración Pública
+│   │   ├── AlgLin/
+│   │   ├── Calc/
+│   │   ├── Esta/
+│   │   ├── Mat-AdmPub/
+│   │   ├── MatI/
+│   │   ├── MatII/
+│   │   ├── MatIII/
+│   │   ├── MatIV/
+│   │   └── MetMat/
+│   ├── Ingenieria/            # Facultad de Ingeniería
+│   │   ├── Alg/
+│   │   ├── AlgLin/
+│   │   ├── CalcI/
+│   │   ├── CalcII/
+│   │   ├── EDO/
+│   │   ├── IntroMate/
+│   │   └── ProbEsta/
+│   ├── Pedagogia/             # Pedagogía en Matemáticas
+│   │   ├── AlgAbs/
+│   │   ├── AlgAbsII/
+│   │   ├── AlgLin/
+│   │   ├── CalcDife/
+│   │   ├── CalcInte/
+│   │   ├── CalcVV/
+│   │   ├── Estad/
+│   │   ├── FundMate/
+│   │   ├── GeomI/
+│   │   ├── GeomII/
+│   │   ├── GeomIII/
+│   │   └── Proba/
+│   └── Salud/                 # Facultad de Ciencias de la Salud
+│       ├── MatBas/
+│       ├── MatI/
+│       └── MatII/
+├── images/                     # Recursos gráficos
+│   └── ...
+├── reveal/                    # Framework Reveal.js (v5.2.0)
+│   ├── ...
+├── scripts/                   # Lógica JavaScript del proyecto
+│   ├── carreras.js            # Carga carreras en index.html
+│   ├── course-shell.js        # Shell dinámico para curso.html
+│   ├── lecciones.js           # Renderiza lista de lecciones
+│   ├── lesson-reveal-init.js  # Config estandarizada Reveal.js
+│   ├── lesson-shell.js        # Shell dinámico para leccion.html
+│   ├── login.js               # Sistema de autenticación
+│   ├── mathjax-config.js      # Configuración MathJax con macros
+│   └── reveal-init.js         # Inicialización general Reveal.js
+├── styles/                    # Hojas de estilo
+│   ├── landing.css            # Estilos página principal
+│   └── style.css              # Estilos globales + CSS counters
+├── wiki/                      # Documentación y tutoriales
+│   ├── index.html
+│   ├── editando-html-y-revealjs.html
+│   ├── uso-basico-de-pandoc.html
+│   └── uso-personalizado-de-pandoc-y-revealjs.html
+├── index.html                 # Página principal (landing)
+├── curso.html                 # Vista de módulos/unidades
+├── leccion.html               # Frame para presentaciones
+└── README.md                  # Este archivo
+```
+
+### Notas sobre la estructura:
+- Cada carpeta en `data/CARRERA/CURSO/` contiene un `lecciones.json` con la estructura de unidades y lecciones
+- La carpeta `reveal/` es un submódulo o copia del framework Reveal.js oficial. Editar solo si sabe lo que está haciendo.
+
+### Ejemplo de archivo `lecciones.json`:
+
+```json
+{
+    "unidades": [
+        {
+            "nombre": "Unidad I",
+            "lecciones": [
+                {
+                    "nombre": "Clase 1-01",
+                    "enlace": "clase101"
+                },
+                {
+                    "nombre": "Clase 1-02",
+                    "enlace": "clase102"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad II",
+            "lecciones": [
+                {
+                    "nombre": "Clase 2-01",
+                    "enlace": "clase201"
+                }
+            ]
+        },
+        {
+            "nombre": "Unidad III",
+            "lecciones": [
+                {
+                    "nombre": "Clase 3-01",
+                    "enlace": "clase301"
+                }
+            ]
+        }
+    ]
+}
+```
+
+**Campos del JSON**:
+- `unidades`: Array de unidades temáticas del curso
+- `nombre`: Título de la unidad o lección (este nombre apacererá en la slide de portada)
+- `enlace`: El archivo `clase102.html` se encuentra en la carpeta `UnidadI` y el archivo `clase201.html` se encuentra en la carpeta `UnidadII` (notar que se elimina el espacio en las unidades). Para el enlace basta escribir el nombre del archivo HTML sin la extensión.
+
+---
+
 ## Flujos de trabajo principales
 
 ### Servidor Local (Obligatorio)
@@ -69,11 +190,11 @@ python -m SimpleHTTPServer 8000
 ```bash
 # LaTeX → Presentación Reveal.js
 pandoc -s --mathjax -t revealjs -i INPUT.tex -o OUTPUT.html \
-  --lua-filter=remove-num.lua --template=reveal.html -c style.css
+  --lua-filter=remove-num.lua --template=reveal.html
 
 # LaTeX → HTML página única
 pandoc -s --mathjax -i INPUT.tex -o OUTPUT.html \
-  --lua-filter=remove-num.lua --template=default.html -c style.css
+  --lua-filter=remove-num.lua --template=default.html
 ```
 
 **Filtros específicos del proyecto**:

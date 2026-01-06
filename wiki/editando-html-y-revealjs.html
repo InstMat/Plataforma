@@ -108,14 +108,65 @@
             </p>
 
             <h2>1. Estructura básica del archivo</h2>
+            El archivo <code>OUTPUT.html</code> generado por Pandoc tiene la siguiente estructura básica:
+            <pre><code class="language-html">
+&lt;div class="slides"&gt;
+    &lt;!--Title page-- (está slide será reemplazada automáticamente por el sitio)&gt;
+    &lt;section id="title-slide"&gt;
+        &lt;h1 class="title">Título completo (Acá va el nombre del módulo)&lt;/h1&gt;
+        &lt;p class="subtitle">Subtítulo (Acá puede ir el nombre de la carrera)&lt;/p&gt;
+        &lt;p class="author">Autor y/o logo&lt;/p&gt;
+    &lt;/section&gt;
+    
+    &lt;!-- Table of Contents (si es que la hay)  --&gt;
+    
+    &lt;!-- Slides --&gt;
+    &lt;section id="título-de-la-diapositiva" class="slide level3 frame"&gt;
+        &lt;h3&gt;Título de la diapositiva&lt;/h3&gt;
+        &lt;div class="definition"&gt;
+            &lt;p&gt; &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="theorem"&gt;
+            &lt;p&gt; &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="proof"&gt;
+            &lt;p&gt;&lt;em&gt;Proof.&lt;/em&gt; ◻&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="proposition"&gt;
+            &lt;p&gt;&lt;strong&gt; 1&lt;/strong&gt;. &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="corollary"&gt;
+            &lt;p&gt; &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="lemma"&gt;
+            &lt;p&gt;&lt;strong&gt; 1&lt;/strong&gt;. &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="remark"&gt;
+            &lt;p&gt; &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+  
+    &lt;section id="título" class="slide level3 frame"&gt;
+        &lt;h3&gt;Título&lt;/h3&gt;
+        &lt;div class="example"&gt;
+            &lt;p&gt; &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="exercise"&gt;
+            &lt;p&gt;&lt;strong&gt; 1&lt;/strong&gt;. &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="solution"&gt;
+            &lt;p&gt; &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="block"&gt;
+        &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+            </code></pre>
+
             <ul>
-                <li>El encabezado del archivo HTML es generado automáticamente por Pandoc usando el archivo
-                    <code>reveal.html</code> como base. Se recomienda no modificar esta parte.
+                <li>El encabezado del archivo HTML es generado automáticamente por el sitio una vez que se carga en la carpeta <code>data</code>. No se debe agregar contenido.
                 </li>
-                <li>Se recomienda solo editar los contenidos dentro del entorno HTML
-                    <code>&lt;body&gt;...&lt;/body&gt;</code>.
-                </li>
-                <li>Dentro de <code>body</code> se encuentra la estructura básica de Reveal.js: cada sección
+                <li>A partide de la etiqueta <code>&lt;!-- Slides --&gt;</code> se encuentra la estructura básica de Reveal.js: cada sección
                     <code>&lt;section&gt;..&lt;/section&gt;</code> corresponde a un <code>frame</code> de LaTeX.
                 </li>
             </ul>
@@ -191,7 +242,7 @@
 <code>\[
     \begin{equation}\label{eq:1} ... \end{equation}
  \]</code></pre>
-            <p><strong>Notar que se debe usar <code>\[..\]</code> para poder usar entornos LaTeX.</strong>. Luego puedes
+            <p><strong>Notar que se debe usar <code>\[..\]</code> para poder usar entornos LaTeX como <code>\begin{equation}...\end{equation}</code></strong>. Luego puedes
                 referenciar la ecuación en cualquier parte de la página usando:</p>
             <pre><code>\eqref{eq:1}</code></pre>
             <p>Pandoc convierte entornos LaTeX a divs HTML:</p>
@@ -247,9 +298,6 @@
             <ul>
                 <li>Haz una copia de seguridad antes de editar el HTML.</li>
                 <li>Si editas el HTML manualmente, evita sobrescribirlo con Pandoc.</li>
-                <li>Para cambios globales, edita la plantilla <code>reveal.html</code> o el archivo
-                    <code>style.css</code>.
-                </li>
             </ul>
 
             <h2>7. Recursos útiles</h2>

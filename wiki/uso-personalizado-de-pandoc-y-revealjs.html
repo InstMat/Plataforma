@@ -109,33 +109,33 @@
             <h2>1. Requisitos previos</h2>
             <ul>
                 <li>Instala Pandoc (<a href="https://pandoc.org/installing.html">instrucciones aquí</a>).</li>
-                <li>Instala Reveal.js: descarga el archivo <a href="https://github.com/hakimel/reveal.js/archive/master.zip">master.zip</a> y descomprimelo en la carpeta donde estarán tus archivos. La carpeta resultante se debe llamar "reveal".</li>
-                <li>Descarga los archivos necesarios:
-                    <a href="macro.tex" download>macro.tex</a>,
-                    <a href="remove-num.lua" download>remove-num.lua</a>,
-                    <a href="reveal.html" download>reveal.html</a>,
-                    <a href="style.css" download>style.css</a>,
-                    <a href="mathjax-config.js" download>mathjax-config.js</a>,
-                    <a href="reveal-init.js" download>reveal-init.js</a>
-                    y
-                    <a href="refinar-tex.py">refinar-tex.py</a>.
+                <li>Clona el repositorio en tu computador:
+                    <pre><code class="language-bash">git clone https://github.com/InstMat/Plataforma.git</code></pre>
+                    o descarga el archivo zip desde <a
+                        href="https://github.com/InstMat/Plataforma/archive/refs/heads/main.zip">aquí</a> y descomprímelo.  
                 </li>
+                <li>Ubica los archivos <code>macro.tex</code> y <code>reveal.html</code> en la carpeta
+                    <code>Plataforma/wiki/</code>. Se recomienda usar el archivo <a href="macro.tex" download>macro.tex</a> como plantilla beamer base.</li>
             </ul>
 
             <h2>2. Conversión a presentación Reveal.js</h2>
-            <pre><code class="language-bash">pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html -c style.css</code></pre>
+            En la carpeta <code>Plataforma/wiki/</code> (o en la carpeta donde hays descargado los archivos <code>macro.tex</code>, <code>reveal.html</code> y <code>remove-num.lua</code>), abre una terminal y ejecuta el siguiente comando:
+            <pre><code class="language-bash">pandoc -s --mathjax -t revealjs -i macro.tex -o OUTPUT.html --lua-filter=remove-num.lua --template=reveal.html</code></pre>
             <ul>
                 <li><code>macro.tex</code>: tu archivo fuente LaTeX.</li>
                 <li><code>OUTPUT.html</code>: nombre del archivo HTML generado.</li>
-                <li><code>reveal.html</code>: archivo HTML macro que contiene código general.</li>
+                <li><code>reveal.html</code>: archivo HTML macro que contiene código general necesario para el funcionamiento en el sitio.</li>
                 <li><code>remove-num.lua</code>: elimina numeraciones automáticas de algunos entornos (opcional).</li>
-                <li><code>style.css</code>: hoja de estilos HTML para dar formato a la presentación.</li>
             </ul>
+            <p>El archivo <code>OUTPUT.html</code> generado de esta manera no tendrá formato. Para probar la conversión, ubique el archivo en la carpeta <code>/data/TEST/UnidadI</code> e ingrese al sitio usando
+                <code>http://localhost:8000/curso.html?base=TEST&titulo=M%C3%B3dulo%20de%20prueba&carrera=test-carrera</code>.
+            </p>
+            <p>Recuerde que primero debe iniciar el servidor local con <pre><code class="language-bash">python3 -m http.server 8000</code></pre> en la carpeta raíz del sitio.</p>
 
             <h2>3. Recomendaciones</h2>
             <ul>
-                <li>Ubica todos los archivos necesarios en la misma carpeta o ajusta las rutas en los comandos.</li>
-                <li>Revisa el resultado y ajusta el contenido si es necesario (ver <a
+                <li>Ubica los archivos <code>macro.tex</code>, <code>reveal.html</code> y <code>remove-num.lua</code> en la misma carpeta o ajusta las rutas en los comandos.</li>
+                <li>Revisa el resultado <code>OUTPUT.html</code> y ajusta el contenido si es necesario (ver <a
                         href="uso-basico-de-pandoc.html#limitaciones-de-la-conversion-de-beamer-a-revealjs">limitaciones</a>).
                     En esta parte se deben hacer los ajustes respecto a las pausas del Beamer y otros posibles
                     problemas.</p>

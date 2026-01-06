@@ -28,10 +28,6 @@
             "nombre": "Probabilidad y Estadística",
             "enlace": "curso.html?base=Ingenieria/ProbEsta&titulo=Probabilidad y Estadística"
         },
-        "MateCPAAUD": {
-            "nombre": "Matemática",
-            "enlace": "curso.html?base=FEN/Matematicas&titulo=Matemática"
-        },
         "MateI-FEN": {
             "nombre": "Matemáticas I",
             "enlace": "curso.html?base=FEN/MatI&titulo=Matemáticas I"
@@ -131,7 +127,11 @@
         "proba":{
             "nombre": "Probabilidades",
             "enlace": "curso.html?base=Pedagogia/Proba&titulo=Probabilidades"
-        }        
+        },
+        "mod-test":{
+            "nombre": "Módulo de prueba",
+            "enlace": "curso.html?base=TEST&titulo=Módulo de prueba"
+        }          
     },
     "facultades": [
         {
@@ -193,9 +193,23 @@
             "carreras": [
                 "ped-mate"
             ]
+        },
+        {
+            "id": "test",
+            "nombre": "TEST",
+            "carreras": [
+                "test-carrera"
+            ]
         }
     ],
     "carreras": [
+        {
+            "id": "test-carrera",
+            "nombre": "Carrera prueba",
+            "modulos": [
+                "mod-test"
+            ]
+        },
         {
             "id": "ped-mate",
             "nombre": "Pedagogía en Educación Media en Matemática y Física",
@@ -305,7 +319,6 @@
             "id": "cpa",
             "nombre": "Contador Público y Auditor",
             "modulos": [
-                "MateCPAAUD",
                 "MateI-FEN",
                 "MateII-FEN",
                 "MateIII-FEN",
@@ -316,7 +329,6 @@
             "id": "aud",
             "nombre": "Auditoría y Control de Gestión",
             "modulos": [
-                "MateCPAAUD",
                 "MateI-FEN",
                 "MateII-FEN",
                 "MateIII-FEN",

@@ -1,31 +1,3 @@
 {
-    "unidades": [
-        {
-            "nombre": "Unidad I",
-            "lecciones": [
-                {
-                    "nombre": "Título de la clase",
-                    "enlace": "clase01"
-                }
-            ]
-        },
-        {
-            "nombre": "Unidad II",
-            "lecciones": [
-                {
-                    "nombre": "Título de la clase",
-                    "enlace": "clase07"
-                }
-            ]
-        },
-        {
-            "nombre": "Unidad III",
-            "lecciones": [
-                {
-                    "nombre": "Título de la clase",
-                    "enlace": "clase11"
-                }
-            ]
-        }
-    ]
+    "unidades": []
 }

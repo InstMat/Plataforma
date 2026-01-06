@@ -1,6 +1,6 @@
 /* Optimized counter reset for better performance */
 body {
-    counter-reset: example-counter exercise-counter def-counter thm-counter;
+    counter-reset: example-counter exercise-counter def-counter thm-counter prop-counter lem-counter;
 }
 
 /* FRAME FOR REVEAL PRESENTATION  */
@@ -51,6 +51,7 @@ body {
 .solution,
 .block,
 .fact,
+.lemma,
 .proof {
     display: inline-block;
     position: relative;
@@ -183,8 +184,8 @@ body {
 .proposition::before {
     content: "Proposición. ";
     /*
-    content: "Teorema " counter(thm-counter) ". ";
-    counter-increment: thm-counter;
+    content: "Proposición " counter(prop-counter) ". ";
+    counter-increment: prop-counter;
     */
     font-weight: bold;
     display: block;
@@ -198,8 +199,8 @@ body {
 .lemma::before {
     content: "Lema. ";
     /*
-    content: "Teorema " counter(thm-counter) ". ";
-    counter-increment: thm-counter;
+    content: "Lema " counter(lem-counter) ". ";
+    counter-increment: lem-counter;
     */
     font-weight: bold;
     display: block;
