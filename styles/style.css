@@ -276,7 +276,7 @@ ul.two-columns {
 }
 
 :root {
-    --r-main-font-size: 26px;
+    --r-main-font-size: 30px;
 }
 
 @media print {
@@ -369,4 +369,5 @@ screen and (min-width:0px) and (orientation: landscape) {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 }
+
 
