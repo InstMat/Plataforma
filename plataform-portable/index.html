@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Carreras</title>
+    
+    <!-- Resource hints optimizados para conexiones más rápidas -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://inst-mat.utalca.cl">
+    <link rel="dns-prefetch" href="https://www.utalca.cl">
+    
+    <!-- CSS crítico inline optimizado para evitar FOUC -->
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0;
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(-45deg, #f7fafc, #e2e8f0, #cbd5e0, #a0aec0);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            will-change: background-position;
+        }
+        .container { 
+            display: flex; 
+            flex-direction: column; 
+            height: 100vh; 
+        }
+        header {
+            background-color: #2d3748;
+            color: white;
+            padding: 1rem;
+            will-change: transform;
+        }
+        .sidebar {
+            background-color: #f7fafc;
+            padding: 1rem;
+            min-height: 100%;
+            will-change: transform;
+        }
+        .spinner { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 1000;
+            font-size: 2rem;
+            color: #3182ce;
+        }
+        
+        /* Loading mejorado (mismo estilo que leccion.html) */
+        .loading-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.2em;
+            color: #666;
+            background: linear-gradient(-45deg, #f7fafc, #e2e8f0);
+            border-radius: 8px;
+            margin: 2rem 0;
+            will-change: opacity;
+            text-align: center;
+        }
+        .loading-message > div {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; transform: translate3d(0,0,0); }
+            50% { background-position: 100% 50%; transform: translate3d(0,0,0); }
+            100% { background-position: 0% 50%; transform: translate3d(0,0,0); }
+        }
+        /* Optimización para mobile */
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
+            .sidebar.active { transform: translateX(0); }
+        }
+    </style>
+    
+    <!-- CSS no crítico con preload optimizado -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" crossorigin onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/landing.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Preload del script crítico -->
+    <link rel="preload" href="scripts/carreras.js" as="script">
+    
+    <!-- Fallback para CSS en caso de que JavaScript esté deshabilitado -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="styles/landing.css">
+    </noscript>
+</head>
+
+<body>
+    <!--<div id="login-modal" class="login-modal">
+        <div class="login-content">
+            <input type="password" id="login-password" placeholder="Ingresa la clave">
+            <button id="login-btn">Entrar</button>
+            <p id="login-error" class="login-error" style="display:none;color:red;">Clave incorrecta</p>
+        </div>
+    </div>-->
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i> Menú
+            </button>
+            <div class="header-content">
+                <!-- Logo del Instituto (izquierda) -->
+                <div class="logo-left">
+                    <a href="http://inst-mat.utalca.cl" target="_blank"><img src="images/logo-instituto.png" alt="Logo del Instituto"></a>
+                </div>
+
+                <!-- Título centrado -->
+                <div class="header-title">
+                    <h1>Plataforma de Módulos Matemáticos</h1>
+                    <p>Instituto de Matemáticas</p>
+                    <p>Universidad de Talca</p>
+                </div>
+
+                <!-- Logo de la Universidad (derecha) -->
+                <div class="logo-right">
+                    <a href="http://www.utalca.cl" target=_blank><img src="images/logo-universidad.png" alt="Logo de la Universidad"></a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <!-- Menú lateral -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-top">
+                    <a href="#" class="home-button" onclick="recargarCarreras()">
+                        <i class="fas fa-home"></i> Volver al inicio
+                    </a>
+                </div>
+                <h2>Área del conocimiento</h2>
+                <!-- Contenedor para las carreras: se carga con JavaScript -->
+                <ul id="lista-carreras" class="sidebar-menu"></ul>
+            </div>
+
+            <!-- Área de contenido -->
+            <div class="content">
+                <h2 class="section-title">Lista de módulos disponibles</h2>
+                <p id="mensaje-modulos" class="mensaje-modulos" style="display: none;"></p>
+                <ul id="lista-cursos" class="course-list"></ul>
+                <!-- Página de carga -->
+                <div class="loading-message" id="loading-spinner" style="display: none;">
+                    <div>
+                        <div style="font-size: 1.5em; margin-bottom: 0.5rem;"><i class="fas fa-spinner fa-spin"></i></div>
+                        <div>Cargando módulos...</div>
+                        <div style="font-size: 0.9em; color: #888; margin-top: 0.5rem;">
+                            Preparando lista de módulos disponibles
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/carreras.js" defer></script>
+    <!--<script src="scripts/login.js" defer></script>-->
+</body>
+
+</html>

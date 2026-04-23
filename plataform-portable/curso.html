@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curso</title>
+  
+  <!-- Resource hints para optimizar conexiones -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://inst-mat.utalca.cl">
+  <link rel="dns-prefetch" href="https://www.utalca.cl">
+  
+  <!-- CSS crítico inline para evitar FOUC -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(-45deg, #f7fafc, #e2e8f0, #cbd5e0, #a0aec0);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      will-change: background-position;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      background-color: #2d3748;
+      color: white;
+      padding: 1rem;
+      will-change: transform;
+    }
+    .main-content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    .sidebar {
+      background-color: #f7fafc;
+      padding: 1rem;
+      min-width: 250px;
+      will-change: transform;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; transform: translate3d(0,0,0); }
+      50% { background-position: 100% 50%; transform: translate3d(0,0,0); }
+      100% { background-position: 0% 50%; transform: translate3d(0,0,0); }
+    }
+    /* Mobile optimization */
+    @media (max-width: 768px) {
+      .main-content { flex-direction: column; }
+      .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
+      .sidebar.active { transform: translateX(0); }
+    }
+  </style>
+  
+  <!-- CSS no crítico con preload -->
+  <link rel="preload" href="styles/landing.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" crossorigin onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Preload de scripts críticos -->
+  <link rel="preload" href="scripts/course-shell.js" as="script">
+  <link rel="preload" href="scripts/lecciones.js" as="script">
+  
+  <!-- Fallback para CSS si JavaScript está deshabilitado -->
+  <noscript>
+    <link rel="stylesheet" href="styles/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </noscript>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button id="menu-toggle" class="menu-toggle">
+        <i class="fas fa-bars"></i> Menú
+      </button>
+      <div class="header-content">
+        <div class="logo-left">
+          <a href="http://inst-mat.utalca.cl" target="_blank"><img src="images/logo-instituto.png" alt="Logo del Instituto"></a>
+        </div>
+        <div class="header-title">
+          <h1>Plataforma de Módulos Matemáticos</h1>
+          <p>Instituto de Matemáticas</p>
+          <p>Universidad de Talca</p>
+        </div>
+        <div class="logo-right">
+          <a href="http://www.utalca.cl" target=_blank><img src="images/logo-universidad.png" alt="Logo de la Universidad"></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i> Volver al inicio
+          </a>
+        </div>
+        <h2 id="course-title">Curso</h2>
+        <div id="unidades-container"></div>
+      </div>
+      <div class="content">
+        <iframe name="contenido" src=""></iframe>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="scripts/course-shell.js" defer></script>
+  <script src="scripts/lecciones.js" defer></script>
+</body>
+</html>

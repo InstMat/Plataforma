@@ -1,0 +1,373 @@
+/* Optimized counter reset for better performance */
+body {
+    counter-reset: example-counter exercise-counter def-counter thm-counter prop-counter lem-counter;
+}
+
+/* FRAME FOR REVEAL PRESENTATION  */
+.frame {
+    text-align: left;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+/* LESSON TITLE SLIDE STYLES */
+.lesson-style {
+    font-size: 1.2em;
+    font-weight: 300;
+    font-style: italic;
+    color: #666;
+    margin: 0.5em 0;
+    text-align: center;
+}
+
+/* GEOGEBRA STYLES */
+.ggb-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40pt;
+}
+
+/* Por defecto, oculta la imagen en pantalla */
+.ggb-print-img {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+/* Optimized content blocks with better performance */
+.challenge,
+.example,
+.examples,
+.exercise,
+.exercises,
+.definition,
+.theorem,
+.proposition,
+.corollary,
+.remark,
+.solution,
+.block,
+.fact,
+.lemma,
+.proof {
+    display: inline-block;
+    position: relative;
+    width: 95%;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    will-change: transform;
+    contain: layout style;
+}
+
+.example ol li,
+.examples ol li,
+.exsercise ol li,
+.exercises ol li {
+    margin-bottom: 10mm;
+}
+
+.challenge::before {
+    content: "Desafío. ";
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #b81d8a;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.example::before {
+    content: "Ejemplo. ";
+    /*
+    content: "Ejemplo " counter(example-counter) ". ";
+    counter-increment: example-counter;
+    */
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.examples::before {
+    content: "Ejemplos. ";
+    /*
+    content: "Ejemplo " counter(example-counter) ". ";
+    counter-increment: example-counter;
+    */
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.exercise::before {
+    content: "Ejercicio. ";
+    /*
+    content: "Ejercicio " counter(exercise-counter) ". ";
+    counter-increment: exercise-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2C3E50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.exercises::before {
+    content: "Ejercicios. ";
+    /*
+    content: "Ejercicio " counter(exercise-counter) ". ";
+    counter-increment: exercise-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2C3E50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.definition::before {
+    content: "Definición. ";
+    /*
+    content: "Definición " counter(def-counter) ". ";
+    counter-increment: def-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #F28C28;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.fact::before {
+    content: "Propiedades. ";
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.theorem::before {
+    content: "Teorema. ";
+    /*
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.proposition::before {
+    content: "Proposición. ";
+    /*
+    content: "Proposición " counter(prop-counter) ". ";
+    counter-increment: prop-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.lemma::before {
+    content: "Lema. ";
+    /*
+    content: "Lema " counter(lem-counter) ". ";
+    counter-increment: lem-counter;
+    */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #D72638;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.solution::before {
+    content: "Solución. ";
+    /* Add "Solución. " */
+    font-weight: bold;
+    color: #333;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1D71B8;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.remark::before {
+    content: "Observación. ";
+    /* Add "Observación. " */
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.proof::before {
+    content: "Demostración. ";
+    font-weight: bold;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #999;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+ol.two-columns,
+ul.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Divide el espacio en dos columnas iguales */
+    gap: 20px;
+    /* Espacio entre las columnas */
+    list-style-position: inside;
+    /* Asegura que los números o viñetas estén alineados */
+    padding-left: 0;
+    /* Elimina el padding por defecto de la lista */
+    width: 100%;
+    /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+}
+
+/* Listas anidadas */
+.reveal ol {
+    list-style-type: decimal;
+}
+
+.reveal ol ol{
+    list-style-type: lower-alpha;
+}
+
+.reveal ol ol ol{
+    list-style-type: lower-roman;
+}
+
+:root {
+    --r-main-font-size: 30px;
+}
+
+@media print {
+
+    mjx-container[jax="SVG"] use[data-c],
+    mjx-container[jax="SVG"] path[data-c] {
+        stroke-width: 0 !important;
+    }
+}
+
+/* Mostrar imagen y ocultar applet GeoGebra al imprimir o exportar PDF Reveal.js */
+@media print,
+screen and (min-width:0px) and (orientation: landscape) {
+
+    .reveal.print-pdf .ggb-wrapper [id^="ggb-element-"],
+    .reveal.print-pdf .ggb-wrapper iframe {
+        display: none !important;
+    }
+
+    .reveal.print-pdf .ggb-wrapper .ggb-print-img {
+        display: block !important;
+    }
+}
+
+@media print {
+
+    .ggb-wrapper [id^="ggb-element-"],
+    .ggb-wrapper iframe {
+        display: none !important;
+    }
+
+    .ggb-wrapper .ggb-print-img {
+        display: block !important;
+    }
+
+    /* Ocultar el botón de impresión al imprimir - Múltiples selectores para máxima especificidad */
+    #print-button,
+    .no-print,
+    button#print-button,
+    #controls-container #print-button,
+    body #print-button {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+    }
+}
+
+/* CONTROLS CONTAINER - No interfiere con posicionamiento fijo */
+#controls-container {
+    position: relative;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+#controls-container > * {
+    pointer-events: auto;
+}
+
+/* PRINT BUTTON STYLES */
+#print-button {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    z-index: 99999 !important;
+    padding: 12px 20px;
+    background-color: #1D71B8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#print-button:hover {
+    background-color: #155a94;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+#print-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+
