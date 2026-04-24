@@ -1,5 +1,0 @@
-@echo off
-setlocal
-set ROOT=%~dp0..
-powershell -NoProfile -ExecutionPolicy Bypass -File "%ROOT%\scripts\start-test-platform.ps1"
-endlocal
