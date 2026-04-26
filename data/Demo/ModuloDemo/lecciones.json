@@ -1,0 +1,23 @@
+{
+  "unidades": [
+    {
+      "nombre": "Unidad I",
+      "materiales": [
+        {
+          "nombre": "Guia 1",
+          "archivo": "guias/UnidadI/guia1-u1.pdf"
+        },
+        {
+          "nombre": "Guia 2",
+          "archivo": "guias/UnidadI/guia2-u1.pdf"
+        }
+      ],
+      "lecciones": [
+        {
+          "nombre": "Clase demo",
+          "enlace": "clase01"
+        }
+      ]
+    }
+  ]
+}

@@ -24,6 +24,23 @@ function __join__(base, rel) {
     return `${base.replace(/\/+$/, '')}/${rel.replace(/^\/+/, '')}`;
 }
 
+function canViewUnitMaterials() {
+    if (!window.authManager || typeof window.authManager.getUserRoles !== 'function') {
+        // Portable mode has no auth layer, so materials should be visible.
+        return true;
+    }
+
+    const roles = window.authManager
+        .getUserRoles()
+        .map((role) => String(role).toLowerCase());
+
+    return roles.includes('admin') || roles.includes('profesor');
+}
+
+async function waitForLessonMenuAuth() {
+    return Promise.resolve();
+}
+
 // Optimized lesson click handler with smooth animations
 function createLessonClickHandler(href, courseBase) {
     return (event) => {
@@ -77,26 +94,46 @@ function createLessonItem(leccion, href, courseBase, courseCarrera) {
     lessonLink.textContent = leccion.nombre;
     lessonLink.addEventListener('click', createLessonClickHandler(finalHref, courseBase));
     
-    // Create print link with proper formatting
-    const printHref = `${finalHref}${finalHref.includes('?') ? '&' : '?'}print-pdf&slideNumber=false`;
-    const printLink = document.createElement('a');
-    printLink.href = printHref;
-    printLink.target = '_blank';
-    printLink.className = 'print-icon';
+    // Create print button (not link) with proper formatting
+    const printHref = `${finalHref}${finalHref.includes('?') ? '&' : '?'}print-pdf`;
+    const printButton = document.createElement('button');
+    printButton.type = 'button';
+    printButton.className = 'print-icon';
+    printButton.title = 'Imprimir presentación';
     
     const printIcon = document.createElement('i');
     printIcon.className = 'fas fa-print';
-    printLink.appendChild(printIcon);
+    printButton.appendChild(printIcon);
+    
+    // Handler para abrir ventana de impresión con carga controlada
+    printButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Abrir ventana en blanco primero
+        const printWindow = window.open('about:blank', '_blank');
+        
+        if (!printWindow) {
+            alert('Por favor, permite las ventanas emergentes para imprimir');
+            return;
+        }
+                
+        // Cargar la URL real después de un pequeño delay
+        setTimeout(() => {
+            printWindow.location.href = printHref;
+        }, 100);
+    });
     
     li.appendChild(lessonLink);
-    li.appendChild(printLink);
+    li.appendChild(printButton);
     
     return { element: li, href: finalHref };
 }
 
 // Create unit section with lessons using DocumentFragment
-function createUnidadSection(unidad, courseBase, courseCarrera) {
+function createUnidadSection(unidad, courseBase, courseCarrera, showMaterials) {
     const unidadDiv = document.createElement('div');
+    unidadDiv.className = 'unidad-section';
     
     const title = document.createElement('h3');
     title.textContent = unidad.nombre;
@@ -130,6 +167,66 @@ function createUnidadSection(unidad, courseBase, courseCarrera) {
     if (fragment.children.length > 0) {
         listaLecciones.appendChild(fragment);
         unidadDiv.appendChild(listaLecciones);
+        
+        // Add collapsible materials section at the end if available
+        if (showMaterials && unidad.materiales && unidad.materiales.length > 0) {
+            const materialesWrapper = document.createElement('div');
+            materialesWrapper.className = 'materiales-wrapper';
+            
+            // Create collapsible button
+            const materialesToggle = document.createElement('button');
+            materialesToggle.className = 'materiales-toggle';
+            materialesToggle.type = 'button';
+            materialesToggle.innerHTML = `<i class="fas fa-folder-open"></i> Material ${unidad.nombre} <i class="fas fa-chevron-down toggle-icon"></i>`;
+            
+            // Create collapsible content
+            const materialesContent = document.createElement('div');
+            materialesContent.className = 'materiales-content';
+            
+            const materialesList = document.createElement('ul');
+            materialesList.className = 'materiales-list';
+            
+            unidad.materiales.forEach(material => {
+                const listItem = document.createElement('li');
+                
+                const materialLink = document.createElement('a');
+                materialLink.href = `${courseBase}/${material.archivo}`;
+                materialLink.target = '_blank';
+                materialLink.rel = 'noopener noreferrer';
+                
+                // Icon based on file extension
+                const extension = material.archivo.split('.').pop().toLowerCase();
+                let icon = 'fa-file';
+                if (extension === 'pdf') icon = 'fa-file-pdf';
+                else if (['doc', 'docx'].includes(extension)) icon = 'fa-file-word';
+                else if (['xls', 'xlsx'].includes(extension)) icon = 'fa-file-excel';
+                else if (['zip', 'rar'].includes(extension)) icon = 'fa-file-archive';
+                
+                materialLink.innerHTML = `<i class="fas ${icon}"></i> ${material.nombre}`;
+                listItem.appendChild(materialLink);
+                materialesList.appendChild(listItem);
+            });
+            
+            materialesContent.appendChild(materialesList);
+            
+            // Toggle functionality
+            materialesToggle.addEventListener('click', () => {
+                const isOpen = materialesToggle.classList.toggle('active');
+                materialesContent.classList.toggle('active');
+                
+                // Smooth animation
+                if (isOpen) {
+                    materialesContent.style.maxHeight = materialesContent.scrollHeight + 'px';
+                } else {
+                    materialesContent.style.maxHeight = '0';
+                }
+            });
+            
+            materialesWrapper.appendChild(materialesToggle);
+            materialesWrapper.appendChild(materialesContent);
+            unidadDiv.appendChild(materialesWrapper);
+        }
+        
         return { element: unidadDiv, lessons: lessonData };
     }
     
@@ -159,20 +256,18 @@ async function cargarLecciones() {
     try {
         // Initialize DOM cache
         const elements = initializeElementCache();
+        await waitForLessonMenuAuth();
         
         // Course context variables with fallback to global window variables
         const courseBase = (typeof window !== 'undefined' && window.COURSE_BASE) ? window.COURSE_BASE : '';
-        console.log('Course base path:', courseBase);
         const courseOpen = (typeof window !== 'undefined' && window.COURSE_OPEN) ? window.COURSE_OPEN : '';
-        console.log('Course open lesson:', courseOpen);
         const courseCarrera = (typeof window !== 'undefined' && window.COURSE_CARRERA) ? window.COURSE_CARRERA : '';
-        console.log('Course career:', courseCarrera);
+        const showMaterials = canViewUnitMaterials();
 
         const { unidadesContainer, iframeContenido } = elements;
         
         // Determine JSON URL with fallback logic
         const jsonUrl = courseBase ? `${courseBase}/lecciones.json` : 'lecciones.json';
-        console.log('Loading lessons from:', jsonUrl);
         let data;
         
         try {
@@ -296,7 +391,7 @@ async function cargarLecciones() {
         const allLessons = [];
 
         data.unidades.forEach((unidad) => {
-            const unidadResult = createUnidadSection(unidad, courseBase, courseCarrera);
+            const unidadResult = createUnidadSection(unidad, courseBase, courseCarrera, showMaterials);
             
             if (unidadResult) {
                 mainFragment.appendChild(unidadResult.element);
@@ -320,6 +415,18 @@ async function cargarLecciones() {
                 try {
                     if (courseBase) {
                         storedHref = sessionStorage.getItem(`ultima-leccion:${courseBase}`);
+                        
+                        // Fix career parameter if stored URL exists and current career is different
+                        if (storedHref && courseCarrera) {
+                            const url = new URL(storedHref, window.location.origin);
+                            const storedCarrera = url.searchParams.get('carrera');
+                            
+                            // Update career parameter if it's different from current
+                            if (storedCarrera !== courseCarrera) {
+                                url.searchParams.set('carrera', courseCarrera);
+                                storedHref = url.pathname + url.search;
+                            }
+                        }
                     }
                 } catch (_) {
                     // Silent fail for sessionStorage issues
@@ -346,7 +453,7 @@ async function cargarLecciones() {
         });
         
     } catch (error) {
-        console.error('Error al cargar las lecciones:', error);
+        
         
         const { unidadesContainer } = cachedElements || initializeElementCache();
         
@@ -373,12 +480,40 @@ function initializeSidebarToggle() {
 }
 
 // Enhanced page load handling with performance optimization
-function initializePage() {
+async function initializePage() {
     // Initialize sidebar toggle
     initializeSidebarToggle();
     
+    // Esperar a que course-shell.js establezca las variables globales
+    await waitForCourseVariables();
+    
     // Load lessons
     cargarLecciones();
+}
+
+// Helper para esperar a que course-shell.js establezca las variables
+function waitForCourseVariables() {
+    return new Promise((resolve) => {
+        // Si ya están disponibles, continuar
+        if (window.COURSE_BASE) {
+            resolve();
+            return;
+        }
+        
+        // Esperar hasta 3 segundos
+        let attempts = 0;
+        const checkInterval = setInterval(() => {
+            attempts++;
+            if (window.COURSE_BASE) {
+                clearInterval(checkInterval);
+                resolve();
+            } else if (attempts > 30) { // 3 segundos
+                clearInterval(checkInterval);
+                
+                resolve();
+            }
+        }, 100);
+    });
 }
 
 // Robust page initialization

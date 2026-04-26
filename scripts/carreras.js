@@ -6,7 +6,6 @@ async function cargarCarreras() {
     };
     
     if (!elements.listaCarreras) {
-        console.error('Elemento lista-carreras no encontrado');
         return;
     }
     
@@ -32,12 +31,34 @@ async function cargarCarreras() {
             a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' })
         );
 
+        // Modo portable sin autenticacion.
+        const currentUser = null;
+        const userCarrerasRaw = currentUser ? currentUser.carrera : null;
+        const userCarrerasSet = userCarrerasRaw === 'ALL'
+            ? null
+            : (Array.isArray(userCarrerasRaw) ? new Set(userCarrerasRaw) : (userCarrerasRaw ? new Set([userCarrerasRaw]) : null));
+        const allowedModuleKeys = (currentUser && Array.isArray(currentUser.allowed_modules) && currentUser.allowed_modules.length > 0)
+            ? new Set(currentUser.allowed_modules)
+            : null;
+
         // Generar la lista de facultades
         facultadesOrdenadas.forEach(facultad => {
             // Obtener las carreras de esta facultad que tienen módulos
-            const carrerasConModulos = facultad.carreras
+            let carrerasConModulos = facultad.carreras
                 .map(carreraId => data.carreras.find(c => c.id === carreraId))
                 .filter(carrera => carrera && carrera.modulos && carrera.modulos.length > 0);
+
+            // Filtrar por carreras del usuario si aplica
+            if (userCarrerasSet) {
+                carrerasConModulos = carrerasConModulos.filter(c => userCarrerasSet.has(c.id));
+            }
+
+            // Si hay una lista blanca de módulos (allowed_modules), filtrar carreras
+            if (allowedModuleKeys) {
+                carrerasConModulos = carrerasConModulos.filter(carrera =>
+                    carrera.modulos.some(modKey => allowedModuleKeys.has(modKey))
+                );
+            }
             
             // Ordenar carreras alfabéticamente por nombre
             carrerasConModulos.sort((a, b) => 
@@ -58,7 +79,7 @@ async function cargarCarreras() {
                 carrerasList.classList.add('submenu');
                 //carrerasList.style.display = 'none';
 
-                // Agregar las carreras (ya ordenadas)
+                // Agregar las carreras (ya ordenadas y filtradas)
                 carrerasConModulos.forEach(carrera => {
                     const carrLi = document.createElement('li');
                     const carrA = document.createElement('a');
@@ -128,7 +149,6 @@ async function cargarCarreras() {
         });
 
     } catch (error) {
-        console.error('Error al cargar las carreras:', error);
         
         // Mostrar mensaje de error amigable al usuario
         if (elements.listaCarreras) {
@@ -154,7 +174,6 @@ async function verCursos(carreraId) {
     
     // Early return si elementos críticos no existen
     if (!elements.lista || !elements.spinner) {
-        console.error('Elementos críticos no encontrados para mostrar cursos');
         return;
     }
 
@@ -188,7 +207,18 @@ async function verCursos(carreraId) {
         
         // Usar setTimeout para simular carga y mostrar el loading mejorado
         setTimeout(() => {
-            const modulos = carrera.modulos
+            // Determinar módulos permitidos del usuario (si corresponde)
+            const currentUser = null;
+            const allowedModuleKeys = (currentUser && Array.isArray(currentUser.allowed_modules) && currentUser.allowed_modules.length > 0)
+                ? new Set(currentUser.allowed_modules)
+                : null;
+
+            // Filtrar módulos según allowed_modules si existe
+            const moduloKeysFiltrados = allowedModuleKeys
+                ? carrera.modulos.filter(modKey => allowedModuleKeys.has(modKey))
+                : carrera.modulos;
+
+            const modulos = moduloKeysFiltrados
                 .map(moduloId => data.modulos_comunes[moduloId])
                 .filter(modulo => modulo);
 
@@ -216,11 +246,39 @@ async function verCursos(carreraId) {
 
             // Usar DocumentFragment para mejor performance
             const fragment = document.createDocumentFragment();
+            let lastOpenedItem = null; // Track del último módulo abierto
+
+            // Verificar si el usuario tiene permisos para ver syllabus y planning
+            const userRoles = currentUser && Array.isArray(currentUser.roles) ? currentUser.roles : [];
+            const canViewDocuments = userRoles.includes('admin') || userRoles.includes('profesor');
 
             modulosValidos.forEach((modulo, index) => {
                 const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.textContent = modulo.nombre;
+                li.classList.add('module-item');
+                
+                // Crear header del módulo
+                const header = document.createElement('div');
+                header.classList.add('module-header');
+                
+                const moduleName = document.createElement('span');
+                moduleName.classList.add('module-name');
+                moduleName.textContent = modulo.nombre;
+                
+                const chevron = document.createElement('i');
+                chevron.classList.add('fas', 'fa-chevron-down');
+                
+                header.appendChild(moduleName);
+                header.appendChild(chevron);
+                
+                // Crear contenedor de contenido expandible
+                const content = document.createElement('div');
+                content.classList.add('module-content');
+                content.style.display = 'none';
+                
+                // Enlace a las lecciones
+                const lessonLink = document.createElement('a');
+                lessonLink.classList.add('module-link', 'lesson-link');
+                lessonLink.textContent = 'Acceder a las lecciones';
                 
                 // Añadir parámetro carrera a la URL si no es placeholder
                 let href = modulo.enlace;
@@ -229,9 +287,105 @@ async function verCursos(carreraId) {
                     href += `${separator}carrera=${encodeURIComponent(carreraId)}`;
                 }
                 
-                a.href = href;
-                a.classList.add('course-link');
-                li.appendChild(a);
+                lessonLink.href = href;
+                lessonLink.target = '_self';
+                content.appendChild(lessonLink);
+                
+                // Función helper para obtener icono según extensión de archivo
+                const getFileIcon = (url) => {
+                    const fileExt = url.split('.').pop().toLowerCase();
+                    switch(fileExt) {
+                        case 'pdf':
+                            return 'fa-file-pdf';
+                        case 'docx':
+                        case 'doc':
+                            return 'fa-file-word';
+                        case 'xlsx':
+                        case 'xls':
+                            return 'fa-file-excel';
+                        default:
+                            return 'fa-download';
+                    }
+                };
+                
+                // Extraer el parámetro 'base' del enlace para construir rutas dinámicamente
+                // Ejemplo: "curso.html?base=Ingenieria/IntroMate&titulo=..." -> "Ingenieria/IntroMate"
+                let moduleBase = '';
+                if (modulo.enlace && modulo.enlace.includes('base=')) {
+                    const urlParams = new URLSearchParams(modulo.enlace.split('?')[1]);
+                    moduleBase = urlParams.get('base') || '';
+                }
+                
+                // Enlace al syllabus si existe (solo para admin y profesores)
+                if (canViewDocuments && modulo.syllabus_url && moduleBase) {
+                    const syllabusLink = document.createElement('a');
+                    syllabusLink.classList.add('module-link', 'syllabus-link');
+                    
+                    // Crear contenedor para icono y texto
+                    const syllabusIcon = document.createElement('i');
+                    syllabusIcon.className = `fas ${getFileIcon(modulo.syllabus_url)}`;
+                    syllabusIcon.style.marginRight = '0.5rem';
+                    
+                    const syllabusText = document.createElement('span');
+                    syllabusText.textContent = 'Descargar el programa genérico';
+                    
+                    syllabusLink.appendChild(syllabusIcon);
+                    syllabusLink.appendChild(syllabusText);
+                    
+                    // Construir ruta completa: data/{facultad}/{modulo}/{archivo}
+                    syllabusLink.href = `data/${moduleBase}/${modulo.syllabus_url}`;
+                    syllabusLink.target = '_blank';
+                    syllabusLink.rel = 'noopener noreferrer';
+                    content.appendChild(syllabusLink);
+                }
+
+                // Enlace a la planificación si existe (solo para admin y profesores)
+                if (canViewDocuments && modulo.planning_url && moduleBase) {
+                    const planLink = document.createElement('a');
+                    planLink.classList.add('module-link', 'planning-link');
+                    
+                    // Crear contenedor para icono y texto
+                    const planIcon = document.createElement('i');
+                    planIcon.className = `fas ${getFileIcon(modulo.planning_url)}`;
+                    planIcon.style.marginRight = '0.5rem';
+                    
+                    const planText = document.createElement('span');
+                    planText.textContent = 'Descargar planificación clase a clase genérica';
+                    
+                    planLink.appendChild(planIcon);
+                    planLink.appendChild(planText);
+                    
+                    // Construir ruta completa: data/{facultad}/{modulo}/{archivo}
+                    planLink.href = `data/${moduleBase}/${modulo.planning_url}`;
+                    planLink.target = '_blank';
+                    planLink.rel = 'noopener noreferrer';
+                    content.appendChild(planLink);
+                }
+                
+                // Evento para expandir/contraer (accordion)
+                header.addEventListener('click', () => {
+                    const isOpen = content.style.display !== 'none';
+                    
+                    // Si está abierto, solo cerrarlo
+                    if (isOpen) {
+                        content.style.display = 'none';
+                        header.classList.remove('open');
+                    } else {
+                        // Si está cerrado, cerrar el anterior y abrir este
+                        if (lastOpenedItem && lastOpenedItem !== li) {
+                            const lastContent = lastOpenedItem.querySelector('.module-content');
+                            const lastHeader = lastOpenedItem.querySelector('.module-header');
+                            if (lastContent) lastContent.style.display = 'none';
+                            if (lastHeader) lastHeader.classList.remove('open');
+                        }
+                        content.style.display = 'flex';
+                        header.classList.add('open');
+                        lastOpenedItem = li;
+                    }
+                });
+                
+                li.appendChild(header);
+                li.appendChild(content);
                 fragment.appendChild(li);
             });
 
@@ -259,7 +413,6 @@ async function verCursos(carreraId) {
         }, 800); // Tiempo aumentado para mostrar mejor el loading mejorado
         
     } catch (error) {
-        console.error('Error al cargar módulos:', error);
         
         // Ocultar spinner y mostrar error
         elements.spinner.style.display = 'none';
@@ -293,9 +446,13 @@ function recargarCarreras() {
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
 
-menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-});
+if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+}
 
 // Cargar las carreras al iniciar la página
-window.onload = cargarCarreras;
+window.onload = () => {
+    cargarCarreras();
+};

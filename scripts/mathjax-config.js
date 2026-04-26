@@ -5,18 +5,12 @@
 	// Enhanced MathJax configuration with performance optimizations
 	window.MathJax = {
 		loader: {
-			load: ['[tex]/ams', '[tex]/cancel', '[tex]/color'],
-			// Preload core components for faster rendering
-			ready: () => {
-				MathJax.loader.defaultReady();
-				// Cache commonly used packages
-				MathJax.loader.preLoad('[tex]/ams', '[tex]/cancel', '[tex]/color');
-			}
+			load: ['[tex]/cancel', '[tex]/color']
 		},
 		tex: {
 			inlineMath: [['$', '$'], ['\\(', '\\)']],
 			displayMath: [['$$', '$$'], ['\\[', '\\]']],
-			packages: { '[+]': ['ams', 'cancel', 'color'] },
+			packages: { '[+]': ['cancel', 'color'] },
 			tags: 'ams',
 			// Performance optimizations
 			processEscapes: true,
@@ -87,30 +81,6 @@
 			// Ready callback for better initialization
 			ready: () => {
 				MathJax.startup.defaultReady();
-				// Initialize performance optimizations
-				if (window.MathJax && window.MathJax.startup) {
-					// Warm up the renderer for faster subsequent renders
-					const warmUpElement = document.createElement('div');
-					warmUpElement.style.cssText = 'position:absolute;top:-9999px;left:-9999px;';
-					warmUpElement.innerHTML = '$x$';
-					document.body.appendChild(warmUpElement);
-
-					// Render and remove warm-up element
-					requestAnimationFrame(() => {
-						if (window.MathJax.typesetPromise) {
-							window.MathJax.typesetPromise([warmUpElement]).then(() => {
-								document.body.removeChild(warmUpElement);
-							}).catch(() => {
-								// Silent cleanup if warm-up fails
-								if (warmUpElement.parentNode) {
-									document.body.removeChild(warmUpElement);
-								}
-							});
-						} else {
-							document.body.removeChild(warmUpElement);
-						}
-					});
-				}
 			}
 		}
 	};
@@ -129,8 +99,9 @@
 
 		// Enhanced error handling
 		script.onerror = () => {
-			console.warn('MathJax failed to load from CDN, falling back to alternative');
-			// Could implement fallback to local version here if needed
+			// Fallback CDN alternativo.
+			script.onerror = null;
+			script.src = 'https://unpkg.com/mathjax@4/tex-svg.js';
 		};
 
 		script.onload = () => {

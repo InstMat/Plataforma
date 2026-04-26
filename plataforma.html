@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Carreras</title>
+
+    <!-- Resource hints optimizados para conexiones más rápidas -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://inst-mat.utalca.cl">
+    <link rel="dns-prefetch" href="https://www.utalca.cl">
+
+    <!-- CSS no crítico con preload optimizado -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" as="style"
+        crossorigin onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/landing.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <!-- Preload del script crítico -->
+    <link rel="preload" href="scripts/carreras.js" as="script">
+
+    <!-- Fallback para CSS en caso de que JavaScript esté deshabilitado -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+        <link rel="stylesheet" href="styles/landing.css">
+    </noscript>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i> Menú
+            </button>
+            <div class="header-content">
+                <!-- Logo del Universidad e Instituto (izquierda) -->
+                <div class="logo-left">
+                        <a href="http://www.utalca.cl" target=_blank><img src="images/logo-universidad.png"
+                            alt="Logo de la Universidad"></a><a href="http://inst-mat.utalca.cl" target="_blank"><img
+                            src="images/logo-instituto.png" alt="Logo del Instituto"></a>
+                </div>
+
+                <!-- Título centrado -->
+                <div class="header-title">
+                    <h1>Plataforma de Módulos Matemáticos</h1>
+                    <p>Instituto de Matemáticas</p>
+                    <p>Universidad de Talca</p>
+                </div>
+
+                <!-- Panel de botones (derecha) -->
+                <div class="logo-right">
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <!-- Menú lateral -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-top">
+                    <a href="#" class="home-button" onclick="recargarCarreras()">
+                        <i class="fas fa-home"></i> Volver al inicio
+                    </a>
+                </div>
+                <h2>Área del conocimiento</h2>
+                <!-- Contenedor para las carreras: se carga con JavaScript -->
+                <ul id="lista-carreras" class="sidebar-menu"></ul>
+            </div>
+
+            <!-- Área de contenido -->
+            <div class="content">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+                    <h2 class="section-title" style="margin: 0;">Lista de módulos disponibles</h2>
+                </div>
+
+                <p id="mensaje-modulos" class="mensaje-modulos" style="display: none;"></p>
+                <ul id="lista-cursos" class="course-list"></ul>
+                <!-- Página de carga -->
+                <div class="loading-message" id="loading-spinner" style="display: none;">
+                    <div>
+                        <div style="font-size: 1.5em; margin-bottom: 0.5rem;"><i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                        <div>Cargando módulos...</div>
+                        <div style="font-size: 0.9em; color: #888; margin-top: 0.5rem;">
+                            Preparando lista de módulos disponibles
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/carreras.js" defer></script>
+</body>
+
+</html>
+```

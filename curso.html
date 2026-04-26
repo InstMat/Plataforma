@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Curso</title>
-  
+
   <!-- Resource hints para optimizar conexiones -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="dns-prefetch" href="https://inst-mat.utalca.cl">
   <link rel="dns-prefetch" href="https://www.utalca.cl">
-  
+
   <!-- CSS crítico inline para evitar FOUC -->
   <style>
     body {
@@ -22,64 +23,175 @@
       animation: gradientBG 15s ease infinite;
       will-change: background-position;
     }
+
     .container {
       display: flex;
       flex-direction: column;
       height: 100vh;
     }
+
     header {
       background-color: #2d3748;
       color: white;
       padding: 1rem;
       will-change: transform;
     }
+
     .main-content {
       display: flex;
       flex: 1;
       overflow: hidden;
     }
+
     .sidebar {
       background-color: #f7fafc;
       padding: 1rem;
       min-width: 250px;
       will-change: transform;
     }
+
     .content {
       flex: 1;
       display: flex;
     }
+
     iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+
     @keyframes gradientBG {
-      0% { background-position: 0% 50%; transform: translate3d(0,0,0); }
-      50% { background-position: 100% 50%; transform: translate3d(0,0,0); }
-      100% { background-position: 0% 50%; transform: translate3d(0,0,0); }
+      0% {
+        background-position: 0% 50%;
+        transform: translate3d(0, 0, 0);
+      }
+
+      50% {
+        background-position: 100% 50%;
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        background-position: 0% 50%;
+        transform: translate3d(0, 0, 0);
+      }
     }
+
     /* Mobile optimization */
     @media (max-width: 768px) {
-      .main-content { flex-direction: column; }
-      .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
-      .sidebar.active { transform: translateX(0); }
+      .main-content {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+    }
+
+    /* Modal de error de acceso */
+    .access-denied-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s;
+    }
+
+    .access-denied-content {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.4s;
+    }
+
+    .access-denied-content h2 {
+      color: #e53e3e;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .access-denied-content p {
+      color: #4a5568;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    .access-denied-content strong {
+      color: #2d3748;
+    }
+
+    .access-denied-content button {
+      margin-top: 24px;
+      padding: 12px 32px;
+      background: #1D71B8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .access-denied-content button:hover {
+      background: #155a94;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
-  
+
   <!-- CSS no crítico con preload -->
   <link rel="preload" href="styles/landing.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" crossorigin onload="this.onload=null;this.rel='stylesheet'">
-  
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" as="style"
+    crossorigin onload="this.onload=null;this.rel='stylesheet'">
+
   <!-- Preload de scripts críticos -->
   <link rel="preload" href="scripts/course-shell.js" as="script">
   <link rel="preload" href="scripts/lecciones.js" as="script">
-  
+
   <!-- Fallback para CSS si JavaScript está deshabilitado -->
   <noscript>
     <link rel="stylesheet" href="styles/landing.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
   </noscript>
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -87,16 +199,22 @@
         <i class="fas fa-bars"></i> Menú
       </button>
       <div class="header-content">
+        <!-- Logo del Universidad e Instituto (izquierda) -->
         <div class="logo-left">
-          <a href="http://inst-mat.utalca.cl" target="_blank"><img src="images/logo-instituto.png" alt="Logo del Instituto"></a>
+            <a href="http://www.utalca.cl" target=_blank><img src="images/logo-universidad.png"
+              alt="Logo de la Universidad"></a><a href="http://inst-mat.utalca.cl" target="_blank"><img
+              src="images/logo-instituto.png" alt="Logo del Instituto"></a>
         </div>
+
+        <!-- Título centrado -->
         <div class="header-title">
           <h1>Plataforma de Módulos Matemáticos</h1>
           <p>Instituto de Matemáticas</p>
           <p>Universidad de Talca</p>
         </div>
+
+        <!-- Panel de botones (derecha) -->
         <div class="logo-right">
-          <a href="http://www.utalca.cl" target=_blank><img src="images/logo-universidad.png" alt="Logo de la Universidad"></a>
         </div>
       </div>
     </header>
@@ -104,7 +222,7 @@
     <div class="main-content">
       <div class="sidebar" id="sidebar">
         <div class="sidebar-top">
-          <a href="index.html" class="home-button">
+          <a href="plataforma.html" class="home-button">
             <i class="fas fa-home"></i> Volver al inicio
           </a>
         </div>
@@ -117,8 +235,17 @@
     </div>
   </div>
 
+  <!-- Modal de Acceso Denegado -->
+  <div class="access-denied-modal" id="accessDeniedModal">
+    <div class="access-denied-content">
+      <h2><i class="fas fa-ban" style="color: #e53e3e;"></i> Acceso Denegado</h2>
+      <div id="accessDeniedMessage"></div>
+      <button onclick="window.location.href='index.html'">Volver al Inicio</button>
+    </div>
+  </div>
 
   <script src="scripts/course-shell.js" defer></script>
   <script src="scripts/lecciones.js" defer></script>
 </body>
+
 </html>

@@ -6,25 +6,94 @@
 // Global variables for lesson content
 window.lessonBase = '';
 window.lessonTitulo = '';
+window.lessonCarrera = '';
 window.lessonContentReady = false;
+window.__printGeoState = null;
+window.__printWatermarkState = null;
 
 // Parse URL parameters
 function parseParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const baseParam = urlParams.get('base') || '';
     
-    // Agregar prefijo "data/" automáticamente si no está presente
-    window.lessonBase = baseParam.startsWith('data/') ? baseParam : `data/${baseParam}`;
+    // En portable, los contenidos viven en data/
+    if (baseParam.startsWith('data/')) {
+        window.lessonBase = baseParam;
+    } else {
+        window.lessonBase = `data/${baseParam}`;
+    }
     
     window.lessonTitulo = decodeURIComponent(urlParams.get('titulo') || '');
     window.lessonCarrera = urlParams.get('carrera') || '';
 
     const isPrintMode = urlParams.has('print-pdf');
-    if (isPrintMode) {
-        // Crear botón de impresión cuando se ejecuta el mode impresión
-        createPrintButton();
-    }
+    window.lessonIsPrintMode = isPrintMode;
+    // NO crear botón aquí - se creará después de que el contenido esté listo
     return isPrintMode;
+}
+
+function normalizeGeoGebraFragmentsForPrintMode() {
+    if (!window.lessonIsPrintMode) return;
+
+    const wrappers = document.querySelectorAll('.ggb-wrapper');
+    wrappers.forEach((wrapper) => {
+        const fragment = wrapper.closest('.fragment');
+        if (!fragment) return;
+
+        fragment.classList.remove('fragment', 'visible', 'current-fragment');
+        fragment.style.opacity = '1';
+        fragment.style.visibility = 'visible';
+        fragment.style.transform = 'none';
+    });
+}
+
+function normalizeAllFragmentsForPrintMode() {
+    if (!window.lessonIsPrintMode) return;
+
+    const fragments = document.querySelectorAll('.fragment');
+    fragments.forEach((fragment) => {
+        fragment.classList.add('visible');
+        fragment.classList.remove('current-fragment');
+        fragment.style.opacity = '1';
+        fragment.style.visibility = 'visible';
+        fragment.style.transform = 'none';
+    });
+}
+
+function prepareStaticGeoGebraForPrintMode() {
+    if (!window.lessonIsPrintMode) return;
+
+    const wrappers = document.querySelectorAll('.ggb-wrapper');
+    wrappers.forEach((wrapper) => {
+        const appletNodes = wrapper.querySelectorAll('[id^="ggb-element-"], iframe, canvas');
+        appletNodes.forEach((node) => {
+            node.style.display = 'none';
+            node.style.visibility = 'hidden';
+            node.style.width = '0';
+            node.style.height = '0';
+        });
+
+        const images = wrapper.querySelectorAll('.ggb-print-img');
+        images.forEach((img, index) => {
+            if (index > 0) {
+                img.remove();
+                return;
+            }
+
+            img.style.display = 'block';
+            img.style.visibility = 'visible';
+            img.style.opacity = '1';
+            img.style.position = 'relative';
+            // Solo aplicar width por defecto si no tiene uno definido inline
+            if (!img.style.width) {
+                img.style.width = '60%';
+            }
+            img.style.height = 'auto';
+            img.style.maxWidth = '100%';
+            img.style.margin = '0 auto';
+            img.style.zIndex = '100';
+        });
+    });
 }
 
 // Función optimizada para detectar cuando todo está listo
@@ -183,7 +252,7 @@ async function waitForContentReady() {
             }, 300); // Menos frecuente
 
             // Timeout de seguridad reducido
-            setTimeout(markGeoGebraReady, 3000); // Reducido de 5000ms
+            setTimeout(markGeoGebraReady, 2000); // Reducido de 5000ms
         };
 
         // Iniciar verificaciones de forma más eficiente
@@ -214,7 +283,7 @@ async function waitForContentReady() {
                 resolved = true;
                 resolve();
             }
-        }, 5000); // Reducido de 10000ms
+        }, 1000); // Reducido de 10000ms
     });
 }
 
@@ -321,15 +390,15 @@ async function loadLessonContent() {
             // Fix relative paths in the content before injection
             const fixedContent = fixRelativePaths(slidesElement.innerHTML, window.lessonBase);
             document.getElementById('lesson-slides').innerHTML = fixedContent;
+            normalizeAllFragmentsForPrintMode();
+            normalizeGeoGebraFragmentsForPrintMode();
+            prepareStaticGeoGebraForPrintMode();
         } else {
             throw new Error('No se encontró contenido de slides en el archivo');
         }
 
         // Extract and inject GeoGebra scripts
         await injectGeoGebraScripts(doc);
-
-        // Modify title slide after content injection
-        await modifyTitleSlide();
 
         // Mark content as ready and trigger Reveal.js initialization
         window.lessonContentReady = true;
@@ -341,20 +410,57 @@ async function loadLessonContent() {
         // Show reveal container but keep loading until everything is fully ready
         document.getElementById('reveal-container').style.display = 'block';
         
+        // Modify title slide AFTER Reveal.js is ready
+        await modifyTitleSlide();
+
         // Wait for all components to be ready before hiding loading
         await waitForContentReady();
+        
+        // Esperar a que el navegador renderice los cambios del DOM
+        await new Promise(resolve => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(resolve);
+            });
+        });
+        
+        // Sincronizar Reveal.js con el nuevo contenido
+        if (window.Reveal) {
+            // Ir al primer slide
+            window.Reveal.slide(0);
+            // Sincronizar estructura
+            if (window.Reveal.sync) {
+                window.Reveal.sync();
+            }
+            // Recalcular layout para evitar superposiciones
+            if (window.Reveal.layout) {
+                window.Reveal.layout();
+            }
+        }
         
         // Everything is ready - hide loading and show presentation
         document.getElementById('loading-message').style.display = 'none';
 
+        // Crear botón de pantalla completa para usuarios sin teclado
+        createFullscreenButton();
+        
+        // Crear botón de impresión DESPUÉS de que todo esté listo
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('print-pdf')) {
+            createPrintButton();
+        }
+
     } catch (error) {
-        console.error('Error loading lesson:', error);
+        
         showError(`Error al cargar la lección: ${error.message}`);
     }
 }
 
 // Extract and inject GeoGebra scripts from the lesson
 async function injectGeoGebraScripts(doc) {
+    if (window.lessonIsPrintMode) {
+        return;
+    }
+
     // Find all script tags that contain GeoGebra applet code
     const scripts = doc.querySelectorAll('script');
     const dynamicScriptsContainer = document.getElementById('dynamic-scripts');
@@ -433,36 +539,37 @@ async function modifyTitleSlide() {
         const subtitleElement = titleSlide.querySelector('p.subtitle');
         let lessonStyleElement = titleSlide.querySelector('p.lesson-style');
 
-        // Update module name
-        if (titleElement && moduleName) {
-            titleElement.textContent = moduleName;
+        // ✅ ALWAYS update title (lesson name or module name)
+        if (titleElement) {
+            titleElement.textContent = lessonName || moduleName || '';
         }
 
-        // Update career name
-        if (subtitleElement && careerName) {
-            subtitleElement.textContent = careerName;
+        // ✅ ALWAYS update subtitle (module name)
+        if (subtitleElement) {
+            subtitleElement.textContent = moduleName || '';
         }
 
-        // Create or update lesson name element
-        if (lessonName) {
-            if (!lessonStyleElement) {
-                lessonStyleElement = document.createElement('p');
-                lessonStyleElement.className = 'lesson-style';
-                // Insert after subtitle but before main-logo (or at end if no logo yet)
-                const mainLogoElement = titleSlide.querySelector('p.main-logo');
-                if (mainLogoElement) {
-                    titleSlide.insertBefore(lessonStyleElement, mainLogoElement);
-                } else {
-                    titleSlide.appendChild(lessonStyleElement);
-                }
+        // ✅ ALWAYS create/update career name element (even if empty to clear previous)
+        if (!lessonStyleElement) {
+            lessonStyleElement = document.createElement('p');
+            lessonStyleElement.className = 'lesson-style';
+            // Insert after subtitle but before main-logo (or at end if no logo yet)
+            const mainLogoElement = titleSlide.querySelector('p.main-logo');
+            if (mainLogoElement) {
+                titleSlide.insertBefore(lessonStyleElement, mainLogoElement);
+            } else {
+                titleSlide.appendChild(lessonStyleElement);
             }
-            lessonStyleElement.textContent = lessonName;
+        }
+        // ✅ Always update content (clears previous value if careerName is null/empty)
+        lessonStyleElement.textContent = careerName || '';
 
-            // Update page title with lesson name
+        // Update page title with lesson name
+        if (lessonName) {
             document.title = lessonName;
-            const titleElement = document.getElementById('lesson-title');
-            if (titleElement) {
-                titleElement.textContent = lessonName;
+            const pageTitleElement = document.getElementById('lesson-title');
+            if (pageTitleElement) {
+                pageTitleElement.textContent = lessonName;
             }
         }
 
@@ -482,7 +589,7 @@ async function modifyTitleSlide() {
             logoImg = document.createElement('img');
             logoImg.setAttribute('data-src', 'images/logoINSTMAT-color.png');
             logoImg.setAttribute('src', 'images/logoINSTMAT-color.png');
-            logoImg.style.width = '30%';
+            logoImg.style.width = '40%';
             logoImg.alt = 'Logo Instituto de Matemáticas';
             mainLogoElement.appendChild(logoImg);
         } else {
@@ -500,12 +607,15 @@ async function modifyTitleSlide() {
             // Update logo attributes to ensure consistency
             logoImg.setAttribute('data-src', 'images/logoINSTMAT-color.png');
             logoImg.setAttribute('src', 'images/logoINSTMAT-color.png');
-            logoImg.style.width = '30%';
+            logoImg.style.width = '20%';
             logoImg.alt = 'Logo Instituto de Matemáticas';
         }
         
+        // Forzar reflow para asegurar que los cambios del DOM estén aplicados
+        titleSlide.offsetHeight;
+        
     } catch (error) {
-        console.warn('Error modifying title slide:', error);
+        
     }
 }
 
@@ -516,26 +626,274 @@ function createPrintButton() {
         return;
     }
     
-    // Crear el botón inmediatamente (sin esperar waitForContentReady)
     const printBtn = document.createElement('button');
     printBtn.id = 'print-button';
-    printBtn.className = 'no-print'; // Clase adicional para ocultar al imprimir
+    printBtn.className = 'no-print';
     printBtn.innerHTML = '<i class="fas fa-print"></i> Imprimir';
     printBtn.title = 'Imprimir presentación';
     
-    printBtn.addEventListener('click', () => {
+    printBtn.addEventListener('click', async () => {
+        // Asegurar que Reveal.js esté listo antes de imprimir
+        if (!window.Reveal || !window.Reveal.isReady()) {
+            console.warn('Reveal.js no está listo para imprimir');
+            return;
+        }
+        
+        // Configurar Reveal para impresión
+        window.Reveal.configure({
+            pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+            pdfSeparateFragments: false
+        });
+
+        // Preparar elementos de impresión (GeoGebra + marca de agua por página)
+        preparePrintArtifacts();
+        
+        // Forzar reflow y esperar un frame para sincronizar con el navegador
+        await new Promise(resolve => {
+            requestAnimationFrame(() => {
+                document.body.offsetHeight; // Forzar reflow
+                requestAnimationFrame(resolve);
+            });
+        });
+        
+        // Ejecutar impresión
         window.print();
+        
+        // Restaurar configuración después de imprimir
+        setTimeout(() => {
+            restorePrintArtifacts();
+            window.Reveal.configure({
+                pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+                pdfSeparateFragments: true
+            });
+        }, 500);
     });
     
-    // Agregar al contenedor de controles (fuera del alcance de Reveal.js)
+    // Agregar al contenedor de controles
     const controlsContainer = document.getElementById('controls-container');
     if (controlsContainer) {
         controlsContainer.appendChild(printBtn);
     } else {
-        // Fallback: agregar al inicio del body
         document.body.insertBefore(printBtn, document.body.firstChild);
     }
 }
+
+function isFullscreenActive() {
+    return Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+}
+
+function updateFullscreenButtonState(button) {
+    if (!button) return;
+
+    const active = isFullscreenActive();
+    button.classList.toggle('is-active', active);
+    button.innerHTML = active
+        ? '<i class="fas fa-compress"></i>'
+        : '<i class="fas fa-expand"></i>';
+    button.setAttribute('aria-label', active ? 'Salir de pantalla completa' : 'Activar pantalla completa');
+    button.title = active ? 'Salir de pantalla completa' : 'Activar pantalla completa';
+}
+
+async function toggleFullscreen() {
+    const rootElement = document.documentElement;
+
+    if (isFullscreenActive()) {
+        if (document.exitFullscreen) {
+            await document.exitFullscreen();
+            return;
+        }
+
+        if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+            return;
+        }
+
+        return;
+    }
+
+    if (rootElement.requestFullscreen) {
+        await rootElement.requestFullscreen();
+        return;
+    }
+
+    if (rootElement.webkitRequestFullscreen) {
+        rootElement.webkitRequestFullscreen();
+    }
+}
+
+function createFullscreenButton() {
+    if (window.lessonIsPrintMode) {
+        return;
+    }
+
+    if (document.getElementById('fullscreen-button')) {
+        return;
+    }
+
+    const button = document.createElement('button');
+    button.id = 'fullscreen-button';
+    button.className = 'no-print';
+    // Fallback inline styles in case style.css is cached in production.
+    button.style.position = 'fixed';
+    button.style.top = '20px';
+    button.style.left = '20px';
+    button.style.zIndex = '99999';
+    updateFullscreenButtonState(button);
+
+    button.addEventListener('click', async () => {
+        try {
+            await toggleFullscreen();
+        } catch (error) {
+            console.error('No se pudo cambiar el modo pantalla completa:', error);
+        } finally {
+            updateFullscreenButtonState(button);
+        }
+    });
+
+    const handleFullscreenChange = () => updateFullscreenButtonState(button);
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+
+    const controlsContainer = document.getElementById('controls-container');
+    if (controlsContainer) {
+        controlsContainer.appendChild(button);
+    } else {
+        document.body.insertBefore(button, document.body.firstChild);
+    }
+}
+
+function prepareGeoGebraForPrint() {
+    if (window.__printGeoState) return;
+
+    const state = [];
+
+    const wrappers = document.querySelectorAll('.ggb-wrapper');
+    wrappers.forEach((wrapper) => {
+        state.push({ el: wrapper, style: wrapper.getAttribute('style') });
+        wrapper.style.display = 'flex';
+        wrapper.style.visibility = 'visible';
+        wrapper.style.opacity = '1';
+        wrapper.style.position = 'relative';
+    });
+
+    const applets = document.querySelectorAll('.ggb-wrapper [id^="ggb-element-"], .ggb-wrapper iframe, .ggb-wrapper canvas');
+    applets.forEach((node) => {
+        state.push({ el: node, style: node.getAttribute('style') });
+        node.style.display = 'none';
+        node.style.visibility = 'hidden';
+        node.style.width = '0';
+        node.style.height = '0';
+    });
+
+    const images = document.querySelectorAll('.ggb-wrapper .ggb-print-img');
+    images.forEach((img) => {
+        state.push({ el: img, style: img.getAttribute('style') });
+        img.style.display = 'block';
+        img.style.visibility = 'visible';
+        img.style.opacity = '1';
+        img.style.position = 'relative';
+        img.style.width = '85%';
+        img.style.height = 'auto';
+        img.style.maxWidth = '100%';
+        img.style.margin = '0 auto';
+        img.style.zIndex = '100';
+    });
+
+    const fragments = document.querySelectorAll('.fragment');
+    fragments.forEach((fragment) => {
+        if (!fragment.querySelector('.ggb-wrapper')) return;
+        state.push({ el: fragment, style: fragment.getAttribute('style') });
+        fragment.style.display = 'flex';
+        fragment.style.visibility = 'visible';
+        fragment.style.opacity = '1';
+    });
+
+    window.__printGeoState = state;
+}
+
+function restoreGeoGebraAfterPrint() {
+    const state = window.__printGeoState || [];
+    state.forEach(({ el, style }) => {
+        if (!el) return;
+        if (style === null || style === undefined) {
+            el.removeAttribute('style');
+        } else {
+            el.setAttribute('style', style);
+        }
+    });
+    window.__printGeoState = null;
+}
+
+function prepareWatermarkForPrint() {
+    if (window.__printWatermarkState) return;
+
+    const state = [];
+    const pdfPages = document.querySelectorAll('.reveal .slides .pdf-page');
+    const targets = pdfPages.length > 0
+        ? pdfPages
+        : document.querySelectorAll('.reveal .slides section:not(.stack)');
+
+    targets.forEach((target) => {
+        if (!target) return;
+
+        const hasWatermark = Array.from(target.children).some(
+            (child) => child.classList && child.classList.contains('print-watermark-logo')
+        );
+        if (hasWatermark) return;
+
+        const previousInlinePosition = target.style.position;
+        const shouldForceRelative = window.getComputedStyle(target).position === 'static';
+
+        if (shouldForceRelative) {
+            target.style.position = 'relative';
+        }
+
+        const mark = document.createElement('img');
+        mark.className = 'print-watermark-logo';
+        mark.src = 'images/logoINSTMAT-Isologo-color.png';
+        mark.alt = '';
+        mark.setAttribute('aria-hidden', 'true');
+        mark.loading = 'eager';
+
+        target.appendChild(mark);
+        state.push({ target, mark, shouldForceRelative, previousInlinePosition });
+    });
+
+    window.__printWatermarkState = state;
+}
+
+function restoreWatermarkAfterPrint() {
+    const state = window.__printWatermarkState || [];
+
+    state.forEach(({ target, mark, shouldForceRelative, previousInlinePosition }) => {
+        if (mark && mark.parentNode) {
+            mark.parentNode.removeChild(mark);
+        }
+
+        if (target && shouldForceRelative) {
+            if (previousInlinePosition) {
+                target.style.position = previousInlinePosition;
+            } else {
+                target.style.removeProperty('position');
+            }
+        }
+    });
+
+    window.__printWatermarkState = null;
+}
+
+function preparePrintArtifacts() {
+    prepareGeoGebraForPrint();
+    prepareWatermarkForPrint();
+}
+
+function restorePrintArtifacts() {
+    restoreGeoGebraAfterPrint();
+    restoreWatermarkAfterPrint();
+}
+
+window.addEventListener('beforeprint', preparePrintArtifacts);
+window.addEventListener('afterprint', restorePrintArtifacts);
 
 // Show error message
 function showError(message) {
@@ -543,7 +901,7 @@ function showError(message) {
     document.getElementById('reveal-container').style.display = 'none';
 
     const errorDiv = document.getElementById('error-message');
-    errorDiv.querySelector('p').textContent = message;
+    errorDiv.querySelector('p').innerHTML = message;
     errorDiv.style.display = 'flex';
 }
 

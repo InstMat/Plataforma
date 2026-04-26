@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Fallback GeoGebra">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <g stroke="#d1d5db" stroke-width="1">
+    <line x1="0" y1="350" x2="1200" y2="350"/>
+    <line x1="600" y1="0" x2="600" y2="700"/>
+  </g>
+  <g stroke="#93c5fd" stroke-width="2" fill="none">
+    <line x1="120" y1="560" x2="1020" y2="140"/>
+  </g>
+  <g fill="#1f2937" font-family="Arial, sans-serif">
+    <text x="620" y="30" font-size="22">y</text>
+    <text x="1168" y="372" font-size="22">x</text>
+    <text x="760" y="210" font-size="28">y = mx + b</text>
+    <text x="80" y="660" font-size="20">Imagen de respaldo para impresion</text>
+  </g>
+</svg>

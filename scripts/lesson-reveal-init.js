@@ -66,7 +66,7 @@ function initializeRevealForLesson() {
 		respondToHashChanges: true,
 
 		// Push each slide change to the browser history
-		history: false,
+		history: true,
 
 		// Enable keyboard shortcuts for navigation
 		keyboard: true,
@@ -182,7 +182,6 @@ function initializeRevealForLesson() {
 		plugins: [
 			//RevealMath,
 			RevealNotes,
-			RevealSearch,
 			RevealZoom
 		]
 	}).then(() => {
@@ -203,37 +202,13 @@ function initializeRevealForLesson() {
 					});
 				}
 			} catch (error) {
-				console.error('MathJax typeset error:', error);
+				// Silenciar errores de typeset en consola
 			}
 		}
 	}).catch((error) => {
-		console.error('Reveal.js initialization failed:', error);
+		// Silenciar errores de inicialización de Reveal en consola
 		// Reset the flag if initialization fails
 		window.revealInitialized = false;
-	});
-
-	// Optimized slidechanged event handler for MathJax with debouncing
-	let mathJaxTimeout;
-	Reveal.on('slidechanged', function(event) {
-		if (window.MathJax) {
-			// Clear previous timeout to debounce rapid slide changes
-			clearTimeout(mathJaxTimeout);
-			mathJaxTimeout = setTimeout(() => {
-				try {
-					if (window.MathJax.typesetPromise) {
-						MathJax.typesetPromise();
-					} else if (window.MathJax.startup && window.MathJax.startup.promise) {
-						window.MathJax.startup.promise.then(() => {
-							if (window.MathJax.typesetPromise) {
-								window.MathJax.typesetPromise();
-							}
-						});
-					}
-				} catch (error) {
-					console.error('MathJax typeset error on slide change:', error);
-				}
-			}, 50); // Small delay to debounce rapid slide changes
-		}
 	});
 }
 

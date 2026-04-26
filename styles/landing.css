@@ -1,4 +1,9 @@
 /* Optimized general styles for better performance */
+html {
+    overflow: hidden;
+    height: 100vh;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(-45deg, #f7fafc, #e2e8f0, #cbd5e0, #a0aec0);
@@ -14,21 +19,175 @@ body {
 .login-modal {
     position: fixed;
     z-index: 9999;
-    left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.90);
-    display: flex; align-items: center; justify-content: center;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.90);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .login-content {
     background: #d0d0d0;
     padding: 2em;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
+
 .login-content input {
     margin-bottom: 1em;
     padding: 0.5em;
     width: 80%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #f7fafc, #e2e8f0, #cbd5e0, #a0aec0);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    will-change: background-position;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    background-color: #2d3748;
+    color: white;
+    padding: 1rem;
+    will-change: transform;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.sidebar {
+    background-color: #f7fafc;
+    padding: 1rem;
+    min-height: 100%;
+    will-change: transform;
+}
+
+.header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.btn-admin,
+.btn-logout {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s, opacity 0.2s;
+    text-decoration: none;
+}
+
+.btn-admin {
+    background-color: #667eea;
+    color: #fff;
+}
+
+.btn-admin:hover {
+    background-color: #5a67d8;
+}
+
+.btn-logout {
+    background-color: #e53e3e;
+    color: #fff;
+}
+
+.btn-logout:hover {
+    background-color: #c53030;
+}
+
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    font-size: 2rem;
+    color: #3182ce;
+}
+
+/* Loading mejorado (mismo estilo que leccion.html) */
+.loading-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.2em;
+    color: #666;
+    background: linear-gradient(-45deg, #f7fafc, #e2e8f0);
+    border-radius: 8px;
+    margin: 2rem 0;
+    will-change: opacity;
+    text-align: center;
+}
+
+.loading-message>div {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        background-position: 100% 50%;
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        background-position: 0% 50%;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Optimización para mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
 }
 
 /* Hardware-accelerated gradient animation */
@@ -37,10 +196,12 @@ body {
         background-position: 0% 50%;
         transform: translate3d(0, 0, 0);
     }
+
     50% {
         background-position: 100% 50%;
         transform: translate3d(0, 0, 0);
     }
+
     100% {
         background-position: 0% 50%;
         transform: translate3d(0, 0, 0);
@@ -101,7 +262,8 @@ header h1 {
 
 .header-title {
     flex: 1;
-    /* Ocupa el espacio central */
+    /* Da más espacio al título para evitar saltos de línea en desktop */
+    min-width: 0;
     text-align: center;
     padding: 0 1rem;
     /* Espaciado lateral para separar los logos */
@@ -111,12 +273,14 @@ header h1 {
     font-size: clamp(1rem, 4vw, 1.75rem);
     margin: 0;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .header-title p {
     font-size: 1rem;
     margin: 0.25rem 0 0;
     color: #cbd5e0;
+    white-space: nowrap;
     /* Color gris claro para el texto secundario */
 }
 
@@ -155,7 +319,10 @@ header h1 {
     background-color: white;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     padding: 1rem;
+    max-height: calc(100vh - 140px);
+    /* Solo activa scroll si el contenido supera la vista disponible */
     overflow-y: auto;
+    overscroll-behavior: contain;
     transition: transform 0.3s ease;
     position: relative;
 }
@@ -294,8 +461,7 @@ header h1 {
     background-color: white;
     padding: 1rem;
     overflow-y: auto;
-    overflow: visible !important;
-    max-height: none !important;
+    overflow-x: hidden;
 }
 
 .content iframe {
@@ -303,6 +469,104 @@ header h1 {
     height: 100%;
     border: none;
     display: block;
+}
+
+/* Sección de unidad */
+.unidad-section {
+    margin-bottom: 2rem;
+}
+
+/* Materiales colapsables de unidad */
+.materiales-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.materiales-toggle {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #4299e1 0%, #2c5282 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.materiales-toggle:hover {
+    background: linear-gradient(135deg, #3182ce 0%, #1a365d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.materiales-toggle .toggle-icon {
+    transition: transform 0.3s ease;
+    margin-left: auto;
+    font-size: 0.85em;
+}
+
+.materiales-toggle.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.materiales-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #f8f9fa;
+    border-radius: 0 0 6px 6px;
+}
+
+.materiales-content.active {
+    border: 1px solid #e2e8f0;
+    border-top: none;
+}
+
+.materiales-list {
+    list-style: none;
+    padding: 0.75rem;
+    margin: 0;
+}
+
+.materiales-list li {
+    margin-bottom: 0.5rem;
+}
+
+.materiales-list li:last-child {
+    margin-bottom: 0;
+}
+
+.materiales-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    background: white;
+    color: #2d3748;
+    text-decoration: none;
+    border-radius: 4px;
+    border-left: 3px solid #e74c3c;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.materiales-list a:hover {
+    background: #e74c3c;
+    color: white;
+    transform: translateX(4px);
+    box-shadow: 0 2px 6px rgba(231,76,60,0.3);
+}
+
+.materiales-list a i {
+    font-size: 1.1em;
+    min-width: 20px;
+    text-align: center;
 }
 
 /* Estilos para la lista de lecciones */
@@ -388,42 +652,126 @@ header h1 {
 
 /* Lista de cursos */
 .course-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 columnas */
-    gap: 1.5rem;
-    /* Espacio entre los elementos */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     padding: 0;
     list-style-type: none;
+    max-width: 100%;
 }
 
-/* Estilos para cada curso (botón) */
-.course-list li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #4299e1;
-    /* Fondo azul */
+/* Estilos para cada módulo */
+.module-item {
+    border: 1px solid #cbd5e0;
     border-radius: 0.5rem;
-    /* Bordes redondeados */
-    padding: 1.5rem;
-    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.course-list li:hover {
+.module-item:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header del módulo (clickeable) */
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    background-color: #4299e1;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.module-header:hover {
     background-color: #3182ce;
-    /* Fondo azul más oscuro al hacer hover */
-    transform: translateY(-5px);
-    /* Efecto de elevación */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilos para los enlaces (botones) */
+.module-header.open {
+    background-color: #2c5282;
+}
+
+.module-name {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.module-header i {
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.module-header.open i {
+    transform: rotate(180deg);
+}
+
+/* Contenido expandible del módulo */
+.module-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: #f7fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Estilos para los enlaces dentro del módulo */
+.module-link {
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+}
+
+/* Estilos para iconos dentro de los botones de módulos */
+.module-content .module-link i {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+}
+
+/* Estilos específicos para los botones dentro de módulos */
+.module-content .lesson-link {
+    background-color: #4299e1;
+    color: white;
+}
+
+.module-content .lesson-link:hover {
+    background-color: #3182ce;
+    transform: translateX(2px);
+}
+
+.module-content .planning-link {
+    background-color: #48bb78;
+    color: white;
+}
+
+.module-content .planning-link:hover {
+    background-color: #38a169;
+    transform: translateX(2px);
+}
+
+.module-content .syllabus-link {
+    background-color: #ed8936;
+    color: white;
+}
+
+.module-content .syllabus-link:hover {
+    background-color: #dd6b20;
+    transform: translateX(2px);
+}
+
+/* Estilos para los enlaces (botones) antiguos - mantener compatibilidad */
 .course-link {
     color: white;
-    /* Texto blanco */
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: bold;
@@ -437,7 +785,6 @@ header h1 {
 
 .course-link:hover {
     color: white;
-    /* Mantener el texto blanco */
 }
 
 /* Spinner de carga */
@@ -451,6 +798,62 @@ header h1 {
 }
 
 /* Responsive design */
+
+/* Tablets y pantallas medianas (768px - 1400px) */
+@media (max-width: 1400px) {
+    .header-content {
+        flex-wrap: nowrap;
+        max-width: 98%;
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .logo-left,
+    .logo-right {
+        flex: 0 0 auto;
+        min-width: fit-content;
+    }
+
+    .logo-left img,
+    .logo-right img {
+        max-height: 60px;
+    }
+
+    .header-title {
+        flex: 1;
+        min-width: 0;
+        padding: 0 0.5rem;
+    }
+
+    .header-title h1 {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .header-title p {
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .header-actions {
+        gap: 0.3rem;
+    }
+
+    .btn-admin,
+    .btn-logout {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .btn-admin span,
+    .btn-logout span {
+        display: none;
+    }
+}
+
+/* Móviles (max 768px) */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -504,10 +907,11 @@ header h1 {
     }
 
     .header-title h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        white-space: normal;
     }
 
     .header-title p {
-        font-size: 0.875rem;
+        font-size: 0.8rem;
     }
 }

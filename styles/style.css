@@ -1,14 +1,58 @@
 /* Optimized counter reset for better performance */
 body {
-    counter-reset: example-counter exercise-counter def-counter thm-counter prop-counter lem-counter;
+    counter-reset: example-counter exercise-counter def-counter thm-counter;
+}
+
+/* Font Size */
+:root {
+    --r-main-font-size: 30px;
 }
 
 /* FRAME FOR REVEAL PRESENTATION  */
 .frame {
     text-align: left;
     padding: 10px;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
+
+/* Marca de agua en todas las slides */
+.reveal::after {
+  content: "";
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 80px;
+  height: 80px;
+  background: url("../images/logoINSTMAT-Isologo-color.png") no-repeat center / contain;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.print-watermark-logo {
+        display: none;
+}
+
+@media print {
+  .reveal::after {
+        content: none !important;
+    }
+
+    .print-watermark-logo {
+                display: block;
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        width: 80px;
+        height: auto;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 30;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+  }
+}
+
 
 /* LESSON TITLE SLIDE STYLES */
 .lesson-style {
@@ -20,25 +64,7 @@ body {
     text-align: center;
 }
 
-/* GEOGEBRA STYLES */
-.ggb-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 40pt;
-}
-
-/* Por defecto, oculta la imagen en pantalla */
-.ggb-print-img {
-    display: none;
-    width: 100%;
-    height: auto;
-}
-
 /* Optimized content blocks with better performance */
-.challenge,
 .example,
 .examples,
 .exercise,
@@ -51,8 +77,9 @@ body {
 .solution,
 .block,
 .fact,
-.lemma,
-.proof {
+.proof,
+.challenge,
+.taller {
     display: inline-block;
     position: relative;
     width: 95%;
@@ -66,11 +93,54 @@ body {
     contain: layout style;
 }
 
+/* Print-pdf mode in Reveal computes page heights on-screen before Ctrl+P.
+   Disable containment/inline-block optimizations there to avoid clipped blocks. */
+html.reveal-print .example,
+html.reveal-print .examples,
+html.reveal-print .exercise,
+html.reveal-print .exercises,
+html.reveal-print .definition,
+html.reveal-print .theorem,
+html.reveal-print .proposition,
+html.reveal-print .corollary,
+html.reveal-print .remark,
+html.reveal-print .solution,
+html.reveal-print .block,
+html.reveal-print .fact,
+html.reveal-print .proof,
+html.reveal-print .challenge,
+html.reveal-print .taller {
+    display: block !important;
+    contain: none !important;
+    will-change: auto !important;
+}
+
 .example ol li,
 .examples ol li,
-.exsercise ol li,
+.exercise ol li,
 .exercises ol li {
     margin-bottom: 10mm;
+}
+
+.table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 1rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll table {
+    width: max-content;
+    min-width: 100%;
+    font-size: 0.72em;
+    white-space: nowrap;
+}
+
+.table-scroll th,
+.table-scroll td {
+    padding: 0.35rem 0.5rem;
 }
 
 .challenge::before {
@@ -79,6 +149,16 @@ body {
     font-weight: bold;
     color: #fff;
     background-color: #b81d8a;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.taller::before {
+    content: "Taller. ";
+    display: block;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #0f12e0;
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -161,7 +241,7 @@ body {
     display: block;
     font-weight: bold;
     color: #fff;
-    background-color: #D72638;
+    background-color: #4CAF50;
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -176,7 +256,7 @@ body {
     display: block;
     font-weight: bold;
     color: #fff;
-    background-color: #D72638;
+    background-color: #4CAF50;
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -184,14 +264,14 @@ body {
 .proposition::before {
     content: "Proposición. ";
     /*
-    content: "Proposición " counter(prop-counter) ". ";
-    counter-increment: prop-counter;
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
     */
     font-weight: bold;
     display: block;
     font-weight: bold;
     color: #fff;
-    background-color: #D72638;
+    background-color: #4CAF50;
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -199,14 +279,14 @@ body {
 .lemma::before {
     content: "Lema. ";
     /*
-    content: "Lema " counter(lem-counter) ". ";
-    counter-increment: lem-counter;
+    content: "Teorema " counter(thm-counter) ". ";
+    counter-increment: thm-counter;
     */
     font-weight: bold;
     display: block;
     font-weight: bold;
     color: #fff;
-    background-color: #D72638;
+    background-color: #4CAF50;
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -231,7 +311,7 @@ body {
     display: block;
     font-weight: bold;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: #D72638;
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -247,8 +327,8 @@ body {
     border-radius: 8px;
 }
 
-ol.two-columns,
-ul.two-columns {
+.reveal ol.two-columns,
+.reveal ul.two-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
     /* Divide el espacio en dos columnas iguales */
@@ -262,7 +342,23 @@ ul.two-columns {
     /* Asegura que el contenedor ocupe el 100% del ancho disponible */
 }
 
-/* Listas anidadas */
+.reveal ol.three-columns,
+.reveal ul.three-columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    list-style-position: inside;
+    padding-left: 0;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .reveal ol.three-columns,
+    .reveal ul.three-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
 .reveal ol {
     list-style-type: decimal;
 }
@@ -275,54 +371,99 @@ ul.two-columns {
     list-style-type: lower-roman;
 }
 
-:root {
-    --r-main-font-size: 30px;
+/* GEOGEBRA STYLES */
+.ggb-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40pt;
+}
+
+/* Por defecto, oculta la imagen en pantalla */
+.ggb-print-img {
+    display: none;
+    width: 100%;
+    height: auto;
 }
 
 @media print {
+    /* Forzar visibilidad de fragmentos Reveal.js (fallback si JS no lo maneja) */
+    .reveal .slides section .fragment {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
 
+    .example,
+    .examples,
+    .exercise,
+    .exercises,
+    .definition,
+    .theorem,
+    .proposition,
+    .corollary,
+    .remark,
+    .solution,
+    .block,
+    .fact,
+    .proof,
+    .challenge,
+    .taller {
+        display: block !important;
+        contain: none !important;
+        will-change: auto !important;
+    }
+
+    /* Fallback robusto: evitar talleres vacios en previsualizacion de impresion */
+    html.reveal-print .taller,
+    html.reveal-print .taller * {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    html.reveal-print .taller,
+    html.reveal-print .taller p,
+    html.reveal-print .taller li,
+    html.reveal-print .taller span {
+        color: #111 !important;
+    }
+
+    html.reveal-print .taller ol,
+    html.reveal-print .taller ul {
+        display: block !important;
+        margin-left: 1.2em !important;
+        padding-left: 1em !important;
+        width: auto !important;
+    }
+
+    html.reveal-print .taller li {
+        display: list-item !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    html.reveal-print .taller .three-columns {
+        display: block !important;
+    }
+
+    /* Layout básico para GeoGebra wrappers en impresión */
+    .ggb-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* Fix para MathJax en impresión */
     mjx-container[jax="SVG"] use[data-c],
     mjx-container[jax="SVG"] path[data-c] {
         stroke-width: 0 !important;
     }
-}
 
-/* Mostrar imagen y ocultar applet GeoGebra al imprimir o exportar PDF Reveal.js */
-@media print,
-screen and (min-width:0px) and (orientation: landscape) {
-
-    .reveal.print-pdf .ggb-wrapper [id^="ggb-element-"],
-    .reveal.print-pdf .ggb-wrapper iframe {
-        display: none !important;
-    }
-
-    .reveal.print-pdf .ggb-wrapper .ggb-print-img {
-        display: block !important;
-    }
-}
-
-@media print {
-
-    .ggb-wrapper [id^="ggb-element-"],
-    .ggb-wrapper iframe {
-        display: none !important;
-    }
-
-    .ggb-wrapper .ggb-print-img {
-        display: block !important;
-    }
-
-    /* Ocultar el botón de impresión al imprimir - Múltiples selectores para máxima especificidad */
+    /* Ocultar botón de impresión */
     #print-button,
-    .no-print,
-    button#print-button,
-    #controls-container #print-button,
-    body #print-button {
+    .no-print {
         display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        position: absolute !important;
-        left: -9999px !important;
     }
 }
 
@@ -336,6 +477,54 @@ screen and (min-width:0px) and (orientation: landscape) {
 
 #controls-container > * {
     pointer-events: auto;
+}
+
+/* FULLSCREEN BUTTON STYLES */
+#fullscreen-button {
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+    right: auto !important;
+    z-index: 99999 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background-color: rgba(44, 62, 80, 0.95);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#fullscreen-button:hover {
+    background-color: rgba(29, 113, 184, 0.98);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.28);
+}
+
+#fullscreen-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#fullscreen-button.is-active {
+    background-color: rgba(21, 90, 148, 0.98);
+}
+
+@media (max-width: 768px) {
+    #fullscreen-button {
+        top: 12px !important;
+        left: 12px !important;
+        right: auto !important;
+        padding: 9px 12px;
+        font-size: 13px;
+    }
 }
 
 /* PRINT BUTTON STYLES */
@@ -367,7 +556,17 @@ screen and (min-width:0px) and (orientation: landscape) {
 #print-button:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
 }
 
+/* Dynamic list spacing using CSS Custom Properties */
+.spaced-list {
+    margin-left: 0;
+}
 
+.spaced-list li {
+    margin-bottom: var(--spacing, 1em) !important;
+}
+
+.spaced-list li:last-child {
+    margin-bottom: var(--spacing, 1em) !important;
+}
