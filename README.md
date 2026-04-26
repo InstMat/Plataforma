@@ -38,6 +38,15 @@ con estas extensiones:
 - GitHub Copilot (sugerencias de codigo y ayuda al editar HTML/JS/CSS)
 - Live Preview (levanta una vista previa local del sitio y evita problemas comunes de `file://`)
 
+### Acceso a GitHub Copilot Pro con GitHub Education
+Si eres estudiante o docente, puedes solicitar el beneficio educativo para usar GitHub Copilot Pro (segun disponibilidad y condiciones vigentes de GitHub).
+
+1. Crea o inicia sesion en GitHub: https://github.com/
+2. Postula a GitHub Education (Student/Teacher): https://github.com/education
+3. Completa la verificacion academica con tu correo institucional o documento solicitado.
+4. Una vez aprobada la cuenta educativa, entra a la configuracion de Copilot: https://github.com/settings/copilot
+5. Activa el plan disponible para tu cuenta y luego inicia sesion con esa misma cuenta en la extension de GitHub Copilot en VS Code.
+
 ## Servidor local minimo (si falla `file://`)
 Si el navegador bloquea la lectura de `data/*.json`, inicia un servidor local simple y abre la URL local en vez de abrir el HTML con doble clic.
 
