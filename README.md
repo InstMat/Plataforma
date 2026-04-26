@@ -28,6 +28,16 @@ Es un paquete autocontenido: basta con compartir solo la carpeta `portable/`.
 - Esta version portable carga Reveal.js y MathJax desde CDN (online), por lo que necesita conexion a internet para presentaciones y formulas matematicas.
 - En algunos navegadores muy restrictivos, las lecturas de JSON en `file://` pueden estar limitadas. Si ocurre, prueba con Firefox para trabajo offline.
 
+## Recomendacion de editor
+Para crear y revisar contenido de forma mas comoda, se recomienda usar VS Code
+
+- Descargar VS Code: https://code.visualstudio.com/download
+
+con estas extensiones:
+
+- GitHub Copilot (sugerencias de codigo y ayuda al editar HTML/JS/CSS)
+- Live Preview (levanta una vista previa local del sitio y evita problemas comunes de `file://`)
+
 ## Servidor local minimo (si falla `file://`)
 Si el navegador bloquea la lectura de `data/*.json`, inicia un servidor local simple y abre la URL local en vez de abrir el HTML con doble clic.
 
