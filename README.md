@@ -11,37 +11,6 @@ Es un paquete autocontenido: basta con compartir solo la carpeta `portable/`.
 4. Crea o edita contenido en `portable/data/<facultad>/<modulo>/...`.
 5. Te devuelve la carpeta del modulo y sus lecciones desde `portable/data/...`.
 
-## Mantener portable sincronizado con el frontend principal
-La carpeta `portable/` ya no debe actualizarse a mano archivo por archivo. La fuente de verdad del frontend sigue siendo la raiz del proyecto y la variante portable se regenera con:
-
-```bash
-python3 tools/sync_portable.py
-```
-
-Verificacion sin escribir cambios:
-
-```bash
-python3 tools/sync_portable.py --check
-```
-
-Que sincroniza hoy:
-- shells `portable/plataforma.html`, `portable/curso.html`, `portable/leccion.html`
-- scripts `portable/scripts/*` derivados desde la version principal con ajustes para modo sin autenticacion
-- estilos compartidos (`tokens.css`, `landing.css`, `curso.css`, `lesson-shell.css`, `style.css`)
-
-Regla de mantenimiento:
-- primero se modifica la version principal
-- despues se ejecuta `tools/sync_portable.py`
-- recien entonces se prueba `portable/` en navegador
-
-## Estructura incluida de ejemplo
-- `portable/data/carreras.json`
-- `portable/data/Demo/ModuloDemo/lecciones.json`
-- `portable/data/Demo/ModuloDemo/UnidadI/clase01.html`
-- `portable/data/Demo/ModuloDemo/UnidadI/clase01/recta-demo.ggb`
-- `portable/images/*` (logos minimos)
-- `portable/styles/*` (estilos minimos)
-
 ## Convenciones para nuevo contenido
 - `lecciones.json` en la raiz del modulo.
 - Lecciones por unidad: `UnidadX/claseYY.html`.
