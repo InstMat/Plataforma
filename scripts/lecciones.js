@@ -1,5 +1,6 @@
 // Cached DOM elements for performance
 let cachedElements = null;
+const LESSON_PAGE_VERSION = '20260710';
 
 // Initialize DOM element cache
 function initializeElementCache() {
@@ -24,21 +25,250 @@ function __join__(base, rel) {
     return `${base.replace(/\/+$/, '')}/${rel.replace(/^\/+/, '')}`;
 }
 
-function canViewUnitMaterials() {
-    if (!window.authManager || typeof window.authManager.getUserRoles !== 'function') {
-        // Portable mode has no auth layer, so materials should be visible.
+function formatUnidadDisplayName(unidadNombre) {
+    const raw = String(unidadNombre || '').trim();
+
+    // Convert compact names like "UnidadI" -> "Unidad I" for menu display.
+    const match = raw.match(/^(Unidad)([IVXLCDM]+|\d+)$/i);
+    if (match) {
+        return `${match[1]} ${match[2]}`;
+    }
+
+    return raw;
+}
+
+function normalizeMaterialPath(path) {
+    return String(path || '').replace(/^\/+/, '').toLowerCase();
+}
+
+function isTallerSolutionMaterial(material) {
+    const materialName = String(material?.nombre || '').toLowerCase();
+    const materialPath = normalizeMaterialPath(material?.archivo);
+
+    if (materialPath.startsWith('talleres/')) {
         return true;
     }
 
-    const roles = window.authManager
-        .getUserRoles()
-        .map((role) => String(role).toLowerCase());
+    return materialName.includes('solucion') && materialName.includes('taller');
+}
 
-    return roles.includes('admin') || roles.includes('profesor');
+function extractFirstNumber(value) {
+    const match = String(value || '').match(/(\d+)/);
+    if (!match || !match[1]) {
+        return null;
+    }
+    return Number.parseInt(match[1], 10);
+}
+
+function extractLessonClassNumber(leccion, unidadNumber) {
+    const fromLink = extractFirstNumber(leccion?.enlace);
+    if (Number.isFinite(fromLink)) {
+        if (fromLink < 100 && Number.isFinite(unidadNumber)) {
+            return (unidadNumber * 100) + fromLink;
+        }
+        return fromLink;
+    }
+
+    const fromName = extractFirstNumber(leccion?.nombre);
+    if (Number.isFinite(fromName)) {
+        if (fromName < 100 && Number.isFinite(unidadNumber)) {
+            return (unidadNumber * 100) + fromName;
+        }
+        return fromName;
+    }
+
+    return null;
+}
+
+function romanToInt(token) {
+    const roman = String(token || '').toUpperCase().trim();
+    if (!roman) {
+        return null;
+    }
+
+    const values = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+    let total = 0;
+    let previous = 0;
+
+    for (let i = roman.length - 1; i >= 0; i--) {
+        const current = values[roman[i]];
+        if (!current) {
+            return null;
+        }
+        if (current < previous) {
+            total -= current;
+        } else {
+            total += current;
+            previous = current;
+        }
+    }
+
+    return total > 0 ? total : null;
+}
+
+function extractUnitNumber(unidadNombre) {
+    const raw = String(unidadNombre || '').trim();
+    const match = raw.match(/^Unidad\s*([IVXLCDM]+|\d+)$/i);
+    if (!match || !match[1]) {
+        return null;
+    }
+
+    const token = match[1];
+    if (/^\d+$/.test(token)) {
+        return Number.parseInt(token, 10);
+    }
+
+    return romanToInt(token);
+}
+
+function extractMaterialClassNumber(material, unidadNumber) {
+    const materialName = String(material?.nombre || '');
+    const nameMatch = materialName.match(/clase\s*(\d+)/i);
+    if (nameMatch && nameMatch[1]) {
+        const fromName = Number.parseInt(nameMatch[1], 10);
+        if (Number.isFinite(fromName)) {
+            // Backend can emit names like "Clase 10" for files in Unidad II.
+            // In those cases we must map to the real lesson id (e.g. 210).
+            if (fromName < 100 && Number.isFinite(unidadNumber)) {
+                return (unidadNumber * 100) + fromName;
+            }
+            return fromName;
+        }
+    }
+
+    const materialPath = String(material?.archivo || '');
+
+    // Preferred format: solucion-taller-101.pdf -> clase 101
+    const directClassMatch = materialPath.match(/(?:solucion[-_ ]*)?taller(?:es)?[-_ ]*(\d{3,})/i);
+    if (directClassMatch && directClassMatch[1]) {
+        const directClass = Number.parseInt(directClassMatch[1], 10);
+        if (Number.isFinite(directClass)) {
+            return directClass;
+        }
+    }
+
+    // Pattern used in IntroMate: solucion-taller-2_10.pdf -> clase210
+    const unitLessonMatch = materialPath.match(/(?:solucion[-_ ]*)?taller(?:es)?[-_ ]*(\d+)[-_](\d+)/i);
+    if (unitLessonMatch && unitLessonMatch[1] && unitLessonMatch[2]) {
+        const unit = Number.parseInt(unitLessonMatch[1], 10);
+        const lessonInUnit = Number.parseInt(unitLessonMatch[2], 10);
+
+        if (Number.isFinite(unit) && Number.isFinite(lessonInUnit)) {
+            return (unit * 100) + lessonInUnit;
+        }
+    }
+
+    const fromPath = extractFirstNumber(materialPath);
+    if (Number.isFinite(fromPath)) {
+        if (fromPath < 100 && Number.isFinite(unidadNumber)) {
+            return (unidadNumber * 100) + fromPath;
+        }
+        return fromPath;
+    }
+
+    return null;
+}
+
+function buildMaterialLink(courseBase, material, labelOverride) {
+    const materialLink = document.createElement('a');
+    materialLink.href = `${courseBase}/${material.archivo}`;
+    materialLink.target = '_blank';
+    materialLink.rel = 'noopener noreferrer';
+
+    const extension = String(material.archivo || '').split('.').pop().toLowerCase();
+    let icon = 'fa-file';
+    if (extension === 'pdf') icon = 'fa-file-pdf';
+    else if (['doc', 'docx'].includes(extension)) icon = 'fa-file-word';
+    else if (['xls', 'xlsx'].includes(extension)) icon = 'fa-file-excel';
+    else if (['zip', 'rar'].includes(extension)) icon = 'fa-file-archive';
+
+    const linkLabel = labelOverride || material.nombre;
+    materialLink.innerHTML = `<i class="fas ${icon}"></i> ${linkLabel}`;
+    return materialLink;
+}
+
+function splitUnitMaterialsByLesson(unidad) {
+    const lessonSolutionsByClass = new Map();
+    const generalMaterials = [];
+    const unidadNumber = extractUnitNumber(unidad?.nombre);
+
+    (unidad?.materiales || []).forEach((material) => {
+        if (!isTallerSolutionMaterial(material)) {
+            generalMaterials.push(material);
+            return;
+        }
+
+        const classNumber = extractMaterialClassNumber(material, unidadNumber);
+        if (!Number.isFinite(classNumber)) {
+            // Keep unmatched files visible in the general section.
+            generalMaterials.push(material);
+            return;
+        }
+
+        if (!lessonSolutionsByClass.has(classNumber)) {
+            lessonSolutionsByClass.set(classNumber, []);
+        }
+        lessonSolutionsByClass.get(classNumber).push(material);
+    });
+
+    return { lessonSolutionsByClass, generalMaterials };
+}
+
+function canViewUnitMaterials() {
+    return true;
 }
 
 async function waitForLessonMenuAuth() {
     return Promise.resolve();
+}
+
+function parseCourseBase(courseBase) {
+    const normalized = String(courseBase || '').replace(/^\/+/, '').replace(/^data\//, '');
+    const parts = normalized.split('/').filter(Boolean);
+
+    if (parts.length < 2) {
+        return null;
+    }
+
+    return {
+        carrera: parts[0],
+        modulo: parts.slice(1).join('/'),
+    };
+}
+
+function resolveCourseBase() {
+    if (typeof window !== 'undefined' && window.COURSE_BASE) {
+        return window.COURSE_BASE;
+    }
+
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const baseParam = params.get('base') || '';
+        if (!baseParam) return '';
+        return baseParam.startsWith('data/') ? baseParam : `data/${baseParam}`;
+    } catch (_) {
+        return '';
+    }
+}
+
+async function fetchLeccionesFromApi(courseBase) {
+    const jsonUrl = courseBase ? `${courseBase}/lecciones.json` : 'lecciones.json';
+
+    try {
+        const response = await fetch(jsonUrl, { cache: 'no-cache' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        if (!courseBase) {
+            throw error;
+        }
+
+        const fallbackResponse = await fetch('lecciones.json', { cache: 'no-cache' });
+        if (!fallbackResponse.ok) {
+            throw new Error(`No se pudo cargar ${jsonUrl} ni el fallback lecciones.json`);
+        }
+        return fallbackResponse.json();
+    }
 }
 
 // Optimized lesson click handler with smooth animations
@@ -134,10 +364,31 @@ function createLessonItem(leccion, href, courseBase, courseCarrera) {
 function createUnidadSection(unidad, courseBase, courseCarrera, showMaterials) {
     const unidadDiv = document.createElement('div');
     unidadDiv.className = 'unidad-section';
+    const unidadDisplayName = formatUnidadDisplayName(unidad.nombre);
+    const unidadNumber = extractUnitNumber(unidad.nombre);
+    const { lessonSolutionsByClass, generalMaterials } = splitUnitMaterialsByLesson(unidad);
     
     const title = document.createElement('h3');
-    title.textContent = unidad.nombre;
+    title.className = 'unidad-toggle';
+    title.setAttribute('role', 'button');
+    title.setAttribute('tabindex', '0');
+    title.setAttribute('aria-expanded', 'false');
+
+    const titleText = document.createElement('span');
+    titleText.textContent = unidadDisplayName;
+
+    const toggleIcon = document.createElement('i');
+    toggleIcon.className = 'unidad-toggle-icon';
+    toggleIcon.textContent = '+';
+    toggleIcon.setAttribute('aria-hidden', 'true');
+
+    title.appendChild(titleText);
+    title.appendChild(toggleIcon);
     unidadDiv.appendChild(title);
+
+    const unidadContent = document.createElement('div');
+    unidadContent.className = 'unidad-content';
+    unidadContent.hidden = true;
     
     const listaLecciones = document.createElement('ol');
     listaLecciones.classList.add('lesson-list');
@@ -155,9 +406,31 @@ function createUnidadSection(unidad, courseBase, courseCarrera, showMaterials) {
             const fullLessonPath = `${courseBase}/${unidadPath}/${leccion.enlace}`;
             
             // Build lesson URL with automatic title
-            const lessonUrl = `leccion.html?base=${encodeURIComponent(fullLessonPath)}&titulo=${encodeURIComponent(leccion.nombre)}`;
+            const lessonUrl = `leccion.html?v=${encodeURIComponent(LESSON_PAGE_VERSION)}&base=${encodeURIComponent(fullLessonPath)}&titulo=${encodeURIComponent(leccion.nombre)}`;
             
             const lessonResult = createLessonItem(leccion, lessonUrl, courseBase, courseCarrera);
+
+            const classNumber = extractLessonClassNumber(leccion, unidadNumber);
+            const lessonSolutions = Number.isFinite(classNumber)
+                ? (lessonSolutionsByClass.get(classNumber) || [])
+                : [];
+
+            if (showMaterials && lessonSolutions.length > 0) {
+                const subItems = document.createElement('ul');
+                subItems.className = 'lesson-subitems';
+
+                lessonSolutions.forEach((solution) => {
+                    const subItem = document.createElement('li');
+                    subItem.className = 'lesson-subitem';
+
+                    const solutionLink = buildMaterialLink(courseBase, solution, 'Respuestas a los talleres');
+                    solutionLink.classList.add('lesson-subitem-link');
+                    subItem.appendChild(solutionLink);
+                    subItems.appendChild(subItem);
+                });
+
+                lessonResult.element.appendChild(subItems);
+            }
             
             fragment.appendChild(lessonResult.element);
             lessonData.push(lessonResult.href);
@@ -166,10 +439,10 @@ function createUnidadSection(unidad, courseBase, courseCarrera, showMaterials) {
     
     if (fragment.children.length > 0) {
         listaLecciones.appendChild(fragment);
-        unidadDiv.appendChild(listaLecciones);
+        unidadContent.appendChild(listaLecciones);
         
         // Add collapsible materials section at the end if available
-        if (showMaterials && unidad.materiales && unidad.materiales.length > 0) {
+        if (showMaterials && generalMaterials.length > 0) {
             const materialesWrapper = document.createElement('div');
             materialesWrapper.className = 'materiales-wrapper';
             
@@ -177,7 +450,7 @@ function createUnidadSection(unidad, courseBase, courseCarrera, showMaterials) {
             const materialesToggle = document.createElement('button');
             materialesToggle.className = 'materiales-toggle';
             materialesToggle.type = 'button';
-            materialesToggle.innerHTML = `<i class="fas fa-folder-open"></i> Material ${unidad.nombre} <i class="fas fa-chevron-down toggle-icon"></i>`;
+            materialesToggle.innerHTML = `<i class="fas fa-folder-open"></i>&nbsp; Material Complementario ${unidadDisplayName} <i class="fas fa-chevron-down toggle-icon"></i>`;
             
             // Create collapsible content
             const materialesContent = document.createElement('div');
@@ -186,23 +459,10 @@ function createUnidadSection(unidad, courseBase, courseCarrera, showMaterials) {
             const materialesList = document.createElement('ul');
             materialesList.className = 'materiales-list';
             
-            unidad.materiales.forEach(material => {
+            generalMaterials.forEach(material => {
                 const listItem = document.createElement('li');
-                
-                const materialLink = document.createElement('a');
-                materialLink.href = `${courseBase}/${material.archivo}`;
-                materialLink.target = '_blank';
-                materialLink.rel = 'noopener noreferrer';
-                
-                // Icon based on file extension
-                const extension = material.archivo.split('.').pop().toLowerCase();
-                let icon = 'fa-file';
-                if (extension === 'pdf') icon = 'fa-file-pdf';
-                else if (['doc', 'docx'].includes(extension)) icon = 'fa-file-word';
-                else if (['xls', 'xlsx'].includes(extension)) icon = 'fa-file-excel';
-                else if (['zip', 'rar'].includes(extension)) icon = 'fa-file-archive';
-                
-                materialLink.innerHTML = `<i class="fas ${icon}"></i> ${material.nombre}`;
+
+                const materialLink = buildMaterialLink(courseBase, material);
                 listItem.appendChild(materialLink);
                 materialesList.appendChild(listItem);
             });
@@ -224,8 +484,56 @@ function createUnidadSection(unidad, courseBase, courseCarrera, showMaterials) {
             
             materialesWrapper.appendChild(materialesToggle);
             materialesWrapper.appendChild(materialesContent);
-            unidadDiv.appendChild(materialesWrapper);
+            unidadContent.appendChild(materialesWrapper);
         }
+
+        const setUnidadExpanded = (expanded) => {
+            unidadContent.hidden = !expanded;
+            title.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            toggleIcon.textContent = expanded ? '-' : '+';
+        };
+
+        const collapseOtherUnits = () => {
+            const parent = unidadDiv.parentElement;
+            if (!parent) return;
+
+            parent.querySelectorAll('.unidad-section').forEach((section) => {
+                if (section === unidadDiv) return;
+
+                const otherTitle = section.querySelector(':scope > .unidad-toggle');
+                const otherContent = section.querySelector(':scope > .unidad-content');
+                const otherIcon = otherTitle ? otherTitle.querySelector('.unidad-toggle-icon') : null;
+
+                if (otherTitle && otherContent) {
+                    otherContent.hidden = true;
+                    otherTitle.setAttribute('aria-expanded', 'false');
+                    if (otherIcon) {
+                        otherIcon.textContent = '+';
+                    }
+                }
+            });
+        };
+
+        title.addEventListener('click', () => {
+            const isExpanded = title.getAttribute('aria-expanded') === 'true';
+            if (!isExpanded) {
+                collapseOtherUnits();
+            }
+            setUnidadExpanded(!isExpanded);
+        });
+
+        title.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                const isExpanded = title.getAttribute('aria-expanded') === 'true';
+                if (!isExpanded) {
+                    collapseOtherUnits();
+                }
+                setUnidadExpanded(!isExpanded);
+            }
+        });
+
+        unidadDiv.appendChild(unidadContent);
         
         return { element: unidadDiv, lessons: lessonData };
     }
@@ -259,36 +567,20 @@ async function cargarLecciones() {
         await waitForLessonMenuAuth();
         
         // Course context variables with fallback to global window variables
-        const courseBase = (typeof window !== 'undefined' && window.COURSE_BASE) ? window.COURSE_BASE : '';
+        const courseBase = resolveCourseBase();
         const courseOpen = (typeof window !== 'undefined' && window.COURSE_OPEN) ? window.COURSE_OPEN : '';
         const courseCarrera = (typeof window !== 'undefined' && window.COURSE_CARRERA) ? window.COURSE_CARRERA : '';
         const showMaterials = canViewUnitMaterials();
 
         const { unidadesContainer, iframeContenido } = elements;
         
-        // Determine JSON URL with fallback logic
-        const jsonUrl = courseBase ? `${courseBase}/lecciones.json` : 'lecciones.json';
         let data;
-        
-        try {
-            // Primary fetch attempt
-            const response = await fetch(jsonUrl, { cache: 'no-cache' });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            data = await response.json();
-        } catch (e) {
-            // Fallback: try from current folder
-            if (courseBase) {
-                try {
-                    const fallbackResponse = await fetch('lecciones.json', { cache: 'no-cache' });
-                    if (!fallbackResponse.ok) throw new Error(`HTTP ${fallbackResponse.status}`);
-                    data = await fallbackResponse.json();
-                } catch (e2) {
-                    throw new Error(`No se pudo cargar ${jsonUrl} ni el fallback lecciones.json`);
-                }
-            } else {
-                throw e;
-            }
+
+        if (!courseBase) {
+            throw new Error('No se pudo determinar COURSE_BASE para cargar lecciones');
         }
+
+        data = await fetchLeccionesFromApi(courseBase);
 
         // Check for empty unidades array
         if (!data.unidades || data.unidades.length === 0) {
@@ -460,7 +752,7 @@ async function cargarLecciones() {
         if (unidadesContainer) {
             showErrorMessage(
                 unidadesContainer,
-                'No se pudieron cargar las lecciones. Verifica la ruta base y vuelve a intentar.'
+                `No se pudieron cargar las lecciones (${error?.message || 'error desconocido'}).`
             );
         }
     }
@@ -469,20 +761,36 @@ async function cargarLecciones() {
 // Optimized mobile sidebar toggle with smooth animations
 function initializeSidebarToggle() {
     const { menuToggle, sidebar } = initializeElementCache();
-    
+
     if (menuToggle && sidebar) {
-        menuToggle.addEventListener('click', () => {
-            requestAnimationFrame(() => {
-                sidebar.classList.toggle('active');
+        if (menuToggle.dataset.sidebarBound !== 'true') {
+            menuToggle.addEventListener('click', () => {
+                requestAnimationFrame(() => {
+                    sidebar.classList.toggle('active');
+                });
             });
-        });
+            menuToggle.dataset.sidebarBound = 'true';
+        }
+        return true;
     }
+
+    return false;
 }
 
 // Enhanced page load handling with performance optimization
 async function initializePage() {
     // Initialize sidebar toggle
-    initializeSidebarToggle();
+    if (!initializeSidebarToggle()) {
+        let attempts = 0;
+        const maxAttempts = 30;
+        const intervalId = setInterval(() => {
+            attempts += 1;
+            cachedElements = null; // Releer nodos luego de inyección del header.
+            if (initializeSidebarToggle() || attempts >= maxAttempts) {
+                clearInterval(intervalId);
+            }
+        }, 100);
+    }
     
     // Esperar a que course-shell.js establezca las variables globales
     await waitForCourseVariables();
@@ -495,19 +803,19 @@ async function initializePage() {
 function waitForCourseVariables() {
     return new Promise((resolve) => {
         // Si ya están disponibles, continuar
-        if (window.COURSE_BASE) {
+        if (window.COURSE_BASE || resolveCourseBase()) {
             resolve();
             return;
         }
         
-        // Esperar hasta 3 segundos
+        // Esperar hasta 8 segundos para dar tiempo a course-shell/auth
         let attempts = 0;
         const checkInterval = setInterval(() => {
             attempts++;
-            if (window.COURSE_BASE) {
+            if (window.COURSE_BASE || resolveCourseBase()) {
                 clearInterval(checkInterval);
                 resolve();
-            } else if (attempts > 30) { // 3 segundos
+            } else if (attempts > 80) { // 8 segundos
                 clearInterval(checkInterval);
                 
                 resolve();

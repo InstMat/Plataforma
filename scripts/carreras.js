@@ -31,7 +31,7 @@ async function cargarCarreras() {
             a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' })
         );
 
-        // Modo portable sin autenticacion.
+        // Obtener info de usuario actual
         const currentUser = null;
         const userCarrerasRaw = currentUser ? currentUser.carrera : null;
         const userCarrerasSet = userCarrerasRaw === 'ALL'
@@ -69,15 +69,29 @@ async function cargarCarreras() {
             if (carrerasConModulos.length > 0) {
                 // Crear elemento de facultad
                 const facLi = document.createElement('li');
-                const facA = document.createElement('a');
-                facA.href = '#';
-                facA.innerHTML = `${facultad.nombre} <i class="fas fa-chevron-down"></i>`;
-                facA.classList.add('facultad-link');
-                
+                facLi.className = 'unidad-section';
+
+                const facTitle = document.createElement('h3');
+                facTitle.className = 'unidad-toggle';
+                facTitle.setAttribute('role', 'button');
+                facTitle.setAttribute('tabindex', '0');
+                facTitle.setAttribute('aria-expanded', 'false');
+
+                const facTitleText = document.createElement('span');
+                facTitleText.textContent = facultad.nombre;
+
+                const facIcon = document.createElement('i');
+                facIcon.className = 'unidad-toggle-icon';
+                facIcon.textContent = '+';
+                facIcon.setAttribute('aria-hidden', 'true');
+
+                facTitle.appendChild(facTitleText);
+                facTitle.appendChild(facIcon);
+
                 // Crear lista de carreras para esta facultad
                 const carrerasList = document.createElement('ul');
-                carrerasList.classList.add('submenu');
-                //carrerasList.style.display = 'none';
+                carrerasList.className = 'unidad-content';
+                carrerasList.hidden = true;
 
                 // Agregar las carreras (ya ordenadas y filtradas)
                 carrerasConModulos.forEach(carrera => {
@@ -96,31 +110,41 @@ async function cargarCarreras() {
                     carrerasList.appendChild(carrLi);
                 });
 
-                // Configurar el click para expandir/colapsar con animación
-                facA.onclick = (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    // Cerrar otros submenús primero
-                    document.querySelectorAll('.submenu').forEach(sub => {
-                        if (sub !== carrerasList) {
-                            sub.classList.remove('active');
-                            // Restaurar íconos de otras facultades
-                            const parentLi = sub.parentElement;
-                            if (parentLi) {
-                                const icon = parentLi.querySelector('i');
-                                if (icon) icon.className = 'fas fa-chevron-down';
-                            }
-                        }
-                    });
-                    // Alternar el submenú actual con animación
-                    const isShowing = carrerasList.classList.contains('active');
-                    carrerasList.classList.toggle('active');
-                    // Cambiar el ícono
-                    const icon = facA.querySelector('i');
-                    icon.className = isShowing ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+                // Configurar el toggle con el mismo patrón que las unidades de lecciones
+                const setFacultadExpanded = (expanded) => {
+                    carrerasList.hidden = !expanded;
+                    facTitle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                    facIcon.textContent = expanded ? '-' : '+';
                 };
 
-                facLi.appendChild(facA);
+                const collapseOtherFacultades = () => {
+                    elements.listaCarreras.querySelectorAll('.unidad-section').forEach(section => {
+                        if (section === facLi) return;
+                        const otherTitle = section.querySelector(':scope > .unidad-toggle');
+                        const otherContent = section.querySelector(':scope > .unidad-content');
+                        const otherIcon = otherTitle ? otherTitle.querySelector('.unidad-toggle-icon') : null;
+                        if (otherTitle && otherContent) {
+                            otherContent.hidden = true;
+                            otherTitle.setAttribute('aria-expanded', 'false');
+                            if (otherIcon) otherIcon.textContent = '+';
+                        }
+                    });
+                };
+
+                facTitle.addEventListener('click', () => {
+                    const isExpanded = facTitle.getAttribute('aria-expanded') === 'true';
+                    if (!isExpanded) collapseOtherFacultades();
+                    setFacultadExpanded(!isExpanded);
+                });
+
+                facTitle.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        facTitle.click();
+                    }
+                });
+
+                facLi.appendChild(facTitle);
                 facLi.appendChild(carrerasList);
                 
                 // Añadir al fragment en lugar de al DOM directamente
@@ -184,9 +208,16 @@ async function verCursos(carreraId) {
         elements.mensaje.textContent = '';
     }
     elements.lista.style.opacity = 0;
-    elements.spinner.style.display = 'flex';
+    elements.spinner.classList.remove('is-hidden');
 
     try {
+        try {
+            sessionStorage.setItem('selected_carrera_id', String(carreraId || ''));
+            localStorage.setItem('selected_carrera_id', String(carreraId || ''));
+        } catch (_) {
+            // ignore storage issues
+        }
+
         const response = await fetch('data/carreras.json', { cache: 'no-cache' });
         
         if (!response.ok) {
@@ -224,7 +255,7 @@ async function verCursos(carreraId) {
 
             const modulosValidos = modulos.filter(modulo => modulo.enlace !== "#");
 
-            elements.spinner.style.display = 'none';
+            elements.spinner.classList.add('is-hidden');
 
             if (modulosValidos.length === 0) {
                 if (elements.mensaje) {
@@ -278,7 +309,13 @@ async function verCursos(carreraId) {
                 // Enlace a las lecciones
                 const lessonLink = document.createElement('a');
                 lessonLink.classList.add('module-link', 'lesson-link');
-                lessonLink.textContent = 'Acceder a las lecciones';
+                const lessonIcon = document.createElement('i');
+                lessonIcon.className = 'fas fa-graduation-cap';
+                lessonIcon.style.marginRight = '0.5rem';
+                const lessonText = document.createElement('span');
+                lessonText.textContent = 'Acceder a las lecciones';
+                lessonLink.appendChild(lessonIcon);
+                lessonLink.appendChild(lessonText);
                 
                 // Añadir parámetro carrera a la URL si no es placeholder
                 let href = modulo.enlace;
@@ -315,6 +352,46 @@ async function verCursos(carreraId) {
                     const urlParams = new URLSearchParams(modulo.enlace.split('?')[1]);
                     moduleBase = urlParams.get('base') || '';
                 }
+
+                const baseParts = moduleBase.split('/');
+                const moduleCarrera = baseParts[0] || '';
+                const moduleKey = baseParts.slice(1).join('/');
+
+                const buildProtectedDocUrl = (docType) => {
+                    return `${window.location.origin}/backend-php/api/lecciones/document.php?carrera=${encodeURIComponent(moduleCarrera)}&modulo=${encodeURIComponent(moduleKey)}&type=${encodeURIComponent(docType)}`;
+                };
+
+                const attachProtectedDownload = (linkEl, docType, fallbackName) => {
+                    linkEl.href = '#';
+                    linkEl.addEventListener('click', async (evt) => {
+                        evt.preventDefault();
+                        try {
+                            const token = localStorage.getItem('auth_token');
+                            const headers = token ? { Authorization: `Bearer ${token}` } : {};
+                            const resp = await fetch(buildProtectedDocUrl(docType), {
+                                method: 'GET',
+                                cache: 'no-cache',
+                                headers,
+                            });
+
+                            if (!resp.ok) {
+                                throw new Error('No fue posible descargar este documento.');
+                            }
+
+                            const blob = await resp.blob();
+                            const objectUrl = URL.createObjectURL(blob);
+                            const tmpLink = document.createElement('a');
+                            tmpLink.href = objectUrl;
+                            tmpLink.download = fallbackName;
+                            document.body.appendChild(tmpLink);
+                            tmpLink.click();
+                            tmpLink.remove();
+                            URL.revokeObjectURL(objectUrl);
+                        } catch (_) {
+                            alert('No fue posible descargar este documento. Verifica tus permisos e intenta nuevamente.');
+                        }
+                    });
+                };
                 
                 // Enlace al syllabus si existe (solo para admin y profesores)
                 if (canViewDocuments && modulo.syllabus_url && moduleBase) {
@@ -331,11 +408,8 @@ async function verCursos(carreraId) {
                     
                     syllabusLink.appendChild(syllabusIcon);
                     syllabusLink.appendChild(syllabusText);
-                    
-                    // Construir ruta completa: data/{facultad}/{modulo}/{archivo}
-                    syllabusLink.href = `data/${moduleBase}/${modulo.syllabus_url}`;
-                    syllabusLink.target = '_blank';
-                    syllabusLink.rel = 'noopener noreferrer';
+
+                    attachProtectedDownload(syllabusLink, 'syllabus', modulo.syllabus_url);
                     content.appendChild(syllabusLink);
                 }
 
@@ -354,12 +428,52 @@ async function verCursos(carreraId) {
                     
                     planLink.appendChild(planIcon);
                     planLink.appendChild(planText);
-                    
-                    // Construir ruta completa: data/{facultad}/{modulo}/{archivo}
-                    planLink.href = `data/${moduleBase}/${modulo.planning_url}`;
-                    planLink.target = '_blank';
-                    planLink.rel = 'noopener noreferrer';
+
+                    attachProtectedDownload(planLink, 'planning', modulo.planning_url);
                     content.appendChild(planLink);
+                }
+
+                // Botón Evaluaciones de ediciones anteriores solo para admin y profesores con acceso
+                if (canViewDocuments && moduleBase) {
+                    // Renderizar el botón de evaluaciones de manera asíncrona después
+                    const facultad = baseParts[0];
+                    const moduloKey = baseParts.slice(1).join('/');
+                    const evalApiUrl = `${window.location.origin}/backend-php/api/evaluaciones/index.php?carrera=${encodeURIComponent(facultad)}&modulo=${encodeURIComponent(moduloKey)}`;
+                    // Marcar el lugar donde irá el botón
+                    const evalBtnPlaceholder = document.createElement('div');
+                    evalBtnPlaceholder.className = 'evaluaciones-btn-placeholder';
+                    content.appendChild(evalBtnPlaceholder);
+                    // Lanzar verificación asíncrona sin bloquear el render principal
+                    (async () => {
+                        try {
+                            const token = localStorage.getItem('auth_token');
+                            const headers = token ? { Authorization: `Bearer ${token}` } : {};
+                            const evalResp = await fetch(evalApiUrl, { method: 'GET', cache: 'no-cache', headers });
+                            if (evalResp.ok) {
+                                const evalData = await evalResp.json();
+                                const evalList = Array.isArray(evalData) ? evalData : (evalData.evaluaciones || []);
+                                if (!Array.isArray(evalList) || evalList.length === 0) {
+                                    return;
+                                }
+                                const evalBtn = document.createElement('a');
+                                evalBtn.classList.add('module-link', 'evaluaciones-link');
+                                // Icono de archivo
+                                const evalIcon = document.createElement('i');
+                                evalIcon.className = 'fas fa-archive';
+                                evalIcon.style.marginRight = '0.5rem';
+                                const evalText = document.createElement('span');
+                                evalText.textContent = 'Evaluaciones de ediciones anteriores';
+                                evalBtn.appendChild(evalIcon);
+                                evalBtn.appendChild(evalText);
+                                evalBtn.href = `evaluaciones.html?modulo=${encodeURIComponent(moduloKey)}&carrera=${encodeURIComponent(facultad)}`;
+                                evalBtn.target = '_blank';
+                                evalBtn.rel = 'noopener noreferrer';
+                                evalBtnPlaceholder.appendChild(evalBtn);
+                            }
+                        } catch (e) {
+                            // No mostrar el botón si falla la consulta
+                        }
+                    })();
                 }
                 
                 // Evento para expandir/contraer (accordion)
@@ -378,7 +492,7 @@ async function verCursos(carreraId) {
                             if (lastContent) lastContent.style.display = 'none';
                             if (lastHeader) lastHeader.classList.remove('open');
                         }
-                        content.style.display = 'flex';
+                        content.style.display = 'grid';
                         header.classList.add('open');
                         lastOpenedItem = li;
                     }
@@ -415,7 +529,7 @@ async function verCursos(carreraId) {
     } catch (error) {
         
         // Ocultar spinner y mostrar error
-        elements.spinner.style.display = 'none';
+        elements.spinner.classList.add('is-hidden');
         
         if (elements.mensaje) {
             elements.mensaje.innerHTML = `
@@ -442,17 +556,44 @@ function recargarCarreras() {
     }
 }
 
-// JavaScript para mostrar/ocultar la barra lateral en móviles (se mantiene igual)
-const menuToggle = document.getElementById('menu-toggle');
-const sidebar = document.getElementById('sidebar');
+// JavaScript para mostrar/ocultar la barra lateral en móviles.
+function bindMobileSidebarToggle() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
 
-if (menuToggle && sidebar) {
+    if (!menuToggle || !sidebar) {
+        return false;
+    }
+
+    if (menuToggle.dataset.sidebarBound === 'true') {
+        return true;
+    }
+
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('active');
     });
+    menuToggle.dataset.sidebarBound = 'true';
+    return true;
 }
 
-// Cargar las carreras al iniciar la página
-window.onload = () => {
+function initMobileSidebarToggle() {
+    if (bindMobileSidebarToggle()) {
+        return;
+    }
+
+    // Reintento corto para cubrir inyección tardía del header compartido.
+    let attempts = 0;
+    const maxAttempts = 30;
+    const intervalId = setInterval(() => {
+        attempts += 1;
+        if (bindMobileSidebarToggle() || attempts >= maxAttempts) {
+            clearInterval(intervalId);
+        }
+    }, 100);
+}
+
+// Cargar las carreras al iniciar la página (esperando auth)
+window.onload = async () => {
+    initMobileSidebarToggle();
     cargarCarreras();
 };

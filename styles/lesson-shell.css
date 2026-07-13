@@ -1,0 +1,133 @@
+/* Shell de lección — estados de carga, error y optimizaciones Reveal */
+
+/* Optimized loading and error states */
+.loading-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.2em;
+  color: #666;
+  background: linear-gradient(-45deg, #f7fafc, #e2e8f0);
+  will-change: opacity;
+  text-align: center;
+}
+
+.loading-message > div {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #d32f2f;
+  text-align: center;
+  background: #fafafa;
+}
+
+.error-message h2 {
+  margin-bottom: 1rem;
+}
+
+.error-message p {
+  color: #666;
+  max-width: 600px;
+}
+
+/* Reveal.js optimizations */
+.reveal {
+  will-change: transform;
+}
+
+.reveal .sourceCode {
+  overflow: visible;
+}
+
+code {
+  white-space: pre-wrap;
+}
+
+span.smallcaps {
+  font-variant: small-caps;
+}
+
+div.columns {
+  display: flex;
+  gap: min(4vw, 1.5em);
+}
+
+div.column {
+  flex: auto;
+  overflow-x: auto;
+}
+
+div.hanging-indent {
+  margin-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+ul.task-list[class] {
+  list-style: none;
+}
+
+ul.task-list li input[type="checkbox"] {
+  font-size: inherit;
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+
+/* Marca de agua con logo */
+.watermark {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.watermark img {
+  width: 80px;
+  height: auto;
+  /* filter: grayscale(100%); */
+}
+
+/* Ocultar botón de impresión al imprimir */
+@media print {
+  #print-button,
+  #controls-container {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /*
+  .watermark {
+    opacity: 0.15;
+  }
+  */
+}
+
+/* Hover para hacer más visible (opcional) */
+/*
+.reveal:hover .watermark {
+  opacity: 0.5;
+}
+*/

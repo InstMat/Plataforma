@@ -3,10 +3,8 @@
   const urlParams = new URLSearchParams(location.search);
   const baseParam = urlParams.get('base') || '';
   
-  // En portable, los contenidos viven en data/
-  const base = (baseParam.startsWith('data/'))
-    ? baseParam
-    : `data/${baseParam}`;
+  // Agregar prefijo "data/" automáticamente si no está presente
+  const base = baseParam.startsWith('data/') ? baseParam : `data/${baseParam}`;
   const titulo = urlParams.get('titulo') || (baseParam ? baseParam.split('/').slice(-1)[0] : 'Curso');
   const open = urlParams.get('open') || '';
   const carrera = urlParams.get('carrera') || '';

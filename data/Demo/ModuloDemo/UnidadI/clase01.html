@@ -3,52 +3,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clase 01 - Introduccion</title>
+  <title>Clase 01 - Demo portable</title>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
       <section id="title-slide">
-        <h1 class="title">Modulo Demo Portable</h1>
-        <p class="subtitle">Carrera de Prueba</p>
-        <p class="main-logo">Logo Instituto</p>
+        <h1 class="title">Clase demo portable</h1>
+        <p class="subtitle">Ejemplo autocontenido para reutilizar en nuevos módulos</p>
+        <p class="lesson-style">Módulo Demo Portable</p>
       </section>
 
-      <section id="clase01-contenidos" class="slide level3 frame"
-        style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
-        <h3 style="text-align: center; margin-bottom: 1.5em;">Contenidos</h3>
-        <ul style="list-style-type: none; padding: 0; font-size: 1.2em; line-height: 1.8em; text-align: left;">
-          <li>📘 Entornos pedagogicos estandar del proyecto.</li>
-          <li>✳️ Notacion matematica con parentesis.</li>
-          <li>📊 Integracion de un applet GeoGebra.</li>
-        </ul>
-      </section>
-
-      <section id="clase01-definition" class="slide level3 frame">
-        <h3 style="text-align: center; margin-bottom: 1em;">Definicion</h3>
+      <section id="clase01-guia" class="slide level3 frame">
+        <h3>Qué muestra esta clase</h3>
         <div class="definition">
           <p>
-            Una funcion afín tiene la forma \(f(x)=mx+b\), con \(m,b\in\mathbb{R}\).
-            En particular, si \(m=0\), se obtiene una funcion constante.
+            Esta lección resume los patrones recomendados para contenido portable:
+            bloques matemáticos, fragmentos Reveal, columnas, taller y un applet GeoGebra con imagen alternativa para impresión.
+          </p>
+        </div>
+        <div class="remark fragment">
+          <p>
+            La idea es que quien edite una clase pueda partir desde este archivo y reemplazar contenido, sin tener que redescubrir la estructura HTML base.
           </p>
         </div>
       </section>
 
+      <section id="clase01-definition" class="slide level3 frame">
+        <h3>Definición</h3>
+        <div class="definition">
+          <p>
+            Una función afín tiene la forma \(f(x)=mx+b\), con \(m,b\in\mathbb{R}\).
+            En particular, si \(m=0\), se obtiene una función constante.
+          </p>
+        </div>
+      </section>
+
+      <section id="clase01-estructura" class="slide level3 frame">
+        <h3>Estructura mínima recomendada</h3>
+        <ol>
+          <li>Use un <code>&lt;h1 class="title"&gt;</code> en la portada.</li>
+          <li>Organice la clase en <code>&lt;section&gt;</code> independientes.</li>
+          <li>Prefiera bloques con clases como <code>definition</code>, <code>example</code>, <code>solution</code> y <code>taller</code>.</li>
+          <li>Mantenga rutas relativas para imágenes, PDF y archivos <code>.ggb</code>.</li>
+        </ol>
+      </section>
+
       <section id="clase01-proposition" class="slide level3 frame">
-        <h3 style="text-align: center; margin-bottom: 1em;">Proposicion</h3>
+        <h3>Proposición</h3>
         <div class="proposition">
           <p>
             Sean \(\ell_1\) y \(\ell_2\) dos rectas con pendientes \(m_1\) y \(m_2\). Entonces:
           </p>
-          <ol class="spaced-list" style="--spacing:1em;">
-            <li class="fragment">\(\ell_1\parallel\ell_2\) si y solo si \(m_1=m_2\).</li>
-            <li class="fragment">\(\ell_1\perp\ell_2\) si y solo si \(m_1m_2=-1\).</li>
+          <ol>
+            <li>\(\ell_1\parallel\ell_2\) si y solo si \(m_1=m_2\).</li>
+            <li>\(\ell_1\perp\ell_2\) si y solo si \(m_1m_2=-1\).</li>
           </ol>
         </div>
       </section>
 
       <section id="clase01-theorem" class="slide level3 frame">
-        <h3 style="text-align: center; margin-bottom: 1em;">Teorema</h3>
+        <h3>Teorema</h3>
         <div class="theorem">
           <p>
             Si \(a,b,c\in\mathbb{R}\) con \(a\neq 0\), entonces las soluciones de
@@ -61,7 +76,7 @@
       </section>
 
       <section id="clase01-example" class="slide level3 frame">
-        <h3 style="text-align: center; margin-bottom: 1em;">Ejemplo</h3>
+        <h3>Ejemplo con solución progresiva</h3>
         <div class="example">
           <p>
             Determine la ecuacion de la recta que pasa por \((1,2)\) y \((3,6)\).
@@ -75,11 +90,29 @@
         </div>
       </section>
 
+      <section id="clase01-columnas" class="slide level3 frame">
+        <h3>Columnas y listas</h3>
+        <ul class="three-columns">
+          <li>
+            <strong>Bloques</strong><br>
+            definition, theorem, example, solution.
+          </li>
+          <li>
+            <strong>Navegación</strong><br>
+            cada <code>section</code> corresponde a una diapositiva.
+          </li>
+          <li>
+            <strong>Recursos</strong><br>
+            use rutas relativas dentro de la carpeta de la clase.
+          </li>
+        </ul>
+      </section>
+
       <section id="clase01-remark-fact" class="slide level3 frame">
-        <h3 style="text-align: center; margin-bottom: 1em;">Observaciones</h3>
+        <h3>Observaciones</h3>
         <div class="remark">
           <p>
-            Recordatorio: la interseccion con el eje \(y\) de una recta \(y=mx+b\) es \((0,b)\).
+            Recordatorio: la intersección con el eje \(y\) de una recta \(y=mx+b\) es \((0,b)\).
           </p>
         </div>
         <div class="fact fragment">
@@ -90,7 +123,7 @@
       </section>
 
       <section id="clase01-challenge" class="slide level3 frame">
-        <h3 style="text-align: center; margin-bottom: 1em;">Desafio</h3>
+        <h3>Desafío</h3>
         <div class="challenge">
           <p>
             Encuentre los valores de \(k\) para que la recta \(y=kx+1\) pase por el punto \((2,5)\).
@@ -99,31 +132,43 @@
       </section>
 
       <section id="clase01-taller" class="slide level3 frame">
-        <h3 style="text-align: center; margin-bottom: 1em;">Taller</h3>
+        <h3>Taller</h3>
         <div class="taller">
-          <p>Lista numerada de ejercicios</p>
-          <ol class="spaced-list" style="--spacing:2em;">
-            <li><p>Grafique \(y=x+1\) y \(y=-x+3\). Determine su punto de interseccion.</p></li>
-            <li><p>Calcule la distancia entre \(A=(1,2)\) y \(B=(4,6)\).</p></li>
-            <li><p>Determine el punto medio del segmento con extremos \((-2,1)\) y \((4,5)\).</p></li>
+          <p>
+            El bloque <code>taller</code> sirve para agrupar actividades. Si existe una solución PDF separada, conviene dejarla en la estructura habitual del módulo para que el menú la asocie automáticamente.
+          </p>
+          <ol class="spaced-list" style="--spacing: 1em;">
+            <li>Grafique \(y=x+1\) y \(y=-x+3\). Determine su punto de interseccion.</li>
+            <li>Calcule la distancia entre \(A=(1,2)\) y \(B=(4,6)\).</li>
+            <li>Determine el punto medio del segmento con extremos \((-2,1)\) y \((4,5)\).</li>
           </ol>
-          <p>Lista no numerada de ejercicios en dos columnas</p>
-          <ul class="spaced-list two-columns" style="--spacing:1em; margin-top: 2em;">
-            <li>\(y=x+2\)</li>
-            <li>\(y=-2x+5\)</li>
         </div>
       </section>
 
       <section id="clase01-geogebra" class="slide level3 frame">
-        <h3 style="text-align: center; margin-bottom: 1em;">GeoGebra</h3>
+        <h3>GeoGebra con fallback de impresión</h3>
+        <div class="example">
+          <p>
+            La integración recomendada usa <code>ggb-wrapper</code>, un contenedor con el elemento del applet y una imagen <code>ggb-print-img</code> para el modo de impresión.
+          </p>
+        </div>
         <p>
-          Visualizacion dinamica de la recta \(y=mx+b\) en un applet interactivo.
+          Visualización dinámica de la recta \(y=mx+b\) en un applet interactivo.
         </p>
         <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
           <div class="ggb-wrapper">
             <div id="ggb-element-1"></div>
-            <img src="clase01/ggb-fallback.svg" alt="Applet GeoGebra (version para impresion)" class="ggb-print-img">
+            <img src="clase01/ggb-fallback.svg" alt="Applet GeoGebra (versión para impresión)" class="ggb-print-img" style="width: 70%;">
           </div>
+        </div>
+      </section>
+
+      <section id="clase01-cierre" class="slide level3 frame">
+        <h3>Resumen</h3>
+        <div class="solution">
+          <p>
+            Si necesitas crear una nueva clase portable, usa esta como plantilla base y reemplaza el contenido manteniendo la estructura de secciones, clases CSS y rutas relativas.
+          </p>
         </div>
       </section>
     </div>

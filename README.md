@@ -11,6 +11,29 @@ Es un paquete autocontenido: basta con compartir solo la carpeta `portable/`.
 4. Crea o edita contenido en `portable/data/<facultad>/<modulo>/...`.
 5. Te devuelve la carpeta del modulo y sus lecciones desde `portable/data/...`.
 
+## Mantener portable sincronizado con el frontend principal
+La carpeta `portable/` ya no debe actualizarse a mano archivo por archivo. La fuente de verdad del frontend sigue siendo la raiz del proyecto y la variante portable se regenera con:
+
+```bash
+python3 tools/sync_portable.py
+```
+
+Verificacion sin escribir cambios:
+
+```bash
+python3 tools/sync_portable.py --check
+```
+
+Que sincroniza hoy:
+- shells `portable/plataforma.html`, `portable/curso.html`, `portable/leccion.html`
+- scripts `portable/scripts/*` derivados desde la version principal con ajustes para modo sin autenticacion
+- estilos compartidos (`tokens.css`, `landing.css`, `curso.css`, `lesson-shell.css`, `style.css`)
+
+Regla de mantenimiento:
+- primero se modifica la version principal
+- despues se ejecuta `tools/sync_portable.py`
+- recien entonces se prueba `portable/` en navegador
+
 ## Estructura incluida de ejemplo
 - `portable/data/carreras.json`
 - `portable/data/Demo/ModuloDemo/lecciones.json`
@@ -27,25 +50,6 @@ Es un paquete autocontenido: basta con compartir solo la carpeta `portable/`.
 ## Notas
 - Esta version portable carga Reveal.js y MathJax desde CDN (online), por lo que necesita conexion a internet para presentaciones y formulas matematicas.
 - En algunos navegadores muy restrictivos, las lecturas de JSON en `file://` pueden estar limitadas. Si ocurre, prueba con Firefox para trabajo offline.
-
-## Recomendacion de editor
-Para crear y revisar contenido de forma mas comoda, se recomienda usar VS Code
-
-- Descargar VS Code: https://code.visualstudio.com/download
-
-con estas extensiones:
-
-- GitHub Copilot (sugerencias de codigo y ayuda al editar HTML/JS/CSS)
-- Live Preview (levanta una vista previa local del sitio y evita problemas comunes de `file://`)
-
-### Acceso a GitHub Copilot Pro con GitHub Education
-Si eres estudiante o docente, puedes solicitar el beneficio educativo para usar GitHub Copilot Pro (segun disponibilidad y condiciones vigentes de GitHub).
-
-1. Crea o inicia sesion en GitHub: https://github.com/
-2. Postula a GitHub Education (Student/Teacher): https://github.com/education
-3. Completa la verificacion academica con tu correo institucional o documento solicitado.
-4. Una vez aprobada la cuenta educativa, entra a la configuracion de Copilot: https://github.com/settings/copilot
-5. Activa el plan disponible para tu cuenta y luego inicia sesion con esa misma cuenta en la extension de GitHub Copilot en VS Code.
 
 ## Servidor local minimo (si falla `file://`)
 Si el navegador bloquea la lectura de `data/*.json`, inicia un servidor local simple y abre la URL local en vez de abrir el HTML con doble clic.

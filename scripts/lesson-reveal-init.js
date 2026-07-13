@@ -57,16 +57,16 @@ function initializeRevealForLesson() {
 
 		// Add the current slide number to the URL hash so that reloading the
 		// page/copying the URL will return you to the same slide
-		hash: true,
+		hash: false,
 
 		// Start with 1 for the hash rather than 0
 		hashOneBasedIndex: false,
 
 		// Flags if we should monitor the hash and change slides accordingly
-		respondToHashChanges: true,
+		respondToHashChanges: false,
 
 		// Push each slide change to the browser history
-		history: true,
+		history: false,
 
 		// Enable keyboard shortcuts for navigation
 		keyboard: true,
@@ -93,6 +93,10 @@ function initializeRevealForLesson() {
 		// see https://revealjs.com/vertical-slides/#navigation-mode
 		navigationMode: 'default',
 
+		// Mantener vista clásica de slides y desactivar auto-scroll en móvil.
+		view: 'default',
+		scrollActivationWidth: 0,
+
 		// Randomizes the order of slides each time the presentation loads
 		shuffle: false,
 
@@ -101,7 +105,7 @@ function initializeRevealForLesson() {
 
 		// Flags whether to include the current fragment in the URL,
 		// so that reloading brings you to the same fragment position
-		fragmentInURL: true,
+		fragmentInURL: false,
 
 		// Flags if the presentation is running in an embedded mode,
 		// i.e. contained within a limited portion of the screen

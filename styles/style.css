@@ -1,45 +1,63 @@
-/* Optimized counter reset for better performance */
-body {
-    counter-reset: example-counter exercise-counter def-counter thm-counter;
-}
-
-/* Font Size */
+/* =========================================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================================= */
 :root {
     --r-main-font-size: 30px;
+    --block-challenge-bg: #6C5CE7;
+    --block-taller-bg: #155A94;
+    --block-example-bg: #1D71B8;
+    --block-exercise-bg: #2C3E50;
+    --block-definition-bg: #455A64;
+    --block-fact-bg: #2E7D32;
+    --block-theorem-bg: #4CAF50;
+    --block-proposition-bg: #4CAF50;
+    --block-lemma-bg: #4CAF50;
+    --block-solution-bg: #0b91a9;
+    --block-remark-bg: #D72638;
+    --block-proof-bg: #546E7A;
 }
 
-/* FRAME FOR REVEAL PRESENTATION  */
+/* =========================================================
+   LAYOUT GENERAL Y MARCO DE PRESENTACIÓN
+   ========================================================= */
 .frame {
     text-align: left;
     padding: 10px;
     /*margin-top: 30px;*/
 }
 
-/* Marca de agua en todas las slides */
+/* =========================================================
+   MARCA DE AGUA Y PRINT
+   ========================================================= */
 .reveal::after {
-  content: "";
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  width: 80px;
-  height: 80px;
-  background: url("../images/logoINSTMAT-Isologo-color.png") no-repeat center / contain;
-  opacity: 0.3;
-  pointer-events: none;
-  z-index: 1000;
+    content: "";
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 80px;
+    height: 80px;
+    background: url("../images/logoINSTMAT-Isologo-color.png") no-repeat center / contain;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.reveal .controls,
+.reveal.has-light-background .controls {
+    color: #1D71B8 !important; /* El azul oficial de tus botones y ejemplos */
 }
 
 .print-watermark-logo {
-        display: none;
+    display: none;
 }
 
 @media print {
-  .reveal::after {
+    .reveal::after {
         content: none !important;
     }
 
     .print-watermark-logo {
-                display: block;
+        display: block;
         position: absolute;
         left: 20px;
         bottom: 20px;
@@ -50,11 +68,12 @@ body {
         z-index: 30;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
-  }
+    }
 }
 
-
-/* LESSON TITLE SLIDE STYLES */
+/* =========================================================
+   ESTILO DE TÍTULO DE LECCIÓN
+   ========================================================= */
 .lesson-style {
     font-size: 1.2em;
     font-weight: 300;
@@ -64,7 +83,9 @@ body {
     text-align: center;
 }
 
-/* Optimized content blocks with better performance */
+/* =========================================================
+   BLOQUES DE CONTENIDO MATEMÁTICO
+   ========================================================= */
 .example,
 .examples,
 .exercise,
@@ -76,25 +97,51 @@ body {
 .remark,
 .solution,
 .block,
-.fact,
+.fact,.facts,
 .proof,
 .challenge,
 .taller {
     display: inline-block;
     position: relative;
     width: 95%;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    background-color: #f0f0f0;
+    padding: 15px 15px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    background-color: #fdfdfd;
     border-radius: 8px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     will-change: transform;
-    contain: layout style;
+    contain: layout;
+}
+.example::before,
+.examples::before,
+.exercise::before,
+.exercises::before,
+.definition::before,
+.theorem::before,
+.proposition::before,
+.corollary::before,
+.remark::before,
+.solution::before,
+.block::before,
+.fact::before,
+.facts::before,
+.proof::before,
+.challenge::before,
+.taller::before,
+.challenge::before {
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    font-weight: bold;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 8px;
 }
 
-/* Print-pdf mode in Reveal computes page heights on-screen before Ctrl+P.
-   Disable containment/inline-block optimizations there to avoid clipped blocks. */
+/* Print-pdf mode in Reveal: desactiva optimizaciones para evitar recortes */
 html.reveal-print .example,
 html.reveal-print .examples,
 html.reveal-print .exercise,
@@ -107,6 +154,7 @@ html.reveal-print .remark,
 html.reveal-print .solution,
 html.reveal-print .block,
 html.reveal-print .fact,
+html.reveal-print .facts,
 html.reveal-print .proof,
 html.reveal-print .challenge,
 html.reveal-print .taller {
@@ -122,6 +170,132 @@ html.reveal-print .taller {
     margin-bottom: 10mm;
 }
 
+/* =========================================================
+   ETIQUETAS DE BLOQUES MATEMÁTICOS
+   ========================================================= */
+.challenge::before {
+    content: "Desafío " attr(data-block-number) ". ";
+    background-color: var(--block-challenge-bg);
+}
+
+.challenge:not([data-block-number])::before {
+    content: "Desafío. ";
+    background-color: var(--block-challenge-bg);
+}
+
+.taller::before {
+    content: "Taller " attr(data-block-number) ". ";
+    background-color: var(--block-taller-bg);
+}
+
+.taller:not([data-block-number])::before {
+    content: "Taller. ";
+    background-color: var(--block-taller-bg);
+}
+
+.example::before {
+    content: "Ejemplo " attr(data-block-number) ". ";
+    background-color: var(--block-example-bg);
+}
+
+.example:not([data-block-number])::before {
+    content: "Ejemplo. ";
+    background-color: var(--block-example-bg);
+}
+
+.examples::before {
+    content: "Ejemplos. ";
+    background-color: var(--block-example-bg);
+}
+
+.exercise::before {
+    content: "Ejercicio " attr(data-block-number) ". ";
+    background-color: var(--block-exercise-bg);
+}
+
+.exercise:not([data-block-number])::before {
+    content: "Ejercicio. ";
+    background-color: var(--block-exercise-bg);
+}
+
+.exercises::before {
+    content: "Ejercicios. ";
+    background-color: var(--block-exercise-bg);
+}
+
+.definition::before {
+    content: "Definición " attr(data-block-number) ". ";
+    background-color: var(--block-definition-bg);
+}
+
+.definition:not([data-block-number])::before {
+    content: "Definición. ";
+    background-color: var(--block-definition-bg);
+}
+
+.fact::before {
+    content: "Propiedad. ";
+    background-color: var(--block-fact-bg);
+}
+
+.facts::before {
+    content: "Propiedades. ";
+    background-color: var(--block-fact-bg);
+}
+
+.theorem::before {
+    content: "Teorema " attr(data-block-number) ". ";
+    background-color: var(--block-theorem-bg);
+}
+
+.theorem:not([data-block-number])::before {
+    content: "Teorema. ";
+    background-color: var(--block-theorem-bg);
+}
+
+.proposition::before {
+    content: "Proposición " attr(data-block-number) ". ";
+    background-color: var(--block-proposition-bg);
+}
+
+.proposition:not([data-block-number])::before {
+    content: "Proposición. ";
+    background-color: var(--block-proposition-bg);
+}
+
+.lemma::before {
+    content: "Lema " attr(data-block-number) ". ";
+    background-color: var(--block-lemma-bg);
+}
+
+.lemma:not([data-block-number])::before {
+    content: "Lema. ";
+    background-color: var(--block-lemma-bg);
+}
+
+.solution::before {
+    content: "Solución. ";
+    background-color: var(--block-solution-bg);
+}
+
+.remark::before {
+    content: "Observación " attr(data-block-number) ". ";
+    background-color: var(--block-remark-bg);
+}
+
+.remark:not([data-block-number])::before {
+    content: "Observación. ";
+    background-color: var(--block-remark-bg);
+}
+
+.proof::before {
+    content: "Demostración. ";
+    background-color: var(--block-proof-bg);
+}
+
+/* =========================================================
+   TABLAS Y LISTAS MULTICOLUMNA
+   ========================================================= */
 .table-scroll {
     width: 100%;
     max-width: 100%;
@@ -143,203 +317,26 @@ html.reveal-print .taller {
     padding: 0.35rem 0.5rem;
 }
 
-.challenge::before {
-    content: "Desafío. ";
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #b81d8a;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.taller::before {
-    content: "Taller. ";
-    display: block;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #0f12e0;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.example::before {
-    content: "Ejemplo. ";
-    /*
-    content: "Ejemplo " counter(example-counter) ". ";
-    counter-increment: example-counter;
-    */
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #1D71B8;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.examples::before {
-    content: "Ejemplos. ";
-    /*
-    content: "Ejemplo " counter(example-counter) ". ";
-    counter-increment: example-counter;
-    */
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #1D71B8;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.exercise::before {
-    content: "Ejercicio. ";
-    /*
-    content: "Ejercicio " counter(exercise-counter) ". ";
-    counter-increment: exercise-counter;
-    */
-    font-weight: bold;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #2C3E50;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.exercises::before {
-    content: "Ejercicios. ";
-    /*
-    content: "Ejercicio " counter(exercise-counter) ". ";
-    counter-increment: exercise-counter;
-    */
-    font-weight: bold;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #2C3E50;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.definition::before {
-    content: "Definición. ";
-    /*
-    content: "Definición " counter(def-counter) ". ";
-    counter-increment: def-counter;
-    */
-    font-weight: bold;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #F28C28;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.fact::before {
-    content: "Propiedades. ";
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #4CAF50;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.theorem::before {
-    content: "Teorema. ";
-    /*
-    content: "Teorema " counter(thm-counter) ". ";
-    counter-increment: thm-counter;
-    */
-    font-weight: bold;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #4CAF50;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.proposition::before {
-    content: "Proposición. ";
-    /*
-    content: "Teorema " counter(thm-counter) ". ";
-    counter-increment: thm-counter;
-    */
-    font-weight: bold;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #4CAF50;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.lemma::before {
-    content: "Lema. ";
-    /*
-    content: "Teorema " counter(thm-counter) ". ";
-    counter-increment: thm-counter;
-    */
-    font-weight: bold;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #4CAF50;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.solution::before {
-    content: "Solución. ";
-    /* Add "Solución. " */
-    font-weight: bold;
-    color: #333;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #1D71B8;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.remark::before {
-    content: "Observación. ";
-    /* Add "Observación. " */
-    font-weight: bold;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #D72638;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
-.proof::before {
-    content: "Demostración. ";
-    font-weight: bold;
-    display: block;
-    font-weight: bold;
-    color: #fff;
-    background-color: #999;
-    padding: 5px 10px;
-    border-radius: 8px;
-}
-
 .reveal ol.two-columns,
 .reveal ul.two-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Divide el espacio en dos columnas iguales */
     gap: 20px;
-    /* Espacio entre las columnas */
     list-style-position: inside;
-    /* Asegura que los números o viñetas estén alineados */
     padding-left: 0;
-    /* Elimina el padding por defecto de la lista */
     width: 100%;
-    /* Asegura que el contenedor ocupe el 100% del ancho disponible */
+}
+
+.reveal ol.two-columns-gap,
+.reveal ul.two-columns-gap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--gap, 2em);
+    row-gap: var(--gap, 2em);
+    list-style-position: inside;
+    padding-left: 0;
+    width: 100%;
+    padding-bottom: var(--gap, 2em);
 }
 
 .reveal ol.three-columns,
@@ -353,6 +350,7 @@ html.reveal-print .taller {
 }
 
 @media (max-width: 900px) {
+
     .reveal ol.three-columns,
     .reveal ul.three-columns {
         grid-template-columns: 1fr;
@@ -363,25 +361,37 @@ html.reveal-print .taller {
     list-style-type: decimal;
 }
 
-.reveal ol ol{
+.reveal ol ol {
     list-style-type: lower-alpha;
 }
 
-.reveal ol ol ol{
+.reveal ol ol ol {
     list-style-type: lower-roman;
 }
 
-/* GEOGEBRA STYLES */
+/* =========================================================
+   GEOGEBRA Y PRINT DE APPLETS
+   ========================================================= */
 .ggb-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40pt;
 }
 
-/* Por defecto, oculta la imagen en pantalla */
+.ggb-wrapper [id^="ggb-element-"] {
+    display: block;
+    flex: 0 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
 .ggb-print-img {
     display: none;
     width: 100%;
@@ -389,33 +399,14 @@ html.reveal-print .taller {
 }
 
 @media print {
+
     /* Forzar visibilidad de fragmentos Reveal.js (fallback si JS no lo maneja) */
     .reveal .slides section .fragment {
         opacity: 1 !important;
         visibility: visible !important;
     }
 
-    .example,
-    .examples,
-    .exercise,
-    .exercises,
-    .definition,
-    .theorem,
-    .proposition,
-    .corollary,
-    .remark,
-    .solution,
-    .block,
-    .fact,
-    .proof,
-    .challenge,
-    .taller {
-        display: block !important;
-        contain: none !important;
-        will-change: auto !important;
-    }
-
-    /* Fallback robusto: evitar talleres vacios en previsualizacion de impresion */
+    /* Fallback robusto: evitar talleres vacíos en previsualización de impresión */
     html.reveal-print .taller,
     html.reveal-print .taller * {
         opacity: 1 !important;
@@ -452,6 +443,34 @@ html.reveal-print .taller {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Fallback duro: siempre ocultar applet y mostrar imagen estática */
+    .ggb-wrapper [id^="ggb-element-"],
+    .ggb-wrapper iframe,
+    .ggb-wrapper canvas {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    .ggb-wrapper .ggb-print-img {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        width: var(--ggb-print-width, auto) !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: var(--ggb-print-max-h, 56vh) !important;
+        object-fit: contain !important;
+        margin: 0 auto !important;
+        z-index: 100 !important;
     }
 
     /* Fix para MathJax en impresión */
@@ -467,7 +486,9 @@ html.reveal-print .taller {
     }
 }
 
-/* CONTROLS CONTAINER - No interfiere con posicionamiento fijo */
+/* =========================================================
+   CONTROLES Y BOTONES DE PRESENTACIÓN
+   ========================================================= */
 #controls-container {
     position: relative;
     width: 0;
@@ -475,11 +496,127 @@ html.reveal-print .taller {
     pointer-events: none;
 }
 
-#controls-container > * {
+#controls-container>* {
     pointer-events: auto;
 }
 
-/* FULLSCREEN BUTTON STYLES */
+.image-zoom-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+.image-zoom-wrapper > img {
+    display: block;
+    max-width: 100%;
+}
+
+.zoomable-image {
+    cursor: zoom-in;
+}
+
+.image-zoom-trigger {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(248, 250, 252, 0.78);
+    color: #334155;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 12;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.16);
+    backdrop-filter: blur(2px);
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.image-zoom-trigger:hover {
+    transform: translateY(-1px);
+    background: rgba(241, 245, 249, 0.92);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
+}
+
+.image-zoom-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100001;
+}
+
+.image-zoom-modal.is-open {
+    display: flex;
+}
+
+.image-zoom-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+}
+
+.image-zoom-dialog {
+    position: relative;
+    width: min(92vw, 1700px);
+    height: min(92vh, 1000px);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.image-zoom-content {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+    background: #fff;
+}
+
+.image-zoom-close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(15, 24, 42, 0.9);
+    color: #fff;
+    cursor: pointer;
+    z-index: 2;
+}
+
+body.image-zoom-open {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .image-zoom-trigger {
+        top: 8px;
+        right: 8px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .image-zoom-dialog {
+        width: 96vw;
+        height: 88vh;
+        padding: 8px;
+    }
+}
+
 #fullscreen-button {
     position: fixed !important;
     top: 20px !important;
@@ -527,7 +664,6 @@ html.reveal-print .taller {
     }
 }
 
-/* PRINT BUTTON STYLES */
 #print-button {
     position: fixed !important;
     top: 20px !important;
@@ -558,7 +694,9 @@ html.reveal-print .taller {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Dynamic list spacing using CSS Custom Properties */
+/* =========================================================
+   LISTAS CON ESPACIADO PERSONALIZADO
+   ========================================================= */
 .spaced-list {
     margin-left: 0;
 }

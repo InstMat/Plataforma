@@ -1,0 +1,151 @@
+/* =========================================================
+   Design tokens — paleta canónica de la plataforma
+   Cargar antes de cualquier hoja de estilos de página.
+   ========================================================= */
+:root {
+    /* --- Neutros (slate) --- */
+    --color-white: #ffffff;
+    --color-slate-50: #f8fafc;
+    --color-slate-100: #f7fafc;
+    --color-slate-200: #edf2f7;
+    --color-slate-300: #e2e8f0;
+    --color-slate-400: #cbd5e0;
+    --color-slate-500: #a0aec0;
+    --color-slate-600: #64748b;
+    --color-slate-650: #4a5568;
+    --color-slate-700: #2d3748;
+    --color-slate-750: #2c3e50;
+    --color-slate-800: #1f2937;
+    --color-slate-900: #1a202c;
+
+    /* --- Grises auxiliares --- */
+    --color-gray-50: #f8f9fa;
+    --color-gray-300: #d0d0d0;
+    --color-gray-350: #ddd;
+    --color-gray-600: #666;
+    --color-gray-650: #555;
+
+    /* --- Azules institucionales --- */
+    --color-blue-50: #ebf4ff;
+    --color-blue-400: #4299e1;
+    --color-blue-500: #3182ce;
+    --color-blue-700: #2b6cb0;
+    --color-blue-800: #2c5282;
+    --color-blue-900: #1a365d;
+
+    /* --- Marca (botones login / modal curso) --- */
+    --color-brand-primary: #1D71B8;
+    --color-brand-primary-hover: #155a94;
+    --color-brand-primary-shadow: rgba(29, 113, 184, 0.4);
+    --color-brand-primary-focus-ring: rgba(29, 113, 184, 0.1);
+
+    /* --- Indigo (admin) --- */
+    --color-indigo-500: #4f5f78;
+    --color-indigo-600: #3f4d63;
+
+    /* --- Estados --- */
+    --color-red-100: #f8d7da;
+    --color-red-500: #e74c3c;
+    --color-red-600: #e53e3e;
+    --color-red-700: #c53030;
+    --color-red-900: #842029;
+
+    --color-green-100: #d1e7dd;
+    --color-green-700: #0a3621;
+    --color-green-900: #0f5132;
+
+    --color-error-login: #d32f2f;
+    --color-error-login-bg: #ffebee;
+    --color-success-login: #2e7d32;
+    --color-success-login-bg: #e8f5e9;
+
+    /* --- Sombras y overlays --- */
+    --color-black-05: rgba(0, 0, 0, 0.05);
+    --color-black-06: rgba(0, 0, 0, 0.06);
+    --color-black-08: rgba(0, 0, 0, 0.08);
+    --color-black-10: rgba(0, 0, 0, 0.1);
+    --color-black-15: rgba(0, 0, 0, 0.15);
+    --color-black-20: rgba(0, 0, 0, 0.2);
+    --color-black-90: rgba(0, 0, 0, 0.9);
+
+    --color-slate-950-28: rgba(15, 23, 42, 0.28);
+    --color-slate-950-55: rgba(15, 23, 42, 0.55);
+    --color-blue-500-28: rgba(49, 130, 206, 0.28);
+    --color-blue-500-75: rgba(49, 130, 206, 0.75);
+    --color-blue-700-15: rgba(43, 108, 176, 0.15);
+    --color-blue-700-32: rgba(43, 108, 176, 0.32);
+    --color-red-500-30: rgba(231, 76, 60, 0.3);
+
+    --color-overlay-login: rgba(0, 0, 0, 0.5);
+    --color-overlay-curso: rgba(0, 0, 0, 0.7);
+    --color-shadow-base: rgba(0, 0, 0, 0.3);
+    --color-white-translucent: rgba(255, 255, 255, 0.3);
+
+    /* --- Sombras compuestas (index) --- */
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.1);
+
+    /* --- Aliases: curso.css (opción A) --- */
+    --color-bg-1: var(--color-slate-100);
+    --color-bg-2: var(--color-slate-300);
+    --color-bg-3: var(--color-slate-400);
+    --color-bg-4: var(--color-slate-500);
+    --color-primary: var(--color-brand-primary);
+    --color-primary-hover: var(--color-brand-primary-hover);
+    --color-dark: var(--color-slate-700);
+    --color-text: var(--color-slate-650);
+    --color-error: var(--color-red-600);
+    --color-overlay: var(--color-overlay-curso);
+    --color-shadow: var(--color-shadow-base);
+
+    /* --- Aliases: login.css (opción A; migración en CSS-2) --- */
+    --color-bg-gradient-start: var(--color-slate-100);
+    --color-bg-gradient-mid-1: var(--color-slate-300);
+    --color-bg-gradient-mid-2: var(--color-slate-400);
+    --color-bg-gradient-end: var(--color-blue-700);
+    --color-primary-shadow: var(--color-brand-primary-shadow);
+    --color-primary-focus-ring: var(--color-brand-primary-focus-ring);
+    --color-text-dark: #333;
+    --color-text-muted: var(--color-gray-600);
+    --color-disabled: #ccc;
+    --color-border-input: #e1e8ed;
+    --color-border-hover: var(--color-slate-400);
+
+    /* --- Panel admin --- */
+    --color-admin-bg: #f5f7fa;
+    --color-admin-primary: #667eea;
+    --color-admin-primary-hover: #5568d3;
+    --color-admin-secondary: #764ba2;
+    --color-admin-primary-shadow: rgba(102, 126, 234, 0.4);
+    --color-admin-success: #48bb78;
+    --color-admin-success-hover: #38a169;
+    --color-admin-danger: #f56565;
+    --color-admin-required-bg: #fff5f5;
+    --color-admin-required-text: #742a2a;
+    --color-admin-badge-admin-bg: #fed7d7;
+    --color-admin-badge-profesor-bg: #bee3f8;
+    --color-admin-badge-student-bg: #c6f6d5;
+    --color-admin-badge-student-text: #22543d;
+    --color-admin-badge-visitor-bg: #fef5e7;
+    --color-admin-badge-visitor-text: #accc3a;
+
+    /* --- Evaluaciones --- */
+    --color-eval-bg: #f7f8fa;
+    --color-eval-text: #222222;
+    --color-eval-navy: #2b4360;
+    --color-eval-blue: #3b5b8a;
+    --color-eval-muted: #888888;
+    --color-eval-breadcrumb: #e0e6ef;
+    --color-eval-breadcrumb-sep: rgba(224, 230, 239, 0.8);
+    --color-eval-breadcrumb-link-border: rgba(224, 230, 239, 0.65);
+    --color-eval-breadcrumb-module-bg: rgba(255, 255, 255, 0.14);
+    --color-eval-breadcrumb-module-border: rgba(255, 255, 255, 0.24);
+    --color-eval-breadcrumb-module-text: #f0f4fa;
+    --color-eval-border: #f0f2f6;
+    --color-eval-border-heading: #e0e6ef;
+    --color-eval-error-bg: #fff0f0;
+    --color-eval-shadow-sm: rgba(43, 67, 96, 0.10);
+    --color-eval-shadow-md: rgba(43, 67, 96, 0.18);
+    --color-eval-shadow-header: rgba(43, 67, 96, 0.08);
+}
